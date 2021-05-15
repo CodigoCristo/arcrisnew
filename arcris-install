@@ -42,6 +42,7 @@
         # vconsole.conf 
         # FONT="cyr-sun16"
         # ls /usr/share/consolefonts
+        # setfont cyr-sun16
         source languages/russian.conf
         echo "$LANGUAGE UTF-8" > /etc/locale.gen
         locale=$(locale-gen)
@@ -59,3 +60,8 @@
 dialog --backtitle "${title}" \
 --title "${alert}" \
 --msgbox "${msg}" 13 50
+    
+        echo "en_US.UTF-8 UTF-8" > /etc/locale.gen
+        locale-gen
+        echo "LANG=en_US.UTF-8" > /etc/locale.conf
+        export LANG=en_US.UTF-8
