@@ -9,7 +9,7 @@
     welcome_title=" -| Language Select |- "
 
     LANG=$(dialog --nocancel --backtitle "Welcome : $(date -u "+%F %H:%M")" --title "${welcome_title}" \
-    --menu "\nInstallation wizard ArcriS\n\nSelect your install language:\n " 14 60 10 \
+    --menu "\nDonations in: www.patreon.com/codigocristo\n\nSelect your install language:\n " 14 60 10 \
         "1" "Español" \
         "2" "English" \
         "3" "Russian" 3>&1 1>&2 2>&3)
@@ -57,7 +57,80 @@
     esac
 
 
-dialog --backtitle "${title}" \
---title "${alert}" \
---msgbox "${msg}" 13 50
-    
+
+main () {
+
+while true; do
+choice=$(dialog --keep-tite --backtitle "${welcome_title}" --title "-| Arcris - Código Cristo |-" \
+--ok-label "${select_ok_label}" --nocancel --column-separator "|" --no-tags \
+--menu "${text_menu}" 22 70 11 \
+1 "1 USERS | Establecer Datos Personales" \
+2 "2 TIMEZONE | Establecer la zona horaria del sistema" \
+3 "3 LANGUAGE | Establecer el idioma del sistema" \
+4 "4 SHELL | Establece la shell del sistema" \
+5 "5 DISK | Particionar la unidad de instalación" \
+6 "6 KERNEL | Establecer el kernel del sistema" \
+7 "7 DRIVER VIDEO | Establecer el driver de video del sistema" \
+8 "8 (DE) or (WM) | Establecer un Escritorio o Gestor de Ventanas" \
+9 "9 EXTRA PROGRAMS | Selecciona programas extras - [ OPCIONAL ]" \
+10 "> INSTALL | Instalar Arch Linux" \
+11 "> EXIT | Salir del Script ArcriS" 3>&1 1>&2 2>&3)
+
+case "$choice" in
+"1")
+
+;;
+
+"2") 
+
+;;
+
+
+"3")
+
+;;
+
+"4") 
+
+;;
+
+"5")
+
+;;
+
+"6")
+
+;;
+
+"7")
+
+;;
+
+"8")
+
+;;
+
+"9")
+
+;;
+
+"10")
+
+;;
+
+"11")
+rm -r arcris
+clear && echo "" 
+echo -e ""
+echo -e "\t\t\t| Visita Nuestra Comunidad - https://t.me/ArchLinuxCristo - by: Arcris |"
+printf '%*s\n' "${COLUMNS:-$(tput cols)}" '' | tr ' ' _
+echo -e ""
+echo "" && sleep 3 && exit
+;;
+
+    esac
+done
+
+}
+
+main

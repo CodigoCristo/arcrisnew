@@ -1,0 +1,87 @@
+#!/usr/bin/env bash
+
+# git add .  
+# git commit -m 'testing'
+# git push -f
+# curl -L is.gd/arcrisnew > arcris ; sh arcris 
+
+
+
+
+main () {
+
+while true; do
+choice=$(dialog --keep-tite --backtitle "$tituloInicio" --title "-| Arcris |-" \
+--ok-label '*Seleccionar*' --nocancel --column-separator "|" --no-tags \
+--menu "\nSeleccione una opción a continuación utilizando las teclas\n[FLECHA ARRIBA] / [FLECHA ABAJO] y [ESPACIO] o [ENTER]\
+\nLas teclas alternativas también se pueden usar: [+], [-] y [TAB]. \n " 22 70 11 \
+1 "1 USERS | Establecer Datos Personales" \
+2 "2 TIMEZONE | Establecer la zona horaria del sistema" \
+3 "3 LANGUAGE | Establecer el idioma del sistema" \
+4 "4 SHELL | Establece la shell del sistema" \
+5 "5 DISK | Particionar la unidad de instalación" \
+6 "6 KERNEL | Establecer el kernel del sistema" \
+7 "7 DRIVER VIDEO | Establecer el driver de video del sistema" \
+8 "8 (DE) or (WM) | Establecer un Escritorio o Gestor de Ventanas" \
+9 "9 EXTRA PROGRAMS | Selecciona programas extras - [ OPCIONAL ]" \
+10 "> INSTALL | Instalar Arch Linux" \
+11 "> EXIT | Salir del Script ArcriS" 3>&1 1>&2 2>&3)
+
+case "$choice" in
+"1")
+
+;;
+
+"2") 
+
+;;
+
+
+"3")
+
+;;
+
+"4") 
+
+;;
+
+"5")
+
+;;
+
+"6")
+
+;;
+
+"7")
+
+;;
+
+"8")
+
+;;
+
+"9")
+
+;;
+
+"10")
+
+;;
+
+"11")
+rm -r arcris
+clear && echo "" 
+echo -e ""
+echo -e "\t\t\t| Visita Nuestra Comunidad - https://t.me/ArchLinuxCristo - by: Arcris |"
+printf '%*s\n' "${COLUMNS:-$(tput cols)}" '' | tr ' ' _
+echo -e ""
+echo "" && sleep 3 && exit
+;;
+
+    esac
+done
+
+}
+
+main
