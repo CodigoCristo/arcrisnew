@@ -6,16 +6,23 @@
 # curl -L is.gd/arcrisnew > arcris ; sh arcris 
 
     echo "" 
-    op_title=" -| Language Select |- "
+    welcome_title=" -| Language Select - Selecciona tu Idioma |- "
 
-    ILANG=$(dialog --nocancel --backtitle "Welcome : $(date -u "+%F %H:%M")" --title "${op_title}" \
+    LANG=$(dialog --nocancel --backtitle "Welcome : $(date -u "+%F %H:%M")" --title "${welcome_title}" \
     --menu "\nInstallation wizard ArcriS\n\nSelect your install language:" 12 60 10 \
         "English" "English" \
         "Spanish" "Español" 3>&1 1>&2 2>&3)
 
-    case "$ILANG" in
-        "English") source lang/english.conf ;;
-        "Spanish") source lang/español.conf ;;
+    case "$LANG" in
+
+        "English") 
+        source languages/english.conf
+        ;;
+
+        "Spanish") 
+        source languages/español.conf
+        ;;
+
     esac
 
 
