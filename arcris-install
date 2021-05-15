@@ -39,8 +39,9 @@
         ;;
 
         "3")
-        #vconsole.conf 
-        #FONT="cyr-sun16"
+        # vconsole.conf 
+        # FONT="cyr-sun16"
+        # ls /usr/share/consolefonts
         source languages/russian.conf
         echo "$LANGUAGE UTF-8" > /etc/locale.gen
         locale=$(locale-gen)
