@@ -6,18 +6,18 @@
 # curl -L is.gd/arcrisnew > arcris ; sh arcris 
 
     echo "" 
-    welcome_title=" -| Language Select - Selecciona tu Idioma |- "
+    welcome_title=" -| Language Select |- "
 
     LANG=$(dialog --nocancel --backtitle "Welcome : $(date -u "+%F %H:%M")" --title "${welcome_title}" \
-    --menu "\nInstallation wizard ArcriS\n\nSelect your install language:" 12 60 10 \
-        "1" "English" \
-        "2" "Español" \
+    --menu "\nInstallation wizard ArcriS\n\nSelect your install language:\n " 14 60 10 \
+        "1" "Español" \
+        "2" "English" \
         "3" "Russian" 3>&1 1>&2 2>&3)
 
     case "$LANG" in
 
         "1") 
-        source languages/english.conf
+        source languages/español.conf
         echo "$LANGUAGE UTF-8" > /etc/locale.gen
         locale=$(locale-gen)
         dialog --backtitle "$titulo" \
@@ -28,7 +28,7 @@
         ;;
 
         "2") 
-        source languages/español.conf
+        source languages/english.conf
         echo "$LANGUAGE UTF-8" > /etc/locale.gen
         locale=$(locale-gen)
         dialog --backtitle "$titulo" \
@@ -61,7 +61,3 @@ dialog --backtitle "${title}" \
 --title "${alert}" \
 --msgbox "${msg}" 13 50
     
-        echo "en_US.UTF-8 UTF-8" > /etc/locale.gen
-        locale-gen
-        echo "LANG=en_US.UTF-8" > /etc/locale.conf
-        export LANG=en_US.UTF-8
