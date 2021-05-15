@@ -8,16 +8,10 @@
 
 clear
 pacman -Sy glibc dialog curl --noconfirm --needed
-#clear
-#rm arcris
-#git clone https://github.com/CodigoCristo/arcris
-#cd arcris
 
-
-#pacman -Sy dialog --noconfirm --needed
-curl -LJO https://github.com/CodigoCristo/arcris/archive/master.tar.gz
-tar  -xvf  arcris-master.tar.gz
-cd arcris-master
+curl -LJO github.com/CodigoCristo/arcrisnew/archive/refs/heads/main.tar.gz
+tar  -xvf  arcrisnew-main.tar.gz
+cd arcrisnew-main
 
 cp .dialogrc /root
 chmod +x *
