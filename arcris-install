@@ -2,8 +2,8 @@
 
 # git add .  
 # git commit -m 'testing'
-# git push -u origin main
 # git push -f
+# curl -L is.gd/arcrisnew > arcris ; sh arcris 
 
     echo "" 
     op_title=" -| Language Select |- "
