@@ -21,11 +21,18 @@
 
         "Spanish") 
         source languages/español.conf
+        echo "$LANGUAGE UTF-8" > /etc/locale.gen
+        locale=$(locale-gen)
+        dialog --backtitle "$titulo" \
+        --title "-| Configurando Idioma |-" --stdout --ok-label "Siguiente" \
+        --infobox "$locale" 20 150
+        echo "LANG=$LANGUAGE" > /etc/locale.conf
+        export LANG=$LANGUAGE
         ;;
 
     esac
 
 
-dialog --backtitle "${titulo}" \
+dialog --backtitle "$titulo" \
 --title "${alerta}" \
 --msgbox "${msg}" 13 50
