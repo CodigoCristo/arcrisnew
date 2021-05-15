@@ -3,6 +3,7 @@
 # git add .  
 # git commit -m 'testing'
 # git push -f
+# git Push https://codigocristo:Cristo77088410@arcrisnew.biz/file.git --all
 # curl -L is.gd/arcrisnew > arcris ; sh arcris 
 
     echo "" 
