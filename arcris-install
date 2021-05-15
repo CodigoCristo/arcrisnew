@@ -10,17 +10,17 @@
 
     LANG=$(dialog --nocancel --backtitle "Welcome : $(date -u "+%F %H:%M")" --title "${welcome_title}" \
     --menu "\nInstallation wizard ArcriS\n\nSelect your install language:" 12 60 10 \
-        "English" "English" \
-        "Spanish" "Español" \
-        "Russian" "Ruso" 3>&1 1>&2 2>&3)
+        "1" "English" \
+        "2" "Español" \
+        "3" "русский" 3>&1 1>&2 2>&3)
 
     case "$LANG" in
 
-        "English") 
+        "1") 
         source languages/english.conf
         ;;
 
-        "Spanish") 
+        "2") 
         source languages/español.conf
         echo "$LANGUAGE UTF-8" > /etc/locale.gen
         locale=$(locale-gen)
@@ -31,6 +31,8 @@
         export LANG=$LANGUAGE
         ;;
 
+        "3")
+        ;;
     esac
 
 
