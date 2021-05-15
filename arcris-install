@@ -12,12 +12,19 @@
     --menu "\nInstallation wizard ArcriS\n\nSelect your install language:" 12 60 10 \
         "1" "English" \
         "2" "Español" \
-        "3" "русский" 3>&1 1>&2 2>&3)
+        "3" "Russian" 3>&1 1>&2 2>&3)
 
     case "$LANG" in
 
         "1") 
         source languages/english.conf
+        echo "$LANGUAGE UTF-8" > /etc/locale.gen
+        locale=$(locale-gen)
+        dialog --backtitle "$titulo" \
+        --title "${idiom}" --stdout --ok-label "${oklabel}" \
+        --infobox "$locale" 20 150
+        echo "LANG=$LANGUAGE" > /etc/locale.conf
+        export LANG=$LANGUAGE
         ;;
 
         "2") 
@@ -32,7 +39,16 @@
         ;;
 
         "3")
+        source languages/russian.conf
+        echo "$LANGUAGE UTF-8" > /etc/locale.gen
+        locale=$(locale-gen)
+        dialog --backtitle "$titulo" \
+        --title "${idiom}" --stdout --ok-label "${oklabel}" \
+        --infobox "$locale" 20 150
+        echo "LANG=$LANGUAGE" > /etc/locale.conf
+        export LANG=$LANGUAGE
         ;;
+        
     esac
 
 
