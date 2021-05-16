@@ -59,7 +59,7 @@ seguida de cualquier combinación de números,\nletras más minúsculas o el sí
     fi
   done
 
-
+user=$(echo $username | tr '[:upper:]' '[:lower:]') 
 
 while true; do
     hostname=$(dialog --backtitle "$titulo" --nocancel \
