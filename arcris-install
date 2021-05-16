@@ -12,7 +12,9 @@
     echo "LANG=en_US.UTF-8" > /etc/locale.conf
     export LANG=en_US.UTF-8
     clear
+
     welcome_title=" -| Language Select |- "
+    
     LANG=$(dialog --nocancel --backtitle "Welcome : $(date -u "+%F %H:%M")" --title "${welcome_title}" \
     --menu "\nDonations in: www.patreon.com/codigocristo\n\nSelect your install language:\n " 14 60 10 \
         "1" "Español" \
