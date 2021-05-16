@@ -8,7 +8,7 @@
 
 clear
 
-if [[ pacman -Sy glibc dialog curl --noconfirm --needed | wc -l == 7 ]]; then
+if pacman -Sy glibc dialog curl --noconfirm --needed | wc -l == 7 ; then
 clear
 else
 sudo pacman -Sy glibc dialog curl --noconfirm --needed
