@@ -90,28 +90,8 @@ menuprincipal=$(dialog --keep-tite --backtitle "${title}" --title "${title_menu}
 case "$menuprincipal" in
 "1")
     source lib/user
-
     users
 
-    clear
-    printf '%*s\n' "${COLUMNS:-$(tput cols)}" '' | tr ' ' _
-    echo -e ""
-    echo -e "\t\t\t| Datos Ingresados |"
-    printf '%*s\n' "${COLUMNS:-$(tput cols)}" '' | tr ' ' _
-    echo -e ""
-    echo ""
-
-    echo Hostname:          $hostname
-    echo Passwd ROOT:       $rootpasswd
-    echo ""
-    echo Nombre de Usuario:   $username
-    echo Clave de Usuario :   $userpasswd
-    echo -e ""
-    printf '%*s\n' "${COLUMNS:-$(tput cols)}" '' | tr ' ' _
-    echo -e ""
-    echo -e "PRESIONA ENTER PARA CONFIRMAR..."
-    read line
-    echo ""
 ;;
 
 "2") 

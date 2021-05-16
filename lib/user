@@ -13,10 +13,7 @@ rootpasswd=""
 ##########################
 while true; do
 username=$(dialog --title "${titleuser}" \
---nocancel --inputbox "\nIntroduzca un nombre de usuario para el nuevo Usuario \
-\n\nEl nombre de usuario debe comenzar con una letra minúscula,\nque puede ir \
-seguida de cualquier combinación de números,\nletras más minúsculas o el símbolo de guión. [ - ] \
-\n\nNombre de usuario de su cuenta:" 14 65 3>&1 1>&2 2>&3)
+--nocancel --inputbox "${msg_username}" 14 65 3>&1 1>&2 2>&3)
 
     if [ $? -eq 0 ]; then
     #El nombre de usuario debe comenzar con una letra minúscula. 
@@ -36,7 +33,7 @@ seguida de cualquier combinación de números,\nletras más minúsculas o el sí
           while ! $inputs_match; do
 
             input=$(dialog --title "-| Establecer la contraseña |-" --clear \
-              --stdout --nocancel --insecure --passwordbox "\nElija una contraseña para $username:\n " 9 60)
+              --stdout --nocancel --insecure --passwordbox "${msg_passwduser}" 9 60)
             confirm_input=$(dialog --title "-| Establecer la contraseña para $username |-" \
               --clear --stdout --insecure --no-cancel --passwordbox "\nVuelva a ingresar la contraseña para verificar:\n " 10 55)
 
@@ -115,5 +112,29 @@ inputs_match=false
       inputs_match=true
     fi
   done
+
+
+##########################
+# END
+##########################
+    clear
+    printf '%*s\n' "${COLUMNS:-$(tput cols)}" '' | tr ' ' _
+    echo -e ""
+    echo -e "\t\t\t| Datos Ingresados |"
+    printf '%*s\n' "${COLUMNS:-$(tput cols)}" '' | tr ' ' _
+    echo -e ""
+    echo ""
+
+    echo Hostname:          $hostname
+    echo Passwd ROOT:       $rootpasswd
+    echo ""
+    echo Nombre de Usuario:   $username
+    echo Clave de Usuario :   $userpasswd
+    echo -e ""
+    printf '%*s\n' "${COLUMNS:-$(tput cols)}" '' | tr ' ' _
+    echo -e ""
+    echo -e "PRESIONA ENTER PARA CONFIRMAR..."
+    read line
+    echo ""
 
 }
