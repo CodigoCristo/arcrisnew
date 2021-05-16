@@ -61,7 +61,7 @@
 main () {
 
 while true; do
-choice=$(dialog --keep-tite --backtitle "${welcome_title}" --title "-| Arcris - Código Cristo |-" \
+choice=$(dialog --keep-tite --backtitle "${title}" --title "-| Arcris - Código Cristo |-" \
 --ok-label "${select_ok_label}" --nocancel --column-separator "|" --no-tags \
 --menu "${text_menu}" 22 70 11 \
 1 "1 USERS | Establecer Datos Personales" \
