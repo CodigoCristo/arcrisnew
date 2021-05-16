@@ -124,19 +124,12 @@ case "$menuprincipal" in
 cd 
 rm -r arcris arcrisnew-main arcrisnew-main.tar.gz
 clear && echo "" 
-echo "en_US.UTF-8 UTF-8" > /etc/locale.gen
-locale-gen
-clear
-echo "LANG=en_US.UTF-8" > /etc/locale.conf
-export LANG=en_US.UTF-8
-export LANG=C
-loadkeys ${keymap}
 clear
 echo -e ""
 echo -e "${msg_end}"
 printf '%*s\n' "${COLUMNS:-$(tput cols)}" '' | tr ' ' _
 echo -e ""
-echo "" && sleep 3 && clear && setfont lat2-16 -m 8859-2 && exit
+echo "" && sleep 3 && clear && setfont && exit
 ;;
 
     esac
