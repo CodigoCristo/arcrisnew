@@ -8,10 +8,7 @@
 
 clear
 
-pacman -Sy
-clear
-
-pacmaninit=$( pacman -S glibc dialog curl --noconfirm --needed | wc -l )
+pacmaninit=$( pacman -Sy glibc dialog curl --noconfirm --needed | wc -l )
 
 if [[ "$pacmaninit" = "1" ]] ; then
 clear
