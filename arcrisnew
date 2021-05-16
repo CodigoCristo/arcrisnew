@@ -10,7 +10,7 @@ clear
 
 pacman -Sy
 
-pacmaninit=$(pacman -S glibc dialog curl --noconfirm --needed | wc -l)
+pacmaninit=$( pacman -S glibc dialog curl --noconfirm --needed | wc -l )
 
 if [[ $pacmaninit == 7 ]] ; then
 clear
