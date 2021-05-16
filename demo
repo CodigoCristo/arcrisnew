@@ -21,7 +21,7 @@ choice=$(dialog --keep-tite --backtitle "$tituloInicio" --title "-| Arcris |-" \
 5 "5 DISCO | Particionar la unidad de instalación" \
 6 "6 KERNEL | Establecer el kernel del sistema" \
 7 "7 DRIVER DE VIDEO | Establecer el driver de video del sistema" \
-8 "8 (DE) or (WM) | Establecer un Escritorio o Gestor de Ventanas" \
+8 "8 (DE) or (WM) | Elige un TTY / X.org/ Escritorio / Gestor de Ventanas" \
 9 "9 PROGRAMAS EXTRAS | Selecciona programas extras - [ OPCIONAL ]" \
 10 ">    INSTALAR    < " \
 11 ">     SALIR      < " 3>&1 1>&2 2>&3)
