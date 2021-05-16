@@ -127,7 +127,7 @@ echo -e ""
 echo -e "${msg_end}"
 printf '%*s\n' "${COLUMNS:-$(tput cols)}" '' | tr ' ' _
 echo -e ""
-echo "" && sleep 3 && clear && setfont lat2-16 -m 8859-2 && exit
+echo "" && sleep 3 && clear && setfont -h8 /usr/share/kbd/consolefonts/drdos8x8.psfu.gz && exit
 ;;
 
     esac
