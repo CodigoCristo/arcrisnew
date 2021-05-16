@@ -44,6 +44,7 @@
         --infobox "$locale" 20 150
         echo "LANG=$LANGUAGE" > /etc/locale.conf
         export LANG=$LANGUAGE
+        setfont default8x16
         ;;
 
         "3")
@@ -83,8 +84,8 @@ menuprincipal=$(dialog --keep-tite --backtitle "${title}" --title "${title_menu}
 7 "${menu7}| ${submenu7}" \
 8 "${menu8}| ${submenu8}" \
 9 "${menu9}| ${submenu9}" \
-10 "${menu10}| ${submenu10}" \
-11 "${menu11}| ${submenu11}" 3>&1 1>&2 2>&3)
+10 "${menu10}| " \
+11 "${menu11}| " 3>&1 1>&2 2>&3)
 
 case "$menuprincipal" in
 "1")
