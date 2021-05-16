@@ -28,6 +28,5 @@ cd arcrisnew-main
 
 cp .dialogrc /root
 chmod +x *
-sleep 2
 clear
 sh arcris-install
