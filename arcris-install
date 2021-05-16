@@ -125,8 +125,12 @@ cd
 rm -r arcris arcrisnew-main arcrisnew-main.tar.gz
 clear && echo "" 
 clear
-export LANG=C
-loadkeys us
+echo "es_ES.UTF-8 UTF-8" > /etc/locale.gen
+locale-gen
+clear
+echo "LANG=es_ES.UTF-8" > /etc/locale.conf
+export LANG=es_ES.UTF-8
+loadkeys la-latin1
 echo -e ""
 echo -e "${msg_end}"
 printf '%*s\n' "${COLUMNS:-$(tput cols)}" '' | tr ' ' _
