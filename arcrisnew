@@ -29,4 +29,6 @@ cd arcrisnew-main
 cp .dialogrc /root
 chmod +x *
 clear
+echo "Loading..."
+sleep 2
 sh arcris-install
