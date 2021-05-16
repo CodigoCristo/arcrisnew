@@ -63,7 +63,7 @@ main () {
 while true; do
 menuprincipal=$(dialog --keep-tite --backtitle "${title}" --title "-| Arcris - Código Cristo |-" \
 --ok-label "${select_ok_label}" --nocancel --column-separator "|" --no-tags \
---menu "${text_menu}" 22 75 11 \
+--menu "${text_menu}" 22 80 11 \
 1 "1 USERS | Establecer Datos Personales" \
 2 "2 TIMEZONE | Establecer la zona horaria del sistema" \
 3 "3 LANGUAGE | Establecer el idioma del sistema" \
@@ -127,6 +127,7 @@ echo "en_US.UTF-8 UTF-8" > /etc/locale.gen
 locale-gen
 echo "LANG=en_US.UTF-8" > /etc/locale.conf
 export LANG=en_US.UTF-8
+clear
 
 echo -e ""
 echo -e "${msg_end}"
