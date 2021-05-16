@@ -11,6 +11,7 @@
     dialog --stdout --infobox "$locale" 20 150
     echo "LANG=en_US.UTF-8" > /etc/locale.conf
     export LANG=en_US.UTF-8
+    setfont default8x16
     clear
 
     welcome_title=" -| Language Select |- "
