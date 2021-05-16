@@ -62,7 +62,7 @@
 main () {
 
 while true; do
-menuprincipal=$(dialog --keep-tite --backtitle "${title}" --title "-| Arcris - Código Cristo |-" \
+menuprincipal=$(dialog --keep-tite --backtitle "${title}" --title "${title_menu}" \
 --ok-label "${select_ok_label}" --nocancel --column-separator "|" --no-tags \
 --menu "${text_menu}" 22 80 11 \
 1 "1 USERS | Establecer Datos Personales" \
