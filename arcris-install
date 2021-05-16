@@ -60,7 +60,7 @@ main () {
 while true; do
 menuprincipal=$(dialog --keep-tite --backtitle "${title}" --title "-| Arcris - Código Cristo |-" \
 --ok-label "${select_ok_label}" --nocancel --column-separator "|" --no-tags \
---menu "${text_menu}" 22 70 11 \
+--menu "${text_menu}" 22 75 11 \
 1 "1 USERS | Establecer Datos Personales" \
 2 "2 TIMEZONE | Establecer la zona horaria del sistema" \
 3 "3 LANGUAGE | Establecer el idioma del sistema" \
