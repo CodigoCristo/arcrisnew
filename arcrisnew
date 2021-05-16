@@ -13,13 +13,12 @@ clear
 
 pacmaninit=$( pacman -S glibc dialog curl --noconfirm --needed | wc -l )
 
-if [[ "$pacmaninit" = "7" ]] ; then
+if [[ "$pacmaninit" = "1" ]] ; then
 clear
 else
 clear
 sudo pacman -Sy glibc dialog curl --noconfirm --needed
 fi
-sleep 3
 
 clear
 curl -LJO github.com/CodigoCristo/arcrisnew/archive/refs/heads/main.tar.gz
