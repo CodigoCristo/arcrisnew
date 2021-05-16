@@ -32,7 +32,8 @@
         --infobox "$locale" 20 150
         echo "LANG=$LANGUAGE" > /etc/locale.conf
         export LANG=$LANGUAGE
-        setfont lat2-16 -m 8859-2
+        #setfont lat2-16 -m 8859-2
+        setfont lat2a-16
         ;;
 
         "2")
@@ -90,7 +91,9 @@ menuprincipal=$(dialog --keep-tite --backtitle "${title}" --title "${title_menu}
 case "$menuprincipal" in
 "1")
     source lib/user
+
     users
+
     clear
     printf '%*s\n' "${COLUMNS:-$(tput cols)}" '' | tr ' ' _
     echo -e ""
@@ -102,12 +105,12 @@ case "$menuprincipal" in
     echo Hostname:          $hostname
     echo Passwd ROOT:       $rootpasswd
     echo ""
-    echo Nombre de Usuario:   $user
+    echo Nombre de Usuario:   $username
     echo Clave de Usuario :   $userpasswd
     echo -e ""
     printf '%*s\n' "${COLUMNS:-$(tput cols)}" '' | tr ' ' _
     echo -e ""
-    echo PRESIONA ENTER PARA CONFIRMAR...
+    echo -e "PRESIONA ENTER PARA CONFIRMAR..."
     read line
     echo ""
 ;;

@@ -8,8 +8,9 @@ username=""
 userpasswd=""
 rootpasswd=""
 
-
-
+##########################
+# USER
+##########################
 while true; do
 username=$(dialog --title "Crea una cuenta de usuario" \
 --nocancel --inputbox "\nIntroduzca un nombre de usuario para el nuevo Usuario \
@@ -59,8 +60,11 @@ seguida de cualquier combinación de números,\nletras más minúsculas o el sí
     fi
   done
 
-user=$(echo $username | tr '[:upper:]' '[:lower:]') 
 
+
+##########################
+# HOSTNAME
+##########################
 while true; do
     hostname=$(dialog --backtitle "$titulo" --nocancel \
     --inputbox "El hostname es una sola palabra que identifica su sistema en la red. \
@@ -84,7 +88,9 @@ o terminar con un signo menos." 12 75
   done
 
 
-
+##########################
+# PASSWD ROOT
+##########################
 inputs_match=false
   while ! $inputs_match; do
     input=$(dialog --title "Establecer la contraseña de root" --clear --stdout --nocancel \
@@ -106,9 +112,5 @@ inputs_match=false
       inputs_match=true
     fi
   done
-
-
-
-
 
 }
