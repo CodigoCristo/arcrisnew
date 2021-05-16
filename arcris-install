@@ -133,9 +133,10 @@ echo "" && sleep 3 && exit
     esac
 done
 
+clear
+setfont default8x16
+
 }
 
 
 main
-clear
-setfont default8x16
