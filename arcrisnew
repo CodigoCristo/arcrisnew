@@ -18,6 +18,7 @@ clear
 else
 clear
 sudo pacman -Sy glibc dialog curl --noconfirm --needed
+sleep 5
 fi
 
 clear
