@@ -125,6 +125,8 @@ cd
 rm -r arcris arcrisnew-main arcrisnew-main.tar.gz
 clear && echo "" 
 clear
+export LANG=C
+loadkeys us
 echo -e ""
 echo -e "${msg_end}"
 printf '%*s\n' "${COLUMNS:-$(tput cols)}" '' | tr ' ' _
