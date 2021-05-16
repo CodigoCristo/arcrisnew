@@ -1,5 +1,86 @@
-    LANG=$(dialog --nocancel --backtitle "Welcome : $(date -u "+%F %H:%M")" --title "${welcome_title}" \
-    --menu "\nDonations in: www.patreon.com/codigocristo\n\nSelect the language of the installer:\n " 14 60 10 \
-        "1" "Español"  \
-        "2" "English" \
-        "3" "Russian" 3>&1 1>&2 2>&3)
+#!/usr/bin/env bash
+
+# git add .  
+# git commit -m 'testing'
+# git push -f
+# curl -L is.gd/arcrisnew > arcris ; sh arcris 
+
+
+
+
+main () {
+
+while true; do
+choice=$(dialog --keep-tite --backtitle "$tituloInicio" --title "-| Arcris |-" \
+--ok-label '*Выбирать*' --nocancel --column-separator "|" --no-tags \
+--menu "\nВыберите вариант ниже с помощью клавиш\n[СТРЕЛКА ВВЕРХ] / [КНОПКА СТРЕЛКА ВНИЗ] а также [КОСМОС] или же [ВХОДИТЬ]\nТакже можно использовать альтернативные ключи: [+], [-] and [TAB]. \n " 22 77 11 \
+1 "1 USUARIO | Establecer Datos Personales" \
+2 "2 UBICACIÓN |  Establecer la zona horaria del sistema" \
+3 "3 IDIOMA | Establecer el idioma del sistema" \
+4 "4 SHELL | Establece la shell del sistema" \
+5 "5 DISCO | Particionar la unidad de instalación" \
+6 "6 KERNEL | Establecer el kernel del sistema" \
+7 "7 DRIVER DE VIDEO | Establecer el driver de video del sistema" \
+8 "8 (DE) or (WM) | Establecer un Escritorio o Gestor de Ventanas" \
+9 "9 PROGRAMAS EXTRAS | Selecciona programas extras - [ OPCIONAL ]" \
+10 "> INSTALAR | Instalar Arch Linux" \
+11 "> SALIR | Salir del Script ArcriS" 3>&1 1>&2 2>&3)
+
+case "$choice" in
+"1")
+
+;;
+
+"2") 
+
+;;
+
+
+"3")
+
+;;
+
+"4") 
+
+;;
+
+"5")
+
+;;
+
+"6")
+
+;;
+
+"7")
+
+;;
+
+"8")
+
+;;
+
+"9")
+
+;;
+
+"10")
+
+;;
+
+"11")
+rm -r arcris
+clear && echo "" 
+echo -e ""
+echo -e "\t\t\t| Visita Nuestra Comunidad - https://t.me/ArchLinuxCristo - by: Arcris |"
+printf '%*s\n' "${COLUMNS:-$(tput cols)}" '' | tr ' ' _
+echo -e ""
+echo "" && sleep 3 && exit
+;;
+
+    esac
+done
+
+}
+
+main
