@@ -7,8 +7,7 @@
 
     echo "" 
     welcome_title=" -| Language Select |- "
-    setfont
-    export LANG=C
+    export LC_CTYPE=ISO_8859_1
     LANG=$(dialog --nocancel --backtitle "Welcome : $(date -u "+%F %H:%M")" --title "${welcome_title}" \
     --menu "\nDonations in: www.patreon.com/codigocristo\n\nSelect your install language:\n " 14 60 10 \
         "1" "Español" \
