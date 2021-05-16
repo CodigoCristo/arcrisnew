@@ -119,7 +119,8 @@ case "$choice" in
 ;;
 
 "11")
-rm -r arcris
+cd 
+rm -r arcris arcrisnew-main arcrisnew-main.tar.gz
 clear && echo "" 
 echo -e ""
 echo -e "\t\t\t| Visita Nuestra Comunidad - https://t.me/ArchLinuxCristo - by: Arcris |"
