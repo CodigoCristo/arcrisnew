@@ -124,13 +124,11 @@ case "$menuprincipal" in
 cd 
 rm -r arcris arcrisnew-main arcrisnew-main.tar.gz
 clear && echo "" 
-setfont default8x16
-clear
-
 echo -e ""
 echo -e "${msg_end}"
 printf '%*s\n' "${COLUMNS:-$(tput cols)}" '' | tr ' ' _
 echo -e ""
+setfont default8x16
 echo "" && sleep 3 && exit
 ;;
 
