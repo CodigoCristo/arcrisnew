@@ -8,6 +8,7 @@
 
 clear
 pacman -Sy
+
 if [ pacman -S glibc dialog curl --noconfirm --needed | wc -l == 7 ] ; then
 clear
 else
