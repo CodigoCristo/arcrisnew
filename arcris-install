@@ -44,6 +44,7 @@
         # ls /usr/share/consolefonts
         # ls /usr/share/kbd/consolefonts | grep 8x16
         # setfont cyr-sun16
+        # showconsolefont
         source languages/russian.conf
         echo "$LANGUAGE UTF-8" > /etc/locale.gen
         locale=$(locale-gen)
@@ -123,11 +124,17 @@ case "$menuprincipal" in
 cd 
 rm -r arcris arcrisnew-main arcrisnew-main.tar.gz
 clear && echo "" 
+echo "en_US.UTF-8 UTF-8" > /etc/locale.gen
+locale-gen
+clear
+echo "LANG=en_US.UTF-8" > /etc/locale.conf
+export LANG=en_US.UTF-8
+clear
 echo -e ""
 echo -e "${msg_end}"
 printf '%*s\n' "${COLUMNS:-$(tput cols)}" '' | tr ' ' _
 echo -e ""
-echo "" && sleep 3 && clear && setfont -h8 /usr/share/kbd/consolefonts/drdos8x8.psfu.gz && exit
+echo "" && sleep 3 && clear && setfont lat2-16 -m 8859-2 && exit
 ;;
 
     esac
