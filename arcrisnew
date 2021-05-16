@@ -15,7 +15,7 @@ pacmaninit=$( pacman -S glibc dialog curl --noconfirm --needed | wc -l )
 if [[ "$pacmaninit" = "7" ]] ; then
 clear
 else
-sudo pacman -S glibc dialog curl --noconfirm --needed
+sudo pacman -Sy glibc dialog curl --noconfirm --needed
 fi
 sleep 3
 
