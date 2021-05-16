@@ -9,6 +9,7 @@
 clear
 
 pacman -Sy
+clear
 
 pacmaninit=$( pacman -S glibc dialog curl --noconfirm --needed | wc -l )
 
