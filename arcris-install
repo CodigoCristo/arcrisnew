@@ -61,7 +61,7 @@
 main () {
 
 while true; do
-choice=$(dialog --keep-tite --backtitle "${title}" --title "-| Arcris - Código Cristo |-" \
+menuprincipal=$(dialog --keep-tite --backtitle "${title}" --title "-| Arcris - Código Cristo |-" \
 --ok-label "${select_ok_label}" --nocancel --column-separator "|" --no-tags \
 --menu "${text_menu}" 22 70 11 \
 1 "1 USERS | Establecer Datos Personales" \
@@ -76,7 +76,7 @@ choice=$(dialog --keep-tite --backtitle "${title}" --title "-| Arcris - Código 
 10 "> INSTALL | Instalar Arch Linux" \
 11 "> EXIT | Salir del Script ArcriS" 3>&1 1>&2 2>&3)
 
-case "$choice" in
+case "$menuprincipal" in
 "1")
 
 ;;
