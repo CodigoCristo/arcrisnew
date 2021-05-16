@@ -13,7 +13,7 @@ main () {
 while true; do
 choice=$(dialog --keep-tite --backtitle "$tituloInicio" --title "-| Arcris |-" \
 --ok-label '*Выбирать*' --nocancel --column-separator "|" --no-tags \
---menu "\nВыберите вариант ниже с помощью клавиш\n[СТРЕЛКА ВВЕРХ] / [КНОПКА СТРЕЛКА ВНИЗ] а также [КОСМОС] или же [ВХОДИТЬ]\nТакже можно использовать альтернативные ключи: [+], [-] and [TAB]. \n " 22 77 11 \
+--menu "\nВыберите вариант ниже с помощью клавиш\n[СТРЕЛКА ВВЕРХ] / [КНОПКА СТРЕЛКА ВНИЗ] а также [КОСМОС] или же [ВХОДИТЬ]\nТакже можно использовать альтернативные ключи: [+], [-] and [TAB]. \n " 22 77 10 \
 1 "1 USUARIO | Establecer Datos Personales" \
 2 "2 UBICACIÓN |  Establecer la zona horaria del sistema" \
 3 "3 IDIOMA | Establecer el idioma del sistema" \

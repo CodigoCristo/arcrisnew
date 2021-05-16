@@ -74,7 +74,7 @@ main () {
 while true; do
 menuprincipal=$(dialog --keep-tite --backtitle "${title}" --title "${title_menu}" \
 --ok-label "${select_ok_label}" --nocancel --no-tags \
---menu "${text_menu}" ${highmenu} ${widthmenu} 20 \
+--menu "${text_menu}" ${highmenu} ${widthmenu} 10 \
 1 "${menu1} ${submenu1}" \
 2 "${menu2} ${submenu2}" \
 3 "${menu3} ${submenu3}" \
