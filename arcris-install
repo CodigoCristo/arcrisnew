@@ -128,7 +128,6 @@ echo -e "${msg_end}"
 printf '%*s\n' "${COLUMNS:-$(tput cols)}" '' | tr ' ' _
 echo -e ""
 echo "" && sleep 3 && exit
-setfont default8x16
 ;;
 
     esac
@@ -136,4 +135,7 @@ done
 
 }
 
+
 main
+clear
+setfont default8x16
