@@ -8,9 +8,11 @@
 
 clear
 
-pacmaninit=$( pacman -Sy glibc dialog curl --noconfirm --needed | wc -l )
+pacmaninit1=$( pacman -Ss glibc  | grep "glibc" 	| grep "installed" | wc -l )
+pacmaninit2=$( pacman -Ss dialog | grep "dialog" 	| grep "installed" | wc -l )
+pacmaninit3=$( pacman -Ss curl 	 | grep "curl" 		| grep "installed" | wc -l )
 
-if [[ "$pacmaninit" = "1" ]] ; then
+if [[ "$pacmaninit1" = "1" && "$pacmaninit2" = "1" && "$pacmaninit3" = "1" ]] ; then
 clear
 else
 clear
