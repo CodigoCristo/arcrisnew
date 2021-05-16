@@ -30,5 +30,5 @@ cp .dialogrc /root
 chmod +x *
 clear
 echo "Loading..."
-sleep 2
+sleep 1
 sh arcris-install
