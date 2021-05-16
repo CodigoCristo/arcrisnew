@@ -45,7 +45,10 @@
         # setfont cyr-sun16
         source languages/russian.conf
         echo "$LANGUAGE UTF-8" > /etc/locale.gen
-        locale-gen
+        locale=$(locale-gen)
+        dialog --backtitle "$titulo" \
+        --title "${idiom}" --stdout --ok-label "${oklabel}" \
+        --infobox "$locale" 20 150
         echo "LANG=$LANGUAGE" > /etc/locale.conf
         export LANG=$LANGUAGE
         setfont cyr-sun16
@@ -119,6 +122,12 @@ case "$menuprincipal" in
 cd 
 rm -r arcris arcrisnew-main arcrisnew-main.tar.gz
 clear && echo "" 
+
+echo "en_US.UTF-8 UTF-8" > /etc/locale.gen
+locale-gen
+echo "LANG=en_US.UTF-8" > /etc/locale.conf
+export LANG=en_US.UTF-8
+
 echo -e ""
 echo -e "${msg_end}"
 printf '%*s\n' "${COLUMNS:-$(tput cols)}" '' | tr ' ' _
