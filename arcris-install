@@ -73,17 +73,17 @@ while true; do
 menuprincipal=$(dialog --keep-tite --backtitle "${title}" --title "${title_menu}" \
 --ok-label "${select_ok_label}" --nocancel --column-separator "|" --no-tags \
 --menu "${text_menu}" 22 77 11 \
-1 "1 USERS | Establecer Datos Personales" \
-2 "2 TIMEZONE | Establecer la zona horaria del sistema" \
-3 "3 LANGUAGE | Establecer el idioma del sistema" \
-4 "4 SHELL | Establece la shell del sistema" \
-5 "5 DISK | Particionar la unidad de instalación" \
-6 "6 KERNEL | Establecer el kernel del sistema" \
-7 "7 DRIVER VIDEO | Establecer el driver de video del sistema" \
-8 "8 (DE) or (WM) | Establecer un Escritorio o Gestor de Ventanas" \
-9 "9 EXTRA PROGRAMS | Selecciona programas extras - [ OPCIONAL ]" \
-10 "> INSTALL | Instalar Arch Linux" \
-11 "> EXIT | Salir del Script ArcriS en Español" 3>&1 1>&2 2>&3)
+1 "${menu1}" \
+2 "${menu2}" \
+3 "${menu3}" \
+4 "${menu4}" \
+5 "${menu5}" \
+6 "${menu6}" \
+7 "${menu7}" \
+8 "${menu8}" \
+9 "${menu9}" \
+10 "${menu10}" \
+11 "${menu11}" 3>&1 1>&2 2>&3)
 
 case "$menuprincipal" in
 "1")
