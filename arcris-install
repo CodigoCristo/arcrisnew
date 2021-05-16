@@ -45,10 +45,7 @@
         # setfont cyr-sun16
         source languages/russian.conf
         echo "$LANGUAGE UTF-8" > /etc/locale.gen
-        locale=$(locale-gen)
-        dialog --backtitle "$titulo" \
-        --title "${idiom}" --stdout --ok-label "${oklabel}" \
-        --infobox "$locale" 20 150
+        locale-gen
         echo "LANG=$LANGUAGE" > /etc/locale.conf
         export LANG=$LANGUAGE
         setfont cyr-sun16
