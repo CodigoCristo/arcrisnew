@@ -33,7 +33,7 @@ username=$(dialog --title "${titleuser}" \
           while ! $inputs_match; do
 
             input=$(dialog --title "-| Establecer la contraseña |-" --clear \
-              --stdout --nocancel --insecure --passwordbox "${msg_passwduser}" 9 60)
+              --stdout --nocancel --insecure --passwordbox "${msg_passwduser} $username:\n " 9 60)
             confirm_input=$(dialog --title "-| Establecer la contraseña para $username |-" \
               --clear --stdout --insecure --no-cancel --passwordbox "\nVuelva a ingresar la contraseña para verificar:\n " 10 55)
 
