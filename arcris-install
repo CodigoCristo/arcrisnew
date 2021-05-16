@@ -42,6 +42,7 @@
         # vconsole.conf 
         # FONT="cyr-sun16"
         # ls /usr/share/consolefonts
+        # ls /usr/share/kbd/consolefonts | grep 8x16
         # setfont cyr-sun16
         source languages/russian.conf
         echo "$LANGUAGE UTF-8" > /etc/locale.gen
@@ -51,7 +52,8 @@
         --infobox "$locale" 20 150
         echo "LANG=$LANGUAGE" > /etc/locale.conf
         export LANG=$LANGUAGE
-        setfont cyr-sun16
+        #setfont cyr-sun16
+        setfont ruscii_8x16
         ;;
 
     esac
@@ -122,11 +124,7 @@ case "$menuprincipal" in
 cd 
 rm -r arcris arcrisnew-main arcrisnew-main.tar.gz
 clear && echo "" 
-
-echo "en_US.UTF-8 UTF-8" > /etc/locale.gen
-locale-gen
-echo "LANG=en_US.UTF-8" > /etc/locale.conf
-export LANG=en_US.UTF-8
+setfont default8x16
 clear
 
 echo -e ""
