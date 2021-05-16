@@ -22,7 +22,7 @@ seguida de cualquier combinación de números,\nletras más minúsculas o el sí
     #El nombre de usuario debe comenzar con una letra minúscula. 
     #Puede contener minúsculas alfanuméricas y guiones.
       if printf "%s" "$username" | grep -Eoq "^[a-z][a-z0-9-]*$" \
-        && [ "${#username}" -lt 33 ]; then
+        && [ "${#username}" -lt 20 ]; then
         # El archivo de nombre de usuario reservado contiene nombres de usuario que deben evitarse
         if grep -Fxq "$username" reserved_usernames ; then
           dialog --title "ERROR: Nombre de usuario reservado" \
@@ -78,11 +78,10 @@ while true; do
       && [ "${hostname: -1}" != "-" ]; then
       break
     else
-      dialog --backtitle "$titulo"  --title "| ERROR: Formato de nombre no válido |" \
+      dialog --backtitle "$titulo"  --title "-| ERROR: Formato de nombre no válido |-" \
         --msgbox "\nIngresó un nombre de host no válido. \n\nUn nombre de host válido puede \
-contienen solo los números 0-9, letras mayúsculas y minúsculas (A-Z y a-z), y \
-el signo menos.\n\nDebe tener como máximo 63 caracteres y no puede comenzar \
-o terminar con un signo menos." 12 75
+contienen solo los números 0-9,\nletras mayúsculas y minúsculas (A-Z y a-z), y \
+el signo menos.\n\nDebe tener como máximo 63 caracteres y no puede comenzar \no terminar con un signo menos." 12 68
     fi
 
   done

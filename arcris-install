@@ -32,7 +32,6 @@
         --infobox "$locale" 20 150
         echo "LANG=$LANGUAGE" > /etc/locale.conf
         export LANG=$LANGUAGE
-        #setfont lat2-16 -m 8859-2
         setfont lat2a-16 -m 8859-2
         ;;
 
