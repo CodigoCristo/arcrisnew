@@ -75,7 +75,7 @@ menuprincipal=$(dialog --keep-tite --backtitle "${title}" --title "${title_menu}
 8 "8 (DE) or (WM) | Establecer un Escritorio o Gestor de Ventanas" \
 9 "9 EXTRA PROGRAMS | Selecciona programas extras - [ OPCIONAL ]" \
 10 "> INSTALL | Instalar Arch Linux" \
-11 "> EXIT | Salir del Script ArcriS" 3>&1 1>&2 2>&3)
+11 "> EXIT | Salir del Script ArcriS en Español" 3>&1 1>&2 2>&3)
 
 case "$menuprincipal" in
 "1")
