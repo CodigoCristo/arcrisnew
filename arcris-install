@@ -102,7 +102,7 @@ case "$menuprincipal" in
     echo Hostname:          $hostname
     echo Passwd ROOT:       $rootpasswd
     echo ""
-    echo Nombre de Usuario:   $user
+    echo Nombre de Usuario:   $username
     echo Clave de Usuario :   $userpasswd
     echo -e ""
     printf '%*s\n' "${COLUMNS:-$(tput cols)}" '' | tr ' ' _
