@@ -5,7 +5,12 @@
 # git push -f
 # curl -L is.gd/arcrisnew > arcris ; sh arcris 
 
-    echo "" 
+    echo ""
+    echo "es_ES.UTF-8 UTF-8" > /etc/locale.gen
+    locale-gen
+    echo "LANG=es_ES.UTF-8" > /etc/locale.conf
+    export LANG=es_ES.UTF-8
+    clear
     welcome_title=" -| Language Select |- "
     LANG=$(dialog --nocancel --backtitle "Welcome : $(date -u "+%F %H:%M")" --title "${welcome_title}" \
     --menu "\nDonations in: www.patreon.com/codigocristo\n\nSelect your install language:\n " 14 60 10 \
@@ -123,11 +128,6 @@ case "$menuprincipal" in
 cd 
 rm -r arcris arcrisnew-main arcrisnew-main.tar.gz
 clear && echo "" 
-echo "es_ES.UTF-8 UTF-8" > /etc/locale.gen
-locale-gen
-echo "LANG=es_ES.UTF-8" > /etc/locale.conf
-export LANG=es_ES.UTF-8
-clear
 echo -e ""
 echo -e "${msg_end}"
 printf '%*s\n' "${COLUMNS:-$(tput cols)}" '' | tr ' ' _
