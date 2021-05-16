@@ -52,8 +52,7 @@
         --infobox "$locale" 20 150
         echo "LANG=$LANGUAGE" > /etc/locale.conf
         export LANG=$LANGUAGE
-        #setfont cyr-sun16
-        setfont ruscii_8x16
+        setfont cyr-sun16
         ;;
 
     esac
