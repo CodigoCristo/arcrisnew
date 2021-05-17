@@ -62,7 +62,7 @@ username=$(dialog --backtitle "${title}" --title "${titleuser}" \
 # HOSTNAME
 ##########################
 while true; do
-    hostname=$(dialog --backtitle "$titulo" --title "${title_hostname}" --nocancel \
+    hostname=$(dialog --backtitle "${title}" --title "${title_hostname}" --nocancel \
     --inputbox "${msg_hostname}" 12 65 "ArcriS" 3>&1 1>&2 2>&3)
 
 
@@ -72,7 +72,7 @@ while true; do
       && [ "${hostname: -1}" != "-" ]; then
       break
     else
-      dialog --backtitle "$titulo"  --title "${title_hostname_fail}" --msgbox "${msg_hostname_fail}" 12 68
+      dialog --backtitle "${title}"  --title "${title_hostname_fail}" --msgbox "${msg_hostname_fail}" 12 68
     fi
 
   done
@@ -83,14 +83,14 @@ while true; do
 ##########################
 inputs_match=false
   while ! $inputs_match; do
-    input=$(dialog --backtitle "$titulo" --title "${title_passroot}" --clear --stdout --nocancel \
+    input=$(dialog --backtitle "${title}" --title "${title_passroot}" --clear --stdout --nocancel \
       --insecure --passwordbox "${msg_passroot}" 12 50)
     confirm_input=$(dialog --backtitle "$titulo" --title "${title_passroot_confirm}" --clear --stdout --no-cancel \
       --insecure --passwordbox "${msg_passroot_confirm}" 10 60)
         
 
     if [ -z "$input" ]; then
-      dialog --backtitle "$titulo" --title "${title_passrootnull}" --msgbox "${msg_passrootnull}" 7 55
+      dialog --backtitle "${title}" --title "${title_passrootnull}" --msgbox "${msg_passrootnull}" 7 55
     elif [ "$input" != "$confirm_input" ]; then
       dialog --title "${title_passroot_error}" --msgbox "${msg_passroot_error}" 7 58
     else
