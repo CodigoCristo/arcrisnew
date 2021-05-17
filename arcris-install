@@ -105,10 +105,11 @@ echo '${end_hotstname} ${hostname}'
 echo ''
 echo '#################################################' " 15 55
 
-
 ;;
 
 "2") 
+source lib/zoneinfo
+timezoneinfo
 
 ;;
 
