@@ -1,0 +1,47 @@
+#!/bin/bash
+
+shellsystem () {
+
+shell=""
+
+cmd=(dialog --no-collapse --cr-wrap --backtitle "$titulo" --title "${title_shell}" \
+--no-tags --ok-label "${btn_confirm}" --nocancel --menu "${msg_shell}" 15 52 15)
+options=(1 " zsh  "   
+         2 " bash "
+         3 " fish "
+         4 " dash "
+         5 " mksh "
+         6 " tcsh ")
+choices=$("${cmd[@]}" "${options[@]}" 2>&1 >/dev/tty)
+clear
+for choice in $choices
+do
+    case $choice in
+        1)
+            shell="zsh"
+            ;;
+
+        2)
+            shell="bash"
+            ;;
+        3)
+            shell="fish"
+            ;;
+            
+        4)
+            shell="dash"
+            ;;
+            
+        5)
+            shell="mksh"
+            ;;
+            
+        6)
+            shell="tcsh"
+            ;;
+                                                
+    esac
+done
+
+
+}

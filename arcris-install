@@ -132,6 +132,10 @@ read line
 ;;
 
 "4") 
+source lib/shellsystem
+shellsystem
+echo $shell
+read line 
 
 ;;
 
