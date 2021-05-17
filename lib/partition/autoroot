@@ -1,6 +1,7 @@
 #!/bin/bash
 
-
+autoroot() {
+  
 #Desmontamos todo disco y swapoff
 swapdisco=$( fdisk -l | grep "/dev/\|swap" | grep swap | awk -F ' ' '{print $1}' )
 umount -R /mnt
@@ -18,3 +19,4 @@ partprobe
 clear
 
 
+}

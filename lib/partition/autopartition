@@ -17,7 +17,8 @@ do
     ################
 
 1) ################ 
-sh lib/partition/autoroot
+source lib/partition/autoroot
+autoroot
 ;;
 
 2) ################
