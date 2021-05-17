@@ -1,33 +1,113 @@
-selected=0 
-timezonedir=/usr/share/zoneinfo
-while [ "$selected" = "0" ] 
+cmd=(dialog --backtitle "$titulo" --title "-| Listado de teclado en TTY |-" --no-cancel --keep-tite --menu "\nComando ejecutado:\nlocalectl list-keymaps \n " 15 50 11)
+
+options=(la-latin1  "Latino Americano"
+         es     	"Español"
+         us     	"Ingles"
+         ru			"Ruso"
+         otros    	"(+)Teclados")
+
+choices=$("${cmd[@]}" "${options[@]}" 2>&1 >/dev/tty)
+
+for choice in $choices
 do
-
-  clear
-  check=$(ls -l $timezonedir | grep -v .tab | awk '/drwx/' | awk -F " " '{print $9}' | awk '{if (NR!=1) {print}}' | head -1)
-  if [[ $check != America ]]; then 
-    echo "../ UP" >timezones 
-  fi
-
-  ls -l $timezonedir | grep -v .tab | awk '/drwx/' | awk -F " " '{print $9}' | awk '{print $0"/"}' | awk '$fs=$fs" Time"' | awk '{if (NR!=1) {print}}'>>timezones 
-  
-  ls -l $timezonedir | grep -v .tab | awk '/-rw-/' | awk -F " " '{print $9}' | awk '$fs=$fs" Time"' | awk '{if (NR!=1) {print}}'>>timezones
-  timezones=$(cat timezones) 
-  rm timezones 
-  	timezone=$(dialog --backtitle "${title}" --title "${title_timezone}" --clear --title "${title_timezonemanual} $zoneinfo: " \
-  	--menu "${msg_timezonemanual}" 30 40 20 ${timezones} 2>&1 >/dev/tty)  
-  clear
-  if [ "$?" = "0" ] 
-  then
-    if [[ $timezone == *"/"* ]]; then 
-      timezonedir=$timezonedir/$timezone
-    else 
-      zonadefaultNo=true
-      selected=1
-    fi
-  fi
+    case $choice in
+        es)
+            loadkeys es
+      keyboard="es"
+      loadkeys=$keyboard 
+      keymap=$keyboard  
+            ;;
+            
+        la-latin1)
+            loadkeys la-latin1
+      keyboard="la-latin1"
+      loadkeys=$keyboard 
+      keymap=$keyboard 
+            ;;
+            
+        us)
+            loadkeys us
+      keyboard="us"
+      loadkeys=$keyboard 
+      keymap=$keyboard  
+            ;;
+            
+        otros)
+            selected=0 
+      while [ $selected == "0" ];do 
+        localeskeymap="$(localectl list-keymaps | awk '$localeskeymap=$localeskeymap" Keyboard"')" && localeskeymap=$(echo "$localeskeymap") 
+        keyboard=$(dialog --backtitle "$titulo" --clear --no-cancel --title "-| Distribución del teclado: |-" --menu " \n " 15 50 15   ${localeskeymap} 2>&1 > /dev/tty) 
+        if [ $? == 0 ];then 
+          loadkeys $keyboard 
+          keymap=$keyboard 
+          selected=1 
+        else 
+          dialog --backtitle "$titulo" --title "-| ERROR |-" --stdout --ok-label 'Siguiente' --msgbox "Ingrese una distribución del teclado para continuar" 5 55 
+        fi
+      done
+        ;;
+    esac
 done
 
-clear 
 
-echo $timezonedir$timezone  = /usr/share/zoneinfo/America/Lima
+
+###########################################33
+
+
+cmd=(dialog --backtitle "$titulo" --title "-| Listado de teclado en X.org |-" --no-cancel --keep-tite --menu "\nComando ejecutado:\nlocalectl list-x11-keymap-layouts\n " 15 50 11)
+
+options=(latam  	"Latino Americano"
+         es     	"Español"
+         us     	"Ingles"
+         ru			"Ruso"
+         otros    	"(+)Teclados")
+
+choices=$("${cmd[@]}" "${options[@]}" 2>&1 >/dev/tty)
+
+for choice in $choices
+do
+    case $choice in
+        es)
+            loadkeys es
+      keyboard="es"
+      loadkeys=$keyboard 
+      keymap=$keyboard  
+            ;;
+            
+        la-latin1)
+            loadkeys la-latin1
+      keyboard="la-latin1"
+      loadkeys=$keyboard 
+      keymap=$keyboard 
+            ;;
+            
+        us)
+            loadkeys us
+      keyboard="us"
+      loadkeys=$keyboard 
+      keymap=$keyboard  
+            ;;
+            
+        otros)
+            selected=0 
+      while [ $selected == "0" ];do 
+        localeskeymapx="$(cat lib/list_X11keymap | awk '$localeskeymapx=$localeskeymapx" Keyboard"')" && localeskeymapx=$(echo "$localeskeymapx") 
+        keyboard=$(dialog --backtitle "$titulo" --clear --no-cancel --title "-| Distribución del teclado en X.org |-" --menu " \n " 15 50 15   ${localeskeymapx} 2>&1 > /dev/tty) 
+        if [ $? == 0 ];then 
+          loadkeys $keyboard 
+          keymapx=$keyboard 
+          selected=1 
+        else 
+          dialog --backtitle "$titulo" --title "-| ERROR |-" --stdout --ok-label 'Siguiente' --msgbox "Ingrese una distribución del teclado para continuar" 5 55 
+        fi
+      done
+        ;;
+    esac
+done
+
+
+
+
+clear 
+echo $keymap
+echo $keymapx

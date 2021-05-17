@@ -7,7 +7,11 @@ locality () {
 ##########################
 # ZONE
 ##########################
+
 zoneinfo="N/N"
+timezonedir=""
+timezone=""
+
 clear
 curl https://ipapi.co/timezone > zoneinfo
 zoneinfo=$(cat zoneinfo)
@@ -68,20 +72,24 @@ fi
 rm zoneinfo
 clear
 
+
 ##########################
 # COUNTRY
 ##########################
+
+locales=""
+locale=""
 
 curl https://ipapi.co/languages | awk -F "," '{print $1}' | sed 's/-/_/g' | sed "s|$|.UTF8|" > language
 
 country=$(cat language)
 
 locales="$(cat lib/locale.gen | grep -v "#  " | sed 's/#//g' | grep '.UTF-8 UTF-8' )"
-locale=$(dialog --backtitle "$titulo" --no-cancel --ok-label "${btn_confirm}" --clear --title "${title_country}" \
+locale=$(dialog --backtitle "${title}" --no-cancel --ok-label "${btn_confirm}" --clear --title "${title_country}" \
 --menu "${msg_country} ${country}\n " 25 35 20 ${locales} 2>&1 > /dev/tty)
 
 rm language
 clear
-# $locale > variable 1
+# $locale > variable 1  = es_PE.UTF-8
 
 }
