@@ -1,5 +1,7 @@
 #!/bin/bash
 
+lang () {
+
 cmd=(dialog --backtitle "$titulo" --title "-| Listado de teclado en TTY |-" --no-cancel --keep-tite --menu "\nComando ejecutado:\nlocalectl list-keymaps \n " 15 50 11)
 
 options=(la-latin1  "Latino Americano"
@@ -107,9 +109,4 @@ do
     esac
 done
 
-
-
-
-clear 
-echo $keymap
-echo $keymapx
+}

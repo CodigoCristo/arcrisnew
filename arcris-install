@@ -111,11 +111,21 @@ echo '#################################################' " 15 55
 source lib/zoneinfo
 locality
 
+clear
+echo $zoneinfo 
+echo $timezonedir$timezone
+read line
 ;;
 
 
 "3")
+source lib/lang
+lang
 
+clear 
+echo $keymap
+echo $keymapx
+read line
 ;;
 
 "4") 
