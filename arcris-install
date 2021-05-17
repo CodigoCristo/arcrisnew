@@ -112,8 +112,9 @@ source lib/zoneinfo
 locality
 
 clear
-echo $zonemanual
 echo $zoneinfo 
+echo ""
+echo $zonemanual
 echo $timezonedir$timezone
 echo $locale
 read line
