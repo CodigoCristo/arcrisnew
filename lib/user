@@ -1,5 +1,6 @@
 #!/bin/bash
 
+
 users () {
 
 hostname=""
@@ -8,11 +9,14 @@ userpasswd=""
 rootpasswd=""
 
 
-##########################
-# USER
+
+
 while true; do
-username=$(dialog --backtitle "${title}" -title "${titleuser}" \
---nocancel --inputbox "${msg_username}" 14 65 3>&1 1>&2 2>&3)
+username=$(dialog --title "Crea una cuenta de usuario" \
+     --nocancel --inputbox "\nIntroduzca un nombre de usuario para el nuevo Usuario \
+\n\nEl nombre de usuario debe comenzar con una letra minúscula,\nque puede ir \
+seguida de cualquier combinación de números,\nletras más minúsculas o el símbolo de guión. [ - ] \
+\n\nNombre de usuario de su cuenta:" 14 65 3>&1 1>&2 2>&3)
 
     if [ $? -eq 0 ]; then
     #El nombre de usuario debe comenzar con una letra minúscula. 
