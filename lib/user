@@ -85,7 +85,7 @@ inputs_match=false
   while ! $inputs_match; do
     input=$(dialog --backtitle "${title}" --title "${title_passroot}" --clear --stdout --nocancel \
       --insecure --passwordbox "${msg_passroot}" 12 50)
-    confirm_input=$(dialog --backtitle "$titulo" --title "${title_passroot_confirm}" --clear --stdout --no-cancel \
+    confirm_input=$(dialog --backtitle "${title}" --title "${title_passroot_confirm}" --clear --stdout --no-cancel \
       --insecure --passwordbox "${msg_passroot_confirm}" 10 60)
         
 
