@@ -109,7 +109,7 @@ echo '#################################################' " 15 55
 
 "2") 
 source lib/zoneinfo
-timezoneinfo
+locality
 
 ;;
 
