@@ -2,9 +2,8 @@
 
 timezoneinfo () {
 
-
-zoneinfo=$(curl https://ipapi.co/timezone > zoneinfo)
-dialog --stdout --infobox "${zoneinfo}" 20 150 ; sleep 3
+clear
+dialog --stdout --infobox "sh curl_zone > zoneinfo" 20 150 ; sleep 3
 zoneinfo=$(cat zoneinfo)
 rm zoneinfo
 
