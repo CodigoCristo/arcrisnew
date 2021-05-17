@@ -1,17 +1,25 @@
 #!/bin/bash
 
 autoroot() {
-  
+
 #Desmontamos todo disco y swapoff
 swapdisco=$( fdisk -l | grep "/dev/\|swap" | grep swap | awk -F ' ' '{print $1}' )
 umount -R /mnt
+clear
 swapoff ${swapdisco}
 swapoff -a
 swapon -a
+clear
+rm /mnt/etc/fstab
+clear 
 
-rm /mnt/etc/fstab 
+# dialog --backtitle "${title}" --title "-| Mensaje |-" --msgbox "\n> UEFI trabaja con discos en GPT \n\n> UEFI su partición boot es formateada en FAT32 \n\n> BIOS LEGACY trabaja con discos en DOS/MBR\n\n> BIOS LEGACY su partición boot es formateada en EXT4\n( La partición boot en linux es opcional )" 13 60
 
-dialog --backtitle "${title}" --title "-| Mensaje |-" --msgbox "\n> UEFI trabaja con discos en GPT \n\n> UEFI su partición boot es formateada en FAT32 \n\n> BIOS LEGACY trabaja con discos en DOS/MBR\n\n> BIOS LEGACY su partición boot es formateada en EXT4\n( La partición boot en linux es opcional )" 13 60
+part="$(echo "print devices" | parted | grep /dev/ | awk '{if (NR!=1) {print}}' | sed '/sr/d')" 
+disk=$(dialog --backtitle "$titulo" --clear  --ok-label 'Seleccionar' --no-cancel --menu "Selecciona el disco para Linux" 10 50 0 ${part} 2>&1 >/dev/tty)
+
+
+uefi=$( ls /sys/firmware/efi/ | grep -ic efivars )
 
 
 clear
