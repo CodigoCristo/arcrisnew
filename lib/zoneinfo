@@ -1,9 +1,11 @@
 #!/bin/bash
 
+#https://www.gsp.com/cgi-bin/man.cgi?section=1&topic=dialog
+
 timezoneinfo () {
 
 clear
-dialog --stdout --infobox "sh curl_zone > zoneinfo" 20 150 ; sleep 3
+curl https://ipapi.co/timezone > zoneinfo
 zoneinfo=$(cat zoneinfo)
 rm zoneinfo
 
