@@ -92,9 +92,6 @@ case "$menuprincipal" in
 "1")
     source lib/user
     users
-    ##########################
-# END
-##########################
     clear
 
 

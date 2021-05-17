@@ -1,0 +1,9 @@
+#!/bin/bash
+
+source languages/español.conf
+
+#username=$(dialog --title "${titleuser}" \
+#     --nocancel --stdout --inputbox "${msg_username}" 14 65 3>&1 1>&2 2>&3 3>&-)
+
+username=$(dialog --backtitle "${title}" --title "${titleuser}" \
+--nocancel --inputbox "${msg_username}" 14 65 3>&1 1>&2 2>&3)

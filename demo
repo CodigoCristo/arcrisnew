@@ -35,7 +35,7 @@ dialog --title "${title_passroot_error}" --msgbox "${locale}" 7 58
 
 
 
-    users () {
+users () {
 
 source ./languages/español.conf
 
