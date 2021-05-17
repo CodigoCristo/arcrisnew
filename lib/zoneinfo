@@ -2,10 +2,10 @@
 
 timezoneinfo () {
 
-curl https://ipapi.co/timezone > zoneinfo
 
+zoneinfo=$(curl https://ipapi.co/timezone > zoneinfo)
+dialog --stdout --infobox "${zoneinfo}" 20 150 ; sleep 3
 zoneinfo=$(cat zoneinfo)
-
 rm zoneinfo
 
 dialog --backtitle "$titulo" --title "| ZONA HORARIA |" --defaultno --yesno "\n       >>> $zoneinfo <<<\n\n       ¿Deseas modificarlo?" 8 40 
