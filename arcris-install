@@ -139,6 +139,8 @@ read line
 ;;
 
 "5")
+source lib/disks
+disksystem
 
 ;;
 

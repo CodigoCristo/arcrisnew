@@ -1,0 +1,53 @@
+#!/bin/bash
+
+disksystem () {
+
+
+#Desmontamos todo disco y swapoff
+swapdisco=$( fdisk -l | grep "/dev/\|swap" | grep swap | awk -F ' ' '{print $1}' )
+umount -R /mnt
+swapoff ${swapdisco}
+swapoff -a
+swapon -a
+rm /mnt/etc/fstab 
+clear
+
+
+cmd=(dialog --no-collapse --cr-wrap --backtitle "${title}" --title "-| Particionado de Disco |-" \
+--no-tags --ok-label "Confirmar" --nocancel --menu "\nEliga su mejor opción para su Sistema\n " 13 55 11)
+options=(1 " Particionado Automático                       "   
+         2 " Particionado Automático con Cifrado de Disco  "
+         3 " Particionado Manual                           "
+         4 " Particionado con otro Sistema Operativo       ")
+
+choices=$("${cmd[@]}" "${options[@]}" 2>&1 >/dev/tty)
+clear
+for choice in $choices
+do
+    case $choice in
+    ################
+
+1) ################ 
+source lib/partition/autopartition
+autopartition
+;;
+
+2) ################
+shell="bash"
+;;
+3) ################
+shell="fish"
+;;
+
+4) ################
+shell="dash"
+;;
+                                                
+    esac
+done
+
+
+
+}
+
+
