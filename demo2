@@ -51,7 +51,7 @@ done
 
 
 
-###########################################33
+###########################################
 
 
 cmd=(dialog --backtitle "$titulo" --title "-| Listado de teclado en X.org |-" --no-cancel --keep-tite --menu "\nComando ejecutado:\nlocalectl list-x11-keymap-layouts\n " 15 50 11)

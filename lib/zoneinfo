@@ -45,7 +45,7 @@ do
     if [[ $timezone == *"/"* ]]; then 
       timezonedir=$timezonedir/$timezone
     else 
-      zonadefaultNo=true
+      zonemanual=true
       selected=1
     fi
   fi
@@ -53,7 +53,7 @@ done
 
 else
 # PRESS YES
-zonadefaultYes=true
+zonemanual=false
 zoneinfo=$(cat zoneinfo)
 fi
 
