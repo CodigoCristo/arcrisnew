@@ -2,13 +2,14 @@
 
 disksystem () {
 
-
-cmd=(dialog --no-collapse --cr-wrap --backtitle "${title}" --title "-| Particionado de Disco |-" \
---no-tags --ok-label "Confirmar" --nocancel --menu "\nEliga su mejor opción para su Sistema\n " 13 55 11)
+cmd=(dialog --no-collapse --cr-wrap --backtitle "${title}" --title "-| Disco Duro |-" \
+--no-tags --ok-label "Confirmar" --nocancel --menu "\nEliga su mejor opción para su Sistema\n " 15 55 15)
 options=(1 " Particionado Automático                       "   
          2 " Particionado Automático con Cifrado de Disco  "
          3 " Particionado Manual                           "
-         4 " Particionado con otro Sistema Operativo       ")
+         4 " Particionado con otro Sistema Operativo       "
+         5 " Cambia o Crea tu Tabla de partición del Disco "
+         6 " Formatea todo tu Disco con DD                 ")
 
 choices=$("${cmd[@]}" "${options[@]}" 2>&1 >/dev/tty)
 clear
