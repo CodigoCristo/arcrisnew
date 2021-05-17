@@ -86,7 +86,7 @@ inputs_match=false
     input=$(dialog --backtitle "${title}" --title "${title_passroot}" --clear --stdout --nocancel \
       --insecure --passwordbox "${msg_passroot}" 12 50)
     confirm_input=$(dialog --backtitle "${title}" --title "${title_passroot_confirm}" --clear --stdout --no-cancel \
-      --insecure --passwordbox "${msg_passroot_confirm}" 10 60)
+      --insecure --passwordbox "${msg_passroot_confirm}" 11 60)
         
 
     if [ -z "$input" ]; then

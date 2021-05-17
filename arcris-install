@@ -90,9 +90,20 @@ menuprincipal=$(dialog --keep-tite --backtitle "${title}" --title "${title_menu}
 case "$menuprincipal" in
 
 "1")
-    source lib/user
-    users
-    clear
+source lib/user
+users
+clear
+dialog --no-collapse --cr-wrap --backtitle "$titulo" --title "-| Confirmación de datos |-" --stdout --ok-label "Confirmar" \
+--prgbox "echo '' 
+echo '#################################################' 
+echo ''
+echo 'Nombre de Usuario : ${username}'
+echo 'Clave de Usuario  : ${userpasswd}'
+echo ''
+echo 'Clave de Administrador - Root : ${rootpasswd}'
+echo 'Hostname : ${hostname}' 
+echo ''
+echo '#################################################' " 15 55
 
 
 ;;
