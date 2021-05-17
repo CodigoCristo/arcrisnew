@@ -13,7 +13,7 @@ zoneinfo=$(cat zoneinfo)
 dialog --backtitle "${title}" --title "${title_timezone}" --defaultno --yesno "\n       >>> $zoneinfo <<<\n\n       ${msg_timezone}" 9 40 
 
 if [ "$?" = "0" ]; then
-
+#### PRESS NO
 selected=0 
 timezonedir=/usr/share/zoneinfo
 while [ "$selected" = "0" ] 
@@ -28,11 +28,10 @@ do
   ls -l $timezonedir | grep -v .tab | awk '/drwx/' | awk -F " " '{print $9}' | awk '{print $0"/"}' | awk '$fs=$fs" Time"' | awk '{if (NR!=1) {print}}'>>timezones 
   
   ls -l $timezonedir | grep -v .tab | awk '/-rw-/' | awk -F " " '{print $9}' | awk '$fs=$fs" Time"' | awk '{if (NR!=1) {print}}'>>timezones
-  
-  zoneinfo=$(cat zoneinfo)
- 
-  timezone=$(dialog --backtitle "${title}" --title "${title_timezone}" --clear --title "${title_timezonemanual} $zoneinfo: " \
-      --menu "${msg_timezonemanual}" 30 0 20 ${timezones} 2>&1 >/dev/tty) 
+  timezones=$(cat timezones) 
+  rm timezones 
+    timezone=$(dialog --backtitle "${title}" --title "${title_timezone}" --clear --title "${title_timezonemanual} $zoneinfo: " \
+    --menu "${msg_timezonemanual}" 30 0 20 ${timezones} 2>&1 >/dev/tty)  
   clear
   if [ "$?" = "0" ] 
   then
@@ -46,7 +45,7 @@ do
 done
 
 else
-#zone="$(cat timezone)"
+# PRESS YES
 zonadefaultYes=true
 fi
 
