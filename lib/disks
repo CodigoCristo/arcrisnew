@@ -3,16 +3,6 @@
 disksystem () {
 
 
-#Desmontamos todo disco y swapoff
-swapdisco=$( fdisk -l | grep "/dev/\|swap" | grep swap | awk -F ' ' '{print $1}' )
-umount -R /mnt
-swapoff ${swapdisco}
-swapoff -a
-swapon -a
-rm /mnt/etc/fstab 
-clear
-
-
 cmd=(dialog --no-collapse --cr-wrap --backtitle "${title}" --title "-| Particionado de Disco |-" \
 --no-tags --ok-label "Confirmar" --nocancel --menu "\nEliga su mejor opción para su Sistema\n " 13 55 11)
 options=(1 " Particionado Automático                       "   
