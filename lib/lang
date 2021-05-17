@@ -39,7 +39,7 @@ do
         otros)
             selected=0 
       while [ $selected == "0" ];do 
-        localeskeymap="$(localectl list-keymaps | awk '$localeskeymap=$localeskeymap" Keyboard"')" && localeskeymap=$(echo "$localeskeymap") 
+        localeskeymap="$(localectl list-keymaps | awk '$localeskeymap=$localeskeymap" Keymap"')" && localeskeymap=$(echo "$localeskeymap") 
         keyboard=$(dialog --backtitle "${title}" --clear --no-cancel --title "${title_langtty}" --menu " \n " 15 50 15   ${localeskeymap} 2>&1 > /dev/tty) 
         if [ $? == 0 ];then 
           loadkeys $keyboard 
@@ -89,7 +89,7 @@ do
         otros)
             selected=0 
       while [ $selected == "0" ];do 
-        localeskeymapx="$(cat lib/list_X11keymap | awk '$localeskeymapx=$localeskeymapx" Keyboard"')" && localeskeymapx=$(echo "$localeskeymapx") 
+        localeskeymapx="$(cat lib/list_X11keymap | awk '$localeskeymapx=$localeskeymapx" x11-keymap-layout"')" && localeskeymapx=$(echo "$localeskeymapx") 
         keyboardx=$(dialog --backtitle "${title}" --clear --no-cancel --title "${title_langXorg}" --menu " \n " 15 50 15   ${localeskeymapx} 2>&1 > /dev/tty) 
         if [ $? == 0 ];then 
           keymapx=$keyboardx 
