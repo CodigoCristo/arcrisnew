@@ -23,7 +23,7 @@ clear
 ################################################################
 
 part="$(echo "print devices" | parted | grep /dev/ | awk '{if (NR!=1) {print}}' | sed '/sr/d')" 
-disk=$(dialog --backtitle "${title}" --clear  --ok-label "Seleccionar disco" --no-cancel --menu "Selecciona el disco para Linux" 10 50 0 ${part} 2>&1 >/dev/tty)
+disk=$(dialog --backtitle "${title}" --clear  --ok-label "Seleccionar disco" --no-cancel --menu "\nSelecciona el disco para Arch Linux\n " 12 45 0 ${part} 2>&1 >/dev/tty)
 
 
 uefi=$( ls /sys/firmware/efi/ | grep -ic efivars )
