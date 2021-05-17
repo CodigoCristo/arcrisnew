@@ -90,10 +90,9 @@ do
             selected=0 
       while [ $selected == "0" ];do 
         localeskeymapx="$(cat lib/list_X11keymap | awk '$localeskeymapx=$localeskeymapx" Keyboard"')" && localeskeymapx=$(echo "$localeskeymapx") 
-        keyboard=$(dialog --backtitle "${title}" --clear --no-cancel --title "${title_langXorg}" --menu " \n " 15 50 15   ${localeskeymapx} 2>&1 > /dev/tty) 
+        keyboardx=$(dialog --backtitle "${title}" --clear --no-cancel --title "${title_langXorg}" --menu " \n " 15 50 15   ${localeskeymapx} 2>&1 > /dev/tty) 
         if [ $? == 0 ];then 
-          loadkeys $keyboard 
-          keymapx=$keyboard 
+          keymapx=$keyboardx 
           selected=1 
         else 
           dialog --backtitle "${title}" --title "${title_error}" --stdout --ok-label "${btn_confirm}" --msgbox "${msg_langerror}" 5 55 
