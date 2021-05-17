@@ -14,8 +14,8 @@ do
   ls -l $timezonedir | grep -v .tab | awk '/-rw-/' | awk -F " " '{print $9}' | awk '$fs=$fs" Time"' | awk '{if (NR!=1) {print}}'>>timezones
   timezones=$(cat timezones) 
   rm timezones 
-  timezone=$(dialog --backtitle "| Instalación de ArchLinux |" --clear --title "Tu Zona Horaria es $(cat timezone): " \
-      --menu "Ingresa la zona horaria" 25 50 20 ${timezones} 2>&1 >/dev/tty) 
+  	timezone=$(dialog --backtitle "${title}" --title "${title_timezone}" --clear --title "${title_timezonemanual} $zoneinfo: " \
+  	--menu "${msg_timezonemanual}" 30 40 20 ${timezones} 2>&1 >/dev/tty)  
   clear
   if [ "$?" = "0" ] 
   then
@@ -27,3 +27,7 @@ do
     fi
   fi
 done
+
+clear 
+
+echo $timezonedir$timezone  = /usr/share/zoneinfo/America/Lima

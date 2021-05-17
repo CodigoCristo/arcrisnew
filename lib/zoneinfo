@@ -4,6 +4,9 @@
 
 timezoneinfo () {
 
+##########################
+# ZONE
+##########################
 zoneinfo="N/N"
 clear
 curl https://ipapi.co/timezone > zoneinfo
@@ -30,8 +33,8 @@ do
   ls -l $timezonedir | grep -v .tab | awk '/-rw-/' | awk -F " " '{print $9}' | awk '$fs=$fs" Time"' | awk '{if (NR!=1) {print}}'>>timezones
   timezones=$(cat timezones) 
   rm timezones 
-    timezone=$(dialog --backtitle "${title}" --title "${title_timezone}" --clear --title "${title_timezonemanual} $zoneinfo: " \
-    --menu "${msg_timezonemanual}" 30 0 20 ${timezones} 2>&1 >/dev/tty)  
+    timezone=$(dialog --backtitle "${title}" --title "${title_timezone}" --clear --title "${title_timezonemanual}: $zoneinfo |-" \
+    --menu "${msg_timezonemanual}" 30 45 20 ${timezones} 2>&1 >/dev/tty)  
   clear
   if [ "$?" = "0" ] 
   then
@@ -47,8 +50,38 @@ done
 else
 # PRESS YES
 zonadefaultYes=true
+zoneinfo=$(cat zoneinfo)
 fi
 
+# $zoneinfo  > variable 1
+# $timezonedir$timezone  = /usr/share/zoneinfo/America/Lima
+
+
+# if [ "$zonadefaultNo" == "true" ]; then
+# ln -sf $timezonedir${timezone} /mnt/etc/localtime
+#     fi
+#
+# if [ "$zonadefaultYes" == "true" ]; then
+# ln -sf /usr/share/zoneinfo/$zonahorariaok /mnt/etc/localtime
+#     fi
+
 rm zoneinfo
+clear
+
+##########################
+# COUNTRY
+##########################
+
+curl https://ipapi.co/languages | awk -F "," '{print $1}' | sed 's/-/_/g' | sed "s|$|.UTF8|" > language
+
+country=$(cat language)
+
+locales="$(cat /etc/locale.gen | grep -v "#  " | sed 's/#//g' | grep '.UTF-8 UTF-8' )"
+locale=$(dialog --backtitle "$titulo" --no-cancel --ok-label "${btn_confirm}" --clear --title "${title_country}" \
+--menu "${msg_country} ${country}\n " 25 35 20 ${locales} 2>&1 > /dev/tty)
+
+rm language
+clear
+# $locale > variable 1
 
 }
