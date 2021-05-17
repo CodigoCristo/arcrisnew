@@ -76,7 +76,7 @@ curl https://ipapi.co/languages | awk -F "," '{print $1}' | sed 's/-/_/g' | sed 
 
 country=$(cat language)
 
-locales="$(cat locale.gen | grep -v "#  " | sed 's/#//g' | grep '.UTF-8 UTF-8' )"
+locales="$(cat lib/locale.gen | grep -v "#  " | sed 's/#//g' | grep '.UTF-8 UTF-8' )"
 locale=$(dialog --backtitle "$titulo" --no-cancel --ok-label "${btn_confirm}" --clear --title "${title_country}" \
 --menu "${msg_country} ${country}\n " 25 35 20 ${locales} 2>&1 > /dev/tty)
 
