@@ -4,6 +4,7 @@
 
 timezoneinfo () {
 
+zoneinfo="N/N"
 clear
 curl https://ipapi.co/timezone > zoneinfo
 zoneinfo=$(cat zoneinfo)
