@@ -1,5 +1,6 @@
 #!/bin/bash
 
+users () {
 
 hostname=""
 username=""
@@ -7,10 +8,8 @@ userpasswd=""
 rootpasswd=""
 
 
-
 ##########################
 # USER
-##########################
 while true; do
 username=$(dialog --backtitle "${title}" -title "${titleuser}" \
 --nocancel --inputbox "${msg_username}" 14 65 3>&1 1>&2 2>&3)
@@ -19,30 +18,27 @@ username=$(dialog --backtitle "${title}" -title "${titleuser}" \
     #El nombre de usuario debe comenzar con una letra minúscula. 
     #Puede contener minúsculas alfanuméricas y guiones.
       if printf "%s" "$username" | grep -Eoq "^[a-z][a-z0-9-]*$" \
-       && [ "${#username}" -lt 20 ]; then
-        
+        && [ "${#username}" -lt 33 ]; then
         # El archivo de nombre de usuario reservado contiene nombres de usuario que deben evitarse
         if grep -Fxq "$username" reserved_usernames ; then
-          dialog --backtitle "${title}" --title "${title_reserved_usernames}" -msgbox "${msg_reserved_usernames}" 6 70
-        
+          dialog --title "ERROR: Nombre de usuario reservado" \
+            --msgbox "El nombre de usuario que ingresaste ($username) está reservado \
+para uso del sistema. Seleccione uno diferente." 6 70
         else 
-          
           inputs_match=false
-          
           while ! $inputs_match; do
-
-            input=$(dialog --backtitle "${title}" --title "${title_passwuser}" --clear \
-              --stdout --nocancel --insecure --passwordbox "${msg_passwduser} $username:\n " 9 60)
-            confirm_input=$(dialog --backtitle "${title}" --title "${title_passwuserconfirm} $username |-" \
-              --clear --stdout --insecure --no-cancel --passwordbox "${msg_passwuserconfirm}" 10 55)
+            input=$(dialog --title "Establecer la contraseña para $username" --clear \
+              --stdout --nocancel --insecure --passwordbox "\n\nElija una contraseña para el nuevo usuario:" 08 60)
+            confirm_input=$(dialog --title "Establecer la contraseña para $username" \
+              --clear --stdout --insecure \
+              --passwordbox "Vuelva a ingresar la contraseña para verificar:" 8 55)
 
             if [ -z "$input" ]; then
-
-              dialog --backtitle "${title}" --title "${title_passwusernull}" --msgbox "${msg_passwusernull}" 7 60
-            
+              dialog --title "ERROR: contraseña vacía" \
+                --msgbox "No se le permite tener una contraseña vacía." 5 55
             elif [ "$input" != "$confirm_input" ]; then
-
-              dialog --backtitle "${title}" --title "${title_error}" --msgbox "${msg_passwuserfail}" 7 60
+              dialog --title "ERROR: Las contraseñas no coinciden" \
+                --msgbox "Las dos contraseñas que ha introducido no coinciden." 5 55
             else
               userpasswd="$input"
               inputs_match=true
@@ -51,12 +47,11 @@ username=$(dialog --backtitle "${title}" -title "${titleuser}" \
           break
         fi
       else
-        dialog --backtitle "${title}" --title "${title_userfail}" --msgbox "${msg_userfail}" 11 80
+        dialog --title "ERROR: Formato de nombre de usuario no válido" \
+          --msgbox "Ingresaste un nombre de usuario no válido.\n\nEl nombre de usuario debe comenzar con una letra minúscula, que puede ir seguida de cualquier combinación de números, más letras minúsculas o el símbolo de guión, y no debe tener más de 32 caracteres." 9 80
       fi
     fi
   done
-
-
 
 
 
@@ -106,3 +101,4 @@ inputs_match=false
   done
 
 
+}
