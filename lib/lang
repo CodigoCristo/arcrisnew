@@ -2,7 +2,7 @@
 
 lang () {
 
-cmd=(dialog --backtitle "$titulo" --title "${title_langtty}" --no-cancel --keep-tite --menu "${msg_langtty}" 15 50 11)
+cmd=(dialog --backtitle "${title}" --title "${title_langtty}" --no-cancel --keep-tite --menu "${msg_langtty}" 15 50 11)
 
 options=(la-latin1  "Latino Americano"
          es     	  "Español"
@@ -40,13 +40,13 @@ do
             selected=0 
       while [ $selected == "0" ];do 
         localeskeymap="$(localectl list-keymaps | awk '$localeskeymap=$localeskeymap" Keyboard"')" && localeskeymap=$(echo "$localeskeymap") 
-        keyboard=$(dialog --backtitle "$titulo" --clear --no-cancel --title "${title_langtty}" --menu " \n " 15 50 15   ${localeskeymap} 2>&1 > /dev/tty) 
+        keyboard=$(dialog --backtitle "${title}" --clear --no-cancel --title "${title_langtty}" --menu " \n " 15 50 15   ${localeskeymap} 2>&1 > /dev/tty) 
         if [ $? == 0 ];then 
           loadkeys $keyboard 
           keymap=$keyboard 
           selected=1 
         else 
-          dialog --backtitle "$titulo" --title "${title_error}" --stdout --ok-label "${btn_confirm}" --msgbox "${msg_langerror}" 5 55 
+          dialog --backtitle "${title}" --title "${title_error}" --stdout --ok-label "${btn_confirm}" --msgbox "${msg_langerror}" 5 55 
         fi
       done
         ;;
@@ -58,7 +58,7 @@ done
 ###########################################
 
 
-cmd=(dialog --backtitle "$titulo" --title "${title_langXorg}" --no-cancel --keep-tite --menu "${msg_langXorg}" 15 50 11)
+cmd=(dialog --backtitle "${title}" --title "${title_langXorg}" --no-cancel --keep-tite --menu "${msg_langXorg}" 15 50 11)
 
 options=(latam  	"Latino Americano"
          es     	"Español"
@@ -72,37 +72,31 @@ for choice in $choices
 do
     case $choice in
         es)
-            loadkeys es
-      keyboard="es"
-      loadkeys=$keyboard 
-      keymap=$keyboard  
+      keyboardx="es"
+      keymapx=$keyboardx
             ;;
             
-        la-latin1)
-            loadkeys la-latin1
-      keyboard="la-latin1"
-      loadkeys=$keyboard 
-      keymap=$keyboard 
+        latam)
+      keyboardx="latam"
+      keymapx=$keyboardx
             ;;
             
         us)
-            loadkeys us
-      keyboard="us"
-      loadkeys=$keyboard 
-      keymap=$keyboard  
+      keyboardx="us"
+      keymapx=$keyboardx
             ;;
             
         otros)
             selected=0 
       while [ $selected == "0" ];do 
-        localeskeymapx="$(cat lib/list_X11keymap | awk '$localeskeymapx=$localeskeymapx" Keyboard X"')" && localeskeymapx=$(echo "$localeskeymapx") 
-        keyboard=$(dialog --backtitle "$titulo" --clear --no-cancel --title "${title_langXorg}" --menu " \n " 15 50 15   ${localeskeymapx} 2>&1 > /dev/tty) 
+        localeskeymapx="$(cat lib/list_X11keymap | awk '$localeskeymapx=$localeskeymapx" Keyboard"')" && localeskeymapx=$(echo "$localeskeymapx") 
+        keyboard=$(dialog --backtitle "${title}" --clear --no-cancel --title "${title_langXorg}" --menu " \n " 15 50 15   ${localeskeymapx} 2>&1 > /dev/tty) 
         if [ $? == 0 ];then 
           loadkeys $keyboard 
           keymapx=$keyboard 
           selected=1 
         else 
-          dialog --backtitle "$titulo" --title "${title_error}" --stdout --ok-label "${btn_confirm}" --msgbox "${msg_langerror}" 5 55 
+          dialog --backtitle "${title}" --title "${title_error}" --stdout --ok-label "${btn_confirm}" --msgbox "${msg_langerror}" 5 55 
         fi
       done
         ;;
