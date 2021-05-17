@@ -1,5 +1,2 @@
-#!/bin/bash
-
-zoneinfo=$()
-dialog --stdout --programbox "$(curl https://ipapi.co/timezone)"  20 150 ; sleep 3
-clear
+dialog --backtitle "| Instalación de ArchLinux |" --clear --title "Tu Zona Horaria es $(cat timezone): " \
+      --menu "Ingresa la zona horaria" 20 0 20 ${timezones} 2>&1 >/dev/tty

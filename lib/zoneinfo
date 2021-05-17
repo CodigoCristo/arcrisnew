@@ -32,7 +32,7 @@ do
   zoneinfo=$(cat zoneinfo)
  
   timezone=$(dialog --backtitle "${title}" --title "${title_timezone}" --clear --title "${title_timezonemanual} $zoneinfo: " \
-      --menu "${msg_timezonemanual}" 30 20 20 ${timezones} 2>&1 >/dev/tty) 
+      --menu "${msg_timezonemanual}" 30 0 20 ${timezones} 2>&1 >/dev/tty) 
   clear
   if [ "$?" = "0" ] 
   then
