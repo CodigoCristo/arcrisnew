@@ -93,15 +93,15 @@ case "$menuprincipal" in
 source lib/user
 users
 clear
-dialog --no-collapse --cr-wrap --backtitle "$titulo" --title "-| Confirmación de datos |-" --stdout --ok-label "Confirmar" \
+dialog --no-collapse --cr-wrap --backtitle "${title}" --title "${ent_title_user}" --stdout --ok-label "${btn_confirm}" \
 --prgbox "echo '' 
 echo '#################################################' 
 echo ''
-echo 'Nombre de Usuario : ${username}'
-echo 'Clave de Usuario  : ${userpasswd}'
+echo '${end_user} ${username}'
+echo '${end_keyuser} ${userpasswd}'
 echo ''
-echo 'Clave de Administrador - Root : ${rootpasswd}'
-echo 'Hostname : ${hostname}' 
+echo '${end_keyroot} ${rootpasswd}'
+echo '${end_hotstname} ${hostname}' 
 echo ''
 echo '#################################################' " 15 55
 
