@@ -9,7 +9,7 @@ curl https://ipapi.co/timezone > zoneinfo
 zoneinfo=$(cat zoneinfo)
 rm zoneinfo
 
-dialog --backtitle "$titulo" --title "| ZONA HORARIA |" --defaultno --yesno "\n       >>> $zoneinfo <<<\n\n       ¿Deseas modificarlo?" 8 40 
+dialog --backtitle "${title}" --title "${title_timezone}" --defaultno --yesno "\n       >>> $zoneinfo <<<\n\n       ${msg_timezone}" 8 40 
 
 if [ "$?" = "0" ]; then
 
