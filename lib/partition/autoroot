@@ -41,7 +41,7 @@ parted ${disk} mklabel gpt && \
 sgdisk ${disk} -n=1:0:+1G -t=1:ef00 && \
 sgdisk ${disk} -n=2:0:0 && \
 fdisk -l ${disk} > /tmp/partitions && \
-printf  \\n  ; printf \\n \
+printf  \\n  && printf \\n \
 cat /tmp/partitions" 13 100
 
 
@@ -56,7 +56,7 @@ mount $(cat root-efi) /mnt && \
 mkfs.fat -F 32 $(cat boot-efi) && \
 mkdir -p /mnt/efi && \
 mount $(cat boot-efi) /mnt/efi \
-printf  \\n  ; printf \\n \
+printf  \\n  && printf \\n \
 lsblk ${disk} --all" 20 150
 
 ;;
