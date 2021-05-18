@@ -44,12 +44,12 @@ case $bootarch in
 dialog --no-collapse --cr-wrap --backtitle "$titulo" --title "-| Preparando Disco - UEFI |-" --stdout --ok-label "Siguiente" \
 --prgbox "sgdisk --zap-all ${disk} && \
 parted ${disk} mklabel gpt && \
-sgdisk ${disk} -n=1:0:+1G -t=1:ef00 && \
+sgdisk ${disk} -n=1:0:+250M -t=1:ef00 && \
 sgdisk ${disk} -n=2:0:+${swapsize} -t=2:8200 && \
 sgdisk ${disk} -n=3:0:0 && \
 fdisk -l ${disk} > /tmp/partitions && \
-echo _____________________ && \
-cat /tmp/partitions" 13 100
+echo -------------------------------------- && \
+cat /tmp/partitions" 20 110
 
 
 partitions="$(cat /tmp/partitions | grep /dev/ | awk '{if (NR!=1) {print}}' | sed 's/*//g' | awk -F ' ' '{print $1}')"
@@ -66,7 +66,7 @@ mkdir -p /mnt/efi && \
 mount $(cat boot-efi) /mnt/efi && \
 mkswap $(cat swap-efi) && \
 swapon $(cat swap-efi) && \
-echo _____________________ && \
+echo -------------------------------------- && \
 lsblk ${disk} --all" 20 110
 
 ;;
