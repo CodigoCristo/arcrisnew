@@ -49,7 +49,7 @@ partitions="$(cat /tmp/partitions | grep /dev/ | awk '{if (NR!=1) {print}}' | se
 echo $partitions | awk -F ' ' '{print $1}' >  boot-efi
 echo $partitions | awk -F ' ' '{print $2}' >  root-efi
 
-dialog --no-collapse --cr-wrap --backtitle "${title}" --title "-| Preparando Disco - UEFI |-" --stdout --ok-label "Siguiente" \
+dialog --no-collapse --cr-wrap --backtitle "${title}" --title "-| Formateo y Montar Particiones |-" --stdout --ok-label "Siguiente" \
 --prgbox "mkfs.ext4 $(cat root-efi) && \
 mount $(cat root-efi) /mnt && \
 mkfs.fat -F 32 $(cat boot-efi) && \
