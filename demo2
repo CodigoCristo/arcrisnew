@@ -1,1 +1,28 @@
-dialog --backtitle "${title}" --title "-| Revise sus puntos de montaje |-" --infobox "$(printf "\n \n") $(lsblk /dev/sda --all) $(printf "\n\nEspere 5 segundos...")" 20 50 ; sleep 5
+dialog --no-collapse --cr-wrap --backtitle "${title}" --title "-| Preparando Disco - UEFI |-" --stdout --ok-label "Siguiente" \
+--prgbox "sgdisk --zap-all ${disk} && \
+parted ${disk} mklabel gpt && \
+sgdisk ${disk} -n=1:0:+1G -t=1:ef00 && \
+sgdisk ${disk} -n=2:0:0 && \
+fdisk -l ${disk} > /tmp/partitions && \
+printf '\n \n \n' \
+cat /tmp/partitions" 13 100
+
+
+{sudo pacman -Sy ; printf "\n\n\n\n\n\n" ; lsblk -l 2>&1} 
+
+| dialog --programbox " Preparando Disco - UEFI" 20 100
+
+
+partitions="$(cat /tmp/partitions | grep /dev/ | awk '{if (NR!=1) {print}}' | sed 's/*//g' | awk -F ' ' '{print $1}')"
+
+echo $partitions | awk -F ' ' '{print $1}' >  boot-efi
+echo $partitions | awk -F ' ' '{print $2}' >  root-efi
+
+dialog --no-collapse --cr-wrap --backtitle "${title}" --title "-| Preparando Disco - UEFI |-" --stdout --ok-label "Siguiente" \
+--prgbox "mkfs.ext4 $(cat root-efi) && \
+mount $(cat root-efi) /mnt && \
+mkfs.fat -F 32 $(cat boot-efi) && \
+mkdir -p /mnt/efi && \
+mount $(cat boot-efi) /mnt/efi \
+printf '\n \n \n' \
+lsblk ${disk} --all" 20 150
