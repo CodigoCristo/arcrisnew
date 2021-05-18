@@ -41,7 +41,7 @@ parted ${disk} mklabel gpt && \
 sgdisk ${disk} -n=1:0:+1G -t=1:ef00 && \
 sgdisk ${disk} -n=2:0:0 && \
 fdisk -l ${disk} > /tmp/partitions && \
-cat /tmp/partitions" 25 150
+cat /tmp/partitions" 20 120
 
 
 partitions="$(cat /tmp/partitions | grep /dev/ | awk '{if (NR!=1) {print}}' | sed 's/*//g' | awk -F ' ' '{print $1}')"
@@ -55,7 +55,7 @@ mount $(cat root-efi) /mnt && \
 mkfs.fat -F 32 $(cat boot-efi) && \
 mkdir -p /mnt/efi && \
 mount $(cat boot-efi) /mnt/efi && \
-lsblk ${disk} --all" 25 150
+lsblk ${disk} --all" 20 120
 
 ;;
 
