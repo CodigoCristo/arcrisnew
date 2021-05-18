@@ -3,8 +3,6 @@
 deletediskdd () {
 
 
-# dialog --backtitle "${title}" --title "-| Mensaje |-" --msgbox "\n> UEFI trabaja con discos en GPT \n\n> UEFI su partición boot es formateada en FAT32 \n\n> BIOS LEGACY trabaja con discos en DOS/MBR\n\n> BIOS LEGACY su partición boot es formateada en EXT4\n( La partición boot en linux es opcional )" 13 60
-# {sudo pacman -Sy ; printf "\n\n\n\n\n\n" ; lsblk -l 2>&1} | dialog --programbox " Preparando Disco - UEFI" 20 100
 
 ################################################################
 # SELETC DISK
@@ -42,7 +40,8 @@ dialog --no-collapse --cr-wrap --backtitle "${title}" --title "-| Formateando Di
 --prgbox "dd if=/dev/zero of="${disk}" bs=4M conv=fsync oflag=direct status=progress  && \
 parted ${disk} mklabel gpt && \
 fdisk -l ${disk} " 20 110
-
+partprobe
+clear
 ;;
 
   0)
@@ -50,14 +49,11 @@ dialog --no-collapse --cr-wrap --backtitle "${title}" --title "-| Formateando Di
 --prgbox "dd if=/dev/zero of="${disk}" bs=4M conv=fsync oflag=direct status=progress  && \
 parted ${disk} mklabel msdos && \
 fdisk -l ${disk} " 20 110
-
+partprobe
+clear
 ;;
 
 esac
-
-clear
-partprobe
-clear
 
 ;;
 
