@@ -12,8 +12,7 @@ part="$(echo "print devices" | parted | grep /dev/ | awk '{if (NR!=1) {print}}' 
 disk=$(dialog --backtitle "${title}" --clear  --ok-label "Seleccionar disco" --no-cancel --menu "\nSelecciona el disco para formateado completo\n " 12 50 0 ${part} 2>&1 >/dev/tty)
 
 
-dialog --no-collapse --cr-wrap --backtitle "$titulo" --title "-| Confirmar |-" --yesno "\nEsto suele demorar mucho tiempo dependiendo de la cantidad de GB de tu Disco seleccionado\n\n   ¿ Deseas continuar con formatear ?" 10 49
-
+dialog --no-collapse --cr-wrap --backtitle "$titulo" --title "-| Confirmar |-" --yesno "\nEsto suele demorar mucho tiempo dependiendo de la cantidad de GB de tu Disco seleccionado\n\ndd if=/dev/zero of="${disk}" bs=4M conv=fsync oflag=direct status=progress\n\n¿ Deseas continuar con formatear ?" 12 100
 case $? in
 
    0)
