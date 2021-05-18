@@ -34,18 +34,14 @@ partitions="$(cat /tmp/partitions | grep /dev/ | awk '{if (NR!=1) {print}}' | se
 echo $partitions | awk -F ' ' '{print $1}' >  boot-efi
 echo $partitions | awk -F ' ' '{print $2}' >  root-efi
 
-
-
-# dialog --infobox "$(ls)" 20 34 ; sleep 5
-
 dialog --no-collapse --cr-wrap --backtitle "${title}" --title "-| Preparando Disco - UEFI |-" --stdout --ok-label "Siguiente" \
---infobox "$(mkfs.ext4 $(cat root-efi) && \
+--prgbox "mkfs.ext4 $(cat root-efi) && \
 mount $(cat root-efi) /mnt && \
 mkfs.fat -F 32 $(cat boot-efi) && \
 mkdir -p /mnt/efi && \
-mount $(cat boot-efi) /mnt/efi && \
-clear && \
-lsblk -l)" 20 150 ; sleep 5
+mount $(cat boot-efi) /mnt/efi" 20 150
+
+dialog --backtitle "${title}" --title "-| Revise sus puntos de montaje |-" --infobox "$(lsblk /dev/sda --all) " 20 50 ; sleep 5
 
 ;;
 
