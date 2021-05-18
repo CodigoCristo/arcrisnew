@@ -18,19 +18,22 @@ do
     ################
 
 1) ################ 
-source lib/partition/autoroot
-autoroot
+source lib/partition/auto/auto1
+auto1
 ;;
 
 2) ################
-shell="bash"
+source lib/partition/auto/auto2
+auto2
 ;;
 3) ################
-shell="fish"
+source lib/partition/auto/auto3
+auto3
 ;;
 
 4) ################
-shell="dash"
+source lib/partition/auto/auto4
+auto4
 ;;
                                                 
     esac
