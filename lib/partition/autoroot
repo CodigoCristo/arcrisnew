@@ -35,14 +35,7 @@ case $bootarch in
 
   1)
 
-{ sgdisk --zap-all ${disk} ; \
-parted ${disk} mklabel gpt ; \
-sgdisk ${disk} -n=1:0:+1G -t=1:ef00 ; \
-sgdisk ${disk} -n=2:0:0 ; \
-fdisk -l ${disk} > /tmp/partitions ; \
-printf '\n \n \n' ; \
-cat /tmp/partitions 2>&1 } | dialog --programbox " Preparando Disco - UEFI" 20 100
-
+{ sgdisk --zap-all ${disk} ; parted ${disk} mklabel gpt ; sgdisk ${disk} -n=1:0:+1G -t=1:ef00 ; sgdisk ${disk} -n=2:0:0 ; fdisk -l ${disk} > /tmp/partitions ; printf '\n \n \n' ; cat /tmp/partitions 2>&1 } | dialog --programbox " Preparando Disco - UEFI" 20 100
 
 partitions="$(cat /tmp/partitions | grep /dev/ | awk '{if (NR!=1) {print}}' | sed 's/*//g' | awk -F ' ' '{print $1}')"
 
