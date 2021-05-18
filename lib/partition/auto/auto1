@@ -59,6 +59,8 @@ mount $(cat boot-efi) /mnt/efi && \
 echo -------------------------------------- && \
 lsblk ${disk} --all" 20 110
 
+rm boot-efi root-efi
+
 ;;
 
   0)
@@ -74,13 +76,15 @@ partitions="$(cat /tmp/partitions | grep /dev/ | awk '{if (NR!=1) {print}}' | se
 echo $partitions | awk -F ' ' '{print $1}' >  boot-boot
 echo $partitions | awk -F ' ' '{print $2}' >  root-boot
 
-dialog --no-collapse --cr-wrap --backtitle "$titulo" --title "-| Preparando Disco - BIOS LEGACY |-" --stdout --ok-label "Siguiente" \
+dialog --no-collapse --cr-wrap --backtitle "$titulo" --title "-| Formateo y Montar Particiones |-" --stdout --ok-label "Siguiente" \
 --prgbox "mkfs.ext4 $(cat root-boot) && \
 mount $(cat root-boot) /mnt && \
 mkfs.ext4 $(cat boot-boot) && \
 mkdir -p /mnt/boot && \
 mount $(cat boot-boot) /mnt/boot && \
 lsblk ${disk} --all" 20 110
+
+rm boot-boot root-boot
 
 ;;
 
