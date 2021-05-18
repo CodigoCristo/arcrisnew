@@ -1,0 +1,9 @@
+dialog --no-collapse --cr-wrap --backtitle "$titulo" --title "-| Confirmar |-" --yesno "\nEsto suele demorar mucho tiempo dependiendo de la cantidad de su Disco Duro\n\n   ¿ Deseas continuar con formatear ?" 10 48
+
+case $? in
+
+   0) echo hola ;;
+
+1) echo hola2 ;;
+
+esac
