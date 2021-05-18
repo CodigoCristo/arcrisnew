@@ -33,6 +33,17 @@ shell="fish"
 4) ################
 shell="dash"
 ;;
+
+
+5) ################
+shell="dash"
+;;
+
+
+6) ################
+source lib/partition/deletediskdd
+deletediskdd
+;;
                                                 
     esac
 done
