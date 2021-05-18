@@ -38,18 +38,16 @@ case $bootarch in
 dialog --no-collapse --cr-wrap --backtitle "${title}" --title "-| Formateando Disco - UEFI |-" --stdout --ok-label "Siguiente" \
 --prgbox "dd if=/dev/zero of="${disk}" bs=4M conv=fsync oflag=direct status=progress  && \
 parted ${disk} mklabel gpt && \
-fdisk -l ${disk} " 20 110
-partprobe
-clear
+fdisk -l ${disk} \
+partprobe" 20 110
 ;;
 
   0)
 dialog --no-collapse --cr-wrap --backtitle "${title}" --title "-| Formateando Disco - BIOS LEGACY |-" --stdout --ok-label "Siguiente" \
 --prgbox "dd if=/dev/zero of="${disk}" bs=4M conv=fsync oflag=direct status=progress  && \
 parted ${disk} mklabel msdos && \
-fdisk -l ${disk} " 20 110
-partprobe
-clear
+fdisk -l ${disk} \
+partprobe" 20 110
 ;;
 
 esac
