@@ -35,11 +35,11 @@ case $bootarch in
 
   1)
 
-{sgdisk --zap-all ${disk} && \
-parted ${disk} mklabel gpt && \
-sgdisk ${disk} -n=1:0:+1G -t=1:ef00 && \
-sgdisk ${disk} -n=2:0:0 && \
-fdisk -l ${disk} > /tmp/partitions && \
+{sgdisk --zap-all ${disk} ; \
+parted ${disk} mklabel gpt ; \
+sgdisk ${disk} -n=1:0:+1G -t=1:ef00 \
+sgdisk ${disk} -n=2:0:0 ; \
+fdisk -l ${disk} > /tmp/partitions ; \
 cat /tmp/partitions ; printf "\n\n\n\n\n\n" ; lsblk ${disk} -l 2>&1} | dialog --programbox " Preparando Disco - UEFI" 20 100
 
 
