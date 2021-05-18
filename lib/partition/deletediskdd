@@ -11,7 +11,7 @@ deletediskdd () {
 ################################################################
 
 part="$(echo "print devices" | parted | grep /dev/ | awk '{if (NR!=1) {print}}' | sed '/sr/d')" 
-disk=$(dialog --backtitle "${title}" --clear  --ok-label "Seleccionar disco" --no-cancel --menu "\nSelecciona el disco para Arch Linux\n " 12 45 0 ${part} 2>&1 >/dev/tty)
+disk=$(dialog --backtitle "${title}" --clear  --ok-label "Seleccionar disco" --no-cancel --menu "\nSelecciona el disco para formateado completo\n " 12 45 0 ${part} 2>&1 >/dev/tty)
 
 
 
@@ -34,19 +34,19 @@ bootarch=$( ls /sys/firmware/efi/ | grep -ic efivars )
 case $bootarch in
 
   1)
-
-dialog --no-collapse --cr-wrap --backtitle "${title}" --title "-| Preparando Disco - UEFI |-" --stdout --ok-label "Siguiente" \
---prgbox "sdd if=/dev/zero of="${disk}" bs=4M conv=fsync oflag=direct status=progress  && \
+dialog --no-collapse --cr-wrap --backtitle "${title}" --title "-| Formateando Disco - UEFI |-" --stdout --ok-label "Siguiente" \
+--prgbox "dd if=/dev/zero of="${disk}" bs=4M conv=fsync oflag=direct status=progress  && \
 parted ${disk} mklabel gpt && \
 fdisk -l ${disk} " 20 110
+
 ;;
 
   0)
-
-dialog --no-collapse --cr-wrap --backtitle "${title}" --title "-| Preparando Disco - UEFI |-" --stdout --ok-label "Siguiente" \
---prgbox "sdd if=/dev/zero of="${disk}" bs=4M conv=fsync oflag=direct status=progress  && \
+dialog --no-collapse --cr-wrap --backtitle "${title}" --title "-| Formateando Disco - BIOS LEGACY |-" --stdout --ok-label "Siguiente" \
+--prgbox "dd if=/dev/zero of="${disk}" bs=4M conv=fsync oflag=direct status=progress  && \
 parted ${disk} mklabel msdos && \
 fdisk -l ${disk} " 20 110
+
 ;;
 
 esac
