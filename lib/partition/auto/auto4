@@ -1,6 +1,6 @@
 #!/bin/bash
 
-auto2 () {
+auto4 () {
 
 
 # dialog --backtitle "${title}" --title "-| Mensaje |-" --msgbox "\n> UEFI trabaja con discos en GPT \n\n> UEFI su partición boot es formateada en FAT32 \n\n> BIOS LEGACY trabaja con discos en DOS/MBR\n\n> BIOS LEGACY su partición boot es formateada en EXT4\n( La partición boot en linux es opcional )" 13 60
@@ -19,10 +19,11 @@ mem_total=$(free --giga | awk '/^Mem:/{print $2}')
 sizedisk="$(lsblk ${disk} -lno NAME,SIZE,TYPE | grep 'disk' | awk '{print $2}' | sort -u)"
 
 
-swapsize=$(dialog --no-cancel --backtitle "$titulo" --title "-| Memoria SWAP |-" \
---form "\nIngresa la cantidad de SWAP\n\nGigabytes (G) - Megabytes (M) - Kibibyte (K)\n\n> No dejar espacios al inicio\n> No olvidar su etiqueta al final del número\n\
-> [Tabulador] para cambiar opciones\n\nGigabytes disponibles ${sizedisk}\n " 0 0 0 \
-" Tamaño en GB para SWAP:" 1 1 "${mem_total}G" 1 26 25 30 2>&1 > /dev/tty)
+swapsize=$(dialog --no-cancel --backtitle "$titulo" --title "-| Cantidad de Home y Swap |-" \
+--form "\nIngresa la cantidad de Home y Swap\n\nGigabytes (G) - Megabytes (M) - Kibibyte (K)\n\n> No deje espacios al inicio\n> No olvidar su etiqueta al final del número\n\
+> [Tabulador] o [FLECHA ARRIBA] / [FLECHA ABAJO]\n\nGigabytes disponibles ${sizedisk}\n " 0 0 0 \
+" Tamaño en GB para HOME:" 1 1 "25G" 1 26 25 20 2>&1 > /dev/tty \
+"Tamaño en GB para SWAP: " 3 2 "2G" 3 26 25 20 3>&1 > /dev/tty)
 
 
 bootarch=$( ls /sys/firmware/efi/ | grep -ic efivars )

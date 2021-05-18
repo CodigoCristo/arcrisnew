@@ -10,7 +10,8 @@ auto1 () {
 # SELETC DISK
 ################################################################
 
-part="$(echo "print devices" | parted | grep /dev/ | awk '{if (NR!=1) {print}}' | sed '/sr/d')" 
+# part="$(echo "print devices" | parted | grep /dev/ | awk '{if (NR!=1) {print}}' | sed '/sr/d')" 
+part="$(lsblk -lno NAME,SIZE,TYPE | grep 'disk' | awk '{print "/dev/" $1 " " $2}' | sort -u | sed '/f/d' | sed '/sr/d' )" 
 disk=$(dialog --backtitle "${title}" --clear  --ok-label "Seleccionar disco" --no-cancel --menu "\nSelecciona el disco para Arch Linux\n " 12 45 0 ${part} 2>&1 >/dev/tty)
 
 
