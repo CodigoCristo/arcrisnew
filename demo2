@@ -1,35 +1,7 @@
-cmd=(dialog --no-collapse --cr-wrap --backtitle "${title}" --title "-| Disco Duro |-" \
---no-tags --ok-label "Confirmar" --nocancel --menu "\nEliga su mejor opción para su Sistema\n " 15 55 15)
-options=(1 " Particionado Automático                       "   
-         2 " Particionado Automático con Cifrado de Disco  "
-         3 " Particionado Manual                           "
-         4 " Particionado con otro Sistema Operativo       "
-         5 " Cambia o Crea tu Tabla de partición del Disco "
-         6 " Formatea todo tu Disco con DD                 ")
+#!/bin/bash
 
-choices=$("${cmd[@]}" "${options[@]}" 2>&1 >/dev/tty)
-clear
-for choice in $choices
-do
-    case $choice in
-    ################
+# while-menu-dialog: a menu driven system information program
 
-1) ################ 
-source lib/partition/autopartition
-autopartition
-;;
 
-2) ################
-shell="bash"
-;;
-3) ################
-shell="fish"
-;;
 
-4) ################
-shell="dash"
-;;
-                                                
-    esac
-done
-
+(df -h) | dialog --title "PROGRAMBOX" "$@" --programbox 20 70

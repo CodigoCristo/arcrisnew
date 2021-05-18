@@ -20,14 +20,14 @@ bootarch=$( ls /sys/firmware/efi/ | grep -ic efivars )
 case $bootarch in
 
   1)
-dialog --no-collapse --cr-wrap --backtitle "${title}" --title "-| Preparando Disco - UEFI |-" --stdout --ok-label "Siguiente" \
---prgbox "sgdisk --zap-all ${disk} && \
+
+( sgdisk --zap-all ${disk} && \
 parted ${disk} mklabel gpt && \
 sgdisk ${disk} -n=1:0:+1G -t=1:ef00 && \
 sgdisk ${disk} -n=2:0:0 && \
 fdisk -l ${disk} > /tmp/partitions && \
 clear && \
-cat /tmp/partitions" 13 100
+cat /tmp/partitions ) | dialog --title "PROGRAMBOX" "$@" --programbox 20 70
 
 
 partitions="$(cat /tmp/partitions | grep /dev/ | awk '{if (NR!=1) {print}}' | sed 's/*//g' | awk -F ' ' '{print $1}')"
@@ -35,14 +35,13 @@ partitions="$(cat /tmp/partitions | grep /dev/ | awk '{if (NR!=1) {print}}' | se
 echo $partitions | awk -F ' ' '{print $1}' >  boot-efi
 echo $partitions | awk -F ' ' '{print $2}' >  root-efi
 
-dialog --no-collapse --cr-wrap --backtitle "${title}" --title "-| Preparando Disco - UEFI |-" --stdout --ok-label "Siguiente" \
---prgbox "mkfs.ext4 $(cat root-efi) && \
+( mkfs.ext4 $(cat root-efi) && \
 mount $(cat root-efi) /mnt && \
 mkfs.fat -F 32 $(cat boot-efi) && \
 mkdir -p /mnt/efi && \
 mount $(cat boot-efi) /mnt/efi && \
 clear && \
-lsblk -l" 20 150
+lsblk -l ) | dialog --title "PROGRAMBOX" "$@" --programbox 20 70
 
 ;;
 
