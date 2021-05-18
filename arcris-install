@@ -172,20 +172,7 @@ echo -e ""
 echo -e "${msg_end}"
 printf '%*s\n' "${COLUMNS:-$(tput cols)}" '' | tr ' ' _
 echo -e ""
-echo "" && sleep 3 && clear && setfont default8x16 
-#Desmontamos todo disco y swapoff
-swapdisco=$( fdisk -l | grep "/dev/\|swap" | grep swap | awk -F ' ' '{print $1}' )
-umount -R /mnt
-clear
-swapoff ${swapdisco}
-clear
-swapoff -a
-clear
-swapon -a
-clear
-rm /mnt/etc/fstab
-clear 
-exit
+echo "" && sleep 3 && clear && setfont default8x16 && exit
 ;;
 
     esac
