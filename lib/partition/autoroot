@@ -34,13 +34,13 @@ clear
 case $bootarch in
 
   1)
-dialog --no-collapse --cr-wrap --backtitle "${title}" --title "-| Preparando Disco - UEFI |-" --stdout --ok-label "Siguiente" \
---prgbox "sgdisk --zap-all ${disk} && \
+
+{sgdisk --zap-all ${disk} && \
 parted ${disk} mklabel gpt && \
 sgdisk ${disk} -n=1:0:+1G -t=1:ef00 && \
 sgdisk ${disk} -n=2:0:0 && \
 fdisk -l ${disk} > /tmp/partitions && \
-cat /tmp/partitions" 13 100
+cat /tmp/partitions ; printf "\n\n\n\n\n\n" ; lsblk ${disk} -l 2>&1} | dialog --programbox " Preparando Disco - UEFI" 20 100
 
 
 partitions="$(cat /tmp/partitions | grep /dev/ | awk '{if (NR!=1) {print}}' | sed 's/*//g' | awk -F ' ' '{print $1}')"
