@@ -36,7 +36,7 @@ shell="dash"
 
 
 5) ################
-source lib/partition/tablediskdd
+source lib/partition/tabledisk
 tabledisk
 ;;
 
