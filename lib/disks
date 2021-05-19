@@ -27,7 +27,8 @@ autopartition
 shell="bash"
 ;;
 3) ################
-shell="fish"
+source lib/partition/manualpartition
+manualpartition
 ;;
 
 4) ################
