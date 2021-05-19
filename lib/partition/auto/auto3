@@ -43,7 +43,7 @@ dialog --no-collapse --cr-wrap --backtitle "${title}" --title "-| Preparando Dis
 --prgbox "sgdisk --zap-all ${disk} && \
 parted ${disk} mklabel gpt && \
 sgdisk ${disk} -n=1:0:+250M -t=1:ef00 && \
-sgdisk ${disk} -n=2:0:+${rootsize}G -t=3:8300 && \
+sgdisk ${disk} -n=2:0:+${rootsize}G -t=2:8300 && \
 sgdisk ${disk} -n=3:0:0 && \
 fdisk -l ${disk} > /tmp/partitions && \
 echo -------------------------------------------- && \
