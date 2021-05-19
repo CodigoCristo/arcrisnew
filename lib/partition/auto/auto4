@@ -30,13 +30,13 @@ bootarch=$( ls /sys/firmware/efi/ | grep -ic efivars )
 
 #Desmontamos todo disco y swapoff
 clear
-#swapdisco=$( fdisk -l | grep "/dev/\|swap" | grep swap | awk -F ' ' '{print $1}' )
+swapdisco=$( fdisk -l | grep "/dev/\|swap" | grep swap | awk -F ' ' '{print $1}' )
 umount -R /mnt
-#swapoff ${swapdisco}
+swapoff ${swapdisco}
 clear
 swapoff -a
 swapon -a
-#rm /mnt/etc/fstab
+rm /mnt/etc/fstab
 clear 
 
 case $bootarch in
