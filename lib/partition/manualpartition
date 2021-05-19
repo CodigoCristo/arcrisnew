@@ -70,7 +70,7 @@ partitioning () {
 partitioning
 mount "$rootfs" /mnt
 
-cmd=(dialog --backtitle "${title}" --separate-output --ok-label 'Montar y formatear selección' --cancel-label 'No tengo más particiones' \--checklist "Selecciona otros puntos de montajes:\n\
+cmd=(dialog --backtitle "${title}" --separate-output --ok-label 'Montar y formatear selección' --cancel-label 'No tengo más particiones' \--checklist "\nMarca tus otros puntos de montajes:\n \
 [SPACE] para marcar las casillas\n\
 [ENTER] para continuar." 10 80 0)
 
