@@ -70,8 +70,8 @@ partitioning () {
 partitioning
 mount "$rootfs" /mnt
 
-cmd=(dialog --backtitle "${title}" --separate-output --ok-label 'Montar y formatear selección' --cancel-label 'No tengo más particiones' --checklist "Marca tus otros puntos de montajes:\n[SPACE] para marcar las casillas\n\
-[ENTER] para continuar.\n " 11 80 0)
+cmd=(dialog --backtitle "${title}" --separate-output --ok-label 'Montar y formatear selección' --cancel-label 'No tengo más particiones' --checklist "Marca tus otros puntos de montajes:\n\n[SPACE] para marcar las casillas\n\
+[ENTER] para continuar.\n " 10 80 0)
 
 options=("/boot" "Archivos estáticos del cargador de BIOS LEGACY" off   
   "/efi" "Archivos estáticos del cargador de UEFI" off
