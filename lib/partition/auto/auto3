@@ -19,7 +19,7 @@ sizedisk="$(lsblk ${disk} -lno NAME,SIZE,TYPE | grep 'disk' | awk '{print $2}' |
 
 rootsize=$(dialog --no-cancel --backtitle "$titulo" --title "-| Discos y Particiones |-" \
 --form "\nIngresa la cantidad para ROOT.\nEl 100% restante es para HOME.\n\nGigabytes (G) - Megabytes (M) - Kibibyte (K)\n\n> No dejar espacios al inicio\n> No olvidar su etiqueta al final del número\n\
-> [Tabulador] para cambiar opciones\n\nGigabytes disponibles ${sizedisk}\n " 0 0 0 \
+> [Tabulador] o [FLECHA ARRIBA] / [FLECHA ABAJO]\n\nGigabytes disponibles ${sizedisk}\n " 0 0 0 \
 " Tamaño en GB para ROOT:" 1 1 "25G" 1 27 25 30 2>&1 > /dev/tty)
 
 
@@ -68,7 +68,7 @@ mount $(cat home-efi) /mnt/home && \
 echo -------------------------------------------- && \
 lsblk ${disk} --all" 20 120
 
-rm boot-efi swap-efi root-efi
+rm boot-efi root-efi home-efi
 
 
 

@@ -21,7 +21,7 @@ sizedisk="$(lsblk ${disk} -lno NAME,SIZE,TYPE | grep 'disk' | awk '{print $2}' |
 
 swapsize=$(dialog --no-cancel --backtitle "$titulo" --title "-| Discos y Particiones |-" \
 --form "\nIngresa la cantidad de SWAP\n\nGigabytes (G) - Megabytes (M) - Kibibyte (K)\n\n> No dejar espacios al inicio\n> No olvidar su etiqueta al final del número\n\
-> [Tabulador] para cambiar opciones\n\nGigabytes disponibles ${sizedisk}\n " 0 0 0 \
+> [Tabulador] o [FLECHA ARRIBA] / [FLECHA ABAJO]\n\nGigabytes disponibles ${sizedisk}\n " 0 0 0 \
 " Tamaño en GB para SWAP:" 1 1 "${mem_total}G" 1 26 25 30 2>&1 > /dev/tty)
 
 
@@ -45,8 +45,8 @@ dialog --no-collapse --cr-wrap --backtitle "${title}" --title "-| Preparando Dis
 --prgbox "sgdisk --zap-all ${disk} && \
 parted ${disk} mklabel gpt && \
 sgdisk ${disk} -n=1:0:+250M -t=1:ef00 && \
-sgdisk ${disk} -n=2:0:0     -t=2:8300 && \
-sgdisk ${disk} -n=3:0:-${swapsize}G -t=3:8200 && \
+sgdisk ${disk} -n=2:0:+${swapsize} -t=2:8200 && \
+sgdisk ${disk} -n=3:0:0 && \
 fdisk -l ${disk} > /tmp/partitions && \
 echo -------------------------------------------- && \
 cat /tmp/partitions" 20 120
