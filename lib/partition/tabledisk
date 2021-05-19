@@ -20,7 +20,7 @@ else
 fi
 
 cmd=(dialog --no-collapse --cr-wrap --backtitle "${title}" --title "-| Tabla de Partición |-" \
---ok-label "Confirmar" --no-tags --menu "\nBorrá toda información de su Disco\n- Para sistema UEFI use GPT\n- Para sistema BIOS LEGACY use MBR/dos\n\nTu sistema iniciado es : ${tableboot}\n " 15 50 15)
+--ok-label "Confirmar" --no-tags --menu "\nLa conversión borrá toda información de su Disco\n- Para sistema UEFI use GPT\n- Para sistema BIOS LEGACY use MBR/dos\n\nTu sistema iniciado es : ${tableboot}\n " 16 50 15)
 options=(1 "         Convertir disco a GPT                 "   
          2 "         Convertir disco a MBR-dos             ")
 
