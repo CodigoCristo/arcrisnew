@@ -3,7 +3,7 @@
 disksystem () {
 
 cmd=(dialog --no-collapse --cr-wrap --backtitle "${title}" --title "-| Disco Duro |-" \
---ok-label "Confirmar" --menu "\nEliga su mejor opción para su Sistema\n " 15 57 15)
+--ok-label "Confirmar" --menu "\nEliga su mejor opción para su Sistema\n " 15 60 15)
 options=(1 " Particionado Automático                       "   
          2 " Particionado Automático con Cifrado de Disco  "
          3 " Particionado Manual                           "
