@@ -2,16 +2,30 @@
 
 manualpartition () { 
 
+#Desmontamos todo disco y swapoff
+clear
+swapdisco=$( fdisk -l | grep "/dev/\|swap" | grep swap | awk -F ' ' '{print $1}' )
+umount -R /mnt
+swapoff ${swapdisco}
+clear
+swapoff -a
+swapon -a
+rm /mnt/etc/fstab
+clear 
+
 
 part="$(lsblk -lno NAME,SIZE,TYPE | grep 'disk' | awk '{print "/dev/" $1 " " $2}' | sort -u | sed '/f/d' | sed '/sr/d' )" 
 disk=$(dialog --backtitle "${title}" --clear  --ok-label "Seleccionar disco" --no-cancel --menu "\nSelecciona el disco para Arch Linux\n " 12 45 0 ${part} 2>&1 >/dev/tty)
 
 
 
-partitioner=$(dialog --backtitle "$titulo" --clear --title "-| Particionado de Disco |-" --ok-label 'Seleccionar' --no-cancel --menu ">\n> Crear particiones correctamente\n>" 9 0 0\
+partitioner=$(dialog --backtitle "${title}" --clear --title "-| Particionado de Disco |-" --ok-label 'Seleccionar' --no-cancel --menu ">\n> Crear particiones correctamente\n>" 9 0 0\
     "cfdisk" "Un particionador casi grafico" \
     "fdisk" "Un particionador de linea de comandos" \
     "parted" "Un particionador de linea de comandos" 2>&1 > /dev/tty)
+
+clear
+
 $partitioner $disk
 
 fdisk -l "$disk" > /tmp/partitions
@@ -29,8 +43,9 @@ p=$(echo "$p" | grep -v $part)
 
 
 
-partitioning(){
-  fs="$(ls /bin/* | grep mkfs | awk '{if (NR!=1) {print}}' | sed 's/^.\{10\}//g' | awk '{print substr($0, 0, length($0)-0)}' | awk '$fs=$fs" Type"' |  awk '{if (NR!=1) {print}}' | grep -v cramfs | grep -v hfsplus | grep -v  bfs | grep -v msdos | grep -v minix)"
+partitioning () {
+
+  fs=$(ls /bin/* | grep mkfs | awk '{if (NR!=1) {print}}' | sed 's/^.\{10\}//g' | awk '{print substr($0, 0, length($0)-0)}' | awk '$fs=$fs" Type"' |  awk '{if (NR!=1) {print}}' | grep -v cramfs | grep -v hfsplus | grep -v  bfs | grep -v msdos | grep -v minix)
   format=$(dialog --backtitle "$titulo" --clear --title '-| FORMATO DE PARTICIÓN |-' \
           --ok-label 'Seleccionar' --cancel-label 'No formatear' --menu "\nElige el tipo de sistema de archivos\n\nEXT4 >> Para Linux\nFAT >> Para FAT32 para la partición UEFI\nNTFS >> Para Windows\n\n$(fdisk -l $disk | grep dos || fdisk -l $disk | grep gpt)" 15 50 0 ${fs} 2>&1 > /dev/tty)      
 
@@ -56,10 +71,10 @@ partitioning
 mount "$rootfs" /mnt
 
 cmd=(dialog --backtitle "$titulo" --separate-output --ok-label 'Montar y formatear selección' --cancel-label 'No tengo más particiones' \--checklist "Selecciona otros puntos de montajes:\n\
-[SPACE] para marcar * \n\
+[SPACE] para marcar las casillas\n\
 [ENTER] para continuar." 10 80 0)
-options=("/boot" "Archivos estáticos del cargador de arranque" off   
-  "/efi" "Archivos EFI del cargador de arranque" off
+options=("/boot" "Archivos estáticos del cargador de BIOS LEGACY" off   
+  "/efi" "Archivos estáticos del cargador de UEFI" off
   "/home" "Archivos de usuario" off
   "/tmp" "Archivos temporales" off
   "/usr" "Datos estáticos" off
