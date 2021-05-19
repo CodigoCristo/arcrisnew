@@ -76,13 +76,14 @@ cmd=(dialog --backtitle "$titulo" --separate-output --ok-label 'Montar y formate
 options=("/boot" "Archivos estáticos del cargador de BIOS LEGACY" off   
   "/efi" "Archivos estáticos del cargador de UEFI" off
   "/home" "Archivos de usuario" off
+  "/swap" "Memoria virtual RAM" off
   "/tmp" "Archivos temporales" off
-  "/usr" "Datos estáticos" off
   "/var" "Datos de variables" off
-  "/srv" "Datos de los servicios prestados por este sistema" off
   "/opt" "Aplicaciones de terceros o privativos" off
-  "swap" "Memoria virtual RAM" off
+  "/usr" "Datos estáticos" off
+  "/srv" "Datos de los servicios prestados por este sistema" off  
   )
+
 choices=$("${cmd[@]}" "${options[@]}" 2>&1 >/dev/tty)
 clear
 for choice in $choices
