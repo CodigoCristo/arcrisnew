@@ -45,8 +45,8 @@ dialog --no-collapse --cr-wrap --backtitle "${title}" --title "-| Preparando Dis
 --prgbox "sgdisk --zap-all ${disk} && \
 parted ${disk} mklabel gpt && \
 sgdisk ${disk} -n=1:0:+250M -t=1:ef00 && \
-sgdisk ${disk} -n=2:0:+${swapsize} -t=2:8200 && \
-sgdisk ${disk} -n=3:0:0 && \
+sgdisk ${disk} -n=2:0:0     -t=2:8300 && \
+sgdisk ${disk} -n=3:0:-${swapsize} -t=3:8200 && \
 fdisk -l ${disk} > /tmp/partitions && \
 echo -------------------------------------------- && \
 cat /tmp/partitions" 20 120
