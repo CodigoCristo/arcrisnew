@@ -36,7 +36,8 @@ shell="dash"
 
 
 5) ################
-shell="dash"
+source lib/partition/tablediskdd
+tabledisk
 ;;
 
 
@@ -44,7 +45,7 @@ shell="dash"
 source lib/partition/deletediskdd
 deletediskdd
 ;;
-                                                
+
     esac
 done
 
