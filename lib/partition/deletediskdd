@@ -9,7 +9,7 @@ deletediskdd () {
 ################################################################
 
 part="$(echo "print devices" | parted | grep /dev/ | awk '{if (NR!=1) {print}}' | sed '/sr/d')" 
-disk=$(dialog --backtitle "${title}" --clear  --ok-label "Seleccionar disco" --no-cancel --menu "\nSelecciona el disco para formateado completo\n " 12 50 0 ${part} 2>&1 >/dev/tty)
+disk=$(dialog --backtitle "${title}" --clear  --ok-label "Seleccionar disco" --no-cancel --menu "\nSelecciona tu disco :\n " 12 50 0 ${part} 2>&1 >/dev/tty)
 
 dialog --backtitle "${title}" --title "-| Mensaje |-" \
 --msgbox "\n> Este proceso puede dañar su disco si lo cancela inesperadamente\
