@@ -33,9 +33,9 @@ fdisk -l "$disk" > /tmp/partitions
 partitions="$(cat /tmp/partitions | grep /dev/ | awk '{if (NR!=1) {print}}' | sed 's/*//g' | awk -F ' ' '{print $1,$5}')"
 p="$(echo "$partitions")"
 #--title "| Elige la partición de Administrador |"
-part=$(dialog --backtitle "$titulo" --title "-| Selección de puntos de Montaje |-" --ok-label 'Seleccionar' --no-cancel --clear \
-  --menu "\nSelecciona la partición para Administrador: [ / ]\n " 13 50 0 ${p} 2>&1 > /dev/tty)
-dialog --no-collapse --cr-wrap --backtitle "$titulo" --title "-| Verificando estado de Disco |-" --stdout --ok-label "Siguiente" --prgbox "e2fsck -f -y -v -C 0 $part" 20 80
+part=$(dialog --backtitle "${title}" --title "-| Selección de puntos de Montaje |-" --ok-label 'Seleccionar' --no-cancel --clear \
+  --menu "\nSelecciona la partición para Administrador: [ / ]\n " 10 55 0 ${p} 2>&1 > /dev/tty)
+dialog --no-collapse --cr-wrap --backtitle "${title}" --title "-| Verificando estado de Disco |-" --stdout --ok-label "Siguiente" --prgbox "e2fsck -f -y -v -C 0 $part" 20 80
 rootfs=$part
 
 
@@ -46,31 +46,31 @@ p=$(echo "$p" | grep -v $part)
 partitioning () {
 
   fs=$(ls /bin/* | grep mkfs | awk '{if (NR!=1) {print}}' | sed 's/^.\{10\}//g' | awk '{print substr($0, 0, length($0)-0)}' | awk '$fs=$fs" Type"' |  awk '{if (NR!=1) {print}}' | grep -v cramfs | grep -v hfsplus | grep -v  bfs | grep -v msdos | grep -v minix)
-  format=$(dialog --backtitle "$titulo" --clear --title '-| FORMATO DE PARTICIÓN |-' \
+  format=$(dialog --backtitle "${title}" --clear --title '-| FORMATO DE PARTICIÓN |-' \
           --ok-label 'Seleccionar' --cancel-label 'No formatear' --menu "\nElige el tipo de sistema de archivos\n\nEXT4 >> Para Linux\nFAT >> Para FAT32 para la partición UEFI\nNTFS >> Para Windows\n\n$(fdisk -l $disk | grep dos || fdisk -l $disk | grep gpt)" 15 50 0 ${fs} 2>&1 > /dev/tty)      
 
   case $format in
-      ext2) dialog --clear --no-collapse --cr-wrap --backtitle "$titulo" --title "| Formateando partición en EXT2 |" --stdout --ok-label "Siguiente" --prgbox "echo "" && mkfs.ext2 -F $part" 20 80;;
-      ext3) dialog --clear --no-collapse --cr-wrap --backtitle "$titulo" --title "| Formateando partición en EXT3 |" --stdout --ok-label "Siguiente" --prgbox "echo "" && mkfs.ext3 -F $part" 20 80;;
-      ext4) dialog --clear --no-collapse --cr-wrap --backtitle "$titulo" --title "| Formateando partición en EXT4 |" --stdout --ok-label "Siguiente" --prgbox "echo "" && mkfs.ext4 -F $part" 20 80;;
-      reiserfs) dialog --clear --no-collapse --cr-wrap --backtitle "$titulo" --title "| Formateando partición en ReiserFS |" --stdout --ok-label "Siguiente" --prgbox "echo "" && mkfs.reiserfs -f -f $part" 20 80;;
-      vfat) dialog --clear --no-collapse --cr-wrap --backtitle "$titulo" --title "| Formateando partición en FAT 32 | Uso General para particiones UEFI... |" --stdout --ok-label "Siguiente" --prgbox "echo "" && mkfs.vfat -F32 $part" 7 80;;
-      fat) dialog --clear --no-collapse --cr-wrap --backtitle "$titulo" --title "| Formateando partición en FAT 32 | Uso General para particiones UEFI... |" --stdout --ok-label "Siguiente" --prgbox "echo "" && mkfs.fat -F32 $part" 7 80;;
-      exfat) dialog --clear --no-collapse --cr-wrap --backtitle "$titulo" --title "| Formateando partición en ExFAT |" --stdout --ok-label "Siguiente" --prgbox "echo "" && mkfs.exfat $part" 20 80;;
-      ntfs) dialog --clear --no-collapse --cr-wrap --backtitle "$titulo" --title "| Formateando partición en NTFS - Windows |" --stdout --ok-label "Siguiente" --prgbox "echo "" && mkfs.ntfs -Q $part" 20 80;;
-      f2fs) dialog --clear --no-collapse --cr-wrap --backtitle "$titulo" --title "| Formateando partición en F2FS |" --stdout --ok-label "Siguiente" --prgbox "echo "" && modprobe f2fs && mkfs.f2fs $part" 20 80;;
-      jfs) dialog --clear --no-collapse --cr-wrap --backtitle "$titulo" --title "| Formateando partición en JFS |" --stdout --ok-label "Siguiente" --prgbox "echo "" && mkfs.jfs -q $part" 20 80;;
-      xfs) dialog --clear --no-collapse --cr-wrap --backtitle "$titulo" --title "| Formateando partición en XFS |" --stdout --ok-label "Siguiente" --prgbox "echo "" && mkfs.xfs -f $part" 20 80;;
-      nilfs2) dialog --clear --no-collapse --cr-wrap --backtitle "$titulo" --title "| Formateando partición en NilFS2 |" --stdout --ok-label "Siguiente" --prgbox "echo "" && mkfs.nilfs2 -f $part" 20 80;;
-      udf) dialog --clear --no-collapse --cr-wrap --backtitle "$titulo" --title "| Formateando partición en UDF |" --stdout --ok-label "Siguiente" --prgbox "echo "" && mkfs.udf -F $part" 20 80;;
-      btrfs) dialog --clear --no-collapse --cr-wrap --backtitle "$titulo" --title "| Formateando partición en BTRFS |" --stdout --ok-label "Siguiente" --prgbox "echo "" && mkfs.btrfs -f $part" 20 80;;
+      ext2) dialog --clear --no-collapse --cr-wrap --backtitle "${title}" --title "| Formateando partición en EXT2 |" --stdout --ok-label "Siguiente" --prgbox "echo "" && mkfs.ext2 -F $part" 20 80;;
+      ext3) dialog --clear --no-collapse --cr-wrap --backtitle "${title}" --title "| Formateando partición en EXT3 |" --stdout --ok-label "Siguiente" --prgbox "echo "" && mkfs.ext3 -F $part" 20 80;;
+      ext4) dialog --clear --no-collapse --cr-wrap --backtitle "${title}" --title "| Formateando partición en EXT4 |" --stdout --ok-label "Siguiente" --prgbox "echo "" && mkfs.ext4 -F $part" 20 80;;
+      reiserfs) dialog --clear --no-collapse --cr-wrap --backtitle "${title}" --title "| Formateando partición en ReiserFS |" --stdout --ok-label "Siguiente" --prgbox "echo "" && mkfs.reiserfs -f -f $part" 20 80;;
+      vfat) dialog --clear --no-collapse --cr-wrap --backtitle "${title}" --title "| Formateando partición en FAT 32 | Uso General para particiones UEFI... |" --stdout --ok-label "Siguiente" --prgbox "echo "" && mkfs.vfat -F32 $part" 7 80;;
+      fat) dialog --clear --no-collapse --cr-wrap --backtitle "${title}" --title "| Formateando partición en FAT 32 | Uso General para particiones UEFI... |" --stdout --ok-label "Siguiente" --prgbox "echo "" && mkfs.fat -F32 $part" 7 80;;
+      exfat) dialog --clear --no-collapse --cr-wrap --backtitle "${title}" --title "| Formateando partición en ExFAT |" --stdout --ok-label "Siguiente" --prgbox "echo "" && mkfs.exfat $part" 20 80;;
+      ntfs) dialog --clear --no-collapse --cr-wrap --backtitle "${title}" --title "| Formateando partición en NTFS - Windows |" --stdout --ok-label "Siguiente" --prgbox "echo "" && mkfs.ntfs -Q $part" 20 80;;
+      f2fs) dialog --clear --no-collapse --cr-wrap --backtitle "${title}" --title "| Formateando partición en F2FS |" --stdout --ok-label "Siguiente" --prgbox "echo "" && modprobe f2fs && mkfs.f2fs $part" 20 80;;
+      jfs) dialog --clear --no-collapse --cr-wrap --backtitle "${title}" --title "| Formateando partición en JFS |" --stdout --ok-label "Siguiente" --prgbox "echo "" && mkfs.jfs -q $part" 20 80;;
+      xfs) dialog --clear --no-collapse --cr-wrap --backtitle "${title}" --title "| Formateando partición en XFS |" --stdout --ok-label "Siguiente" --prgbox "echo "" && mkfs.xfs -f $part" 20 80;;
+      nilfs2) dialog --clear --no-collapse --cr-wrap --backtitle "${title}" --title "| Formateando partición en NilFS2 |" --stdout --ok-label "Siguiente" --prgbox "echo "" && mkfs.nilfs2 -f $part" 20 80;;
+      udf) dialog --clear --no-collapse --cr-wrap --backtitle "${title}" --title "| Formateando partición en UDF |" --stdout --ok-label "Siguiente" --prgbox "echo "" && mkfs.udf -F $part" 20 80;;
+      btrfs) dialog --clear --no-collapse --cr-wrap --backtitle "${title}" --title "| Formateando partición en BTRFS |" --stdout --ok-label "Siguiente" --prgbox "echo "" && mkfs.btrfs -f $part" 20 80;;
   esac
 }
 
 partitioning
 mount "$rootfs" /mnt
 
-cmd=(dialog --backtitle "$titulo" --separate-output --ok-label 'Montar y formatear selección' --cancel-label 'No tengo más particiones' \--checklist "Selecciona otros puntos de montajes:\n\
+cmd=(dialog --backtitle "${title}" --separate-output --ok-label 'Montar y formatear selección' --cancel-label 'No tengo más particiones' \--checklist "Selecciona otros puntos de montajes:\n\
 [SPACE] para marcar las casillas\n\
 [ENTER] para continuar." 10 80 0)
 
@@ -92,11 +92,11 @@ do
   case $choice in
     "/boot")
 
-#     dialog --backtitle "$titulo" --title "| TIPO DE PARTICIÓN |" --stdout --ok-label 'Siguiente' --msgbox "$(echo "" && fdisk -l $disk | grep gpt && echo "" && fdisk -l $disk | grep /dev/ )" 11 150
-      part=$(dialog --backtitle "$titulo" --ok-label 'Seleccionar' --no-cancel --clear --title "| Selecciona la partición |" \
+#     dialog --backtitle "${title}" --title "| TIPO DE PARTICIÓN |" --stdout --ok-label 'Siguiente' --msgbox "$(echo "" && fdisk -l $disk | grep gpt && echo "" && fdisk -l $disk | grep /dev/ )" 11 150
+      part=$(dialog --backtitle "${title}" --ok-label 'Seleccionar' --no-cancel --clear --title "| Selecciona la partición |" \
         --menu "| Elige la partición que desea usar para: boot |" 0 55 0 ${p} 2>&1 > /dev/tty )
       bootfs="$part"
-      dialog --backtitle "$titulo" --title "| Verificando estado de Disco |" --stdout --ok-label "Siguiente" --prgbox "e2fsck -f -y -v -C 0 $part" 20 80
+      dialog --backtitle "${title}" --title "| Verificando estado de Disco |" --stdout --ok-label "Siguiente" --prgbox "e2fsck -f -y -v -C 0 $part" 20 80
       partitioning
       bootdir="boot"
       mkdir -p /mnt/boot
@@ -106,11 +106,11 @@ do
       
     "/efi")
 
-#     dialog --backtitle "$titulo" --title "| TIPO DE PARTICIÓN |" --stdout --ok-label 'Siguiente' --msgbox "$(echo "" && fdisk -l $disk | grep gpt && echo "" && fdisk -l $disk | grep /dev/ )" 11 150
-      part=$(dialog --backtitle "$titulo" --ok-label 'Seleccionar' --no-cancel --clear --title "| Selecciona la partición |" \
+#     dialog --backtitle "${title}" --title "| TIPO DE PARTICIÓN |" --stdout --ok-label 'Siguiente' --msgbox "$(echo "" && fdisk -l $disk | grep gpt && echo "" && fdisk -l $disk | grep /dev/ )" 11 150
+      part=$(dialog --backtitle "${title}" --ok-label 'Seleccionar' --no-cancel --clear --title "| Selecciona la partición |" \
         --menu "| Elige la partición que desea usar para: efi |" 0 55 0 ${p} 2>&1 > /dev/tty )
       efifs="$part"
-      dialog --backtitle "$titulo" --title "| Verificando estado de Disco |" --stdout --ok-label "Siguiente" --prgbox "e2fsck -f -y -v -C 0 $part" 20 80
+      dialog --backtitle "${title}" --title "| Verificando estado de Disco |" --stdout --ok-label "Siguiente" --prgbox "e2fsck -f -y -v -C 0 $part" 20 80
       partitioning
       efidir="efi"
       mkdir -p /mnt/efi
@@ -120,11 +120,11 @@ do
         
     "/home")
 
-#     dialog --backtitle "$titulo" --title "| TIPO DE PARTICIÓN |" --stdout --ok-label 'Siguiente' --msgbox "$(echo "" && fdisk -l $disk | grep gpt && echo "" && fdisk -l $disk | grep /dev/ )" 11 150
-      part=$(dialog --backtitle "$titulo" --ok-label 'Seleccionar' --no-cancel --clear --title "| Selecciona la partición |" \
+#     dialog --backtitle "${title}" --title "| TIPO DE PARTICIÓN |" --stdout --ok-label 'Siguiente' --msgbox "$(echo "" && fdisk -l $disk | grep gpt && echo "" && fdisk -l $disk | grep /dev/ )" 11 150
+      part=$(dialog --backtitle "${title}" --ok-label 'Seleccionar' --no-cancel --clear --title "| Selecciona la partición |" \
         --menu "| Elige la partición que desea usar para: home |" 0 55 0 ${p} 2>&1 > /dev/tty )
       homefs="$part"
-      dialog --backtitle "$titulo" --title "| Verificando estado de Disco |" --stdout --ok-label "Siguiente" --prgbox "e2fsck -f -y -v -C 0 $part" 20 80
+      dialog --backtitle "${title}" --title "| Verificando estado de Disco |" --stdout --ok-label "Siguiente" --prgbox "e2fsck -f -y -v -C 0 $part" 20 80
       partitioning
       homedir="home"
       mkdir -p /mnt/home
@@ -133,11 +133,11 @@ do
       ;;
     "/tmp")
 
-#     dialog --backtitle "$titulo" --title "| TIPO DE PARTICIÓN |" --stdout --ok-label 'Siguiente' --msgbox "$(echo "" && fdisk -l $disk | grep gpt && echo "" && fdisk -l $disk | grep /dev/ )" 11 150
-      part=$(dialog --backtitle "$titulo" --ok-label 'Seleccionar' --no-cancel --clear --title "| Selecciona la partición |" \
+#     dialog --backtitle "${title}" --title "| TIPO DE PARTICIÓN |" --stdout --ok-label 'Siguiente' --msgbox "$(echo "" && fdisk -l $disk | grep gpt && echo "" && fdisk -l $disk | grep /dev/ )" 11 150
+      part=$(dialog --backtitle "${title}" --ok-label 'Seleccionar' --no-cancel --clear --title "| Selecciona la partición |" \
         --menu "| Elige la partición que desea usar para: tmp |" 0 55 0 ${p} 2>&1 > /dev/tty )
       tmpfs="$part"
-      dialog --backtitle "$titulo" --title "| Verificando estado de Disco |" --stdout --ok-label "Siguiente" --prgbox "e2fsck -f -y -v -C 0 $part" 20 80
+      dialog --backtitle "${title}" --title "| Verificando estado de Disco |" --stdout --ok-label "Siguiente" --prgbox "e2fsck -f -y -v -C 0 $part" 20 80
       partitioning
       tmpdir="tmp"
       mkdir -p /mnt/tmp
@@ -146,11 +146,11 @@ do
       ;;
     "/usr")
 
-#     dialog --backtitle "$titulo" --title "| TIPO DE PARTICIÓN |" --stdout --ok-label 'Siguiente' --msgbox "$(echo "" && fdisk -l $disk | grep gpt && echo "" && fdisk -l $disk | grep /dev/ )" 11 150
-      part=$(dialog --backtitle "$titulo" --ok-label 'Seleccionar' --no-cancel --clear --title "| Selecciona la partición |" \
+#     dialog --backtitle "${title}" --title "| TIPO DE PARTICIÓN |" --stdout --ok-label 'Siguiente' --msgbox "$(echo "" && fdisk -l $disk | grep gpt && echo "" && fdisk -l $disk | grep /dev/ )" 11 150
+      part=$(dialog --backtitle "${title}" --ok-label 'Seleccionar' --no-cancel --clear --title "| Selecciona la partición |" \
         --menu "| Elige la partición que desea usar para: usr |" 0 55 0 ${p} 2>&1 > /dev/tty )
       usrfs="$part"
-      dialog --backtitle "$titulo" --title "| Verificando estado de Disco |" --stdout --ok-label "Siguiente" --prgbox "e2fsck -f -y -v -C 0 $part" 20 80
+      dialog --backtitle "${title}" --title "| Verificando estado de Disco |" --stdout --ok-label "Siguiente" --prgbox "e2fsck -f -y -v -C 0 $part" 20 80
       partitioning
       usrdir="usr"
       mkdir -p /mnt/usr
@@ -159,11 +159,11 @@ do
       ;;
     "/var")
 
-#     dialog --backtitle "$titulo" --title "| TIPO DE PARTICIÓN |" --stdout --ok-label 'Siguiente' --msgbox "$(echo "" && fdisk -l $disk | grep gpt && echo "" && fdisk -l $disk | grep /dev/ )" 11 150
-      part=$(dialog --backtitle "$titulo" --ok-label 'Seleccionar' --no-cancel --clear --title "| Selecciona la partición |" \
+#     dialog --backtitle "${title}" --title "| TIPO DE PARTICIÓN |" --stdout --ok-label 'Siguiente' --msgbox "$(echo "" && fdisk -l $disk | grep gpt && echo "" && fdisk -l $disk | grep /dev/ )" 11 150
+      part=$(dialog --backtitle "${title}" --ok-label 'Seleccionar' --no-cancel --clear --title "| Selecciona la partición |" \
         --menu "| Elige la partición que desea usar para: var |" 0 55 0 ${p} 2>&1 > /dev/tty )
       varfs="$part"
-      dialog --backtitle "$titulo" --title "| Verificando estado de Disco |" --stdout --ok-label "Siguiente" --prgbox "e2fsck -f -y -v -C 0 $part" 20 80
+      dialog --backtitle "${title}" --title "| Verificando estado de Disco |" --stdout --ok-label "Siguiente" --prgbox "e2fsck -f -y -v -C 0 $part" 20 80
       partitioning
       vardir="var"
       mkdir -p /mnt/var
@@ -172,11 +172,11 @@ do
       ;;
     "/srv")
 
-#     dialog --backtitle "$titulo" --title "| TIPO DE PARTICIÓN |" --stdout --ok-label 'Siguiente' --msgbox "$(echo "" && fdisk -l $disk | grep gpt && echo "" && fdisk -l $disk | grep /dev/ )" 11 150
-      part=$(dialog --backtitle "$titulo" --ok-label 'Seleccionar' --no-cancel --clear --title "| Selecciona la partición |" \
+#     dialog --backtitle "${title}" --title "| TIPO DE PARTICIÓN |" --stdout --ok-label 'Siguiente' --msgbox "$(echo "" && fdisk -l $disk | grep gpt && echo "" && fdisk -l $disk | grep /dev/ )" 11 150
+      part=$(dialog --backtitle "${title}" --ok-label 'Seleccionar' --no-cancel --clear --title "| Selecciona la partición |" \
         --menu "| Elige la partición que desea usar para: srv |" 0 55 0 ${p} 2>&1 > /dev/tty )
       srvfs="$part"
-      dialog --backtitle "$titulo" --title "| Verificando estado de Disco |" --stdout --ok-label "Siguiente" --prgbox "e2fsck -f -y -v -C 0 $part" 20 80
+      dialog --backtitle "${title}" --title "| Verificando estado de Disco |" --stdout --ok-label "Siguiente" --prgbox "e2fsck -f -y -v -C 0 $part" 20 80
       partitioning
       srvdir="srv"
       mkdir -p /mnt/srv
@@ -185,11 +185,11 @@ do
       ;;
     "/opt")
 
-#     dialog --backtitle "$titulo" --title "| TIPO DE PARTICIÓN |" --stdout --ok-label 'Siguiente' --msgbox "$(echo "" && fdisk -l $disk | grep gpt && echo "" && fdisk -l $disk | grep /dev/ )" 11 150
-      part=$(dialog --backtitle "$titulo" --ok-label 'Seleccionar' --no-cancel --clear --title "| Selecciona la partición |" \
+#     dialog --backtitle "${title}" --title "| TIPO DE PARTICIÓN |" --stdout --ok-label 'Siguiente' --msgbox "$(echo "" && fdisk -l $disk | grep gpt && echo "" && fdisk -l $disk | grep /dev/ )" 11 150
+      part=$(dialog --backtitle "${title}" --ok-label 'Seleccionar' --no-cancel --clear --title "| Selecciona la partición |" \
         --menu "| Elige la partición que desea usar para: opt |" 0 55 0 ${p} 2>&1 > /dev/tty )
       optfs="$part"
-      dialog --backtitle "$titulo" --title "| Verificando estado de Disco |" --stdout --ok-label "Siguiente" --prgbox "e2fsck -f -y -v -C 0 $part" 20 80
+      dialog --backtitle "${title}" --title "| Verificando estado de Disco |" --stdout --ok-label "Siguiente" --prgbox "e2fsck -f -y -v -C 0 $part" 20 80
       partitioning
       optdir="opt"
       mkdir -p /mnt/opt
@@ -197,8 +197,8 @@ do
       p=$(echo "$p" | grep -v "$part")
       ;;
     "swap")
-#     dialog --backtitle "$titulo" --title "| TIPO DE PARTICIÓN |" --stdout --ok-label 'Siguiente' --msgbox "$(echo "" && fdisk -l $disk | grep gpt && echo "" && fdisk -l $disk | grep /dev/ )" 11 150
-      part=$(dialog --backtitle "$titulo" --ok-label 'Seleccionar' --no-cancel --clear --title "| Selecciona la partición |" \
+#     dialog --backtitle "${title}" --title "| TIPO DE PARTICIÓN |" --stdout --ok-label 'Siguiente' --msgbox "$(echo "" && fdisk -l $disk | grep gpt && echo "" && fdisk -l $disk | grep /dev/ )" 11 150
+      part=$(dialog --backtitle "${title}" --ok-label 'Seleccionar' --no-cancel --clear --title "| Selecciona la partición |" \
         --menu "| Elige la partición que desea usar para: swap |" 0 55 0 ${p} 2>&1 > /dev/tty)
       dialog --title "| Formateando Swap Linux |" --stdout --ok-label "Siguiente" --prgbox "echo "" && mkswap $part && swapon $part" 10 100
       swap="$part"
