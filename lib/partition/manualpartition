@@ -30,7 +30,8 @@ $partitioner $disk
 
 fdisk -l "$disk" > /tmp/partitions
 
-partitions="$(cat /tmp/partitions | grep /dev/ | awk '{if (NR!=1) {print}}' | sed 's/*//g' | awk -F ' ' '{print $1,$5}')"
+#partitions="$(cat /tmp/partitions | grep /dev/ | awk '{if (NR!=1) {print}}' | sed 's/*//g' | awk -F ' ' '{print $1,$5}')"
+partitions=$(fdisk -l | grep /dev/ | awk '{if (NR!=1) {print}}' | sed 's/*//g' | awk -F ' ' '{print $1,$5}' | grep /dev/ | awk '{if (NR=1) {print}}' | sed 's/*//g')
 p="$(echo "$partitions")"
 #--title "| Elige la partición de Administrador |"
 part=$(dialog --backtitle "${title}" --title "-| Selección de puntos de Montaje |-" --ok-label 'Seleccionar' --no-cancel --clear \
@@ -38,9 +39,7 @@ part=$(dialog --backtitle "${title}" --title "-| Selección de puntos de Montaje
 dialog --no-collapse --cr-wrap --backtitle "${title}" --title "-| Verificando estado de Disco |-" --stdout --ok-label "Siguiente" --prgbox "e2fsck -f -y -v -C 0 $part" 20 80
 rootfs=$part
 
-
 p=$(echo "$p" | grep -v $part)
-
 
 
 partitioning () {
