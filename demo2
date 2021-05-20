@@ -1,11 +1,10 @@
-rootswapsize=$(dialog --no-cancel --backtitle "$titulo" --title "-| Discos y Particiones |-" \
---form "\nIngresa la cantidad para ROOT y SWAP.\nEl 100% restante es para HOME.\n\nGigabytes (G) - Megabytes (M) - Kibibyte (K)\n\n> No deje espacios al inicio\n> No olvidar su etiqueta al final del número\n\
-> [Tabulador] o [FLECHA ARRIBA] / [FLECHA ABAJO]\n\nGigabytes disponibles ${sizedisk}\n " 0 0 0 \
-" Tamaño en GB para ROOT:" 1 1 "25G" 1 26 25 20 2>&1 > /dev/tty \
-"Tamaño en GB para SWAP: " 2 2 "2G" 2 26 25 20 3>&1 > /dev/tty)
+dialog --backtitle "$titulo" --title "| ZONA HORARIA |" --defaultno --yesno "\n       >>> $zonahorariaok <<<\n\n       ¿Deseas modificarlo?" 8 40 
 
-rootsize=$(echo $rootswapsize | awk '{print $1}')
-swapsize=$(echo $rootswapsize | awk '{print $2}')
+if [ "$?" = "0" ]; then
 
-echo $rootsize
-echo $swapsize
+
+
+else
+
+
+fi
