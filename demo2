@@ -1,10 +1,18 @@
-dialog --backtitle "$titulo" --title "| ZONA HORARIA |" --defaultno --yesno "\n       >>> $zonahorariaok <<<\n\n       ¿Deseas modificarlo?" 8 40 
+dialog --backtitle "$titulo" --title "-| Partición de HOME |-" --defaultno --yesno "\n¿Desea montar su partición /HOME en otro Disco?\n " 7 52
 
-if [ "$?" = "0" ]; then
+if [[ "$?" = "0" ]]; then
 
+echo "hola"
 
+else 
 
-else
-
+part=$(dialog --backtitle "${title}" --ok-label 'Seleccionar' --no-cancel --clear --title "| Selecciona la partición |" \
+--menu "| Elige la partición que desea usar para: home |" 0 55 0 ${p} 2>&1 > /dev/tty )
+homefs="$part"
+partitioning
+homedir="home"
+mkdir -p /mnt/home
+mount "$homefs" /mnt/home
+p=$(echo "$p" | grep -v "$part")
 
 fi

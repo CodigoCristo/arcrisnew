@@ -124,15 +124,8 @@ do
         
     "/home")
 
-#     dialog --backtitle "${title}" --title "| TIPO DE PARTICIÓN |" --stdout --ok-label 'Siguiente' --msgbox "$(echo "" && fdisk -l $disk | grep gpt && echo "" && fdisk -l $disk | grep /dev/ )" 11 150
-      part=$(dialog --backtitle "${title}" --ok-label 'Seleccionar' --no-cancel --clear --title "| Selecciona la partición |" \
-        --menu "| Elige la partición que desea usar para: home |" 0 55 0 ${p} 2>&1 > /dev/tty )
-      homefs="$part"
-      partitioning
-      homedir="home"
-      mkdir -p /mnt/home
-      mount "$homefs" /mnt/home
-      p=$(echo "$p" | grep -v "$part")
+
+
       ;;
     "/tmp")
 
