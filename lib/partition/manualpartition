@@ -86,7 +86,7 @@ partitioning
 
 mount "$rootfs" /mnt
 
-cmd=(dialog --backtitle "${title}" --separate-output --ok-label 'Montar y formatear selección' --cancel-label 'No tengo más particiones' --checklist "Marca tus otros puntos de montajes:\n\n[SPACE] para marcar las casillas\n\
+cmd=(dialog --backtitle "${title}" --title "-| Sistema ${tableboot} |-" --separate-output --ok-label 'Montar y formatear selección' --cancel-label 'No tengo más particiones' --checklist "Marca tus otros puntos de montajes:\n\n[SPACE] para marcar las casillas\n\
 [ENTER] para continuar.\n " 11 80 0)
 
 options=("/boot" "Archivos estáticos del cargador de BIOS LEGACY" off   
@@ -167,7 +167,7 @@ partitioning
 homedir="home"
 mkdir -p /mnt/home
 mount "$homefs" /mnt/home
-
+p=$(echo "$p" | grep -v "$part")
 
 else 
 
@@ -218,7 +218,7 @@ partitioning
 tmpdir="tmp"
 mkdir -p /mnt/tmp
 mount "$tmpfs" /mnt/tmp
-
+p=$(echo "$p" | grep -v "$part")
 
 else 
 
@@ -233,7 +233,7 @@ p=$(echo "$p" | grep -v "$part")
 
 fi
       ;;
-      
+
     "/usr")
 
 #     dialog --backtitle "${title}" --title "| TIPO DE PARTICIÓN |" --stdout --ok-label 'Siguiente' --msgbox "$(echo "" && fdisk -l $disk | grep gpt && echo "" && fdisk -l $disk | grep /dev/ )" 11 150
@@ -299,7 +299,12 @@ done
 
 clear
 partprobe
-clear
+
+dialog --no-collapse --cr-wrap --backtitle "${title}" --title "-| Preparando Disco - UEFI |-" --stdout --ok-label "Siguiente" \
+--prgbox "lsblk -lo NAME,SIZE,MOUNTPOINT,TYPE > /tmp/partitions && \
+echo -------------------------------------- && \
+cat /tmp/partitions && \
+echo -------------------------------------- && \" 20 110
 
 
 }
