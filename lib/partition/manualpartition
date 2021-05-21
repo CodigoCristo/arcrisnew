@@ -302,9 +302,9 @@ partprobe
 
 dialog --no-collapse --cr-wrap --backtitle "${title}" --title "-| Preparando Disco - UEFI |-" --stdout --ok-label "Siguiente" \
 --prgbox "lsblk -lo NAME,SIZE,MOUNTPOINT,TYPE > /tmp/partitions && \
-echo -------------------------------------- && \
+echo --------------------------------------- && \
 cat /tmp/partitions && \
-echo --------------------------------------" 20 110
+echo ---------------------------------------" 20 110
 
 
 }
