@@ -300,11 +300,13 @@ done
 clear
 partprobe
 
-dialog --no-collapse --cr-wrap --backtitle "${title}" --title "-| Preparando Disco - UEFI |-" --stdout --ok-label "Siguiente" \
+dialog --no-collapse --cr-wrap --backtitle "${title}" --title "-| Informarción |-" --stdout --ok-label "Siguiente" \
 --prgbox "lsblk -lo NAME,SIZE,MOUNTPOINT,TYPE > /tmp/partitions && \
-echo --------------------------------------- && \
+echo -------------------------------------- && \
+echo _ && \
 cat /tmp/partitions && \
-echo ---------------------------------------" 20 110
+echo _ && \
+echo --------------------------------------" 18 40
 
 
 }
