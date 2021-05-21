@@ -1,1 +1,7 @@
-
+dialog --no-collapse --cr-wrap --backtitle "${title}" --title "-| Informarción |-" --stdout --ok-label "Siguiente" \
+--prgbox "lsblk -lo NAME,SIZE,MOUNTPOINT,TYPE > /tmp/partitions && \
+echo -------------------------------------- && \
+echo _ && \
+cat /tmp/partitions && \
+echo _ && \
+echo --------------------------------------" 20 50
