@@ -27,7 +27,7 @@ sizedisk="$(lsblk /dev/sda -lno NAME,SIZE,TYPE | grep 'disk' | awk '{print $1,$2
 
 inputs_diskmatch=false
           
-while ! $inputs_match; do
+while ! $inputs_diskmatch; do
 
 input=$(dialog --backtitle "${title}" --title "-| Clave de Cifrado Disco |-" --clear \
   --stdout --nocancel --insecure --passwordbox "\nIngresa una clave Segura para ${sizedisk}:\n " 9 60)
