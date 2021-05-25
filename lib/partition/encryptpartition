@@ -23,7 +23,37 @@ rootfs=""
 
 
 part="$(lsblk -lno NAME,SIZE,TYPE | grep 'disk' | awk '{print "/dev/" $1 " " $2}' | sort -u | sed '/f/d' | sed '/sr/d' )" 
+
 disk=$(dialog --backtitle "${title}" --clear  --ok-label "Seleccionar disco" --no-cancel --menu "\nSelecciona el disco para Arch Linux\n " 12 45 0 ${part} 2>&1 >/dev/tty)
+
+sizedisk="$(lsblk /dev/sda -lno NAME,SIZE,TYPE | grep 'disk' | awk '{print $1,$2}')"
+
+inputs_diskmatch=false
+          
+while ! $inputs_match; do
+
+input=$(dialog --backtitle "${title}" --title "-| Clave de Cifrado Disco |-" --clear \
+  --stdout --nocancel --insecure --passwordbox "\nIngresa una clave Segura para ${sizedisk}:\n " 9 60)
+
+confirm_input=$(dialog --backtitle "${title}" --title "-| Clave de Cifrado Disco |-" \
+  --clear --stdout --insecure --no-cancel --passwordbox "\nConfirma su clave de ${sizedisk}:\n " 9 60)
+
+if [ -z "$input" ]; then
+
+  dialog --backtitle "${title}" --title "${title_passwusernull}" --msgbox "${msg_passwusernull}" 7 60
+
+elif [ "$input" != "$confirm_input" ]; then
+
+  dialog --backtitle "${title}" --title "${title_error}" --msgbox "${msg_passwuserfail}" 7 60
+else
+  diskpasswd=$input
+  inputs_diskmatch=true
+fi
+
+done
+
+echo $diskpasswd
+
 
 bootarch=$( ls /sys/firmware/efi/ | grep -ic efivars )
 
@@ -32,7 +62,6 @@ if [[ $bootarch == 1 ]]; then
 else
   tableboot="BIOS LEGACY"
 fi
-
 
 
 

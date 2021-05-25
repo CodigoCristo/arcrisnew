@@ -1,1 +1,28 @@
-sudo qemu-system-x86_64 -soundhw hda -device intel-hda -device hda-duplex -enable-kvm -cdrom "/home/cristo/Documentos/liveArcris/livedemo/out/arcris-2021.05.21-x86_64.iso" -bios /usr/share/edk2-ovmf/x64/OVMF.fd -boot menu=on -drive file="/home/cristo/Documentos/Discos-virtuales/archlinux" -drive file="/home/cristo/Documentos/Discos-virtuales/home" -m 4G -cpu host -smp cores=4 -vga virtio -display sdl,gl=on
+
+sizedisk="$(lsblk /dev/sda -lno NAME,SIZE,TYPE | grep 'disk' | awk '{print $1,$2}')"
+
+inputs_diskmatch=false
+          
+while ! $inputs_match; do
+
+input=$(dialog --backtitle "${title}" --title "-| Clave de Cifrado Disco |-" --clear \
+  --stdout --nocancel --insecure --passwordbox "\nIngresa una clave Segura para ${sizedisk}:\n " 9 60)
+
+confirm_input=$(dialog --backtitle "${title}" --title "-| Clave de Cifrado Disco |-" \
+  --clear --stdout --insecure --no-cancel --passwordbox "\nConfirma su clave de ${sizedisk}:\n " 9 60)
+
+if [ -z "$input" ]; then
+
+  dialog --backtitle "${title}" --title "${title_passwusernull}" --msgbox "${msg_passwusernull}" 7 60
+
+elif [ "$input" != "$confirm_input" ]; then
+
+  dialog --backtitle "${title}" --title "${title_error}" --msgbox "${msg_passwuserfail}" 7 60
+else
+  diskpasswd=$input
+  inputs_diskmatch=true
+fi
+
+done
+
+echo $diskpasswd
