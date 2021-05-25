@@ -1,7 +1,1 @@
-dialog --no-collapse --cr-wrap --backtitle "${title}" --title "-| Informarción |-" --stdout --ok-label "Siguiente" \
---prgbox "lsblk -lo NAME,SIZE,MOUNTPOINT,TYPE > /tmp/partitions && \
-echo -------------------------------------- && \
-echo _ && \
-cat /tmp/partitions && \
-echo _ && \
-echo --------------------------------------" 20 50
+sudo qemu-system-x86_64 -soundhw hda -device intel-hda -device hda-duplex -enable-kvm -cdrom "/home/cristo/Documentos/liveArcris/livedemo/out/arcris-2021.05.21-x86_64.iso" -bios /usr/share/edk2-ovmf/x64/OVMF.fd -boot menu=on -drive file="/home/cristo/Documentos/Discos-virtuales/archlinux" -drive file="/home/cristo/Documentos/Discos-virtuales/home" -m 4G -cpu host -smp cores=4 -vga virtio -display sdl,gl=on

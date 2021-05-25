@@ -1,0 +1,39 @@
+#!/bin/bash
+
+encryptpartition () { 
+
+#Desmontamos todo disco y swapoff
+clear
+swapdisco=$( fdisk -l | grep "/dev/\|swap" | grep swap | awk -F ' ' '{print $1}' )
+umount -R /mnt
+swapoff ${swapdisco}
+clear
+swapoff -a
+swapon -a
+rm /mnt/etc/fstab
+clear 
+
+part=""
+disk=""
+partitions=""
+p=""
+part=""
+rootfs=""
+
+
+
+part="$(lsblk -lno NAME,SIZE,TYPE | grep 'disk' | awk '{print "/dev/" $1 " " $2}' | sort -u | sed '/f/d' | sed '/sr/d' )" 
+disk=$(dialog --backtitle "${title}" --clear  --ok-label "Seleccionar disco" --no-cancel --menu "\nSelecciona el disco para Arch Linux\n " 12 45 0 ${part} 2>&1 >/dev/tty)
+
+bootarch=$( ls /sys/firmware/efi/ | grep -ic efivars )
+
+if [[ $bootarch == 1 ]]; then
+  tableboot="UEFI"
+else
+  tableboot="BIOS LEGACY"
+fi
+
+
+
+
+}

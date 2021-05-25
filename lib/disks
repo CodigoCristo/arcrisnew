@@ -24,7 +24,8 @@ autopartition
 ;;
 
 2) ################
-shell="bash"
+source lib/partition/encryptpartition
+encryptpartition
 ;;
 3) ################
 source lib/partition/manualpartition
