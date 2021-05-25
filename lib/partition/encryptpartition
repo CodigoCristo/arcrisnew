@@ -80,7 +80,10 @@ partitions="$(cat /tmp/partitions | grep /dev/ | awk '{if (NR!=1) {print}}' | se
 
 echo $partitions | awk -F ' ' '{print $1}' >  boot-efi
 echo $partitions | awk -F ' ' '{print $2}' >  root-efi
-
+clear
+Loading...
+printf '%*s\n' "${COLUMNS:-$(tput cols)}" '' | tr ' ' _
+echo ""
 echo -n "$diskpasswd" | cryptsetup --verbose -c aes-xts-plain64 --pbkdf argon2id --type luks2 -y luksFormat "$(cat root-efi)"
 echo -n "$diskpasswd" | cryptsetup luksOpen "$(cat root-efi)" archencrypt
 
