@@ -16,9 +16,6 @@ clear
 part=""
 disk=""
 partitions=""
-p=""
-part=""
-rootfs=""
 
 
 
