@@ -96,7 +96,15 @@ mount $(cat boot-efi) /mnt/boot && \
 echo -------------------------------------- && \
 lsblk ${disk} --all" 20 110
 
+diskencrypt=$(cat root-efi)
+
 rm boot-efi root-efi
+
+clear
+echo $diskencrypt
+echo $diskpasswd
+
+read line
 
 ;;
 
