@@ -60,7 +60,8 @@ p=$(echo "$p" | grep -v $part)
 
 partitioning () {
 
-  fs=$(ls /bin/* | grep mkfs | awk '{if (NR!=1) {print}}' | sed 's/^.\{10\}//g' | awk '{print substr($0, 0, length($0)-0)}' | awk '$fs=$fs" Type"' |  awk '{if (NR!=1) {print}}' | grep -v cramfs | grep -v hfsplus | grep -v  bfs | grep -v msdos | grep -v minix)
+  # fs=$(ls /bin/* | grep mkfs | awk '{if (NR!=1) {print}}' | sed 's/^.\{10\}//g' | awk '{print substr($0, 0, length($0)-0)}' | awk '$fs=$fs" Type"' |  awk '{if (NR!=1) {print}}' | grep -v cramfs | grep -v hfsplus | grep -v  bfs | grep -v msdos | grep -v minix)
+  fs=$(ls /bin/* | grep mkfs | awk '{if (NR!=1) {print}}' | sed 's/^.\{10\}//g' | awk '{print substr($0, 0, length($0)-0)}' | awk '$fs=$fs" Type"' |  awk '{if (NR!=1) {print}}' | grep -v 'erofs\|vfat\|minix\|msdos\|bfs\|cramfs\|hfsplus\|ext2\|ext3\|udf')
   format=$(dialog --backtitle "${title}" --clear --title '-| FORMATO DE PARTICIÓN |-' \
           --ok-label 'Seleccionar' --cancel-label 'No formatear' --menu "\nElige el tipo de sistema de archivos\n\nEXT4 >> Para Linux\nFAT >> Para FAT32 para la partición UEFI\nNTFS >> Para Windows\n\n$(fdisk -l $disk | grep dos || fdisk -l $disk | grep gpt)" 15 50 0 ${fs} 2>&1 > /dev/tty)      
 

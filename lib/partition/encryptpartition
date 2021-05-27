@@ -4,8 +4,8 @@ encryptpartition () {
 
 #Desmontamos todo disco y swapoff
 clear
-swapdisco=$( fdisk -l | grep "/dev/\|swap" | grep swap | awk -F ' ' '{print $1}' )
 umount -R /mnt
+swapdisco=$( fdisk -l | grep "/dev/\|swap" | grep swap | awk -F ' ' '{print $1}' )
 swapoff ${swapdisco}
 clear
 swapoff -a
@@ -30,10 +30,10 @@ inputs_diskmatch=false
 while ! $inputs_diskmatch; do
 
 input=$(dialog --backtitle "${title}" --title "-| Clave de Cifrado Disco |-" --clear \
-  --stdout --nocancel --insecure --passwordbox "\nIngresa una clave Segura para ${sizedisk}:\n " 9 60)
+  --stdout --nocancel --insecure --passwordbox "\nIngresa una clave Segura para ${sizedisk}:\n " 10 60)
 
 confirm_input=$(dialog --backtitle "${title}" --title "-| Clave de Cifrado Disco |-" \
-  --clear --stdout --insecure --no-cancel --passwordbox "\nConfirma su clave de ${sizedisk}:\n " 9 60)
+  --clear --stdout --insecure --no-cancel --passwordbox "\nConfirma su clave de ${sizedisk}:\n " 10 60)
 
 if [ -z "$input" ]; then
 
@@ -98,7 +98,7 @@ lsblk ${disk} --all" 20 110
 
 diskencrypt=$(cat root-efi)
 
-rm boot-efi root-efi
+# rm boot-efi root-efi
 
 clear
 echo $diskencrypt
