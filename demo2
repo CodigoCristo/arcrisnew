@@ -1,1 +1,3 @@
-rm -r /usr/lib/initcpio/archiso_shutdown /usr/lib/initcpio/hooks/archiso /usr/lib/initcpio/hooks/archiso_loop_mnt /usr/lib/initcpio/hooks/archiso_pxe_common /usr/lib/initcpio/hooks/archiso_pxe_http /usr/lib/initcpio/hooks/archiso_pxe_nbd /usr/lib/initcpio/hooks/archiso_pxe_nfs /usr/lib/initcpio/hooks/archiso_shutdown /usr/lib/initcpio/install/archiso /usr/lib/initcpio/install/archiso_kms /usr/lib/initcpio/install/archiso_loop_mnt /usr/lib/initcpio/install/archiso_pxe_common /usr/lib/initcpio/install/archiso_pxe_http /usr/lib/initcpio/install/archiso_pxe_nbd /usr/lib/initcpio/install/archiso_pxe_nfs /usr/lib/initcpio/install/archiso_shutdown 
+
+dialog --backtitle "${title}" --title "-| Código Cristo |-" --stdout --ok-label 'Aceptar' --msgbox "\nProximamente...\n" 7 55 
+                

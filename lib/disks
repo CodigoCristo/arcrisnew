@@ -1,4 +1,8 @@
 #!/bin/bash
+proximamente () {
+    dialog --backtitle "${title}" --title "-| Código Cristo |-" --stdout --ok-label 'Aceptar' --msgbox "\nProximamente...\n" 7 55
+}
+
 
 disksystem () {
 
@@ -25,15 +29,17 @@ autopartition
 
 2) ################
 source lib/partition/encryptpartition
-encryptpartition
+# encryptpartition
+proximamente
 ;;
 3) ################
 source lib/partition/manualpartition
-manualpartition
+# manualpartition
+proximamente
 ;;
 
 4) ################
-shell="dash"
+proximamente
 ;;
 
 
