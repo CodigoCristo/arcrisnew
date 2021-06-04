@@ -1,136 +1,80 @@
-DE=""
-DM=""
-WM=""
-seleccionDE=false
-seleccionWM=false
-seleccionXORG=false
 
 
-
-cmd=(dialog --keep-tite --no-collapse --cr-wrap --backtitle "${title}" --title "-| ArcriS |-" --column-separator "|" --no-tags --ok-label '< Seleccionar >' --nocancel --menu "\nElige una opción\n " 13 50 12)
-
-options=(1 "Entorno de escritorio | (DE)"
-         2 "Gestor de ventanas | (WM)"
-         3 "Solo Servidor X | (Xorg)"
-         4 "Emulador de Terminal | (tty)")
-
-choices=$("${cmd[@]}" "${options[@]}" 2>&1 >/dev/tty)
-
-for choice in $choices
-do
-    case $choice in
-        1) #INICIO (DE)    
-
-seleccionDE=true
-
-cmd=(dialog --keep-tite --no-collapse --cr-wrap --backtitle "${title}" --column-separator "|" --no-tags --ok-label '< Seleccionar >' --menu "Selecciona tu escritorio a instalar - (DE)" 22 60 19)
-
-options=(1 " > | xfce4 | Xfce desktop| <"
-         2 " > | gnome | GNOME Classic desktop| <")
-
-choices=$("${cmd[@]}" "${options[@]}" 2>&1 >/dev/tty)
-
-for choice in $choices
-do
-    case $choice in
-        
-###########SELECCION (DE)
-        1) #XFCE4
+extraprograms=true
 
 
-cmd=(dialog --keep-tite --backtitle "${title}" \
---no-collapse --cr-wrap --column-separator "|" --no-tags \
---ok-label '< Seleccionar >' --nocancel --menu "\n\
-Selecciona una opción para XFCE4 \n " 12 60 20)
+while [[ $extraprograms == "true" ]]; do
 
-options=(1 "   Xfce4 || Sistema Completo "
-         2 "   Xfce4 || Minimalista      ")
+menuextras=$(dialog --keep-tite --backtitle "${title}" --title "-| EXTRAS |-" \
+--nocancel --no-tags \
+--menu "\nSeleccione los programas extras que necesita \n " 21 50 10 \
+1 "           Utilidades                   " \
+2 "           Terminales                   " \
+3 "           Audio                        " \
+4 "           Reproductores                " \
+5 "           Navegador Web                " \
+6 "           Office                       " \
+7 "           Administrador de tareas      " \
+8 "           Social media                 " \
+9 "           Gamers                       " \
+10 "           AUR helpers                  " \
+11 " CONFIRMAR  " \
+12 " CANCELAR   " 3>&1 1>&2 2>&3)
 
-choices=$("${cmd[@]}" "${options[@]}" 2>&1 >/dev/tty)
+case "$menuextras" in
 
-for choice in $choices
-do
-    case $choice in
+"1")
 
-        1)  DE="xfce4complete"
-            ;;
-            
-        2)  DE="xfce4mini"
-            ;;
-            
-    esac
-done
-        ;;
-        ######FINAL XFCE4
+;;
 
-        2)  #INICIO GNOME
-cmd=(dialog --keep-tite --backtitle "${title}" \
---no-collapse --cr-wrap --column-separator "|" --no-tags \
---ok-label '< Seleccionar >' --nocancel --menu "\n \
-Selecciona una opción para GNOME \n " 12 60 20)
+"2") 
 
-options=(1 "Gnome40 || Sistema Completo"
-         2 "Gnome40 || Minimalista")
+;;
 
-choices=$("${cmd[@]}" "${options[@]}" 2>&1 >/dev/tty)
 
-for choice in $choices
-do
-    case $choice in
+"3")
 
-        1)  DE="gnomecomplete"
-            ;;
-            
-        2)  DE="gnomemini"
-            ;;
+;;
+
+"4") 
+
+;;
+
+"5")
+
+
+;;
+
+"6")
+
+
+;;
+
+"7")
+
+
+;;
+
+"8")
+
+
+;;
+
+"9")
+
+;;
+
+"10")
+
+;;
+
+"11")
+
+;;
+
+"12")
+extraprograms=false
+;;
 
     esac
 done
-            ;;
- 
-    esac
-done
-            ;;
-#########FIN ESCRITORIO
-
-
-        2) #INICIO (WM)
-
-
-cmd=(dialog --keep-tite --backtitle "${title}" \
---no-collapse --cr-wrap --column-separator "|" --no-tags --ok-label '< Seleccionar >' --menu "Selecciona tu gestor de ventana a instalar - (WM)" 20 55 16)
-
-options=(1 "> i3wm | 150MB de RAM "
-         2 "> qtile | Disponible <"
-         3 "> Awesome | Disponible <")
-
-
-choices=$("${cmd[@]}" "${options[@]}" 2>&1 >/dev/tty)
-
-for choice in $choices
-do
-    case $choice in
-        1)  
-			WM="i3wm"
-            ;;
-
-        2)
-            WM="qtile"
-            ;;
-
-        3)
-            WM="awesome"
-            ;;
-
-    esac
-done
-#FINAL (WM)
-			;;
-			
-
-        3) 
-          seleccionXORG=true
-          ;;
-    esac
-done
-
