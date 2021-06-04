@@ -2,6 +2,8 @@
 
 drivervideo () {
 
+nombreGrafica=$(lspci | grep VGA |  awk -F " " '{print $5,$6,$7,$8,$9,$10,$11,$12,$13}')
+
 dialog --backtitle "${title}" \
 --title "-| Información |-" \
 --msgbox "----------------------------------------------------------------------\n \
@@ -10,8 +12,7 @@ dialog --backtitle "${title}" \
 \n> Si esta usando Hardware real tiene dos opciones para seleccionar: \
 \n  [Automatico] o [Manual] \n\n
 ----------------------------------------------------------------------\n\
-\nMarca de tarjeta de vídeo: \n\n$(lspci | grep VGA |  awk -F " " '{print $5,$6,$7,$8,$9,$10,$11,$12,$13}')\n" 18 75
-
+\nMarca de tarjeta de vídeo: \n\n${nombreGrafica}\n" 18 75
 
 #Inicio de Video
 virt=""
@@ -58,7 +59,7 @@ VMbox=false
 
 if [ "$VM" == "true" ]; then
     
-            infovideo
+            
             case "$virt" in
                 
                 vbox)
@@ -92,48 +93,39 @@ else
 
 dialog --title "-| Driver de Vídeo |-" --yesno "\n¿ Desea instalar de manera automatica su driver de vídeo ? \nPresione Si - Automatico \nPresione No - Manera Manual" 9 62
 case $? in
-   0) infovideo
+   0) 
+
+
 
 if (lspci | grep VGA | grep "NVIDIA\|nVidia" &>/dev/null); then
     
-GPU="xf86-video-nouveau mesa lib32-mesa mesa-vdpau libva-mesa-driver \
-lib32-mesa-vdpau lib32-libva-mesa-driver libva-vdpau-driver libvdpau-va-gl \
-libva-utils vdpauinfo libvdpau lib32-libvdpau opencl-mesa clinfo ocl-icd \
-lib32-ocl-icd opencl-headers"
+dialog --backtitle "${title}" --title "-| Driver de Vídeo |-" --stdout \
+--ok-label "<Confirmar>" --msgbox "\n\nGráfica identificada NVIDIA: xf86-video-nouveau\n\n${nombreGrafica}\n " 11 66           
 
-dialog --title "-| Driver de Vídeo |-" --stdout --ok-label "<Aceptar>"  --msgbox "\n$GPU" 10 80
+elif (lspci | grep VGA | grep "Radeon R\|R2/R3/R4/R5" &>/dev/null); then
             
+dialog --backtitle "${title}" --title "-| Driver de Vídeo |-" --stdout \
+--ok-label "<Confirmar>"  --msgbox "\n\nGráfica identificada AMD RADEON: xf86-video-amdgpu\n\n${nombreGrafica}\n " 11 66 
 
-        elif (lspci | grep VGA | grep "Radeon R\|R2/R3/R4/R5" &>/dev/null); then
-            
-GPU="xf86-video-amdgpu mesa lib32-mesa vulkan-radeon \
-lib32-vulkan-radeon mesa-vdpau libva-mesa-driver lib32-mesa-vdpau \
-lib32-libva-mesa-driver libva-vdpau-driver libvdpau-va-gl libva-utils vdpauinfo \
-opencl-mesa clinfo ocl-icd lib32-ocl-icd opencl-headers"
-dialog --title "-| Driver de Vídeo |-" --stdout --ok-label "<Aceptar>"  --msgbox "\n$GPU" 10 80
-
-        elif (lspci | grep VGA | grep "ATI\|AMD/ATI" &>/dev/null); then
+elif (lspci | grep VGA | grep "ATI\|AMD/ATI" &>/dev/null); then
                     
-GPU="xf86-video-ati mesa lib32-mesa mesa-vdpau libva-mesa-driver \
-lib32-mesa-vdpau lib32-libva-mesa-driver libva-vdpau-driver libvdpau-va-gl \
-libva-utils vdpauinfo opencl-mesa clinfo ocl-icd lib32-ocl-icd opencl-headers"
-dialog --title "-| Driver de Vídeo |-" --stdout --ok-label "<Aceptar>"  --msgbox "\n$GPU" 10 80
+dialog --backtitle "${title}" --title "-| Driver de Vídeo |-" --stdout \
+--ok-label "<Confirmar>"  --msgbox "\n\nGráfica identificada AMD ATI: xf86-video-ati\n\n${nombreGrafica}\n " 11 66 
 
-        elif (lspci | grep VGA | grep "Intel" &>/dev/null); then
+
+elif (lspci | grep VGA | grep "Intel" &>/dev/null); then
             
-GPU="xf86-video-intel vulkan-intel mesa lib32-mesa intel-media-driver \
-libva-intel-driver libva-vdpau-driver libvdpau-va-gl libva-utils vdpauinfo \
-intel-compute-runtime beignet clinfo ocl-icd lib32-ocl-icd opencl-headers"
-dialog --title "-| Driver de Vídeo |-" --stdout --ok-label "<Aceptar>"  --msgbox "\n$GPU" 10 80
-                
-        else
+dialog --backtitle "${title}" --title "-| Driver de Vídeo |-" --stdout \
+--ok-label "<Confirmar>"  --msgbox "\n\nGráfica identificada INTEL: xf86-video-intel\n\n${nombreGrafica}\n " 11 66 
+
+else
             
-GPU="xf86-video-vesa mesa lib32-mesa"
-dialog --title "-| Driver de Vídeo |-" --stdout --ok-label "<Aceptar>"  --msgbox "\n$GPU" 10 80
+dialog --backtitle "${title}" --title "-| Driver de Vídeo |-" --stdout \
+--ok-label "<Confirmar>"  --msgbox "\n\nGráfico Genérico: xf86-video-vesa\n\n${nombreGrafica}\n " 11 66 
             
         fi
 ;;
-   1) infovideo
+   1) 
 
 GPUHYBR=false
 

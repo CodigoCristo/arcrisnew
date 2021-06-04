@@ -157,6 +157,8 @@ drivervideo
 ;;
 
 "8")
+source lib/environment
+environment
 
 ;;
 
