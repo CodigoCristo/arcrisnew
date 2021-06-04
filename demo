@@ -1,7 +1,10 @@
-
-
-r8168=$(lspci -k | grep 'RTL8111/8168/8411' )
-if [[ $r8168  = *RTL8111/8168/8411* || $r8168 = *Rtl8111/8168/8411* || $r8168 = *rtl8111/8168/8411* ]]
-then      
-echo si
-fi
+clear
+printf '%*s\n' "${COLUMNS:-$(tput cols)}" '' | tr ' ' "_"
+echo -e ""
+echo -e "\t\t\t         | Info Hardware de Video |          "
+printf '%*s\n' "${COLUMNS:-$(tput cols)}" '' | tr ' ' _
+echo -e ""
+lspci -v | grep "VGA compatible controller" -A 9
+echo ""
+echo "Presiona [ENTER] para confirmar..."
+read line

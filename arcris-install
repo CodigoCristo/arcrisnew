@@ -151,6 +151,8 @@ kerneles
 ;;
 
 "7")
+source lib/video
+drivervideo
 
 ;;
 

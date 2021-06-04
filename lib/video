@@ -1,3 +1,7 @@
+#!/bin/bash
+
+drivervideo () {
+
 dialog --backtitle "$({title})" \
 --title "-| Información |-" \
 --msgbox "----------------------------------------------------------------------\n \
@@ -7,3 +11,8 @@ dialog --backtitle "$({title})" \
 \n  [Automatico] o [Manual] \n\n
 ----------------------------------------------------------------------\n\
 \nMarca de tarjeta de vídeo: \n\n$(lspci | grep VGA |  awk -F " " '{print $5,$6,$7,$8,$9,$10,$11,$12,$13}')\n" 18 75
+
+
+}
+
+
