@@ -163,81 +163,9 @@ read line
 }
 
 
-    ####################################################################
-      
-    case $(systemd-detect-virt) in
-        oracle)
-            virt="vbox"
-            VM=true
-        ;;
-        vmware)
-            virt="vmware"
-            VM=true
-        ;;
-        qemu)
-            virt="qemu"
-            VM=true
-        ;;
-        kvm)
-            virt="kvm"
-            VM=true
-        ;;
-        microsoft)
-            virt="hyper-v"
-            VM=true
-        ;;
-        xen)
-            virt="xen"
-            VM=true
-        ;;
-    esac
-    
-    ####################################################################
+   
 
-VMbox=false
-if [ "$VM" == "true" ]; then
-    
-            infovideo
-            case "$virt" in
-                
-                vbox)   dialog --title "-| Driver de Vídeo |-" --stdout --ok-label "<Instalar>"  --msgbox "\nVídeo Detectado Virtual Box" 8 80
-                        VMbox=true
-                        
-                ;;
-                
-                vmware) GPU="xf86-video-vmware xf86-input-vmmouse open-vm-tools net-tools gtkmm mesa mesa-libgl"
-                        dialog --title "-| Driver de Vídeo |-" --stdout --ok-label "<Instalar>"  --msgbox "\nVídeo Detectado VMware\nInstalar: $GPU" 8 80
-                ;;
-                
-                
-                hyper-v) GPU="xf86-video-fbdev mesa-libgl"
-                         dialog --title "-| Driver de Vídeo |-" --stdout --ok-label "<Instalar>"  --msgbox "\nVídeo Detectado hyper-v\nInstalar: $GPU" 8 80                         
-                ;;
-                
-                
-                qemu) GPU="xf86-video-fbdev mesa mesa-libgl qemu-guest-agent"
-                      GPUvirt="qemu-guest-agent"
-                      echo $GPUvirt > GPUvirt
-                      VMqemu=true
-                      dialog --title "-| Driver de Vídeo |-" --stdout --ok-label "<Instalar>"  --msgbox "\nVídeo Detectado Qemu\nInstalar: $GPU" 8 80                   
-                ;;
 
-                kvm)  GPU="xf86-video-fbdev mesa mesa-libgl qemu-guest-agent"
-                      GPUvirt="qemu-guest-agent"
-                      echo $GPUvirt > GPUvirt
-                      VMqemu=true
-                      dialog --title "-| Driver de Vídeo |-" --stdout --ok-label "<Instalar>"  --msgbox "\nVídeo Detectado Qemu\nInstalar: $GPU" 8 80                   
-                ;;
-                
-                
-                *)    GPU="xf86-video-fbdev mesa-libgl"
-                      dialog --title "-| Driver de Vídeo |-" --stdout --ok-label "<Instalar>"  --msgbox "\nVídeo Detectado MESA\nInstalar: $GPU" 8 80 
-                ;;
-                
-            esac
-
-            
-else
 
 dialog --title "-| Driver de Vídeo |-" --yesno "\n¿ Desea instalar de manera automatica su driver de vídeo ? \nPresione Si - Automatico \nPresione No - Manera Manual" 9 62
 case $? in

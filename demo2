@@ -1,9 +1,2 @@
-dialog --backtitle "$({title})" \
---title "-| Información |-" \
---msgbox "----------------------------------------------------------------------\n \
-\n> Si esta usando Maquina virtual la selección de Driver de Video es: \
-\n  [Automatico] \n \
-\n> Si esta usando Hardware real tiene dos opciones para seleccionar: \
-\n  [Automatico] o [Manual] \n\n
-----------------------------------------------------------------------\n\
-\nMarca de tarjeta de vídeo: \n\n$(lspci | grep VGA |  awk -F " " '{print $5,$6,$7,$8,$9,$10,$11,$12,$13}')\n" 18 75
+dialog --title "-| Driver de Vídeo |-" --stdout --ok-label "<Confirmar>"  --msgbox "\n\nVídeo Detectado Virtual Box\n " 8 40
+                
