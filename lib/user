@@ -13,7 +13,7 @@ rootpasswd=""
 ##########################
 while true; do
 username=$(dialog --backtitle "${title}" --title "${titleuser}" \
---nocancel --inputbox "${msg_username}" 14 65 3>&1 1>&2 2>&3)
+--nocancel --inputbox "${msg_username}" 15 65 3>&1 1>&2 2>&3)
 
     if [ $? -eq 0 ]; then
     #El nombre de usuario debe comenzar con una letra minúscula. 
@@ -23,7 +23,7 @@ username=$(dialog --backtitle "${title}" --title "${titleuser}" \
         
         # El archivo de nombre de usuario reservado contiene nombres de usuario que deben evitarse
         if grep -Fxq "$username" reserved_usernames ; then
-          dialog --backtitle "${title}" --title "${title_reserved_usernames}" -msgbox "${msg_reserved_usernames}" 6 70
+          dialog --backtitle "${title}" --title "${title_reserved_usernames}" -msgbox "${msg_reserved_usernames}" 7 70
         
         else 
           
@@ -32,7 +32,7 @@ username=$(dialog --backtitle "${title}" --title "${titleuser}" \
           while ! $inputs_match; do
 
             input=$(dialog --backtitle "${title}" --title "${title_passwuser}" --clear \
-              --stdout --nocancel --insecure --passwordbox "${msg_passwduser} $username:\n " 9 60)
+              --stdout --nocancel --insecure --passwordbox "${msg_passwduser} $username:\n " 10 55)
             confirm_input=$(dialog --backtitle "${title}" --title "${title_passwuserconfirm} $username |-" \
               --clear --stdout --insecure --no-cancel --passwordbox "${msg_passwuserconfirm}" 10 55)
 
@@ -86,7 +86,7 @@ inputs_match=false
     input=$(dialog --backtitle "${title}" --title "${title_passroot}" --clear --stdout --nocancel \
       --insecure --passwordbox "${msg_passroot}" 13 50)
     confirm_input=$(dialog --backtitle "${title}" --title "${title_passroot_confirm}" --clear --stdout --no-cancel \
-      --insecure --passwordbox "${msg_passroot_confirm}" 11 60)
+      --insecure --passwordbox "${msg_passroot_confirm}" 10 60)
         
 
     if [ -z "$input" ]; then
