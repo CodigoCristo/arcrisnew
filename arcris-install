@@ -145,6 +145,8 @@ disksystem
 ;;
 
 "6")
+source lib/kernel
+kerneles
 
 ;;
 

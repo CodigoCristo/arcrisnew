@@ -1,3 +1,0 @@
-
-dialog --backtitle "${title}" --title "-| Código Cristo |-" --stdout --ok-label 'Aceptar' --msgbox "\nProximamente...\n" 7 55 
-                

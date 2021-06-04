@@ -1,20 +1,7 @@
-dialog --no-collapse --cr-wrap --backtitle "$titulo" --title "-| Confirmación de datos |-" --stdout --ok-label "Confirmar" \
---prgbox "echo '' 
-echo '#################################################' 
-echo ''
-echo 'Nombre de Usuario:'
-echo 'Clave de Usuario :'
-echo ''
-echo 'Clave de Administrador - Root : '
-echo 'Hostname:' 
-echo ''
-echo '#################################################' " 15 55
 
 
-
-
-
-
-
-
-
+r8168=$(lspci -k | grep 'RTL8111/8168/8411' )
+if [[ $r8168  = *RTL8111/8168/8411* || $r8168 = *Rtl8111/8168/8411* || $r8168 = *rtl8111/8168/8411* ]]
+then      
+echo si
+fi
