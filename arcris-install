@@ -163,6 +163,8 @@ environment
 ;;
 
 "9")
+source lib/extras
+extraprogram
 
 ;;
 
