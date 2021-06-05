@@ -2,36 +2,36 @@
 
 install () {
 
-red='\033[38;2;255;1;31m'
+red="\033[38;2;255;1;31m"
 clear
 echo ""
 echo ""
-echo -e $red '                             -`                        '
-echo -e $red '                           .o+`                        '
+echo -e $red "                             -`                        "
+echo -e $red "                           .o+`                        "
 echo -e $red "                           `ooo/                       Kernel  : ${kernel_select}"
-echo -e $red '                          `+oooo:                      '
-echo -e $red '                         `+oooooo:                     Disco   : ' 
-echo -e $red '                         -+oooooo+:                    '
-echo -e $red '                       `/:-:++oooo+:                   Usuario : '
-echo -e $red '                      `/++++/+++++++:                  '
-echo -e $red '                     `/++++++++++++++:                 Idioma  : '
-echo -e $red '                    `/+++ooooooooooooo/`               '
-echo -e $red '                   ./ooosssso++osssssso+`              Zona Horaria :'
-echo -e $red '                  .oossssso-````/ossssss+`             '
-echo -e $red '                 -osssssso.      :ssssssso.            Ubicación :'
-echo -e $red '                :osssssss/        osssso+++.           '
-echo -e $red '               /ossssssss/        +ssssooo/-           Driver de Vídeo : '
-echo -e $red '             `/ossssso+/:-        -:/+osssso+-         '
-echo -e $red '            `+sso+:-`                 `.-/+oso:        Entorno Gráfico : '
-echo -e $red '           `++:.                           `-/+/       '
-echo -e $red '           .`                                 `/       '
+echo -e $red "                          `+oooo:                      "
+echo -e $red "                         `+oooooo:                     Disco   : " 
+echo -e $red "                         -+oooooo+:                    "
+echo -e $red "                       `/:-:++oooo+:                   Usuario : "
+echo -e $red "                      `/++++/+++++++:                  "
+echo -e $red "                     `/++++++++++++++:                 Idioma  : "
+echo -e $red "                    `/+++ooooooooooooo/`               "
+echo -e $red "                   ./ooosssso++osssssso+`              Zona Horaria :"
+echo -e $red "                  .oossssso-````/ossssss+`             "
+echo -e $red "                 -osssssso.      :ssssssso.            Ubicación :"
+echo -e $red "                :osssssss/        osssso+++.           "
+echo -e $red "               /ossssssss/        +ssssooo/-           Driver de Vídeo : "
+echo -e $red "             `/ossssso+/:-        -:/+osssso+-         "
+echo -e $red "            `+sso+:-`                 `.-/+oso:        Entorno Gráfico : "
+echo -e $red "           `++:.                           `-/+/       "
+echo -e $red "           .`                                 `/       "
 echo -e $red "                          _                  _         "
 echo -e $red "  .--.                   / \   _ __ ___ _ __(_)___     "
-echo -e $red " / _.-' .-.  .-.  .-.   / _ \ | '__/ __| '__| / __|    "
-echo -e $red " \  '-. '-'  '-'  '-'  / ___ \| | | (__| |  | \__ \    "
-echo -e $red "  '--'                /_/   \_\_|  \___|_|  |_|___/    "
+echo -e $red " / _.-" .-.  .-.  .-.   / _ \ | "__/ __| "__| / __|    "
+echo -e $red " \  "-. "-"  "-"  "-"  / ___ \| | | (__| |  | \__ \    "
+echo -e $red "  "--"                /_/   \_\_|  \___|_|  |_|___/    "
 
-echo -e '\033[m'
+echo -e "\033[m"
 
 read line
 
