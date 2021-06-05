@@ -8,9 +8,9 @@ echo ""
 echo ""
 echo -e $red '                             -`                      '
 echo -e $red '                           .o+`                      '
-echo -e $red '                           `ooo/                     Kernel Seleccionado: '
-echo -e $red '                          `+oooo:                    '
-echo -e $red '                         `+oooooo:                   ' 
+echo -e $red '                           `ooo/                       Kernel  : '
+echo -e $red '                          `+oooo:                      Disco   : '
+echo -e $red '                         `+oooooo:                     Usuario : ' 
 echo -e $red '                         -+oooooo+:                  '
 echo -e $red '                       `/:-:++oooo+:                 '
 echo -e $red '                      `/++++/+++++++:                '
@@ -25,11 +25,11 @@ echo -e $red '             `/ossssso+/:-        -:/+osssso+-       '
 echo -e $red '            `+sso+:-`                 `.-/+oso:      '
 echo -e $red '           `++:.                           `-/+/     '
 echo -e $red '           .`                                 `/     '
-echo -e $red "                              _                  _      "
-echo -e $red "  .--.                       / \   _ __ ___ _ __(_)___  "
-echo -e $red " / _.-' .-.  .-.  .-.       / _ \ | '__/ __| '__| / __| "
-echo -e $red " \  '-. '-'  '-'  '-'      / ___ \| | | (__| |  | \__ \ "
-echo -e $red "  '--'                    /_/   \_\_|  \___|_|  |_|___/ "
+echo -e $red "                           _                  _      "
+echo -e $red "  .--.                    / \   _ __ ___ _ __(_)___  "
+echo -e $red " / _.-' .-.  .-.  .-.    / _ \ | '__/ __| '__| / __| "
+echo -e $red " \  '-. '-'  '-'  '-'   / ___ \| | | (__| |  | \__ \ "
+echo -e $red "  '--'                 /_/   \_\_|  \___|_|  |_|___/ "
 
 echo -e '\033[m'
 
