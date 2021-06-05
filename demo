@@ -1,50 +1,39 @@
-cmd=(dialog --keep-tite --backtitle "${title}" \
-            --no-collapse --cr-wrap --column-separator "|" --no-tags --ok-label '< Seleccionar >' --nocancel --menu "Cualquier elección trae por defecto:\n> i3-gaps i3blocks i3lock dmenu ly-git rxvt \n\nSelecciona una opción para i3wm \n" 14  73 19)
+#Administrador de Procesos
+cmd=(dialog --no-collapse --cr-wrap --backtitle "$titulo"  --title "-| Administrador de Tareas |-" \
+--no-tags  --checklist "\n[ ESPACIO ] - Para marcar o desmarcar *\n " 15 70 20)
+options=(1 " gnome-system-monitor " on
+         2 " htop                 " on
+         3 " bashtop              " off
+         4 " gtop                 " off
+         5 " gotop - AUR          " off)
 
-            options=(1 "Predeterminado || Con Tema || i3-gaps + i3status"
-                     2 "Predeterminado || Con Tema || i3-gaps + bumblebee-status"
-                     3 "Escritorio vacio || Sin Tema || Incluye todo lo minimo para i3wm")
+choices=$("${cmd[@]}" "${options[@]}" 2>&1 >/dev/tty)
+clear
+for choice in $choices
+do
+    case $choice in
+        1)
+            AP1="gnome-system-monitor"
+            AP_condicion=true
+            ;;
+        2)
+            AP2="htop"
+            AP_condicion=true
+            ;;
+        3)
+            AP3="bashtop"
+            AP_condicion=true
+            ;;
+        4)
+            AP4="gtop"
+            AP_condicion=true
+            ;;
 
-            choices=$("${cmd[@]}" "${options[@]}" 2>&1 >/dev/tty)
-
-            for choice in $choices
-            do
-                case $choice in
-                    
-                    1)  i3wm="i3-gaps i3blocks i3lock i3status dmenu rofi rxvt-unicode"
-                        i3wm1="tumbler ffmpegthumbs ffmpegthumbnailer raw-thumbnailer freetype2"
-                        i3wm2="network-manager-applet polkit-gnome gnome-keyring lxappearance"
-                        i3wm3="ttf-hack gnu-free-fonts awesome-terminal-fonts"
-                        i3wm4="papirus-icon-theme gnome-themes-extra"
-                        i3wm5="thunar alacritty feh xclip maim"
-                        i3wm6="tk compton-tryone-git i3lock-fancy-git"
-                        WM="$i3wm $i3wm1 $i3wm2 $i3wm3 $i3wm4 $i3wm5 $i3wm6"
-                        DM="ly-git"
-                        echo ly > DMservice
-                        i3tema1=true
-                        # twmn deepin-screenshot-copy-patch xclip
-                        ;;
-
-
-                    2)  i3wm="i3-gaps i3blocks i3lock dmenu rofi rxvt-unicode"
-                        i3wm1="tumbler ffmpegthumbs ffmpegthumbnailer raw-thumbnailer freetype2"
-                        i3wm2="network-manager-applet polkit-gnome gnome-keyring lxappearance"
-                        i3wm3="ttf-hack gnu-free-fonts awesome-terminal-fonts"
-                        i3wm4="papirus-icon-theme gnome-themes-extra"
-                        i3wm5="thunar alacritty feh xclip maim"
-                        i3wm6="bumblebee-status tk compton-tryone-git i3lock-fancy-git"
-                        WM="$i3wm $i3wm1 $i3wm2 $i3wm3 $i3wm4 $i3wm5 $i3wm6"
-                        DM="ly-git"
-                        echo ly > DMservice
-                        i3tema2=true
-                        # twmn deepin-screenshot-copy-patch xclip
-                        ;;
-                        
-                        
-                    3)  WM="i3-gaps i3blocks i3lock i3status dmenu ly-git rxvt-unicode gnome-themes-extra"
-                        DM="ly-git"
-                        echo ly > DMservice
-                        ;;
-                        
-                esac
-            done
+        5)
+            AP5="gotop"
+            AP_condicion=true
+            ;;
+            
+            
+    esac
+done

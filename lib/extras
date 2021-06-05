@@ -54,7 +54,45 @@ case "$menuextras" in
 ;;
 
 "7")
+#Administrador de Tareas
+cmd=(dialog --no-collapse --cr-wrap --backtitle "${title}" --title "-| Administrador de Tareas |-" \
+--no-tags  --checklist "\n[ ESPACIO ] - Para marcar o desmarcar *\n " 15 70 20)
+options=(1 " gnome-system-monitor " on
+         2 " htop                 " on
+         3 " bashtop              " off
+         4 " gtop                 " off
+         5 " gotop - AUR          " off)
 
+choices=$("${cmd[@]}" "${options[@]}" 2>&1 >/dev/tty)
+clear
+for choice in $choices
+do
+    case $choice in
+        1)
+            AP1="gnome-system-monitor"
+            AP_condicion=true
+            ;;
+        2)
+            AP2="htop"
+            AP_condicion=true
+            ;;
+        3)
+            AP3="bashtop"
+            AP_condicion=true
+            ;;
+        4)
+            AP4="gtop"
+            AP_condicion=true
+            ;;
+
+        5)
+            AP5="gotop"
+            AP_condicion=true
+            ;;
+            
+            
+    esac
+done
 
 ;;
 
@@ -77,6 +115,7 @@ case "$menuextras" in
 
 "12")
 extraprograms=false
+break
 ;;
 
     esac
