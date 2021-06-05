@@ -1,80 +1,27 @@
-
-
-extraprograms=true
-
-
-while [[ $extraprograms == "true" ]]; do
-
-menuextras=$(dialog --keep-tite --backtitle "${title}" --title "-| EXTRAS |-" \
---nocancel --no-tags \
---menu "\nSeleccione los programas extras que necesita \n " 21 50 10 \
-1 "           Utilidades                   " \
-2 "           Terminales                   " \
-3 "           Audio                        " \
-4 "           Reproductores                " \
-5 "           Navegador Web                " \
-6 "           Office                       " \
-7 "           Administrador de tareas      " \
-8 "           Social media                 " \
-9 "           Gamers                       " \
-10 "           AUR helpers                  " \
-11 " CONFIRMAR  " \
-12 " CANCELAR   " 3>&1 1>&2 2>&3)
-
-case "$menuextras" in
-
-"1")
-
-;;
-
-"2") 
-
-;;
-
-
-"3")
-
-;;
-
-"4") 
-
-;;
-
-"5")
-
-
-;;
-
-"6")
-
-
-;;
-
-"7")
-
-
-;;
-
-"8")
-
-
-;;
-
-"9")
-
-;;
-
-"10")
-
-;;
-
-"11")
-
-;;
-
-"12")
-extraprograms=false
-;;
-
-    esac
-done
+red='\033[38;2;255;1;31m'
+clear
+echo ""
+echo ""
+echo ""
+echo -e $red '			                   -`                  '
+echo -e $red '			                 .o+`                  '
+echo -e $red '			                 `ooo/                   '
+echo -e $red '			                `+oooo:                 '
+echo -e $red '			               `+oooooo:                 ' 
+echo -e $red '			               -+oooooo+:                '
+echo -e $red '			             `/:-:++oooo+:              '
+echo -e $red '			            `/++++/+++++++:              '
+echo -e $red '			           `/++++++++++++++:             '
+echo -e $red '			          `/+++ooooooooooooo/`           '
+echo -e $red '			         ./ooosssso++osssssso+`          '
+echo -e $red '			        .oossssso-````/ossssss+`         '
+echo -e $red '			       -osssssso.      :ssssssso.        '
+echo -e $red '			      :osssssss/        osssso+++.       '
+echo -e $red '			     /ossssssss/        +ssssooo/-       '
+echo -e $red '			   `/ossssso+/:-        -:/+osssso+-     '
+echo -e $red '			  `+sso+:-`                 `.-/+oso:    '
+echo -e $red '			 `++:.                           `-/+/   '
+echo -e $red '			 .`                                 `/   '
+echo ""
+echo -e $red "		      Visita el Canal de Youtube de Código Cristo"
+echo -e '\033[m'

@@ -169,6 +169,8 @@ extraprogram
 ;;
 
 "10")
+source lib/install
+install
 
 ;;
 
