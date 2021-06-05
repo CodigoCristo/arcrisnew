@@ -61,8 +61,10 @@ echo -e "${logoline25}"
 
 echo -e '\033[m'
 echo ""
-echo "Arcris Instalación fácil de ArchLinux - Donaciones en: www.patreon.com/codigocristo"
-
+echo " -| Arcris Instalación fácil de ArchLinux - Donaciones en: www.patreon.com/codigocristo |-"
+echo ""
+echo ""
+echo "Presiona [ENTER] para continuar con la Instalación..."
 read line
 
 }
