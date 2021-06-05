@@ -1,32 +1,57 @@
+kernel_select='linux'
+
+logoline1='                             -`                        '
+logoline2='                           .o+`                        '
+logoline3='                           `ooo/                       '
+logoline4='                          `+oooo:                      '
+logoline5='                         `+oooooo:                     ' 
+logoline6='                         -+oooooo+:                    '
+logoline7='                       `/:-:++oooo+:                   '
+logoline8='                      `/++++/+++++++:                  '
+logoline9='                     `/++++++++++++++:                 '
+logoline11='                    `/+++ooooooooooooo/`               '
+logoline12='                   ./ooosssso++osssssso+`              '
+logoline13='                  .oossssso-````/ossssss+`             '
+logoline14='                 -osssssso.      :ssssssso.            '
+logoline15='                :osssssss/        osssso+++.           '
+logoline16='               /ossssssss/        +ssssooo/-           '
+logoline17='             `/ossssso+/:-        -:/+osssso+-         '
+logoline18='            `+sso+:-`                 `.-/+oso:        '
+logoline19='           `++:.                           `-/+/       '
+logoline20='           .`                                 `/       '
+logoline21="                          _                  _         "
+logoline22="  .--.                   / \   _ __ ___ _ __(_)___     "
+logoline23=" / _.-' .-.  .-.  .-.   / _ \ | '__/ __| '__| / __|    "
+logoline24=" \  '-. '-'  '-'  '-'  / ___ \| | | (__| |  | \__ \    "
+logoline25="  '--'                /_/   \_\_|  \___|_|  |_|___/    "
+
 red='\033[38;2;255;1;31m'
 clear
 echo ""
 echo ""
-echo -e $red '			                   -`                  '
-echo -e $red '			                 .o+`                  '
-echo -e $red '			                 `ooo/                   '
-echo -e $red '			                `+oooo:                 '
-echo -e $red '			               `+oooooo:                 ' 
-echo -e $red '			               -+oooooo+:                '
-echo -e $red '			             `/:-:++oooo+:              '
-echo -e $red '			            `/++++/+++++++:              '
-echo -e $red '			           `/++++++++++++++:             '
-echo -e $red '			          `/+++ooooooooooooo/`           '
-echo -e $red '			         ./ooosssso++osssssso+`          '
-echo -e $red '			        .oossssso-````/ossssss+`         '
-echo -e $red '			       -osssssso.      :ssssssso.        '
-echo -e $red '			      :osssssss/        osssso+++.       '
-echo -e $red '			     /ossssssss/        +ssssooo/-       '
-echo -e $red '			   `/ossssso+/:-        -:/+osssso+-     '
-echo -e $red '			  `+sso+:-`                 `.-/+oso:    '
-echo -e $red '			 `++:.                           `-/+/   '
-echo -e $red '			 .`                                 `/   '
-echo -e $red "                              _                  _      "
-echo -e $red "  .--.                       / \   _ __ ___ _ __(_)___  "
-echo -e $red " / _.-' .-.  .-.  .-.       / _ \ | '__/ __| '__| / __| "
-echo -e $red " \  '-. '-'  '-'  '-'      / ___ \| | | (__| |  | \__ \ "
-echo -e $red "  '--'                    /_/   \_\_|  \___|_|  |_|___/ "
+echo -e $red
 
-echo -e '\033[m'
-
-
+echo -e "${logoline1}"
+echo -e "${logoline2}"
+echo -e "${logoline3} ${kernel_select}"
+echo -e "${logoline4}"
+echo -e "${logoline5}"
+echo -e "${logoline6}"
+echo -e "${logoline7}"
+echo -e "${logoline8}"
+echo -e "${logoline9}"
+echo -e "${logoline11}"
+echo -e "${logoline12}"
+echo -e "${logoline13}"
+echo -e "${logoline14}"
+echo -e "${logoline15}"
+echo -e "${logoline16}"
+echo -e "${logoline17}"
+echo -e "${logoline18}"
+echo -e "${logoline19}"
+echo -e "${logoline20}"
+echo -e "${logoline21}"
+echo -e "${logoline22}"
+echo -e "${logoline23}"
+echo -e "${logoline24}"
+echo -e "${logoline25}"
