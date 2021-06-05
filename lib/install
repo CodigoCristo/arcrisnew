@@ -6,7 +6,6 @@ red='\033[38;2;255;1;31m'
 clear
 echo ""
 echo ""
-echo ""
 echo -e $red '                             -`                  '
 echo -e $red '                           .o+`                  '
 echo -e $red '                           `ooo/                   '
@@ -26,9 +25,14 @@ echo -e $red '             `/ossssso+/:-        -:/+osssso+-     '
 echo -e $red '            `+sso+:-`                 `.-/+oso:    '
 echo -e $red '           `++:.                           `-/+/   '
 echo -e $red '           .`                                 `/   '
-echo ""
-echo -e $red "            Visita el Canal de Youtube de Código Cristo"
+echo -e $red "                                _                  _      "
+echo -e $red "  .--.                         / \   _ __ ___ _ __(_)___  "
+echo -e $red " / _.-' .-.  .-.  .-.         / _ \ | '__/ __| '__| / __| "
+echo -e $red " \  '-. '-'  '-'  '-'        / ___ \| | | (__| |  | \__ \ "
+echo -e $red "  '--'                      /_/   \_\_|  \___|_|  |_|___/ "
+
 echo -e '\033[m'
+
 sleep 20
 
 
