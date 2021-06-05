@@ -6,35 +6,34 @@ red='\033[38;2;255;1;31m'
 clear
 echo ""
 echo ""
-echo -e $red '                             -`                  '
-echo -e $red '                           .o+`                  '
-echo -e $red '                           `ooo/                   '
-echo -e $red '                          `+oooo:                 '
-echo -e $red '                         `+oooooo:                 ' 
-echo -e $red '                         -+oooooo+:                '
-echo -e $red '                       `/:-:++oooo+:              '
-echo -e $red '                      `/++++/+++++++:              '
-echo -e $red '                     `/++++++++++++++:             '
-echo -e $red '                    `/+++ooooooooooooo/`           '
-echo -e $red '                   ./ooosssso++osssssso+`          '
-echo -e $red '                  .oossssso-````/ossssss+`         '
-echo -e $red '                 -osssssso.      :ssssssso.        '
-echo -e $red '                :osssssss/        osssso+++.       '
-echo -e $red '               /ossssssss/        +ssssooo/-       '
-echo -e $red '             `/ossssso+/:-        -:/+osssso+-     '
-echo -e $red '            `+sso+:-`                 `.-/+oso:    '
-echo -e $red '           `++:.                           `-/+/   '
-echo -e $red '           .`                                 `/   '
-echo -e $red "                                _                  _      "
-echo -e $red "  .--.                         / \   _ __ ___ _ __(_)___  "
-echo -e $red " / _.-' .-.  .-.  .-.         / _ \ | '__/ __| '__| / __| "
-echo -e $red " \  '-. '-'  '-'  '-'        / ___ \| | | (__| |  | \__ \ "
-echo -e $red "  '--'                      /_/   \_\_|  \___|_|  |_|___/ "
+echo -e $red '                             -`                      '
+echo -e $red '                           .o+`                      '
+echo -e $red '                           `ooo/                     Kernel Seleccionado: '
+echo -e $red '                          `+oooo:                    '
+echo -e $red '                         `+oooooo:                   ' 
+echo -e $red '                         -+oooooo+:                  '
+echo -e $red '                       `/:-:++oooo+:                 '
+echo -e $red '                      `/++++/+++++++:                '
+echo -e $red '                     `/++++++++++++++:               '
+echo -e $red '                    `/+++ooooooooooooo/`             '
+echo -e $red '                   ./ooosssso++osssssso+`            '
+echo -e $red '                  .oossssso-````/ossssss+`           '
+echo -e $red '                 -osssssso.      :ssssssso.          '
+echo -e $red '                :osssssss/        osssso+++.         '
+echo -e $red '               /ossssssss/        +ssssooo/-         '
+echo -e $red '             `/ossssso+/:-        -:/+osssso+-       '
+echo -e $red '            `+sso+:-`                 `.-/+oso:      '
+echo -e $red '           `++:.                           `-/+/     '
+echo -e $red '           .`                                 `/     '
+echo -e $red "                              _                  _      "
+echo -e $red "  .--.                       / \   _ __ ___ _ __(_)___  "
+echo -e $red " / _.-' .-.  .-.  .-.       / _ \ | '__/ __| '__| / __| "
+echo -e $red " \  '-. '-'  '-'  '-'      / ___ \| | | (__| |  | \__ \ "
+echo -e $red "  '--'                    /_/   \_\_|  \___|_|  |_|___/ "
 
 echo -e '\033[m'
 
-sleep 20
-
+read line
 
 }
 
