@@ -8,7 +8,7 @@ echo ""
 echo ""
 echo -e $red '                             -`                        '
 echo -e $red '                           .o+`                        '
-echo -e $red '                           `ooo/                       Kernel  : '
+echo -e $red "                           `ooo/                       Kernel  : ${kernel_select}"
 echo -e $red '                          `+oooo:                      '
 echo -e $red '                         `+oooooo:                     Disco   : ' 
 echo -e $red '                         -+oooooo+:                    '
