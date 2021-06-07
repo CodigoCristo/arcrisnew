@@ -1,20 +1,2 @@
-function ProgressBar {
-    let _progress=(${1}*100/${2}*100)/100
-    let _done=(${_progress}*6)/10
-    let _left=60-$_done
-    _fill=$(printf "%${_done}s")
-    _empty=$(printf "%${_left}s")
-# 1.2.1.1 Progreso : [########################################] 100%
-printf "\r   |${_fill// /■}${_empty// /-}| ${_progress}%%"
-
-}
-# Variables
-_start=1
-
-_end=100
-
-for number in $(seq ${_start} ${_end})
-do
-    sleep 0.4
-    ProgressBar ${number} ${_end}
-done
+dialog --backtitle "${title}" --title "-| ERROR |-" --stdout \
+--msgbox "\n\nNo has creado un usuario correctamente...\n " 8 50           

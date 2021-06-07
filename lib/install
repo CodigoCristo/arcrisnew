@@ -47,6 +47,13 @@ else
 fi
 
 
+
+if [[ $sectionuser != 0 ]]; then
+    dialog --backtitle "${title}" --title "-| ERROR |-" --stdout --msgbox "\n\nNo has creado un usuario correctamente...\n " 8 50    
+fi
+
+
+
 red='\033[38;2;255;1;31m'
 clear
 echo -e $red
