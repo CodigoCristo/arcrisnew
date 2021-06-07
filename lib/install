@@ -28,12 +28,6 @@ logoline23=" / _.-' .-.  .-.  .-.   / _ \ | '__/ __| '__| / __|    "
 logoline24=" \  '-. '-'  '-'  '-'  / ___ \| | | (__| |  | \__ \    "
 logoline25="  '--'                /_/   \_\_|  \___|_|  |_|___/    "
 
-red='\033[38;2;255;1;31m'
-clear
-echo ""
-echo ""
-echo -e $red
-
 
 if [[ ${zonemanual} == true ]]; then
     zonahoraria=${$timezone}
@@ -53,6 +47,9 @@ else
 fi
 
 
+red='\033[38;2;255;1;31m'
+clear
+echo -e $red
 printf '%*s\n' "${COLUMNS:-$(tput cols)}" '' | tr ' ' _
 echo ""
 echo -e "${logoline1}"
@@ -84,6 +81,7 @@ echo ""
 echo "  Arcris Instalación fácil de ArchLinux - Donaciones en: www.patreon.com/codigocristo"
 echo ""
 echo ""
+printf '%*s\n' "${COLUMNS:-$(tput cols)}" '' | tr ' ' _
 
 function ProgressBar {
     let _progress=(${1}*100/${2}*100)/100
@@ -106,7 +104,6 @@ do
     ProgressBar ${number} ${_end}
 done
 
-printf '%*s\n' "${COLUMNS:-$(tput cols)}" '' | tr ' ' _
 echo -e '\033[m'
 
 
