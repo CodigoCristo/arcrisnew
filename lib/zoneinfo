@@ -78,18 +78,18 @@ clear
 ##########################
 
 locales=""
-locale=""
+localefrom=""
 
 curl https://ipapi.co/languages | awk -F "," '{print $1}' | sed 's/-/_/g' | sed "s|$|.UTF8|" > language
 
 country=$(cat language)
 
 locales="$(cat lib/locale.gen | grep -v "#  " | sed 's/#//g' | grep '.UTF-8 UTF-8' )"
-locale=$(dialog --backtitle "${title}" --no-cancel --ok-label "${btn_confirm}" --clear --title "${title_country}" \
+localefrom=$(dialog --backtitle "${title}" --no-cancel --ok-label "${btn_confirm}" --clear --title "${title_country}" \
 --menu "${msg_country} ${country}\n " 25 35 20 ${locales} 2>&1 > /dev/tty)
 
 rm language
 clear
-# $locale > variable 1  = es_PE.UTF-8
+# $localefrom > variable 1  = es_PE.UTF-8
 
 }

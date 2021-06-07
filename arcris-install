@@ -116,7 +116,7 @@ echo $zoneinfo
 echo ""
 echo $zonemanual
 echo $timezonedir$timezone
-echo $locale
+echo $localefrom
 read line
 ;;
 

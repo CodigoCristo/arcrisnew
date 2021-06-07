@@ -70,7 +70,7 @@ echo -e "${logoline9} Idioma  : ${keymap}"
 echo -e "${logoline11}"
 echo -e "${logoline12} Zona Horaria : ${zonahoraria}"
 echo -e "${logoline13}"
-echo -e "${logoline14} Ubicación : ${locale}"
+echo -e "${logoline14} Ubicación : ${localefrom}"
 echo -e "${logoline15}"
 echo -e "${logoline16} Driver de Vídeo : ${video}"
 echo -e "${logoline17}"
@@ -95,7 +95,7 @@ function ProgressBar {
     _fill=$(printf "%${_done}s")
     _empty=$(printf "%${_left}s")
 # 1.2.1.1 Progreso : [########################################] 100%
-printf "\r   |${_fill// /■}${_empty// /-}| ${_progress}%%"
+printf "\r   |${_fill// /║}${_empty// /-}| ${_progress}%%"
 
 }
 # Variables
