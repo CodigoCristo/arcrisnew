@@ -55,9 +55,6 @@ fi
 
 printf '%*s\n' "${COLUMNS:-$(tput cols)}" '' | tr ' ' _
 echo ""
-echo "  - Elecciones del usuario :"
-echo ""
-echo ""
 echo -e "${logoline1}"
 echo -e "${logoline2}"
 echo -e "${logoline3} Kernel  : ${kernel_select}"
@@ -101,14 +98,15 @@ printf "\r   |${_fill// /║}${_empty// /-}| ${_progress}%%"
 # Variables
 _start=1
 
-_end=100
+_end=101
 
 for number in $(seq ${_start} ${_end})
 do
-    sleep 0.5
+    sleep 0.3
     ProgressBar ${number} ${_end}
 done
 
+printf '%*s\n' "${COLUMNS:-$(tput cols)}" '' | tr ' ' _
 echo -e '\033[m'
 
 
