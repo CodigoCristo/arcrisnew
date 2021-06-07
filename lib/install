@@ -52,10 +52,11 @@ else
     environment=$tty
 fi
 
-
+setfont default8x16
 printf '%*s\n' "${COLUMNS:-$(tput cols)}" '' | tr ' ' _
 echo ""
-echo "  - Elecciones del usuario"
+echo "  - Elecciones del usuario :"
+echo ""
 echo ""
 echo -e "${logoline1}"
 echo -e "${logoline2}"
@@ -109,7 +110,7 @@ do
 done
 
 echo -e '\033[m'
-
+setfont lat5-16
 
 
 }
