@@ -48,10 +48,10 @@ fi
 
 
 
-if [[ $sectionuser != 0 ]]; then
+if [[ $sectionuser == 0 ]]; then
     dialog --backtitle "${title}" --title "-| ERROR |-" --stdout --msgbox "\n\nNo has creado un usuario correctamente...\n " 8 50    
     main
-elif [[ $sectionubi != 0 ]]; then
+elif [[ $sectionubi == 0 ]]; then
     dialog --backtitle "${title}" --title "-| ERROR |-" --stdout --msgbox "\n\nTe falta seleccionar su Ubicación.\n " 8 40
     main
 fi
