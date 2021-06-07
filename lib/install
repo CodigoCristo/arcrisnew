@@ -34,6 +34,12 @@ echo ""
 echo ""
 echo -e $red
 
+if [[ zonemanual == true ]]; then
+    zonahoraria=${timezone}
+else
+    zonahoraria=${zoneinfo}
+fi
+
 echo -e "${logoline1}"
 echo -e "${logoline2}"
 echo -e "${logoline3} Kernel  : ${kernel_select}"
@@ -44,7 +50,7 @@ echo -e "${logoline7} Usuario : ${username}"
 echo -e "${logoline8}"
 echo -e "${logoline9} Idioma  : ${keymap}"
 echo -e "${logoline11}"
-echo -e "${logoline12} Zona Horaria :"
+echo -e "${logoline12} Zona Horaria : ${zonahoraria}"
 echo -e "${logoline13}"
 echo -e "${logoline14} Ubicación ${locale}:"
 echo -e "${logoline15}"
