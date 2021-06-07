@@ -1,2 +1,2 @@
-dialog --backtitle "${title}" --title "-| ERROR |-" --stdout \
---msgbox "\n\nNo has creado un usuario correctamente...\n " 8 50           
+dialog --backtitle "${title}" --title "-| ERROR |-" --stdout --msgbox "\n\nTe falta seleccionar su Ubicación.\n " 8 40    
+    
