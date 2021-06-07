@@ -100,7 +100,7 @@ done
 
 
         2) #INICIO (WM)
-
+seleccionWM=true
 
 cmd=(dialog --keep-tite --backtitle "${title}" \
 --no-collapse --cr-wrap --column-separator "|" --no-tags --ok-label '< Seleccionar >' --menu "Selecciona tu gestor de ventana a instalar - (WM)" 20 55 16)
@@ -135,12 +135,14 @@ done
 
         3)
           seleccionXORG=true
+          xorg="xorg"
           ;;
 
         4)
           seleccionTTY=true
+          tty="tty"
           ;;
-          
+
     esac
 done
 

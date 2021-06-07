@@ -34,11 +34,24 @@ echo ""
 echo ""
 echo -e $red
 
+
 if [[ ${zonemanual} == true ]]; then
     zonahoraria=${$timezone}
 else
     zonahoraria=${zoneinfo}
 fi
+
+
+if [[ $seleccionDE == true ]]; then
+    environment=$DE
+elif [[ $seleccionWM == true ]]; then
+    environment=$WM
+elif [[ $seleccionXORG == true ]]; then
+    environment=$xorg
+else
+    environment=$tty
+fi
+
 
 printf '%*s\n' "${COLUMNS:-$(tput cols)}" '' | tr ' ' _
 echo ""
@@ -60,7 +73,7 @@ echo -e "${logoline14} Ubicación : ${locale}"
 echo -e "${logoline15}"
 echo -e "${logoline16} Driver de Vídeo : ${video}"
 echo -e "${logoline17}"
-echo -e "${logoline18} Entorno Gráfico : "
+echo -e "${logoline18} Entorno Gráfico : ${environment}"
 echo -e "${logoline19}"
 echo -e "${logoline20}"
 echo -e "${logoline21}"
