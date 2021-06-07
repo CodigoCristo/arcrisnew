@@ -105,7 +105,7 @@ _end=100
 
 for number in $(seq ${_start} ${_end})
 do
-    sleep 0.1
+    sleep 0.01
     ProgressBar ${number} ${_end}
 done
 
