@@ -27,10 +27,10 @@ kernel_select=$(dialog --backtitle "${title}" --title "-| KERNEL |-" \
 --stdout --ok-label "Selecciona" --no-cancel --menu "\nElige que kernel necesitas: \n\n\
 > Linux Stable es la mejor opción\n\nLas otras opciones tienen un estilo diferente para \
 instalar Drivers\nLas otras modificaciones del kernel trabajan con Drivers Libres\n " 18 0 200 \
-" linux-stable   "  " Kernel en su versión estable y módulos de Vanilla Linux " \
-" linux-hardened "  " Kernel enfocado en Seguridad                            " \
-" linux-lts      "  " Kernel con soporte de larga duración                    " \
-" linux-zen      "  " Kernel del esfuerzo colaborativo de varios hackers      ")
+"linux-stable"  " Kernel en su versión estable y módulos de Vanilla Linux " \
+"linux-hardened"  " Kernel enfocado en Seguridad                            " \
+"linux-lts"  " Kernel con soporte de larga duración                    " \
+"linux-zen"  " Kernel del esfuerzo colaborativo de varios hackers      ")
 
 #####Stable  
   if [ $kernel_select == linux-stable ]; then
