@@ -43,7 +43,7 @@ do
   if [ "$?" = "0" ] 
   then
     if [[ $timezone == *"/"* ]]; then 
-      timezonedir=$timezonedir/$timezone
+      $timezonedir/$timezone
     else 
       zonemanual=true
       selected=1

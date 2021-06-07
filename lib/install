@@ -35,7 +35,7 @@ echo ""
 echo -e $red
 
 if [[ ${zonemanual} == true ]]; then
-    zonahoraria=${timezone}
+    zonahoraria=${timezonedir}/${timezone}
 else
     zonahoraria=${zoneinfo}
 fi
