@@ -64,26 +64,32 @@ if [ "$VM" == "true" ]; then
                 
                 vbox)
                 dialog --backtitle "${title}" --title "-| Driver de Vídeo |-" --stdout --ok-label "<Confirmar>"  --msgbox "\n\nVídeo Detectado Virtual Box\n " 8 40                   
+                video="VirtualBox"
                 ;;
                 
                 vmware)
                 dialog --backtitle "${title}" --title "-| Driver de Vídeo |-" --stdout --ok-label "<Confirmar>"  --msgbox "\n\nVídeo Detectado VMware\n " 8 40
+                video="VMware"
                 ;;
                 
                 hyper-v) 
                 dialog --backtitle "${title}" --title "-| Driver de Vídeo |-" --stdout --ok-label "<Confirmar>"  --msgbox "\n\nVídeo Detectado hyper-v\n " 8 40                         
+                video="Hyper-v"
                 ;;
                 
                 qemu)
                 dialog --backtitle "${title}" --title "-| Driver de Vídeo |-" --stdout --ok-label "<Confirmar>"  --msgbox "\n\nVídeo Detectado Qemu\n " 8 40                   
+                video="Qemu"
                 ;;
 
                 kvm)  
                 dialog --backtitle "${title}" --title "-| Driver de Vídeo |-" --stdout --ok-label "<Confirmar>"  --msgbox "\n\nVídeo Detectado Qemu Kvm\n " 8 40                   
+                video="Qemu Kvm"
                 ;;
                 
                 *)
                 dialog --backtitle "${title}" --title "-| Driver de Vídeo |-" --stdout --ok-label "<Confirmar>"  --msgbox "\n\nVídeo Genérico Detectado Mesa\n " 8 45 
+                video="xf86-video-vesa"
                 ;;
                 
             esac

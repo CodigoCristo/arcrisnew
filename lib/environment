@@ -8,6 +8,7 @@ WM=""
 seleccionDE=false
 seleccionWM=false
 seleccionXORG=false
+seleccionTTY=false
 
 
 
@@ -132,9 +133,14 @@ done
             ;;
             
 
-        3) 
+        3)
           seleccionXORG=true
           ;;
+
+        4)
+          seleccionTTY=true
+          ;;
+          
     esac
 done
 
