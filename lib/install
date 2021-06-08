@@ -38,6 +38,8 @@ if [[ $sectionuser == "0" ]]; then
 elif [[ $sectionubi == "0" ]]; then
     dialog --backtitle "${title}" --title "-| ERROR |-" --stdout --msgbox "\n\nTe falta seleccionar su Ubicación.\n " 8 40
     main
+else
+    echo "MAL"
 fi
 
 

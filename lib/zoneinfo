@@ -8,7 +8,7 @@ locality () {
 # ZONE
 ##########################
 
-sectionubi=0
+
 
 zoneinfo="N/N"
 timezonedir=""

@@ -67,7 +67,8 @@
 
     esac
 
-
+sectionuser=0
+sectionubi=0
 
 main () {
 

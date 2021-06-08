@@ -7,7 +7,7 @@ hostname=""
 username=""
 userpasswd=""
 rootpasswd=""
-sectionuser=0
+
 
 ##########################
 # USER
