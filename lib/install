@@ -29,6 +29,20 @@ logoline24=" \  '-. '-'  '-'  '-'  / ___ \| | | (__| |  | \__ \    "
 logoline25="  '--'                /_/   \_\_|  \___|_|  |_|___/    "
 
 
+
+if [[ $sectionuser == "1" ]]; then
+    dialog --backtitle "${title}" --title "-| ERROR |-" --stdout --msgbox "\n\nNo has creado un usuario correctamente...\n " 8 50    
+    main
+elif [[ $sectionubi == "1" ]]; then
+    dialog --backtitle "${title}" --title "-| ERROR |-" --stdout --msgbox "\n\nTe falta seleccionar su Ubicación.\n " 8 40
+    main
+fi
+
+
+
+
+
+
 if [[ ${zonemanual} == true ]]; then
     zonahoraria=${$timezone}
 else
@@ -47,14 +61,6 @@ else
 fi
 
 
-
-if [[ $sectionuser == 0 ]]; then
-    dialog --backtitle "${title}" --title "-| ERROR |-" --stdout --msgbox "\n\nNo has creado un usuario correctamente...\n " 8 50    
-    main
-elif [[ $sectionubi == 0 ]]; then
-    dialog --backtitle "${title}" --title "-| ERROR |-" --stdout --msgbox "\n\nTe falta seleccionar su Ubicación.\n " 8 40
-    main
-fi
 
 
 
