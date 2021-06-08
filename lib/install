@@ -31,13 +31,31 @@ logoline25="  '--'                /_/   \_\_|  \___|_|  |_|___/    "
 
 
 if [[ $sectionuser == "0" ]]; then
-    dialog --backtitle "${title}" --title "-| ERROR |-" --stdout --msgbox "\n\nNo has creado un usuario correctamente...\n " 8 50    
+    dialog --backtitle "${title}" --title "-| ERROR |-" --stdout --msgbox "\n\nNo has creado tu usuario. \n " 8 30   
     main
 elif [[ $sectionubi == "0" ]]; then
-    dialog --backtitle "${title}" --title "-| ERROR |-" --stdout --msgbox "\n\nTe falta seleccionar su Ubicación.\n " 8 40
+    dialog --backtitle "${title}" --title "-| ERROR |-" --stdout --msgbox "\n\nNo has elegido tu Ubicación.\n " 8 32
+    main
+elif [[ $sectionlang == "0" ]]; then
+    dialog --backtitle "${title}" --title "-| ERROR |-" --stdout --msgbox "\n\nNo has elegido tu Idioma.\n " 8 30
+    main
+elif [[ condition ]]; then
+    dialog --backtitle "${title}" --title "-| ERROR |-" --stdout --msgbox "\n\nNo has elegido tu Shell del sistema.\n " 8 40
+    main
+elif [[ condition ]]; then
+    dialog --backtitle "${title}" --title "-| ERROR |-" --stdout --msgbox "\n\nSelecciona tu Disco para instalar en el sistema.\n " 8 53
+    main
+elif [[ condition ]]; then
+    dialog --backtitle "${title}" --title "-| ERROR |-" --stdout --msgbox "\n\nSelecciona el Kernel para instalar en el sistema.\n " 8 53
+    main
+elif [[ condition ]]; then
+    dialog --backtitle "${title}" --title "-| ERROR |-" --stdout --msgbox "\n\nSelecciona tu driver de vídeo para instalar en el sistema.\n " 8 62
+    main
+elif [[ condition ]]; then
+    dialog --backtitle "${title}" --title "-| ERROR |-" --stdout --msgbox "\n\nSelecciona un entorno gráfico para instalar en el sistema.\n " 8 62
     main
 else
-    echo "MAL"
+    clear
 fi
 
 
