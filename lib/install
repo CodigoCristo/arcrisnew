@@ -29,8 +29,6 @@ logoline24=" \  '-. '-'  '-'  '-'  / ___ \| | | (__| |  | \__ \    "
 logoline25="  '--'                /_/   \_\_|  \___|_|  |_|___/    "
 
 
-source lib/user
-source lib/zoneinfo
 
 if [[ $sectionuser == "0" ]]; then
     dialog --backtitle "${title}" --title "-| ERROR |-" --stdout --msgbox "\n\nNo has creado un usuario correctamente...\n " 8 50    
