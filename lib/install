@@ -39,19 +39,19 @@ elif [[ $sectionubi == "0" ]]; then
 elif [[ $sectionlang == "0" ]]; then
     dialog --backtitle "${title}" --title "-| ERROR |-" --stdout --msgbox "\n\nNo has elegido tu Idioma.\n " 8 30
     main
-elif [[ condition ]]; then
+elif [[ $sectionshell == "0" ]]; then
     dialog --backtitle "${title}" --title "-| ERROR |-" --stdout --msgbox "\n\nNo has elegido tu Shell del sistema.\n " 8 40
     main
-elif [[ condition ]]; then
+elif [[ $sectiondisk == "0" ]]; then
     dialog --backtitle "${title}" --title "-| ERROR |-" --stdout --msgbox "\n\nSelecciona tu Disco para instalar en el sistema.\n " 8 53
     main
-elif [[ condition ]]; then
+elif [[ $sectionkernel == "0" ]]; then
     dialog --backtitle "${title}" --title "-| ERROR |-" --stdout --msgbox "\n\nSelecciona el Kernel para instalar en el sistema.\n " 8 53
     main
-elif [[ condition ]]; then
+elif [[ $sectionvideo == "0" ]]; then
     dialog --backtitle "${title}" --title "-| ERROR |-" --stdout --msgbox "\n\nSelecciona tu driver de vídeo para instalar en el sistema.\n " 8 62
     main
-elif [[ condition ]]; then
+elif [[ $sectionenv == "0" ]]; then
     dialog --backtitle "${title}" --title "-| ERROR |-" --stdout --msgbox "\n\nSelecciona un entorno gráfico para instalar en el sistema.\n " 8 62
     main
 else
