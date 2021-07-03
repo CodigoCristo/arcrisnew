@@ -70,6 +70,11 @@
 sectionuser=0
 sectionubi=0
 sectionlang=0
+sectionshell=0
+sectiondisk=0
+sectionkernel=0
+sectionvideo=0
+sectionenv=0
 
 main () {
 
