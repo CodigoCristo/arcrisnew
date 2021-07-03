@@ -3,6 +3,7 @@
 shellsystem () {
 
 shell=""
+sectionshell=0
 
 cmd=(dialog --no-collapse --cr-wrap --backtitle "${title}" --title "${title_shell}" \
 --no-tags --ok-label "${btn_confirm}" --nocancel --menu "${msg_shell}" 15 52 15)
