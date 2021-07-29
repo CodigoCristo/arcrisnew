@@ -16,10 +16,10 @@ timezone=""
 
 clear
 curl https://ipapi.co/timezone > zoneinfo
-zoneinfo=$(cat zoneinfo)
+zonahorariauto=$(cat zoneinfo)
 
 
-dialog --backtitle "${title}" --title "${title_timezone}" --defaultno --yesno "\n       >>> $zoneinfo <<<\n\n       ${msg_timezone}" 9 40 
+dialog --backtitle "${title}" --title "${title_timezone}" --defaultno --yesno "\n       >>> $zonahorariauto <<<\n\n       ${msg_timezone}" 9 40 
 
 if [ "$?" = "0" ]; then
 #### PRESS NO
@@ -46,6 +46,7 @@ do
   then
     if [[ $timezone == *"/"* ]]; then 
       timezonedir=$timezonedir/$timezone
+      zonahorariamanual=$(echo $timezonedir$timezone | sed 's/^....................//g')
     else 
       zonemanual=true
       selected=1
