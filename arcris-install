@@ -120,9 +120,11 @@ locality
 
 clear
 echo $zoneinfo 
-echo ""
+echo "----------"
 echo $zonemanual
+echo "----------"
 echo $timezonedir$timezone
+echo "----------"
 echo $localefrom
 read line
 ;;
