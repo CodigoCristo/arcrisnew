@@ -119,7 +119,7 @@ source lib/zoneinfo
 locality
 
 clear
-echo $zoneinfo 
+echo $zonahorariauto 
 echo "----------"
 echo $zonemanual
 echo "----------"

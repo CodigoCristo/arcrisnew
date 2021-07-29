@@ -33,17 +33,13 @@ do
   then
     if [[ $timezone == *"/"* ]]; then 
       timezonedir=$timezonedir/$timezone
+      zonahorariamanual=$(echo $timezonedir$timezone | sed 's/^....................//g')
     else 
       zonadefaultNo=true
       selected=1
     fi
   fi
 done
-zonahorariamanual=$(echo $timezonedir$timezone | sed 's/^....................//g')
-echo $zonahorariamanual
-echo "----------"
-read line
-
 
 
 else
