@@ -294,7 +294,7 @@ echo -e ""
 echo -e ""
 echo "$hostname" > /mnt/etc/hostname
 echo "127.0.1.1 $hostname.localdomain $hostname" > /mnt/etc/hosts
-clear
+echo ""
 echo "Hostname: $(cat /mnt/etc/hostname)"
 echo ""
 echo "Hosts: $(cat /mnt/etc/hosts)"
@@ -377,7 +377,7 @@ clear
 echo ""
 echo ""
 arch-chroot /mnt /bin/bash -c "sudo -u $username alsi -l"
-
+read line
 
 }
 
