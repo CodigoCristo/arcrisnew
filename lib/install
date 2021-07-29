@@ -234,6 +234,7 @@ clear
 
 source lib/installkernel
 installkernel
+read line
 
 
 }
