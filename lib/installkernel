@@ -1,0 +1,30 @@
+#!/bin/bash
+
+###########################################
+####### FUNCION DE BARRA ##################
+###########################################
+
+installkernel () {
+
+case $kernel_select in
+
+  linux-stable)
+    echo "linux-stable"
+  ;;
+
+  linux-hardened)
+    echo "linux-hardened"
+  ;;
+
+  linux-lts)
+    echo "linux-lts"
+  ;;
+
+  linux-zen)
+    echo "linux-zen"
+  ;;
+
+esac
+
+
+}
