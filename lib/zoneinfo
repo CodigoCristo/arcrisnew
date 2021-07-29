@@ -54,7 +54,7 @@ do
   fi
 done
 
-#zonahorariamanual=$(echo $timezonedir$timezone | sed 's/^....................//g')
+zonahorariamanual=$(echo $timezonedir$timezone | sed 's/^....................//g')
 
 else
 # PRESS YES

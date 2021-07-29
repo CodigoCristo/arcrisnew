@@ -123,8 +123,8 @@ echo $zonahorariauto
 echo "----------"
 echo $zonemanual
 echo "----------"
-#echo $zonahorariamanual
-echo $timezonedir$timezone
+echo $zonahorariamanual
+#echo $timezonedir$timezone
 echo "----------"
 echo $localefrom
 read line
