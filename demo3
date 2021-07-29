@@ -1,15 +1,3 @@
-#!/bin/bash
-
-timezoneinfo () {
-
-curl https://ipapi.co/timezone > zoneinfo
-
-zonahorariauto=$(cat zoneinfo)
-
-dialog --backtitle "$titulo" --title "| ZONA HORARIA |" --defaultno --yesno "\n       >>> $zonahorariauto <<<\n\n       ¿Deseas modificarlo?" 8 40 
-
-if [ "$?" = "0" ]; then
-
 selected=0 
 timezonedir=/usr/share/zoneinfo
 while [ "$selected" = "0" ] 
@@ -26,19 +14,20 @@ do
   ls -l $timezonedir | grep -v .tab | awk '/-rw-/' | awk -F " " '{print $9}' | awk '$fs=$fs" Time"' | awk '{if (NR!=1) {print}}'>>timezones
   timezones=$(cat timezones) 
   rm timezones 
-  timezone=$(dialog --backtitle "| Instalación de ArchLinux |" --clear --title "Tu Zona Horaria es $(cat timezone): " \
-      --menu "Ingresa la zona horaria" 20 0 20 ${timezones} 2>&1 >/dev/tty) 
+    timezone=$(dialog --backtitle "${title}" --title "${title_timezone}" --clear --title "${title_timezonemanual}: $zoneinfo |-" \
+    --menu "${msg_timezonemanual}" 30 45 20 ${timezones} 2>&1 >/dev/tty)  
   clear
   if [ "$?" = "0" ] 
   then
     if [[ $timezone == *"/"* ]]; then 
       timezonedir=$timezonedir/$timezone
     else 
-      zonadefaultNo=true
+      zonemanual=true
       selected=1
     fi
   fi
 done
+
 zonahorariamanual=$(echo $timezonedir$timezone | sed 's/^....................//g')
 echo $zonahorariamanual
 echo "----------"
@@ -46,10 +35,3 @@ read line
 
 
 
-else
-#zone="$(cat timezone)"
-zonadefaultYes=true
-fi
-
-
-}
