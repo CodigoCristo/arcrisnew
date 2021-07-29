@@ -13,6 +13,7 @@ locality () {
 zoneinfo="N/N"
 timezonedir=""
 timezone=""
+zonahorariamanual="N/N"
 
 clear
 curl https://ipapi.co/timezone > zoneinfo
