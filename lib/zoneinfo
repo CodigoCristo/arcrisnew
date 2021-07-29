@@ -46,13 +46,15 @@ do
   then
     if [[ $timezone == *"/"* ]]; then 
       timezonedir=$timezonedir/$timezone
-      zonahorariamanual=$(echo $timezonedir$timezone | sed 's/^....................//g')
+
     else 
       zonemanual=true
       selected=1
     fi
   fi
 done
+
+#zonahorariamanual=$(echo $timezonedir$timezone | sed 's/^....................//g')
 
 else
 # PRESS YES
