@@ -12,12 +12,11 @@ seleccionTTY=false
 
 
 
-cmd=(dialog --keep-tite --no-collapse --cr-wrap --backtitle "${title}" --title "-| ArcriS |-" --column-separator "|" --no-tags --ok-label '< Seleccionar >' --nocancel --menu "\nElige una opción\n " 13 50 12)
+cmd=(dialog --keep-tite --no-collapse --cr-wrap --backtitle "${title}" --title "-| Entorno |-" --column-separator "|" --no-tags --ok-label '< Seleccionar >' --nocancel --menu "\nElige una opción\n " 12 50 12)
 
 options=(1 "Entorno de escritorio | (DE)"
          2 "Gestor de ventanas | (WM)"
-         3 "Solo Servidor X | (Xorg)"
-         4 "Emulador de Terminal | (tty)")
+         3 "Emulador de Terminal | (tty)")
 
 choices=$("${cmd[@]}" "${options[@]}" 2>&1 >/dev/tty)
 
@@ -134,14 +133,10 @@ done
             
 
         3)
-          seleccionXORG=true
-          xorg="xorg"
-          ;;
-
-        4)
           seleccionTTY=true
           tty="tty"
           ;;
+
 
     esac
 done

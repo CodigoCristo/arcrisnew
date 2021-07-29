@@ -133,8 +133,6 @@ if [[ $seleccionDE == true ]]; then
     environment=$DE
 elif [[ $seleccionWM == true ]]; then
     environment=$WM
-elif [[ $seleccionXORG == true ]]; then
-    environment=$xorg
 else
     environment=$tty
 fi
