@@ -13,6 +13,8 @@ locality () {
 zoneinfo="N/N"
 timezonedir=""
 timezone=""
+
+zonahorariauto="N/N"
 zonahorariamanual="N/N"
 
 clear

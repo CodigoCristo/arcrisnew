@@ -204,9 +204,10 @@ echo -e '\033[m'
 
 
 clear
-
 timedatectl set-timezone $zonahoraria
 hwclock -w
+hwclock --hctosys
+hwclock --systohc
 clear
 echo "" 
 echo -e ""
@@ -216,7 +217,7 @@ echo -e ""
 sleep 2
 timedatectl status
 echo ""
-date
+date "+%A, %B %d, %Y - %I:%M %p"
 sleep 10
 clear
 
