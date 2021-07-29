@@ -206,7 +206,7 @@ echo -e '\033[m'
 clear
 
 timedatectl set-timezone $zonahoraria
-
+hwclock -w
 clear
 echo "" 
 echo -e ""
@@ -215,8 +215,6 @@ printf '%*s\n' "${COLUMNS:-$(tput cols)}" '' | tr ' ' _
 echo -e ""
 sleep 2
 timedatectl status
-clear
-echo ""
 echo ""
 date
 sleep 10
