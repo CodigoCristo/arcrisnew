@@ -35,6 +35,13 @@ do
       loadkeys=$keyboard 
       keymap=$keyboard  
             ;;
+
+        ru)
+            loadkeys ru
+      keyboard="ru"
+      loadkeys=$keyboard 
+      keymap=$keyboard  
+            ;;
             
         otros)
             selected=0 
@@ -85,7 +92,13 @@ do
       keyboardx="us"
       keymapx=$keyboardx
             ;;
-            
+        
+        ru)
+      keyboardx="ru"
+      keymapx=$keyboardx
+            ;;
+
+
         otros)
             selected=0 
       while [ $selected == "0" ];do 
