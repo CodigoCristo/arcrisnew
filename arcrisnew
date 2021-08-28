@@ -9,9 +9,6 @@
 clear
 pacman -Sy --noconfirm
 pacman -Sy 
-pacman -Ss glibc 
-pacman -Ss dialog
-pacman -Ss curl 
 pacman -Sy 
 clear
 
