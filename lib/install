@@ -392,6 +392,8 @@ echo "noipv6" >> /mnt/etc/dhcpcd.conf
 sed -i '80d' /mnt/etc/sudoers
 sed -i "80i $nombre_usuario ALL=(ALL) ALL" /mnt/etc/sudoers
 clear
+
+reboot
 ####################################################################
 
 
