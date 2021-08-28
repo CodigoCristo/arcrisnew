@@ -243,7 +243,7 @@ pacman -Sy rsync --noconfirm
 clear
 echo -e "\t\t\t| Actualizando mejores listas de Mirrors |"
 echo ""
-reflector --verbose --latest 6 --protocol http --protocol https --sort rate --save /etc/pacman.d/mirrorlist
+reflector --verbose --latest 6 --protocol https --sort rate --save /etc/pacman.d/mirrorlist
 sleep 3
 clear
 cat /etc/pacman.d/mirrorlist
@@ -263,7 +263,7 @@ clear
 
 titulo_progreso="| Actualizando mejores listas de Mirrors del sistema instalado |"
 barra_progreso
-arch-chroot /mnt /bin/bash -c "reflector --verbose --latest 6 --protocol http --protocol https --sort rate --save /etc/pacman.d/mirrorlist"
+arch-chroot /mnt /bin/bash -c "reflector --verbose --latest 6 --protocol https --sort rate --save /etc/pacman.d/mirrorlist"
 clear
 cat /mnt/etc/pacman.d/mirrorlist
 sleep 3
