@@ -26,8 +26,8 @@
         "1")
         clear
         source /root/arcrisnew/languages/español.conf
-        export languages/español.conf
         echo "$LANGUAGE UTF-8" 
+        echo "Hola"
         ;;
 
         "2")
