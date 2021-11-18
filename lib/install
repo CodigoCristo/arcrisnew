@@ -322,8 +322,8 @@ echo "KEYMAP=$keymap" > /mnt/etc/vconsole.conf && cat /mnt/etc/vconsole.conf
 echo ""
 arch-chroot /mnt /bin/bash -c "export $(cat /mnt/etc/locale.conf)" 
 export $(cat /mnt/etc/locale.conf)
-#arch-chroot /mnt /bin/bash -c "sudo -u $username export $(cat /etc/locale.conf)"
-#export $(cat /mnt/etc/locale.conf)
+arch-chroot /mnt /bin/bash -c "sudo -u $username export $(cat /etc/locale.conf)"
+export $(cat /mnt/etc/locale.conf)
 sleep 3
 
 
@@ -377,6 +377,8 @@ arch-chroot /mnt /bin/bash -c "pacman -Syu --noconfirm"
 source lib/installgrub
 installgrub
 clear
+
+
 
 echo ""
 echo ""
