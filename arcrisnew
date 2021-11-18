@@ -27,7 +27,8 @@ clear
 curl -LJO github.com/CodigoCristo/arcrisnew/archive/refs/heads/main.tar.gz
 clear
 tar  -xvf  arcrisnew-main.tar.gz
-cd arcrisnew-main
+mv arcrisnew-main arcrisnew
+cd arcrisnew
 
 cp .dialogrc /root
 chmod +x *
