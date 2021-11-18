@@ -23,13 +23,10 @@
 
     case "$LANGUA" in
 
-        "1") 
-        source /root/arcrisnew/languages/español.conf
-        echo "$LANGUAGE UTF-8" > /etc/locale.gen
-        locale-gen
-        echo "LANG=$LANGUAGE" > /etc/locale.conf
-        export LANG=$LANGUAGE
-        setfont lat5-16
+        "1")
+        clear
+        source languages/español.conf
+        echo "$LANGUAGE UTF-8" 
         ;;
 
         "2")
