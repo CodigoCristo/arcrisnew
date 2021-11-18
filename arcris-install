@@ -8,7 +8,7 @@
 echo ""
 echo "en_US.UTF-8 UTF-8" > /etc/locale.gen
 locale=$(locale-gen)
-dialog --stdout --infobox "$locale" 20 150
+dialog --stdout --infobox "$locale" 10 50
 echo "LANG=en_US.UTF-8" > /etc/locale.conf
 export LANG=en_US.UTF-8
 clear
@@ -33,9 +33,9 @@ do
         source languages/español.conf
         echo "$LANGUAGE UTF-8" > /etc/locale.gen
         locale=$(locale-gen)
-        dialog --backtitle "$titulo" \
+        dialog --backtitle "$title" \
         --title "${idiom}" --stdout --ok-label "${oklabel}" \
-        --infobox "$locale" 20 150
+        --infobox "$locale" 10 50
         echo "LANG=$LANGUAGE" > /etc/locale.conf
         export LANG=$LANGUAGE
         setfont lat5-16
@@ -45,9 +45,9 @@ do
         source languages/english.conf
         echo "$LANGUAGE UTF-8" > /etc/locale.gen
         locale=$(locale-gen)
-        dialog --backtitle "$titulo" \
+        dialog --backtitle "$title" \
         --title "${idiom}" --stdout --ok-label "${oklabel}" \
-        --infobox "$locale" 20 150
+        --infobox "$locale" 10 50
         echo "LANG=$LANGUAGE" > /etc/locale.conf
         export LANG=$LANGUAGE
         setfont default8x16
@@ -63,9 +63,9 @@ do
         source languages/russian.conf
         echo "$LANGUAGE UTF-8" > /etc/locale.gen
         locale=$(locale-gen)
-        dialog --backtitle "$titulo" \
+        dialog --backtitle "$title" \
         --title "${idiom}" --stdout --ok-label "${oklabel}" \
-        --infobox "$locale" 20 150
+        --infobox "$locale" 20 50
         echo "LANG=$LANGUAGE" > /etc/locale.conf
         export LANG=$LANGUAGE
         setfont cyr-sun16
