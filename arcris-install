@@ -120,6 +120,12 @@ do
     case $choice in
 
 1)
+
+hostname=""
+username=""
+userpasswd=""
+rootpasswd=""
+
 source lib/user
 users
 clear
