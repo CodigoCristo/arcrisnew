@@ -14,7 +14,7 @@ username=$(dialog --backtitle "${title}" --title "${titleuser}" \
     if [ $? -eq 0 ]; then
     #El nombre de usuario debe comenzar con una letra minúscula. 
     #Puede contener minúsculas alfanuméricas y guiones.
-      if printf "%s" "$username" | grep -Eoq "^[a-z][a-z0-9-]*$" \
+      if printf "%s" "${username}" | grep -Eoq "^[a-z][a-z0-9-]*$" \
        && [ "${#username}" -lt 20 ]; then
         
         # El archivo de nombre de usuario reservado contiene nombres de usuario que deben evitarse
