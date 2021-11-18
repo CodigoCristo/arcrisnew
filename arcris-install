@@ -25,8 +25,8 @@
         "1") 
         source languages/español.conf
         echo "$LANGUAGE UTF-8" > /etc/locale.gen
-        locale-gen | dialog --backtitle "$titulo" \
-        --title "${idiom}" --stdout --ok-label "${oklabel}" \
+        locale-gen | dialog --backtitle "${title}" \
+        --title "${idiom}" --stdout  \
         --progressbox 20 150
         echo "LANG=$LANGUAGE" > /etc/locale.conf
         export LANG=$LANGUAGE
