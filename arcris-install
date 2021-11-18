@@ -29,6 +29,7 @@ for choice in $choices
 do
     case $choice in
 
+
         1)
         source languages/español.conf
         echo "$LANGUAGE UTF-8" > /etc/locale.gen
@@ -41,6 +42,7 @@ do
         setfont lat5-16
         ;;
 
+
         2)
         source languages/english.conf
         echo "$LANGUAGE UTF-8" > /etc/locale.gen
@@ -52,6 +54,7 @@ do
         export LANG=$LANGUAGE
         setfont default8x16
         ;;
+
 
         3)
         # vconsole.conf 
@@ -69,7 +72,7 @@ do
         echo "LANG=$LANGUAGE" > /etc/locale.conf
         export LANG=$LANGUAGE
         setfont cyr-sun16
-  
+        ;;
 
     esac
 done
