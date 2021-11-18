@@ -25,7 +25,7 @@
 
         "1")
         clear
-        source languages/español.conf
+        source /root/arcrisnew/languages/español.conf
         export languages/español.conf
         echo "$LANGUAGE UTF-8" 
         ;;
