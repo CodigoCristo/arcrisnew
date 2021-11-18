@@ -5,15 +5,15 @@
 # git push -f
 # curl -L is.gd/arcrisnew > arcris ; sh arcris 
 
-    echo ""
-    echo "en_US.UTF-8 UTF-8" > /etc/locale.gen
-    locale=$(locale-gen)
-    dialog --stdout --infobox "$locale" 20 150
-    echo "LANG=en_US.UTF-8" > /etc/locale.conf
-    export LANG=en_US.UTF-8
+echo ""
+echo "en_US.UTF-8 UTF-8" > /etc/locale.gen
+locale=$(locale-gen)
+dialog --stdout --infobox "$locale" 20 150
+echo "LANG=en_US.UTF-8" > /etc/locale.conf
+export LANG=en_US.UTF-8
+clear
 
-
-    welcome_title=" -| Language Select |- "
+welcome_title=" -| Language Select |- "
 
 
 cmd=(dialog --nocancel --backtitle "Welcome : $(date "+%A, %B %d, %Y - %I:%M %p")" --title "${welcome_title}" \
@@ -28,20 +28,55 @@ choices=$("${cmd[@]}" "${options[@]}" 2>&1 >/dev/tty)
 for choice in $choices
 do
     case $choice in
+
         1)
-        clear
         source languages/español.conf
-        echo "$LANGUAGE UTF-8" 
-        echo "Hola"
-            ;;
+        echo "$LANGUAGE UTF-8" > /etc/locale.gen
+        locale=$(locale-gen)
+        dialog --backtitle "$titulo" \
+        --title "${idiom}" --stdout --ok-label "${oklabel}" \
+        --infobox "$locale" 20 150
+        echo "LANG=$LANGUAGE" > /etc/locale.conf
+        export LANG=$LANGUAGE
+        setfont lat5-16
+        ;;
+
         2)
-            echo "Second Option"
-            ;;
+        source languages/english.conf
+        echo "$LANGUAGE UTF-8" > /etc/locale.gen
+        locale=$(locale-gen)
+        dialog --backtitle "$titulo" \
+        --title "${idiom}" --stdout --ok-label "${oklabel}" \
+        --infobox "$locale" 20 150
+        echo "LANG=$LANGUAGE" > /etc/locale.conf
+        export LANG=$LANGUAGE
+        setfont default8x16
+        ;;
+
         3)
-            echo "Third Option"
-            ;;
-        4)
-            echo "Fourth Option"
-            ;;
+        # vconsole.conf 
+        # FONT="cyr-sun16"
+        # ls /usr/share/consolefonts
+        # ls /usr/share/kbd/consolefonts | grep 8x16
+        # setfont cyr-sun16
+        # showconsolefont
+        source languages/russian.conf
+        echo "$LANGUAGE UTF-8" > /etc/locale.gen
+        locale=$(locale-gen)
+        dialog --backtitle "$titulo" \
+        --title "${idiom}" --stdout --ok-label "${oklabel}" \
+        --infobox "$locale" 20 150
+        echo "LANG=$LANGUAGE" > /etc/locale.conf
+        export LANG=$LANGUAGE
+        setfont cyr-sun16
+  
+
     esac
 done
+
+
+
+
+
+
+
