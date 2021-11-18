@@ -110,7 +110,7 @@ menuprincipal=$(dialog --keep-tite --backtitle "${title}" --title "${title_menu}
 
 case "$menuprincipal" in
 
-"1")
+1)
 source lib/user
 users
 clear
