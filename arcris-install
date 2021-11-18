@@ -12,5 +12,58 @@
     echo "LANG=en_US.UTF-8" > /etc/locale.conf
     export LANG=en_US.UTF-8
 
-source /root/arcrisnew/languages/español.conf
-   
+
+    welcome_title=" -| Language Select |- "
+
+    LANG=$(dialog --nocancel --backtitle "Welcome : $(date "+%A, %B %d, %Y - %I:%M %p")" --title "${welcome_title}" \
+    --menu "\nDonations in: www.patreon.com/codigocristo\n\nSelect the language of the installer:\n\n---------------------------------------------\n\nDonaciones en: www.patreon.com/codigocristo\n\nSeleccione el idioma del instalador:\n " 20 60 10 \
+        "1" "Español" \
+        "2" "English" \
+        "3" "Russian" 3>&1 1>&2 2>&3)
+
+    case "$LANG" in
+
+        "1") 
+        source /root/arcrisnew/languages/español.conf
+        echo "$LANGUAGE UTF-8" > /etc/locale.gen
+        locale-gen
+        echo "LANG=$LANGUAGE" > /etc/locale.conf
+        export LANG=$LANGUAGE
+        setfont lat5-16
+        ;;
+
+        "2")
+        source languages/english.conf
+        echo "$LANGUAGE UTF-8" > /etc/locale.gen
+        locale=$(locale-gen)
+        dialog --backtitle "$titulo" \
+        --title "${idiom}" --stdout --ok-label "${oklabel}" \
+        --infobox "$locale" 20 150
+        echo "LANG=$LANGUAGE" > /etc/locale.conf
+        export LANG=$LANGUAGE
+        setfont default8x16
+        ;;
+
+        "3")
+        # vconsole.conf 
+        # FONT="cyr-sun16"
+        # ls /usr/share/consolefonts
+        # ls /usr/share/kbd/consolefonts | grep 8x16
+        # setfont cyr-sun16
+        # showconsolefont
+        source languages/russian.conf
+        echo "$LANGUAGE UTF-8" > /etc/locale.gen
+        locale=$(locale-gen)
+        dialog --backtitle "$titulo" \
+        --title "${idiom}" --stdout --ok-label "${oklabel}" \
+        --infobox "$locale" 20 150
+        echo "LANG=$LANGUAGE" > /etc/locale.conf
+        export LANG=$LANGUAGE
+        setfont cyr-sun16
+        ;;
+
+    esac
+done
+
+
+
