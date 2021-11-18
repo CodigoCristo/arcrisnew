@@ -15,53 +15,33 @@
 
     welcome_title=" -| Language Select |- "
 
-    LENGUA=$(dialog --nocancel --backtitle "Welcome : $(date "+%A, %B %d, %Y - %I:%M %p")" --title "${welcome_title}" \
-    --menu "\nDonations in: www.patreon.com/codigocristo\n\nSelect the language of the installer:\n\n---------------------------------------------\n\nDonaciones en: www.patreon.com/codigocristo\n\nSeleccione el idioma del instalador:\n " 20 60 10 \
-        "1" "Español" \
-        "2" "English" \
-        "3" "Russian" 3>&1 1>&2 2>&3)
 
-    case "$LENGUA" in
+cmd=(dialog --nocancel --backtitle "Welcome : $(date "+%A, %B %d, %Y - %I:%M %p")" --title "${welcome_title}" \
+    --menu "\nDonations in: www.patreon.com/codigocristo\n\nSelect the language of the installer:\n\n---------------------------------------------\n\nDonaciones en: www.patreon.com/codigocristo\n\nSeleccione el idioma del instalador:\n " 20 60 10)
 
-        "1")
+options=(1 "Español"
+         2 "English"
+         3 "Russian")
+
+choices=$("${cmd[@]}" "${options[@]}" 2>&1 >/dev/tty)
+
+for choice in $choices
+do
+    case $choice in
+        1)
         clear
-        source /root/arcrisnew/languages/español.conf
+        source languages/español.conf
         echo "$LANGUAGE UTF-8" 
         echo "Hola"
-        ;;
-
-        "2")
-        source languages/english.conf
-        echo "$LANGUAGE UTF-8" > /etc/locale.gen
-        locale=$(locale-gen)
-        dialog --backtitle "$titulo" \
-        --title "${idiom}" --stdout --ok-label "${oklabel}" \
-        --infobox "$locale" 20 150
-        echo "LANG=$LANGUAGE" > /etc/locale.conf
-        export LANG=$LANGUAGE
-        setfont default8x16
-        ;;
-
-        "3")
-        # vconsole.conf 
-        # FONT="cyr-sun16"
-        # ls /usr/share/consolefonts
-        # ls /usr/share/kbd/consolefonts | grep 8x16
-        # setfont cyr-sun16
-        # showconsolefont
-        source languages/russian.conf
-        echo "$LANGUAGE UTF-8" > /etc/locale.gen
-        locale=$(locale-gen)
-        dialog --backtitle "$titulo" \
-        --title "${idiom}" --stdout --ok-label "${oklabel}" \
-        --infobox "$locale" 20 150
-        echo "LANG=$LANGUAGE" > /etc/locale.conf
-        export LANG=$LANGUAGE
-        setfont cyr-sun16
-        ;;
-
+            ;;
+        2)
+            echo "Second Option"
+            ;;
+        3)
+            echo "Third Option"
+            ;;
+        4)
+            echo "Fourth Option"
+            ;;
     esac
-
-
-
-
+done
