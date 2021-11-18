@@ -15,17 +15,18 @@
 
     welcome_title=" -| Language Select |- "
 
-    LANGUA=$(dialog --nocancel --backtitle "Welcome : $(date "+%A, %B %d, %Y - %I:%M %p")" --title "${welcome_title}" \
+    LENGUA=$(dialog --nocancel --backtitle "Welcome : $(date "+%A, %B %d, %Y - %I:%M %p")" --title "${welcome_title}" \
     --menu "\nDonations in: www.patreon.com/codigocristo\n\nSelect the language of the installer:\n\n---------------------------------------------\n\nDonaciones en: www.patreon.com/codigocristo\n\nSeleccione el idioma del instalador:\n " 20 60 10 \
         "1" "Español" \
         "2" "English" \
         "3" "Russian" 3>&1 1>&2 2>&3)
 
-    case "$LANGUA" in
+    case "$LENGUA" in
 
         "1")
         clear
         source languages/español.conf
+        export languages/español.conf
         echo "$LANGUAGE UTF-8" 
         ;;
 
