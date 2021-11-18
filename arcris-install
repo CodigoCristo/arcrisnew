@@ -11,6 +11,6 @@
     dialog --stdout --infobox "$locale" 20 150
     echo "LANG=en_US.UTF-8" > /etc/locale.conf
     export LANG=en_US.UTF-8
-    clear
+
 source /root/arcrisnew/languages/español.conf
    
