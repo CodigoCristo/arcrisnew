@@ -19,7 +19,7 @@ if [[ "$pacmaninit1" = "1" && "$pacmaninit2" = "1" && "$pacmaninit3" = "1" ]] ; 
 clear
 else
 clear
-sudo pacman -Sy glibc dialog curl --noconfirm --needed
+sudo pacman -Sy glibc dialog curl ncurses --noconfirm --needed
 sleep 5
 fi
 

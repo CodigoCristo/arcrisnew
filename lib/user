@@ -4,6 +4,12 @@
 users () {
 
 
+
+hostname=""
+username=""
+userpasswd=""
+rootpasswd=""
+
 ##########################
 # USER
 ##########################
