@@ -4,11 +4,10 @@
 # git commit -m 'testing'
 # git push -f
 # curl -L is.gd/arcrisnew > arcris ; sh arcris 
-
+    clear
     echo ""
     echo "en_US.UTF-8 UTF-8" > /etc/locale.gen
-    locale=$(locale-gen)
-    dialog --stdout --infobox "$locale" 20 150
+    locale-gen | dialog  --stdout --progressbox 20 150
     echo "LANG=en_US.UTF-8" > /etc/locale.conf
     export LANG=en_US.UTF-8
     clear
