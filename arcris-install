@@ -24,7 +24,7 @@
     case "$LANG" in
 
         "1") 
-        source ./languages/español.conf
+        source .languages/español.conf
         echo "$LANGUAGE UTF-8" > /etc/locale.gen
         locale=$(locale-gen)
         dialog --backtitle "$titulo" \
