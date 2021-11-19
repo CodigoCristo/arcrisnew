@@ -288,7 +288,7 @@ drivervideo () {
 nombreGrafica=$(lspci | grep VGA |  awk -F " " '{print $5,$6,$7,$8,$9,$10}')
 
 dialog --keep-tite --no-collapse --cr-wrap --backtitle "${title}" \
---title "-| Driver de Vídeo |-" --defaultno --yes-label '|  Manual  |' --no-label '| Automático |' \
+--title "-| Driver de Vídeo |-" --defaultno --yes-label '<  Manual  >' --no-label '< Automático >' \
 --yesno "\nTarjeta de vídeo: \n\n${nombreGrafica}\n\nElige una opción\n " 00 00
 
 respuestavideo=$?
