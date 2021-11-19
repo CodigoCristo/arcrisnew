@@ -18,10 +18,15 @@ zonahorariauto="N/N"
 zonahorariamanual="N/N"
 
 clear
+echo ""
+echo "Loading..."
+echo ""
 curl https://ipapi.co/timezone > zoneinfo
 zonahorariauto=$(cat zoneinfo)
 clear
-
+echo ""
+echo "Loading..."
+echo ""
 locales=""
 localefrom=""
 curl https://ipapi.co/languages | awk -F "," '{print $1}' | sed 's/-/_/g' | sed "s|$|.UTF8|" > language
