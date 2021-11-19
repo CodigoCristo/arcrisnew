@@ -26,7 +26,7 @@ country=$(cat language)
 clear
 
 
-dialog --backtitle "${title}" --title "${title_timezone}" --defaultno --yesno "${msg_timezone}" 12 40 
+dialog --backtitle "${title}" --title "${title_timezone}" --defaultno --yesno "${msg_timezone1}$zonahorariauto${msg_timezone2}$country${msg_timezone3}" 12 40 
 
 if [ "$?" = "0" ]; then
 #### PRESS NO
