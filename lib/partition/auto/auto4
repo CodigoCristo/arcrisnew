@@ -70,9 +70,9 @@ echo $partitions | awk -F ' ' '{print $4}' >  home-efi
 dialog --no-collapse --cr-wrap --backtitle "${title}" --title "-| Formateo y Montar Particiones |-" --stdout --ok-label "Siguiente" \
 --prgbox "mkfs.ext4 $(cat root-efi) && \
 mount $(cat root-efi) /mnt && \
-mkdir -p /mnt/efi && \
+mkdir -p /mnt/boot/EFI && \
 mkfs.fat -F 32 $(cat boot-efi) && \
-mount $(cat boot-efi) /mnt/efi && \
+mount $(cat boot-efi) /mnt/boot/EFI && \
 mkdir -p /mnt/home && \
 mkfs.ext4 $(cat home-efi) && \
 mount $(cat home-efi) /mnt/home && \
