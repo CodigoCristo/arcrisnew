@@ -20,9 +20,13 @@ zonahorariamanual="N/N"
 clear
 curl https://ipapi.co/timezone > zoneinfo
 zonahorariauto=$(cat zoneinfo)
+clear
+curl https://ipapi.co/languages | awk -F "," '{print $1}' | sed 's/-/_/g' | sed "s|$|.UTF8|" > language
+country=$(cat language)
+clear
 
 
-dialog --backtitle "${title}" --title "${title_timezone}" --defaultno --yesno "\n       >>> $zonahorariauto <<<\n\n       ${msg_timezone}" 9 40 
+dialog --backtitle "${title}" --title "${title_timezone}" --defaultno --yesno "${msg_timezone}" 12 40 
 
 if [ "$?" = "0" ]; then
 #### PRESS NO
