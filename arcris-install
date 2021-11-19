@@ -94,7 +94,7 @@ main () {
 
 while true; do
 
-current_item=""
+
 
 menuprincipal=(dialog --keep-tite --default-item "${current_item}" --backtitle "${title}" --title "${title_menu}" \
 --ok-label "${select_ok_label}" --nocancel --no-tags \
