@@ -285,13 +285,13 @@ sectionvideo=1
 
 drivervideo () {
 
-nombreGrafica=$(lspci | grep VGA |  awk -F " " '{print $5,$6,$7,$8,$9,$10,$11,$12}')
+nombreGrafica=$(lspci | grep VGA |  awk -F " " '{print $5,$6,$7,$8,$9,$10}')
 
 
-cmd=(dialog --keep-tite --no-collapse --cr-wrap --backtitle "${title}" --title "-| Driver de Vídeo |-" --column-separator "|" --no-tags --ok-label '< Seleccionar >' --nocancel --menu "\nMarca de tarjeta de vídeo: \n\n${nombreGrafica}\n\nElige una opción\n " 17 55 17)
+cmd=(dialog --keep-tite --no-collapse --cr-wrap --backtitle "${title}" --title "-| Driver de Vídeo |-" --column-separator "|" --no-tags --ok-label '< Seleccionar >' --nocancel --menu "\nTarjeta de vídeo: \n\n${nombreGrafica}\n\nElige una opción\n " 20 50 20)
 
-options=(1 "Driver vídeo - [Automatico]"
-         2 "Driver vídeo - [Manual]")
+options=(1 "  Driver vídeo - [Automatico]  "
+         2 "  Driver vídeo - [Manual]      ")
 
 choices=$("${cmd[@]}" "${options[@]}" 2>&1 >/dev/tty)
 
@@ -310,7 +310,6 @@ do
 
     esac
 done
-
 
 sectionvideo=1
 
