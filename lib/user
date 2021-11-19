@@ -5,7 +5,7 @@ users () {
 
 
 
-hostname=""
+hostname="Arcris"
 username=""
 userpasswd=""
 rootpasswd=""
@@ -63,21 +63,21 @@ username=$(dialog --backtitle "${title}" --title "${titleuser}" \
 ##########################
 # HOSTNAME
 ##########################
-while true; do
-    hostname=$(dialog --backtitle "${title}" --title "${title_hostname}" --nocancel \
-    --inputbox "${msg_hostname}" 12 65 "ArcriS" 3>&1 1>&2 2>&3)
-
-
-    # Hostname must be alpha-numeric and may contain a dash only in between
-    if printf "%s" "$hostname" | grep -Eoq "^[a-zA-Z0-9-]{1,63}$" \
-      && [ "${hostname:0:1}" != "-" ] \
-      && [ "${hostname: -1}" != "-" ]; then
-      break
-    else
-      dialog --backtitle "${title}"  --title "${title_hostname_fail}" --msgbox "${msg_hostname_fail}" 12 68
-    fi
-
-  done
+#while true; do
+#    hostname=$(dialog --backtitle "${title}" --title "${title_hostname}" --nocancel \
+#    --inputbox "${msg_hostname}" 12 65 "ArcriS" 3>&1 1>&2 2>&3)
+#
+#
+#   # Hostname must be alpha-numeric and may contain a dash only in between
+#    if printf "%s" "$hostname" | grep -Eoq "^[a-zA-Z0-9-]{1,63}$" \
+#      && [ "${hostname:0:1}" != "-" ] \
+#      && [ "${hostname: -1}" != "-" ]; then
+#      break
+#    else
+#      dialog --backtitle "${title}"  --title "${title_hostname_fail}" --msgbox "${msg_hostname_fail}" 12 68
+#    fi
+#
+#  done
 
 
 ##########################
