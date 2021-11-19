@@ -25,7 +25,7 @@ username=$(dialog --backtitle "${title}" --title "${titleuser}" \
         
         # El archivo de nombre de usuario reservado contiene nombres de usuario que deben evitarse
         if grep -Fxq "${username}" reserved_usernames ; then
-          dialog --backtitle "${title}" --title "${title_reserved_usernames}" -msgbox "${msg_reserved_usernames}" 7 70
+          dialog --backtitle "${title}" --title "${title_reserved_usernames}" --msgbox "${msg_reserved_usernames}" 7 70
         
         else 
           
