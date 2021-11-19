@@ -55,8 +55,8 @@ dialog --no-collapse --cr-wrap --backtitle "${title}" --title "-| Formateo y Mon
 --prgbox "mkfs.ext4 $(cat root-efi) && \
 mount $(cat root-efi) /mnt && \
 mkfs.fat -F 32 $(cat boot-efi) && \
-mkdir -p /mnt/efi && \
-mount $(cat boot-efi) /mnt/efi && \
+mkdir -p /mnt/boot/EFI && \
+mount $(cat boot-efi) /mnt/boot/EFI && \
 echo -------------------------------------- && \
 lsblk ${disk} --all" 20 110
 

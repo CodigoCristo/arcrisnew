@@ -5,7 +5,7 @@ autopartition () {
 cmd=(dialog --no-collapse --cr-wrap --backtitle "${title}" --title "-| Particionado Automático del Disco |-" \
 --no-tags --ok-label "Confirmar" --nocancel --menu "\nEliga su mejor opción para su Sistema\n\nLa unidad SSD tienen una vida útil limitada por los\nciclos de escritura.
 \nActivar SWAP conducirá a una mejora dramática del\nrendimiento a costa de una vida útil del SSD algo más corta.\n " 20 64 20)
-options=(1 " Root ( ext4 )                 "   
+options=(1 " Root ( ext4 ) Recomendado     "   
          2 " Root - Swap ( ext4 )          "
          3 " Root - Home ( ext4 )          "
 		 4 " Root - Home - Swap ( ext4 )   ")
