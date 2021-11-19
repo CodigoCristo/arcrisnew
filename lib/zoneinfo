@@ -21,6 +21,9 @@ clear
 curl https://ipapi.co/timezone > zoneinfo
 zonahorariauto=$(cat zoneinfo)
 clear
+
+locales=""
+localefrom=""
 curl https://ipapi.co/languages | awk -F "," '{print $1}' | sed 's/-/_/g' | sed "s|$|.UTF8|" > language
 country=$(cat language)
 clear
@@ -63,10 +66,27 @@ done
 
 zonahorariamanual=$(echo $timezonedir$timezone | sed 's/^....................//g')
 
+
+locales="$(cat lib/locale.gen | grep -v "#  " | sed 's/#//g' | grep '.UTF-8 UTF-8' )"
+localefrom=$(dialog --backtitle "${title}" --no-cancel --ok-label "${btn_confirm}" --clear --title "${title_country}" \
+--menu "${msg_country} ${country}\n " 25 35 20 ${locales} 2>&1 > /dev/tty)
+
+rm language 
+rm zoneinfo
+clear
+# $localefrom > variable 1  = es_PE.UTF-8
+
+
 else
 # PRESS YES
 zonemanual=false
-zoneinfo=$(cat zoneinfo)
+
+localefrom=$(cat language)
+
+rm language 
+rm zoneinfo
+clear
+
 fi
 
 # $zoneinfo  > variable 1
@@ -89,20 +109,11 @@ clear
 # COUNTRY
 ##########################
 
-locales=""
-localefrom=""
 
-curl https://ipapi.co/languages | awk -F "," '{print $1}' | sed 's/-/_/g' | sed "s|$|.UTF8|" > language
 
-country=$(cat language)
 
-locales="$(cat lib/locale.gen | grep -v "#  " | sed 's/#//g' | grep '.UTF-8 UTF-8' )"
-localefrom=$(dialog --backtitle "${title}" --no-cancel --ok-label "${btn_confirm}" --clear --title "${title_country}" \
---menu "${msg_country} ${country}\n " 25 35 20 ${locales} 2>&1 > /dev/tty)
 
-rm language
-clear
-# $localefrom > variable 1  = es_PE.UTF-8
+
 
 sectionubi=1
 
