@@ -15,7 +15,7 @@ rootpasswd=""
 ##########################
 while true; do
 username=$(dialog --backtitle "${title}" --title "${titleuser}" \
---nocancel --inputbox "${msg_username}" 15 65 3>&1 1>&2 2>&3)
+--inputbox "${msg_username}" 15 65 3>&1 1>&2 2>&3)
 
     if [ $? -eq 0 ]; then
     #El nombre de usuario debe comenzar con una letra minúscula. 
