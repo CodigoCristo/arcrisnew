@@ -434,12 +434,12 @@ echo ""
 echo ""
 arch-chroot /mnt /bin/bash -c "sudo -u $username alsi -l"
 echo ""
-echo "Gracias a toda la comunidad en Telegram : https://t.me/ArchLinuxCristo"
+echo "  Gracias a toda la comunidad en Telegram : https://t.me/ArchLinuxCristo"
 echo ""
-echo "Agradecimientos"
-echo "  @dakataca @!bin/bash @SvenDeVrij @AlexHMusique @mxhectorvega @D3stry3rK3rn3l"
+echo "  Agradecimientos"
+echo "     @dakataca @!bin/bash @SvenDeVrij @AlexHMusique @mxhectorvega @D3stry3rK3rn3l"
 echo ""
-printf "\n| La computadora se reiniciara para finalizar |\n| Cuando este apagada la computadora retire la USB o CD |\n\n"
+printf "\n  | La computadora se reiniciara para finalizar |\n| Cuando este apagada la computadora retire la USB o CD |\n\n"
 
 #INICIO PROGRESS BARR
 function ProgressBar {
