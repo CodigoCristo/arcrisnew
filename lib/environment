@@ -264,8 +264,7 @@ case $environment in
   arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S awesome-terminal-fonts --noeditmenu --noconfirm --needed"
   arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S noto-fonts --noeditmenu --noconfirm --needed"
   arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S noto-fonts-emoji --noeditmenu --noconfirm --needed"
-  arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S nerd-fonts-hack --noeditmenu --noconfirm --needed"
-
+  
   arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S ffmpegthumbs --noeditmenu --noconfirm --needed"
   arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S ffmpegthumbnailer --noeditmenu --noconfirm --needed"
   arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S freetype2 --noeditmenu --noconfirm --needed"
@@ -308,8 +307,7 @@ case $environment in
   arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S awesome-terminal-fonts --noeditmenu --noconfirm --needed"
   arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S noto-fonts --noeditmenu --noconfirm --needed"
   arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S noto-fonts-emoji --noeditmenu --noconfirm --needed"
-  arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S nerd-fonts-hack --noeditmenu --noconfirm --needed"
-
+  
   arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S ffmpegthumbs --noeditmenu --noconfirm --needed"
   arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S ffmpegthumbnailer --noeditmenu --noconfirm --needed"
   arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S freetype2 --noeditmenu --noconfirm --needed"
@@ -352,8 +350,7 @@ case $environment in
   arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S awesome-terminal-fonts --noeditmenu --noconfirm --needed"
   arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S noto-fonts --noeditmenu --noconfirm --needed"
   arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S noto-fonts-emoji --noeditmenu --noconfirm --needed"
-  arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S nerd-fonts-hack --noeditmenu --noconfirm --needed"
-
+  
   arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S tumbler --noeditmenu --noconfirm --needed"
   arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S ffmpegthumbs --noeditmenu --noconfirm --needed"
   arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S ffmpegthumbnailer --noeditmenu --noconfirm --needed"
@@ -393,8 +390,7 @@ case $environment in
   arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S awesome-terminal-fonts --noeditmenu --noconfirm --needed"
   arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S noto-fonts --noeditmenu --noconfirm --needed"
   arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S noto-fonts-emoji --noeditmenu --noconfirm --needed"
-  arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S nerd-fonts-hack --noeditmenu --noconfirm --needed"
-
+  
   arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S ffmpegthumbs --noeditmenu --noconfirm --needed"
   arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S ffmpegthumbnailer --noeditmenu --noconfirm --needed"
   arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S freetype2 --noeditmenu --noconfirm --needed"
@@ -453,8 +449,7 @@ case $environment in
   arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S awesome-terminal-fonts --noeditmenu --noconfirm --needed"
   arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S noto-fonts --noeditmenu --noconfirm --needed"
   arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S noto-fonts-emoji --noeditmenu --noconfirm --needed"
-  arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S nerd-fonts-hack --noeditmenu --noconfirm --needed"
-
+  
   arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S ffmpegthumbs --noeditmenu --noconfirm --needed"
   arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S ffmpegthumbnailer --noeditmenu --noconfirm --needed"
   arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S freetype2 --noeditmenu --noconfirm --needed"
@@ -495,8 +490,7 @@ case $environment in
   arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S awesome-terminal-fonts --noeditmenu --noconfirm --needed"
   arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S noto-fonts --noeditmenu --noconfirm --needed"
   arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S noto-fonts-emoji --noeditmenu --noconfirm --needed"
-  arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S nerd-fonts-hack --noeditmenu --noconfirm --needed"
-
+  
   arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S ffmpegthumbs --noeditmenu --noconfirm --needed"
   arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S ffmpegthumbnailer --noeditmenu --noconfirm --needed"
   arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S freetype2 --noeditmenu --noconfirm --needed"
@@ -538,8 +532,7 @@ case $environment in
   arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S awesome-terminal-fonts --noeditmenu --noconfirm --needed"
   arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S noto-fonts --noeditmenu --noconfirm --needed"
   arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S noto-fonts-emoji --noeditmenu --noconfirm --needed"
-  arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S nerd-fonts-hack --noeditmenu --noconfirm --needed"
-
+  
   arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S ffmpegthumbs --noeditmenu --noconfirm --needed"
   arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S ffmpegthumbnailer --noeditmenu --noconfirm --needed"
   arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S freetype2 --noeditmenu --noconfirm --needed"
@@ -663,6 +656,46 @@ case $environment in
   arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S accountsservice --noeditmenu --noconfirm --needed"
   
   arch-chroot /mnt /bin/bash -c "systemctl enable lxdm"
+
+  ;;
+
+
+
+"Budgie")
+  echo "" 
+  echo "Se esta instalando el entorno Budgie:" 
+  echo "" 
+
+  arch-chroot /mnt /bin/bash -c "pacman -S xorg --noconfirm"
+  arch-chroot /mnt /bin/bash -c "pacman -S xorg-apps --noconfirm"
+  arch-chroot /mnt /bin/bash -c "pacman -S xorg-server --noconfirm"
+  arch-chroot /mnt /bin/bash -c "pacman -S xorg-xinit --noconfirm"
+  arch-chroot /mnt /bin/bash -c "pacman -S xorg-twm --noconfirm"
+  arch-chroot /mnt /bin/bash -c "pacman -S xterm --noconfirm"
+
+  arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S budgie-desktop --noeditmenu --noconfirm --needed"
+  arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S gdm --noeditmenu --noconfirm --needed"
+  arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S gnome-control-center --noeditmenu --noconfirm --needed"
+  arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S gnome-tweaks --noeditmenu --noconfirm --needed"
+  arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S gnome-terminal --noeditmenu --noconfirm --needed"
+
+  arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S gnu-free-fonts --noeditmenu --noconfirm --needed"
+  arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S ttf-hack --noeditmenu --noconfirm --needed"
+  arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S ttf-inconsolata --noeditmenu --noconfirm --needed"
+  arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S ttf-font-awesome --noeditmenu --noconfirm --needed"
+  arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S awesome-terminal-fonts --noeditmenu --noconfirm --needed"
+  arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S noto-fonts --noeditmenu --noconfirm --needed"
+  arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S noto-fonts-emoji --noeditmenu --noconfirm --needed"
+  
+  arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S ffmpegthumbs --noeditmenu --noconfirm --needed"
+  arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S ffmpegthumbnailer --noeditmenu --noconfirm --needed"
+  arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S freetype2 --noeditmenu --noconfirm --needed"
+  arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S poppler-glib --noeditmenu --noconfirm --needed"
+  arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S libgsf --noeditmenu --noconfirm --needed"
+  arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S raw-thumbnailer --noeditmenu --noconfirm --needed"
+  arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S libgsf --noeditmenu --noconfirm --needed"
+
+  arch-chroot /mnt /bin/bash -c "systemctl enable gdm"
 
   ;;
 
