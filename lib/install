@@ -407,17 +407,45 @@ Option "XkbLayout" "'$keymapx'"
 EndSection   
 EOF
 
+
 clear
-echo ''
-echo ''
+echo ""
+echo ""
 arch-chroot /mnt /bin/bash -c "sudo -u $username alsi -l"
-echo ''
-echo "https://t.me/ArchLinuxCristo "
-echo ''
-echo ''
+echo ""
+echo "Gracias a toda la comunidad en Telegram : https://t.me/ArchLinuxCristo"
+echo ""
+echo "Agradecimiento a: @dakataca @!bin/bash @SvenDeVrij @AlexHMusique @mxhectorvega @D3stry3rK3rn3l"
 echo ""
 printf "\n| La computadora se reiniciara para finalizar |\n| Cuando este apagada la computadora retire la USB o CD |\n\n"
-sleep 5
+
+#INICIO PROGRESS BARR
+function ProgressBar {
+    let _progress=(${1}*100/${2}*100)/100
+    let _done=(${_progress}*6)/10
+    let _left=60-$_done
+    _fill=$(printf "%${_done}s")
+    _empty=$(printf "%${_left}s")
+# 1.2.1.1 Progreso : [########################################] 100%
+printf "\r > Cargando : |${_fill// /║}${_empty// /-}| ${_progress}%%"
+
+}
+# Variables
+_start=1
+
+_end=100
+
+for number in $(seq ${_start} ${_end})
+do
+    sleep 0.5
+    ProgressBar ${number} ${_end}
+done
+#FIN PROGRESS BARR
+echo ""
+echo ""
+
+
+
 
 ####################################################################
 clear
