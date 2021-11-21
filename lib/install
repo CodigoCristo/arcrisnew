@@ -369,6 +369,7 @@ echo -e ""
 echo -e ""
 source lib/environment
 installenvironment
+clear
 
 
 ## KERNEL SELECCIONADO
