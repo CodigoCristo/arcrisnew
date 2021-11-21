@@ -139,6 +139,30 @@ done
             DE="LXQt"
             ;;
 
+        7)  #INICIO LXDE
+            DE="LXDE"
+            ;;
+
+        8)  #INICIO LXDE GTK3
+            DE="LXDE GTK3"
+            ;;
+
+        9)  #INICIO Budgie
+            DE="Budgie"
+            ;;
+
+        10)  #INICIO Cinnamon
+            DE="Cinnamon"
+            ;;
+
+        11)  #INICIO LXQt
+            DE="GNOME 2"
+            ;;
+
+        12)  #INICIO LXQt
+            DE="Enlightenment"
+            ;;
+
 
     esac
 done
@@ -592,6 +616,56 @@ case $environment in
   arch-chroot /mnt /bin/bash -c "systemctl disable NetworkManager"
 
   ;;
+
+
+
+"LXDE")
+  echo "" 
+  echo "Se esta instalando el entorno LXDE:" 
+  echo "" 
+
+  arch-chroot /mnt /bin/bash -c "pacman -S xorg --noconfirm"
+  arch-chroot /mnt /bin/bash -c "pacman -S xorg-apps --noconfirm"
+  arch-chroot /mnt /bin/bash -c "pacman -S xorg-server --noconfirm"
+  arch-chroot /mnt /bin/bash -c "pacman -S xorg-xinit --noconfirm"
+  arch-chroot /mnt /bin/bash -c "pacman -S xorg-twm --noconfirm"
+  arch-chroot /mnt /bin/bash -c "pacman -S xterm --noconfirm"
+
+  arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S lxde --noeditmenu --noconfirm --needed"
+  arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S lxmed --noeditmenu --noconfirm --needed"
+  arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S slock --noeditmenu --noconfirm --needed"
+
+  arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S lxdm --noeditmenu --noconfirm --needed"
+  arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S accountsservice --noeditmenu --noconfirm --needed"
+  
+  arch-chroot /mnt /bin/bash -c "systemctl enable lxdm"
+
+  ;;
+
+
+
+"LXDE GTK3")
+  echo "" 
+  echo "Se esta instalando el entorno LXDE GTK3:" 
+  echo "" 
+
+  arch-chroot /mnt /bin/bash -c "pacman -S xorg --noconfirm"
+  arch-chroot /mnt /bin/bash -c "pacman -S xorg-apps --noconfirm"
+  arch-chroot /mnt /bin/bash -c "pacman -S xorg-server --noconfirm"
+  arch-chroot /mnt /bin/bash -c "pacman -S xorg-xinit --noconfirm"
+  arch-chroot /mnt /bin/bash -c "pacman -S xorg-twm --noconfirm"
+  arch-chroot /mnt /bin/bash -c "pacman -S xterm --noconfirm"
+
+  arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S lxde-gtk3 --noeditmenu --noconfirm --needed"
+  arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S slock --noeditmenu --noconfirm --needed"
+
+  arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S lxdm --noeditmenu --noconfirm --needed"
+  arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S accountsservice --noeditmenu --noconfirm --needed"
+  
+  arch-chroot /mnt /bin/bash -c "systemctl enable lxdm"
+
+  ;;
+
 
 
 esac
