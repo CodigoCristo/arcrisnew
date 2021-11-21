@@ -86,6 +86,7 @@ else
 # PRESS YES
 zonemanual=false
 
+zonahorariauto=$(cat zoneinfo)
 localefrom=$(cat language)
 
 rm language 

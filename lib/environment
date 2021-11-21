@@ -47,8 +47,8 @@ cmd=(dialog --keep-tite --backtitle "${title}" \
 --ok-label '< Seleccionar >' --nocancel --menu "\n\
 Selecciona una opción para XFCE4 \n " 12 60 20)
 
-options=(1 "   Xfce4 || Sistema Completo "
-         2 "   Xfce4 || Minimalista      ")
+options=(1 "   Xfce4                    "
+         2 "   Xfce4 - Tema Arcris      ")
 
 choices=$("${cmd[@]}" "${options[@]}" 2>&1 >/dev/tty)
 
@@ -56,10 +56,10 @@ for choice in $choices
 do
     case $choice in
 
-        1)  DE="xfce4complete"
+        1)  DE="Xfce4"
             ;;
             
-        2)  DE="xfce4mini"
+        2)  DE="Xfce4 Arcris"
             ;;
             
     esac
@@ -73,8 +73,8 @@ cmd=(dialog --keep-tite --backtitle "${title}" \
 --ok-label '< Seleccionar >' --nocancel --menu "\n \
 Selecciona una opción para GNOME \n " 12 60 20)
 
-options=(1 "Gnome40 || Sistema Completo"
-         2 "Gnome40 || Minimalista")
+options=(1 "   Gnome || Sistema Completo  "
+         2 "   Gnome || Minimalista       ")
 
 choices=$("${cmd[@]}" "${options[@]}" 2>&1 >/dev/tty)
 
@@ -82,10 +82,10 @@ for choice in $choices
 do
     case $choice in
 
-        1)  DE="gnomecomplete"
+        1)  DE="Gnome"
             ;;
             
-        2)  DE="gnomemini"
+        2)  DE="Gnome Lite"
             ;;
 
     esac

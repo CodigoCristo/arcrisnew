@@ -361,6 +361,9 @@ arch-chroot /mnt /bin/bash -c "date +' %A, %B %d, %Y - %I:%M %p'"
 sleep 5
 clear
 
+
+
+
 ## KERNEL SELECCIONADO
 source lib/installkernel
 installkernel
@@ -372,6 +375,15 @@ echo ""
 cp pacman-chroot.conf /mnt/etc/pacman.conf
 arch-chroot /mnt /bin/bash -c "pacman -Syu --noconfirm" 
 arch-chroot /mnt /bin/bash -c "pacman -Syu --noconfirm" 
+
+
+## DRIVERS DE VIDEO
+source lib/video
+installvideo
+
+## SHELL DEL SISTEMA
+source lib/shellsystem
+installshell
 
 ## GRUB
 source lib/installgrub
