@@ -469,11 +469,14 @@ echo ""
 echo ""
 ####################################################################
 
+
+clear
 swapdisco=$( fdisk -l | grep "/dev/\|swap" | grep swap | awk -F ' ' '{print $1}' )
 umount -R /mnt
 swapoff ${swapdisco}
 swapoff -a
 swapon -a
+clear
 reboot
 
 
