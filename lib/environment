@@ -218,7 +218,7 @@ case $environment in
 
   arch-chroot /mnt /bin/bash -c "pacman -S xorg --noconfirm"
   arch-chroot /mnt /bin/bash -c "pacman -S xorg-apps --noconfirm"
-  arch-chroot /mnt /bin/bash -c "pacman -S xorg-server--noconfirm"
+  arch-chroot /mnt /bin/bash -c "pacman -S xorg-server --noconfirm"
   arch-chroot /mnt /bin/bash -c "pacman -S xorg-xinit --noconfirm"
   arch-chroot /mnt /bin/bash -c "pacman -S xorg-twm --noconfirm"
   arch-chroot /mnt /bin/bash -c "pacman -S xterm --noconfirm"
@@ -262,7 +262,7 @@ case $environment in
 
   arch-chroot /mnt /bin/bash -c "pacman -S xorg --noconfirm"
   arch-chroot /mnt /bin/bash -c "pacman -S xorg-apps --noconfirm"
-  arch-chroot /mnt /bin/bash -c "pacman -S xorg-server--noconfirm"
+  arch-chroot /mnt /bin/bash -c "pacman -S xorg-server --noconfirm"
   arch-chroot /mnt /bin/bash -c "pacman -S xorg-xinit --noconfirm"
   arch-chroot /mnt /bin/bash -c "pacman -S xorg-twm --noconfirm"
   arch-chroot /mnt /bin/bash -c "pacman -S xterm --noconfirm"
@@ -307,7 +307,7 @@ case $environment in
 
   arch-chroot /mnt /bin/bash -c "pacman -S xorg --noconfirm"
   arch-chroot /mnt /bin/bash -c "pacman -S xorg-apps --noconfirm"
-  arch-chroot /mnt /bin/bash -c "pacman -S xorg-server--noconfirm"
+  arch-chroot /mnt /bin/bash -c "pacman -S xorg-server --noconfirm"
   arch-chroot /mnt /bin/bash -c "pacman -S xorg-xinit --noconfirm"
   arch-chroot /mnt /bin/bash -c "pacman -S xorg-twm --noconfirm"
   arch-chroot /mnt /bin/bash -c "pacman -S xterm --noconfirm"
@@ -351,7 +351,7 @@ case $environment in
 
   arch-chroot /mnt /bin/bash -c "pacman -S xorg --noconfirm"
   arch-chroot /mnt /bin/bash -c "pacman -S xorg-apps --noconfirm"
-  arch-chroot /mnt /bin/bash -c "pacman -S xorg-server--noconfirm"
+  arch-chroot /mnt /bin/bash -c "pacman -S xorg-server --noconfirm"
   arch-chroot /mnt /bin/bash -c "pacman -S xorg-xinit --noconfirm"
   arch-chroot /mnt /bin/bash -c "pacman -S xorg-twm --noconfirm"
   arch-chroot /mnt /bin/bash -c "pacman -S xterm --noconfirm"
@@ -391,7 +391,7 @@ case $environment in
 
   arch-chroot /mnt /bin/bash -c "pacman -S xorg --noconfirm"
   arch-chroot /mnt /bin/bash -c "pacman -S xorg-apps --noconfirm"
-  arch-chroot /mnt /bin/bash -c "pacman -S xorg-server--noconfirm"
+  arch-chroot /mnt /bin/bash -c "pacman -S xorg-server --noconfirm"
   arch-chroot /mnt /bin/bash -c "pacman -S xorg-xinit --noconfirm"
   arch-chroot /mnt /bin/bash -c "pacman -S xorg-twm --noconfirm"
   arch-chroot /mnt /bin/bash -c "pacman -S xterm --noconfirm"
@@ -451,7 +451,7 @@ case $environment in
 
   arch-chroot /mnt /bin/bash -c "pacman -S xorg --noconfirm"
   arch-chroot /mnt /bin/bash -c "pacman -S xorg-apps --noconfirm"
-  arch-chroot /mnt /bin/bash -c "pacman -S xorg-server--noconfirm"
+  arch-chroot /mnt /bin/bash -c "pacman -S xorg-server --noconfirm"
   arch-chroot /mnt /bin/bash -c "pacman -S xorg-xinit --noconfirm"
   arch-chroot /mnt /bin/bash -c "pacman -S xorg-twm --noconfirm"
   arch-chroot /mnt /bin/bash -c "pacman -S xterm --noconfirm"
@@ -494,7 +494,7 @@ case $environment in
 
   arch-chroot /mnt /bin/bash -c "pacman -S xorg --noconfirm"
   arch-chroot /mnt /bin/bash -c "pacman -S xorg-apps --noconfirm"
-  arch-chroot /mnt /bin/bash -c "pacman -S xorg-server--noconfirm"
+  arch-chroot /mnt /bin/bash -c "pacman -S xorg-server --noconfirm"
   arch-chroot /mnt /bin/bash -c "pacman -S xorg-xinit --noconfirm"
   arch-chroot /mnt /bin/bash -c "pacman -S xorg-twm --noconfirm"
   arch-chroot /mnt /bin/bash -c "pacman -S xterm --noconfirm"
@@ -536,7 +536,7 @@ case $environment in
 
   arch-chroot /mnt /bin/bash -c "pacman -S xorg --noconfirm"
   arch-chroot /mnt /bin/bash -c "pacman -S xorg-apps --noconfirm"
-  arch-chroot /mnt /bin/bash -c "pacman -S xorg-server--noconfirm"
+  arch-chroot /mnt /bin/bash -c "pacman -S xorg-server --noconfirm"
   arch-chroot /mnt /bin/bash -c "pacman -S xorg-xinit --noconfirm"
   arch-chroot /mnt /bin/bash -c "pacman -S xorg-twm --noconfirm"
   arch-chroot /mnt /bin/bash -c "pacman -S xterm --noconfirm"
@@ -570,7 +570,7 @@ case $environment in
 
   arch-chroot /mnt /bin/bash -c "pacman -S xorg --noconfirm"
   arch-chroot /mnt /bin/bash -c "pacman -S xorg-apps --noconfirm"
-  arch-chroot /mnt /bin/bash -c "pacman -S xorg-server--noconfirm"
+  arch-chroot /mnt /bin/bash -c "pacman -S xorg-server --noconfirm"
   arch-chroot /mnt /bin/bash -c "pacman -S xorg-xinit --noconfirm"
   arch-chroot /mnt /bin/bash -c "pacman -S xorg-twm --noconfirm"
   arch-chroot /mnt /bin/bash -c "pacman -S xterm --noconfirm"
