@@ -1,273 +1,77 @@
 #!/bin/bash
 
-drivervideo1 () {
+driverautomatico () {
 
-nombreGrafica=$(lspci | grep VGA |  awk -F " " '{print $5,$6,$7,$8,$9,$10,$11,$12,$13}')
+case $(systemd-detect-virt) in 
+    oracle)
 
-dialog --backtitle "${title}" \
---title "-| Información |-" \
---msgbox "----------------------------------------------------------------------\n \
-\n> Si esta usando Maquina virtual la selección de Driver de Video es: \
-\n  [Automatico] \n \
-\n> Si esta usando Hardware real tiene dos opciones para seleccionar: \
-\n  [Automatico] o [Manual] \n\n
-----------------------------------------------------------------------\n\
-\nMarca de tarjeta de vídeo: \n\n${nombreGrafica}\n" 18 75
+        if [ "$kernel_select" == "linux-stable" ]; then
+        
+            dialog --backtitle "${title}" --title "-| Vídeo |-" --stdout --ok-label 'Aceptar' --msgbox "\nDriver virtualbox-host-modules-arch \n" 7 40
+            video="VirtualBox"
 
-#Inicio de Video
-virt=""
-GPU=""
-VM=false
-VMbox=false
-VMqemu=false
+        else
 
- ####################################################################
-      
-    case $(systemd-detect-virt) in
-        oracle)
-            virt="vbox"
-            VM=true
-        ;;
-        vmware)
-            virt="vmware"
-            VM=true
-        ;;
-        qemu)
-            virt="qemu"
-            VM=true
-        ;;
-        kvm)
-            virt="kvm"
-            VM=true
-        ;;
-        microsoft)
-            virt="hyper-v"
-            VM=true
-        ;;
-        xen)
-            virt="xen"
-            VM=true
-        ;;
-    esac
-    
-    ####################################################################
+            dialog --backtitle "${title}" --title "-| Vídeo |-" --stdout --ok-label 'Aceptar' --msgbox "\nDriver virtualbox-host-dkms \n" 7 35
+            video="VirtualBox dkms"
 
-# virtualbox-guest-utils xf86-video-vmware mesa lib32-mesa mesa-libgl 
-# xf86-video-vesa mesa lib32-mesa mesa-libgl qemu-guest-agent
-
-VMbox=false
-
-if [ "$VM" == "true" ]; then
-    
-            
-            case "$virt" in
-                
-                vbox)
-                dialog --backtitle "${title}" --title "-| Driver de Vídeo |-" --stdout --ok-label "<Confirmar>"  --msgbox "\n\nVídeo Detectado Virtual Box\n " 8 40                   
-                video="VirtualBox"
-                ;;
-                
-                vmware)
-                dialog --backtitle "${title}" --title "-| Driver de Vídeo |-" --stdout --ok-label "<Confirmar>"  --msgbox "\n\nVídeo Detectado VMware\n " 8 40
-                video="VMware"
-                ;;
-                
-                hyper-v) 
-                dialog --backtitle "${title}" --title "-| Driver de Vídeo |-" --stdout --ok-label "<Confirmar>"  --msgbox "\n\nVídeo Detectado hyper-v\n " 8 40                         
-                video="Hyper-v"
-                ;;
-                
-                qemu)
-                dialog --backtitle "${title}" --title "-| Driver de Vídeo |-" --stdout --ok-label "<Confirmar>"  --msgbox "\n\nVídeo Detectado Qemu\n " 8 40                   
-                video="Qemu"
-                ;;
-
-                kvm)  
-                dialog --backtitle "${title}" --title "-| Driver de Vídeo |-" --stdout --ok-label "<Confirmar>"  --msgbox "\n\nVídeo Detectado Qemu Kvm\n " 8 40                   
-                video="Qemu Kvm"
-                ;;
-                
-                *)
-                dialog --backtitle "${title}" --title "-| Driver de Vídeo |-" --stdout --ok-label "<Confirmar>"  --msgbox "\n\nVídeo Genérico Detectado Mesa\n " 8 45 
-                video="xf86-video-vesa"
-                ;;
-                
-            esac
-
-            
-else
-
-dialog --title "-| Driver de Vídeo |-" --yesno "\n¿ Desea instalar de manera automatica su driver de vídeo ? \nPresione Si - Automatico \nPresione No - Manera Manual" 9 62
-case $? in
-   0) 
-
-
-
-if (lspci | grep VGA | grep "NVIDIA\|nVidia" &>/dev/null); then
-    
-dialog --backtitle "${title}" --title "-| Driver de Vídeo |-" --stdout \
---ok-label "<Confirmar>" --msgbox "\n\nGráfica identificada NVIDIA: xf86-video-nouveau\n\n${nombreGrafica}\n " 11 66           
-
-elif (lspci | grep VGA | grep "Radeon R\|R2/R3/R4/R5" &>/dev/null); then
-            
-dialog --backtitle "${title}" --title "-| Driver de Vídeo |-" --stdout \
---ok-label "<Confirmar>"  --msgbox "\n\nGráfica identificada AMD RADEON: xf86-video-amdgpu\n\n${nombreGrafica}\n " 11 66 
-
-elif (lspci | grep VGA | grep "ATI\|AMD/ATI" &>/dev/null); then
-                    
-dialog --backtitle "${title}" --title "-| Driver de Vídeo |-" --stdout \
---ok-label "<Confirmar>"  --msgbox "\n\nGráfica identificada AMD ATI: xf86-video-ati\n\n${nombreGrafica}\n " 11 66 
-
-
-elif (lspci | grep VGA | grep "Intel" &>/dev/null); then
-            
-dialog --backtitle "${title}" --title "-| Driver de Vídeo |-" --stdout \
---ok-label "<Confirmar>"  --msgbox "\n\nGráfica identificada INTEL: xf86-video-intel\n\n${nombreGrafica}\n " 11 66 
-
-else
-            
-dialog --backtitle "${title}" --title "-| Driver de Vídeo |-" --stdout \
---ok-label "<Confirmar>"  --msgbox "\n\nGráfico Genérico: xf86-video-vesa\n\n${nombreGrafica}\n " 11 66 
-            
         fi
-;;
-   1) 
+    ;; 
 
-GPUHYBR=false
+    vmware)
+        dialog --backtitle "${title}" --title "-| Vídeo |-" --stdout --ok-label 'Aceptar' --msgbox "\nDriver xf86-video-vmware \n" 7 30
+        video="VMware"
+    ;; 
 
-cmd=(dialog --keep-tite --no-collapse --cr-wrap --backtitle "$titulo" --title "-| Driver de Vídeo |-"  --column-separator "|" --no-tags --ok-label "< Seleccionar >" \
-    --nocancel --menu "Seleciona el driver correcto:" 20 76 16)
+    qemu) 
+        dialog --backtitle "${title}" --title "-| Driver de Vídeo |-" --stdout --ok-label "<Confirmar>"  --msgbox "\nVídeo Detectado Qemu\n " 7 30
+        video="Qemu"
+    ;; 
 
-options=(1 "Nvidia 440xx|(Linux Stable)"
-         2 "Nvidia 390xx|(Linux Stable)"
-         3 "Nvidia 340xx|(Linux Stable)"
-         4 "Nvidia 440xx|(Linux Stable + Intel)"
-         5 "Nvidia 390xx|(Linux Stable + Intel) No hybrid"
-         6 "Nvidia 440xx|(Linux LTS)"
-         7 "Nvidia 390xx|(Linux LTS)"
-         8 "Nvidia 440xx|(Linux Hardened - Zen)"
-         9 "Nvidia 390xx|(Linux Hardened - Zen)"
-         10 "Nvidia|(Open Source)"
-         11 "AMD - Radeon|(Open Source)"
-         12 "AMD - ATI|(Open Source)"
-         13 "Intel|(Open Source)")
+    kvm) 
+        dialog --backtitle "${title}" --title "-| Driver de Vídeo |-" --stdout --ok-label "<Confirmar>"  --msgbox "\nVídeo Detectado Qemu kvm\n " 7 30
+        video="Qemu Kvm"
+    ;; 
 
-choices=$("${cmd[@]}" "${options[@]}" 2>&1 >/dev/tty)
+    *)
 
-for choice in $choices
-do
-    case $choice in
-        1)
-            GPU="nvidia nvidia-settings nvidia-utils lib32-nvidia-utils libva-utils \
-            vdpauinfo libvdpau lib32-libvdpau opencl-nvidia \
-            lib32-opencl-nvidia ffnvcodec-headers libxnvctrl clinfo ocl-icd lib32-ocl-icd opencl-headers"
-            dialog --title "-| Driver de Vídeo |-" --stdout --ok-label "<Aceptar>"  --msgbox "\nyay -Sy $GPU" 10 80
-            ;;
-            
-        2)
-            GPU="nvidia-390xx nvidia-390xx-utils \
-            lib32-nvidia-390xx-utils libva-utils vdpauinfo libvdpau lib32-libvdpau \
-            opencl-nvidia-390xx lib32-opencl-nvidia-390xx clinfo ocl-icd lib32-ocl-icd opencl-headers"
-            dialog --title "-| Driver de Vídeo |-" --stdout --ok-label "<Aceptar>"  --msgbox "\nyay -Sy $GPU" 10 80
-            #libxnvctrl-390xx
-            #nvidia-390xx-settings
-            ;;
-        
-        3)
-            GPU="nvidia-340xx nvidia-340xx-utils \
-            lib32-nvidia-340xx-utils libva-utils vdpauinfo libvdpau lib32-libvdpau \
-            opencl-nvidia-340xx lib32-opencl-nvidia-340xx clinfo ocl-icd lib32-ocl-icd opencl-headers"
-            dialog --title "-| Driver de Vídeo |-" --stdout --ok-label "<Aceptar>"  --msgbox "\nyay -Sy $GPU" 10 80
-            #libxnvctrl-340xx
-            #nvidia-340xx-settings
-            ;;
-        
-        4)
-            GPU="nvidia nvidia-settings nvidia-utils lib32-nvidia-utils libva-utils xf86-video-intel optimus-manager bbswitch optimus-manager-qt \
-            vdpauinfo libvdpau lib32-libvdpau opencl-nvidia \
-            lib32-opencl-nvidia ffnvcodec-headers libxnvctrl clinfo ocl-icd lib32-ocl-icd opencl-headers"
-            dialog --title "-| Driver de Vídeo |-" --stdout --ok-label "<Aceptar>"  --msgbox "\nyay -Sy $GPU" 10 80
-            GPUHYBR=true
-            ;;
-            
-        5)
-            GPU="nvidia-390xx nvidia-390xx-utils xf86-video-intel optimus-manager bbswitch optimus-manager-qt \
-            lib32-nvidia-390xx-utils libva-utils vdpauinfo libvdpau lib32-libvdpau \
-            opencl-nvidia-390xx lib32-opencl-nvidia-390xx clinfo ocl-icd lib32-ocl-icd opencl-headers"
-            dialog --title "-| Driver de Vídeo |-" --stdout --ok-label "<Aceptar>"  --msgbox "\nyay -Sy $GPU" 10 80
-            GPUHYBR=true
-            ;;
-        
-        6)
-            GPU="nvidia-lts nvidia-settings nvidia-utils lib32-nvidia-utils libva-utils \
-            vdpauinfo libvdpau lib32-libvdpau opencl-nvidia \
-            lib32-opencl-nvidia ffnvcodec-headers libxnvctrl clinfo ocl-icd lib32-ocl-icd opencl-headers"
-            dialog --title "-| Driver de Vídeo |-" --stdout --ok-label "<Aceptar>"  --msgbox "\nyay -Sy $GPU" 10 80
-            ;;
-        
-        7)
-            GPU="nvidia-390xx-lts nvidia-390xx-utils \
-            lib32-nvidia-390xx-utils libva-utils vdpauinfo libvdpau lib32-libvdpau \
-            opencl-nvidia-390xx lib32-opencl-nvidia-390xx clinfo ocl-icd lib32-ocl-icd opencl-headers"
-            dialog --title "-| Driver de Vídeo |-" --stdout --ok-label "<Aceptar>"  --msgbox "\nyay -Sy $GPU" 10 80
-            ;;
-        
-        
-        8)
-            GPU="nvidia-dkms nvidia-utils lib32-nvidia-utils libva-utils \
-            vdpauinfo libvdpau lib32-libvdpau opencl-nvidia \
-            lib32-opencl-nvidia ffnvcodec-headers libxnvctrl clinfo ocl-icd lib32-ocl-icd opencl-headers"
-            dialog --title "-| Driver de Vídeo |-" --stdout --ok-label "<Aceptar>"  --msgbox "\nyay -Sy $GPU" 10 80
-            ;;
-        
-        9)
-            GPU="nvidia-390xx-dkms nvidia-390xx-utils \
-            lib32-nvidia-390xx-utils libva-utils vdpauinfo libvdpau lib32-libvdpau \
-            opencl-nvidia-390xx lib32-opencl-nvidia-390xx clinfo ocl-icd lib32-ocl-icd opencl-headers"
-            dialog --title "-| Driver de Vídeo |-" --stdout --ok-label "<Aceptar>"  --msgbox "\nyay -Sy $GPU" 10 80
-            ;;        
-            
-        10)
-            GPU="xf86-video-nouveau mesa lib32-mesa mesa-vdpau libva-mesa-driver \
-            lib32-mesa-vdpau lib32-libva-mesa-driver libva-vdpau-driver libvdpau-va-gl \
-            libva-utils vdpauinfo libvdpau lib32-libvdpau opencl-mesa clinfo ocl-icd lib32-ocl-icd opencl-headers"
-            dialog --title "-| Driver de Vídeo |-" --stdout --ok-label "<Aceptar>"  --msgbox "\nyay -Sy $GPU" 10 80
-            ;;
-        11)
-            GPU="xf86-video-amdgpu mesa lib32-mesa vulkan-radeon \
-            lib32-vulkan-radeon mesa-vdpau libva-mesa-driver lib32-mesa-vdpau \
-            lib32-libva-mesa-driver libva-vdpau-driver libvdpau-va-gl libva-utils vdpauinfo \
-            opencl-mesa clinfo ocl-icd lib32-ocl-icd opencl-headers"
-            dialog --title "-| Driver de Vídeo |-" --stdout --ok-label "<Aceptar>"  --msgbox "\nyay -Sy $GPU" 10 80
-            ;;
-        12)
-            GPU="xf86-video-ati mesa lib32-mesa mesa-vdpau libva-mesa-driver \
-            lib32-mesa-vdpau lib32-libva-mesa-driver libva-vdpau-driver libvdpau-va-gl \
-            libva-utils vdpauinfo opencl-mesa clinfo ocl-icd lib32-ocl-icd opencl-headers"
-            dialog --title "-| Driver de Vídeo |-" --stdout --ok-label "<Aceptar>"  --msgbox "\nyay -Sy $GPU" 10 80
-            ;;
-            
-        13)
-            GPU="xf86-video-intel vulkan-intel mesa lib32-mesa intel-media-driver \
-            libva-intel-driver libva-vdpau-driver libvdpau-va-gl libva-utils vdpauinfo \
-            intel-compute-runtime beignet clinfo ocl-icd lib32-ocl-icd opencl-headers"
-            dialog --title "-| Driver de Vídeo |-" --stdout --ok-label "<Aceptar>"  --msgbox "\nyay -Sy $GPU" 10 80
-            ;;
-    esac
-done
-;;
+if (lspci | grep VGA | grep "NVIDIA\|nVidia" &>/dev/null && lspci | grep VGA | grep "Intel" &>/dev/null); then 
+
+dialog --backtitle "${title}" --title "-| Vídeo |-" --stdout --ok-label 'Aceptar' --msgbox "\nDriver: xf86-video-intel xf86-video-nouveau mesa \n" 7 55
+video="Nvidia + Intel"
+
+elif (lspci | grep VGA | grep "NVIDIA\|nVidia" &>/dev/null); then 
+
+dialog --backtitle "${title}" --title "-| Vídeo |-" --stdout --ok-label 'Aceptar' --msgbox "\nDriver: xf86-video-nouveau mesa \n" 7 37
+video="Nvidia OpenSource"
+
+elif (lspci | grep VGA | grep "Radeon R\|R2/R3/R4/R5" &>/dev/null); then 
+
+dialog --backtitle "${title}" --title "-| Vídeo |-" --stdout --ok-label 'Aceptar' --msgbox "\nDriver: xf86-video-amdgpu vulkan-radeon mesa \n" 7 50
+video="Radeon OpenSource"
 
 
+elif (lspci | grep VGA | grep "ATI\|AMD/ATI" &>/dev/null); then 
 
-   255) echo "Presiono la tecla [ESC]"
-;;
-esac
+dialog --backtitle "${title}" --title "-| Vídeo |-" --stdout --ok-label 'Aceptar' --msgbox "\nDriver: xf86-video-ati mesa \n" 7 33
+video="ATI OpenSource"
 
-    
-fi
+elif (lspci | grep VGA | grep "Intel" &>/dev/null); then 
 
-sectionvideo=1
+dialog --backtitle "${title}" --title "-| Vídeo |-" --stdout --ok-label 'Aceptar' --msgbox "\nDriver: xf86-video-intel vulkan-intel mesa \n" 7 47
+video="Intel OpenSource"
 
+else
+
+dialog --backtitle "${title}" --title "-| Vídeo |-" --stdout --ok-label 'Aceptar' --msgbox "\nDriver: xf86-video-vesa mesa \n" 7 0
+video="Vesa OpenSource"
+
+fi 
+
+;; 
+esac 
+
+clear
 
 }
 
@@ -282,8 +86,10 @@ sectionvideo=1
 
 
 
-
 drivervideo () {
+
+
+if [[ sectionkernel == "1" ]]; then
 
 nombreGrafica=$(lspci | grep VGA |  awk -F " " '{print $5,$6,$7,$8,$9,$10}')
 
@@ -293,12 +99,64 @@ dialog --keep-tite --no-collapse --cr-wrap --backtitle "${title}" \
 
 respuestavideo=$?
 case $respuestavideo in
-   0) echo "File deleted.";;
+   0) driverautomatico;;
    1) echo "File not deleted.";;
    255) echo "[ESC] key pressed.";;
 esac
 
 sectionvideo=1
 
+else
+
+dialog --backtitle "${title}" --title "-| ERROR |-" --stdout --ok-label "< OK >"  --msgbox "\nSeleccione tu Kernel primero \n " 7 35
+
+fi
+
+
+
+
+}
+
+
+
+
+
+installvideo () {
+
+
+
+case $video in 
+    "Nvidia + Intel")
+
+
+
+    ;; 
+
+    vmware) 
+
+    ;; 
+
+    qemu) 
+
+    ;; 
+
+    kvm) 
+
+    ;; 
+
+    microsoft) 
+
+    ;; 
+
+    xen) 
+
+    ;; 
+
+    *)
+
+    ;;
+
+
+esac
 
 }
