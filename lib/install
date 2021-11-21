@@ -362,16 +362,6 @@ sleep 5
 clear
 
 
-## ESCRITORIOS 
-titulo_progreso="| Instalando Entorno Gráfico |"
-barra_progreso
-echo -e ""
-echo -e ""
-source lib/environment
-installenvironment
-clear
-
-
 ## KERNEL SELECCIONADO
 source lib/installkernel
 installkernel
@@ -385,6 +375,15 @@ arch-chroot /mnt /bin/bash -c "pacman -Syu --noconfirm"
 arch-chroot /mnt /bin/bash -c "pacman -Syu --noconfirm" 
 
 
+## ESCRITORIOS 
+titulo_progreso="| Instalando Entorno Gráfico |"
+barra_progreso
+echo -e ""
+echo -e ""
+source lib/environment
+installenvironment
+clear
+
 ## DRIVERS DE VIDEO
 titulo_progreso="| Instalando driver de Vídeo |"
 barra_progreso
@@ -392,6 +391,9 @@ echo -e ""
 echo -e ""
 source lib/video
 installvideo
+
+
+
 
 
 ## SHELL DEL SISTEMA
@@ -416,7 +418,21 @@ EndSection
 EOF
 
 
+####################################################################
 clear
+arch-chroot /mnt /bin/bash -c "systemctl enable dhcpcd NetworkManager"
+clear
+arch-chroot /mnt /bin/bash -c "systemctl start dhcpcd NetworkManager"
+clear
+echo "noipv6rs" >> /mnt/etc/dhcpcd.conf
+echo "noipv6" >> /mnt/etc/dhcpcd.conf
+
+sed -i '80d' /mnt/etc/sudoers
+sed -i "80i $username ALL=(ALL) ALL" /mnt/etc/sudoers
+clear
+####################################################################
+
+
 echo ""
 echo ""
 arch-chroot /mnt /bin/bash -c "sudo -u $username alsi -l"
@@ -454,22 +470,8 @@ echo ""
 
 
 
-
-####################################################################
-clear
-arch-chroot /mnt /bin/bash -c "systemctl enable dhcpcd NetworkManager"
-clear
-arch-chroot /mnt /bin/bash -c "systemctl start dhcpcd NetworkManager"
-clear
-echo "noipv6rs" >> /mnt/etc/dhcpcd.conf
-echo "noipv6" >> /mnt/etc/dhcpcd.conf
-
-sed -i '80d' /mnt/etc/sudoers
-sed -i "80i $username ALL=(ALL) ALL" /mnt/etc/sudoers
-clear
-
 reboot
-####################################################################
+
 
 
 }
