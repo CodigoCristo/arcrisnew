@@ -378,8 +378,13 @@ arch-chroot /mnt /bin/bash -c "pacman -Syu --noconfirm"
 
 
 ## DRIVERS DE VIDEO
+titulo_progreso="| Instalando driver de Vídeo |"
+barra_progreso
+echo -e ""
+echo -e ""
 source lib/video
 installvideo
+
 
 ## SHELL DEL SISTEMA
 source lib/shellsystem

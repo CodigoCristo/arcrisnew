@@ -200,10 +200,6 @@ fi
 installvideo () {
 
 
-    echo "" 
-    echo "DRIVERS DE VIDEO" 
-    echo "" 
-    sleep 10
 
 case $video in 
 
