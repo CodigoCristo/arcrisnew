@@ -23,9 +23,6 @@ echo "Loading..."
 echo ""
 curl https://ipapi.co/timezone > zoneinfo
 zonahorariauto=$(cat zoneinfo)
-clear
-echo ""
-echo "Loading..."
 echo ""
 locales=""
 localefrom=""
