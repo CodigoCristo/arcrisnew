@@ -105,6 +105,7 @@ case $respuestavideo in
 esac
 
 sectionvideo=1
+current_item="8"
 
 else
 
