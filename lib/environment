@@ -155,11 +155,11 @@ done
             DE="Cinnamon"
             ;;
 
-        11)  #INICIO LXQt
+        11)  #INICIO GNOME 2
             DE="GNOME 2"
             ;;
 
-        12)  #INICIO LXQt
+        12)  #INICIO Enlightenment
             DE="Enlightenment"
             ;;
 
