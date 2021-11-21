@@ -392,6 +392,17 @@ clear
 
 
 
+arch-chroot /mnt /bin/bash -c "localectl --no-convert set-x11-keymap ${keymapx}"
+
+sudo tee -a /mnt/etc/X11/xorg.conf.d/00-keyboard.conf <<EOF
+Section "InputClass"
+Identifier "system-keyboard"
+MatchIsKeyboard "on"
+Option "XkbLayout" "'$keymapx'"
+EndSection   
+EOF
+
+
 echo ""
 echo ""
 arch-chroot /mnt /bin/bash -c "sudo -u $username alsi -l"
