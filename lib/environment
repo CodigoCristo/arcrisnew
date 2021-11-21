@@ -674,6 +674,7 @@ case $environment in
   arch-chroot /mnt /bin/bash -c "pacman -S xterm --noconfirm"
 
   arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S budgie-desktop --noeditmenu --noconfirm --needed"
+  arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S budgie-screensaver --noeditmenu --noconfirm --needed"
   arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S gdm --noeditmenu --noconfirm --needed"
   arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S gnome-control-center --noeditmenu --noconfirm --needed"
   arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S gnome-tweaks --noeditmenu --noconfirm --needed"
