@@ -412,6 +412,7 @@ echo ""
 echo ""
 echo "Quitando repo cristo:"
 echo ""
+sleep 4
 cp pacman-chroot.conf /mnt/etc/pacman.conf
 arch-chroot /mnt /bin/bash -c "pacman -Syu --noconfirm" 
 arch-chroot /mnt /bin/bash -c "pacman -Syu --noconfirm" 
