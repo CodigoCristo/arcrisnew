@@ -407,11 +407,17 @@ Option "XkbLayout" "'$keymapx'"
 EndSection   
 EOF
 
-
-echo ""
-echo ""
+clear
+echo ''
+echo ''
 arch-chroot /mnt /bin/bash -c "sudo -u $username alsi -l"
-
+echo ''
+echo "https://t.me/ArchLinuxCristo "
+echo ''
+echo ''
+echo ""
+printf "\n| La computadora se reiniciara para finalizar |\n| Cuando este apagada la computadora retire la USB o CD |\n\n"
+sleep 5
 
 ####################################################################
 clear
@@ -423,7 +429,7 @@ echo "noipv6rs" >> /mnt/etc/dhcpcd.conf
 echo "noipv6" >> /mnt/etc/dhcpcd.conf
 
 sed -i '80d' /mnt/etc/sudoers
-sed -i "80i $nombre_usuario ALL=(ALL) ALL" /mnt/etc/sudoers
+sed -i "80i $username ALL=(ALL) ALL" /mnt/etc/sudoers
 clear
 
 reboot
