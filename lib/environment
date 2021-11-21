@@ -675,7 +675,6 @@ case $environment in
 
   arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S budgie-desktop --noeditmenu --noconfirm --needed"
   arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S budgie-screensaver --noeditmenu --noconfirm --needed"
-  arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S gdm --noeditmenu --noconfirm --needed"
   arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S gnome-control-center --noeditmenu --noconfirm --needed"
   arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S gnome-tweaks --noeditmenu --noconfirm --needed"
   arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S gnome-terminal --noeditmenu --noconfirm --needed"
@@ -688,15 +687,13 @@ case $environment in
   arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S noto-fonts --noeditmenu --noconfirm --needed"
   arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S noto-fonts-emoji --noeditmenu --noconfirm --needed"
   
-  arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S ffmpegthumbs --noeditmenu --noconfirm --needed"
-  arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S ffmpegthumbnailer --noeditmenu --noconfirm --needed"
-  arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S freetype2 --noeditmenu --noconfirm --needed"
-  arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S poppler-glib --noeditmenu --noconfirm --needed"
-  arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S libgsf --noeditmenu --noconfirm --needed"
-  arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S raw-thumbnailer --noeditmenu --noconfirm --needed"
-  arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S libgsf --noeditmenu --noconfirm --needed"
+  arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S lightdm --noeditmenu --noconfirm --needed"
+  arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S lightdm-gtk-greeter --noeditmenu --noconfirm --needed"
+  arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S lightdm-gtk-greeter-settings --noeditmenu --noconfirm --needed"
+  arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S light-locker --noeditmenu --noconfirm --needed"
+  arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S accountsservice --noeditmenu --noconfirm --needed"
 
-  arch-chroot /mnt /bin/bash -c "systemctl enable gdm"
+  arch-chroot /mnt /bin/bash -c "systemctl enable lightdm"
 
   ;;
 
@@ -728,6 +725,77 @@ case $environment in
   ;;
 
 
+
+"GNOME 2")
+  echo "" 
+  echo "Se esta instalando el entorno GNOME 2:" 
+  echo "" 
+
+  arch-chroot /mnt /bin/bash -c "pacman -S xorg --noconfirm"
+  arch-chroot /mnt /bin/bash -c "pacman -S xorg-apps --noconfirm"
+  arch-chroot /mnt /bin/bash -c "pacman -S xorg-server --noconfirm"
+  arch-chroot /mnt /bin/bash -c "pacman -S xorg-xinit --noconfirm"
+  arch-chroot /mnt /bin/bash -c "pacman -S xorg-twm --noconfirm"
+  arch-chroot /mnt /bin/bash -c "pacman -S xterm --noconfirm"
+
+  arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S gnome-flashback --noeditmenu --noconfirm --needed"
+  arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S gnome-applets --noeditmenu --noconfirm --needed"
+  arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S gnome-control-center --noeditmenu --noconfirm --needed"
+  arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S gnome-tweaks --noeditmenu --noconfirm --needed"
+  arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S gnome-terminal --noeditmenu --noconfirm --needed"
+
+  arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S gnu-free-fonts --noeditmenu --noconfirm --needed"
+  arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S ttf-hack --noeditmenu --noconfirm --needed"
+  arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S ttf-inconsolata --noeditmenu --noconfirm --needed"
+  arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S ttf-font-awesome --noeditmenu --noconfirm --needed"
+  arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S awesome-terminal-fonts --noeditmenu --noconfirm --needed"
+  arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S noto-fonts --noeditmenu --noconfirm --needed"
+  arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S noto-fonts-emoji --noeditmenu --noconfirm --needed"
+  
+  arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S lightdm --noeditmenu --noconfirm --needed"
+  arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S lightdm-gtk-greeter --noeditmenu --noconfirm --needed"
+  arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S lightdm-gtk-greeter-settings --noeditmenu --noconfirm --needed"
+  arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S light-locker --noeditmenu --noconfirm --needed"
+  arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S accountsservice --noeditmenu --noconfirm --needed"
+
+  arch-chroot /mnt /bin/bash -c "systemctl enable lightdm"
+
+  ;;
+
+
+
+"Enlightenment")
+  echo "" 
+  echo "Se esta instalando el entorno Enlightenment:" 
+  echo "" 
+
+  arch-chroot /mnt /bin/bash -c "pacman -S xorg --noconfirm"
+  arch-chroot /mnt /bin/bash -c "pacman -S xorg-apps --noconfirm"
+  arch-chroot /mnt /bin/bash -c "pacman -S xorg-server --noconfirm"
+  arch-chroot /mnt /bin/bash -c "pacman -S xorg-xinit --noconfirm"
+  arch-chroot /mnt /bin/bash -c "pacman -S xorg-twm --noconfirm"
+  arch-chroot /mnt /bin/bash -c "pacman -S xterm --noconfirm"
+
+  arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S enlightenment --noeditmenu --noconfirm --needed"
+  arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S entrance-git --noeditmenu --noconfirm --needed"
+  arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S terminology --noeditmenu --noconfirm --needed"
+  arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S network-manager-applet --noeditmenu --noconfirm --needed"
+  arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S eluminance-git --noeditmenu --noconfirm --needed"
+  arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S stalonetray --noeditmenu --noconfirm --needed"
+
+  arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S gnu-free-fonts --noeditmenu --noconfirm --needed"
+  arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S ttf-hack --noeditmenu --noconfirm --needed"
+  arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S ttf-inconsolata --noeditmenu --noconfirm --needed"
+  arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S ttf-font-awesome --noeditmenu --noconfirm --needed"
+  arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S awesome-terminal-fonts --noeditmenu --noconfirm --needed"
+  arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S noto-fonts --noeditmenu --noconfirm --needed"
+  arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S noto-fonts-emoji --noeditmenu --noconfirm --needed"
+  
+  arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S accountsservice --noeditmenu --noconfirm --needed"
+
+  arch-chroot /mnt /bin/bash -c "systemctl enable entrance"
+
+  ;;
 
 
 esac
