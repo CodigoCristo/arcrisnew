@@ -366,14 +366,6 @@ clear
 source lib/installkernel
 installkernel
 clear
-echo ""
-echo ""
-echo "Quitando repo cristo:"
-echo ""
-cp pacman-chroot.conf /mnt/etc/pacman.conf
-arch-chroot /mnt /bin/bash -c "pacman -Syu --noconfirm" 
-arch-chroot /mnt /bin/bash -c "pacman -Syu --noconfirm" 
-
 
 ## ESCRITORIOS 
 titulo_progreso="| Instalando Entorno Gráfico |"
@@ -391,10 +383,6 @@ echo -e ""
 echo -e ""
 source lib/video
 installvideo
-
-
-
-
 
 ## SHELL DEL SISTEMA
 source lib/shellsystem
@@ -419,6 +407,14 @@ EOF
 
 
 ####################################################################
+clear
+echo ""
+echo ""
+echo "Quitando repo cristo:"
+echo ""
+cp pacman-chroot.conf /mnt/etc/pacman.conf
+arch-chroot /mnt /bin/bash -c "pacman -Syu --noconfirm" 
+arch-chroot /mnt /bin/bash -c "pacman -Syu --noconfirm" 
 clear
 arch-chroot /mnt /bin/bash -c "systemctl enable dhcpcd NetworkManager"
 clear
