@@ -10,6 +10,8 @@ username=""
 userpasswd=""
 rootpasswd=""
 
+dialog --backtitle "${title}" --title "-| User |-" --stdout --ok-label "< OK >"  --msgbox "\nEscriba su usuario y contraseña. \n " 7 37
+
 ##########################
 # USER
 ##########################
@@ -79,6 +81,8 @@ username=$(dialog --backtitle "${title}" --title "${titleuser}" \
 #
 #  done
 
+
+dialog --backtitle "${title}" --title "-| Root |-" --stdout --ok-label "< OK >"  --msgbox "\nEscriba su contraseña de administrador. \n " 7 43
 
 ##########################
 # PASSWD ROOT

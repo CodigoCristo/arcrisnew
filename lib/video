@@ -1,5 +1,77 @@
 #!/bin/bash
 
+drivermanual () {
+
+nombreGrafica=$(lspci | grep VGA |  awk -F " " '{print $5,$6,$7,$8,$9,$10}')
+
+cmd=(dialog --nocancel --no-tags --backtitle "${title}" --title "-| Driver de Vídeo |-" \
+    --menu "\nTarjeta de vídeo: \n\n${nombreGrafica}\n\nElige una opción\n " 27 60 10)
+
+options=(   1 "  Video vesa (Generic All)             "
+            2 "  Intel (Open Source)                  "
+            3 "  AMD/ATI (Open Source)                "
+            4 "  AMD/Radeon (Open Source)             "
+            5 "  Nvidia (Open Source)                 "
+            6 "  Nvidia + Intel (Open Source)         "
+            7 "  Nvidia 495xx (Linux Stable)          "
+            8 "  Nvidia 390xx (Linux Stable)          "
+            9 "  Nvidia 495xx (Linux LTS)             "
+            10 "  Nvidia 390xx (Linux LTS)             "
+            11 "  Nvidia 495xx (Linux Hardened - Zen)  "
+            12 "  Nvidia 390xx (Linux Hardened - Zen)  "
+            13 "  Nvidia 495xx (Linux Stable + Intel)  ")
+
+choices=$("${cmd[@]}" "${options[@]}" 2>&1 >/dev/tty)
+
+for choice in $choices
+do
+    case $choice in
+
+
+        1) video="Vesa OpenSource"
+        ;;
+
+        2) video="Intel OpenSource"
+        ;;
+
+        3) video="ATI OpenSource"
+        ;;
+
+        4) video="Radeon OpenSource"
+        ;;
+
+        5) video="Nvidia OpenSource"
+        ;;
+
+        6) video="Nvidia + Intel OpenSource"
+        ;;
+
+        7) video="Nvidia 495xx"
+        ;;
+
+        8) video="Nvidia 390xx"
+        ;;
+
+        9) video="Nvidia 495xx lts"
+        ;;
+
+        10) video="Nvidia 390xx lts"
+        ;;
+
+        11) video="Nvidia 495xx dkms"
+        ;;
+
+        12) video="Nvidia 390xx dkms"
+        ;;
+
+        13) video="Nvidia 495xx intel"
+        ;;
+
+    esac
+done
+}
+
+
 driverautomatico () {
 
 case $(systemd-detect-virt) in 
@@ -38,7 +110,7 @@ case $(systemd-detect-virt) in
 if (lspci | grep VGA | grep "NVIDIA\|nVidia" &>/dev/null && lspci | grep VGA | grep "Intel" &>/dev/null); then 
 
 dialog --backtitle "${title}" --title "-| Vídeo |-" --stdout --ok-label 'Aceptar' --msgbox "\nDriver: xf86-video-intel xf86-video-nouveau mesa \n" 7 55
-video="Nvidia + Intel"
+video="Nvidia + Intel OpenSource"
 
 elif (lspci | grep VGA | grep "NVIDIA\|nVidia" &>/dev/null); then 
 
@@ -99,9 +171,11 @@ dialog --keep-tite --no-collapse --cr-wrap --backtitle "${title}" \
 
 respuestavideo=$?
 case $respuestavideo in
-   0) driverautomatico;;
-   1) echo "File not deleted.";;
+
+   0) drivermanual ;;
+   1) driverautomatico ;;
    255) echo "[ESC] key pressed.";;
+
 esac
 
 sectionvideo=1
