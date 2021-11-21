@@ -11,18 +11,18 @@ while [[ $extraprograms == "true" ]]; do
 menuextras=$(dialog --keep-tite --backtitle "${title}" --title "-| EXTRAS |-" \
 --nocancel --no-tags \
 --menu "\nSeleccione los programas extras que necesita \n " 21 50 10 \
-1 "           Utilidades                   " \
-2 "           Terminales                   " \
-3 "           Audio                        " \
-4 "           Reproductores                " \
-5 "           Navegador Web                " \
-6 "           Office                       " \
-7 "           Administrador de tareas      " \
-8 "           Social media                 " \
-9 "           Gamers                       " \
-10 "           AUR helpers                  " \
-11 " CONFIRMAR                               " \
-12 " CANCELAR                                " 3>&1 1>&2 2>&3)
+1 "           Utilidades                    " \
+2 "           Terminales                    " \
+3 "           Audio                         " \
+4 "           Reproductores                 " \
+5 "           Navegador Web                 " \
+6 "           Office                        " \
+7 "           Administrador de tareas       " \
+8 "           Social media                  " \
+9 "           Gamers                        " \
+10 "           AUR helpers                   " \
+11 "  CONFIRMAR                              " \
+12 "  CANCELAR                               " 3>&1 1>&2 2>&3)
 
 case "$menuextras" in
 
