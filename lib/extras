@@ -21,8 +21,8 @@ menuextras=$(dialog --keep-tite --backtitle "${title}" --title "-| EXTRAS |-" \
 8 "           Social media                 " \
 9 "           Gamers                       " \
 10 "           AUR helpers                  " \
-11 " CONFIRMAR  " \
-12 " CANCELAR   " 3>&1 1>&2 2>&3)
+11 " CONFIRMAR                               " \
+12 " CANCELAR                                " 3>&1 1>&2 2>&3)
 
 case "$menuextras" in
 
