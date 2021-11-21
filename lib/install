@@ -423,13 +423,13 @@ arch-chroot /mnt /bin/bash -c "systemctl start dhcpcd NetworkManager"
 clear
 echo "noipv6rs" >> /mnt/etc/dhcpcd.conf
 echo "noipv6" >> /mnt/etc/dhcpcd.conf
-
+clear
 sed -i '80d' /mnt/etc/sudoers
 sed -i "80i $username ALL=(ALL) ALL" /mnt/etc/sudoers
 clear
 ####################################################################
 
-
+####################################################################
 echo ""
 echo ""
 arch-chroot /mnt /bin/bash -c "sudo -u $username alsi -l"
@@ -464,9 +464,13 @@ done
 #FIN PROGRESS BARR
 echo ""
 echo ""
+####################################################################
 
-
-
+swapdisco=$( fdisk -l | grep "/dev/\|swap" | grep swap | awk -F ' ' '{print $1}' )
+umount -R /mnt
+swapoff ${swapdisco}
+swapoff -a
+swapon -a
 reboot
 
 
