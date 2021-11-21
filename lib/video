@@ -109,6 +109,7 @@ sectionvideo=1
 else
 
 dialog --backtitle "${title}" --title "-| ERROR |-" --stdout --ok-label "< OK >"  --msgbox "\nSeleccione tu Kernel primero \n " 7 35
+current_item="7"
 
 fi
 
