@@ -30,7 +30,11 @@ seleccionDE=true
 cmd=(dialog --keep-tite --no-collapse --cr-wrap --backtitle "${title}" --column-separator "|" --no-tags --ok-label '< Seleccionar >' --menu "Selecciona tu escritorio a instalar - (DE)" 22 60 19)
 
 options=(1 " > | xfce4 | Xfce desktop| <"
-         2 " > | gnome | GNOME Classic desktop| <")
+         2 " > | gnome | GNOME Classic desktop| <"
+         3 " > | plasma | KDE Plasma desktop| <"
+         4 " > | deepin | Deepin desktop| <"
+         5 " > | mate | Mate GTK3 desktop| <"
+         6 " > | lxqt | LXDE-Qt y Razor-qt projects| <")
 
 choices=$("${cmd[@]}" "${options[@]}" 2>&1 >/dev/tty)
 
@@ -40,7 +44,6 @@ do
         
 ###########SELECCION (DE)
         1) #XFCE4
-
 
 cmd=(dialog --keep-tite --backtitle "${title}" \
 --no-collapse --cr-wrap --column-separator "|" --no-tags \
@@ -65,7 +68,7 @@ do
     esac
 done
         ;;
-        ######FINAL XFCE4
+
 
         2)  #INICIO GNOME
 cmd=(dialog --keep-tite --backtitle "${title}" \
@@ -92,6 +95,45 @@ do
 done
             ;;
  
+        3)  #INICIO KDE
+cmd=(dialog --keep-tite --backtitle "${title}" \
+--no-collapse --cr-wrap --column-separator "|" --no-tags \
+--ok-label '< Seleccionar >' --nocancel --menu "\n \
+Selecciona una opción para GNOME \n " 12 60 20)
+
+options=(1 "   Plasma || Sistema Completo  "
+         2 "   Plasma || Minimalista       ")
+
+choices=$("${cmd[@]}" "${options[@]}" 2>&1 >/dev/tty)
+
+for choice in $choices
+do
+    case $choice in
+
+        1)  DE="KDE Plasma"
+            ;;
+            
+        2)  DE="KDE Plasma Lite"
+            ;;
+
+    esac
+done
+            ;;
+
+
+        4)  #INICIO DEEPIN
+            DE="Deepin"
+            ;;
+
+        5)  #INICIO MATE
+            DE="MATE"
+            ;;
+
+        6)  #INICIO LXQt
+            DE="LXQt"
+            ;;
+
+
     esac
 done
             ;;
@@ -146,3 +188,406 @@ sectionenv=1
 }
 
 
+
+
+
+
+installenvironment () {
+
+
+case $environment in 
+
+  "tty")
+  echo "" 
+  echo "Se esta instalando el entorno TTY:" 
+  echo "" 
+  arch-chroot /mnt /bin/bash -c "pacman -Syu --noconfirm"
+
+  ;;
+
+  "Xfce4 Arcris")
+  echo "" 
+  echo "Se esta instalando el entorno Xfce4:" 
+  echo "" 
+
+  arch-chroot /mnt /bin/bash -c "pacman -S xorg --noconfirm"
+  arch-chroot /mnt /bin/bash -c "pacman -S xorg-apps --noconfirm"
+  arch-chroot /mnt /bin/bash -c "pacman -S xorg-server--noconfirm"
+  arch-chroot /mnt /bin/bash -c "pacman -S xorg-xinit --noconfirm"
+  arch-chroot /mnt /bin/bash -c "pacman -S xorg-twm --noconfirm"
+  arch-chroot /mnt /bin/bash -c "pacman -S xterm --noconfirm"
+
+  arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S xfce4 --noeditmenu --noconfirm --needed"
+  arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S xfce4-goodies --noeditmenu --noconfirm --needed"
+  arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S network-manager-applet --noeditmenu --noconfirm --needed"
+  arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S lightdm --noeditmenu --noconfirm --needed"
+  arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S lightdm-gtk-greeter --noeditmenu --noconfirm --needed"
+  arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S lightdm-gtk-greeter-settings --noeditmenu --noconfirm --needed"
+  arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S light-locker --noeditmenu --noconfirm --needed"
+  arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S accountsservice --noeditmenu --noconfirm --needed"
+  arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S mugshot --noeditmenu --noconfirm --needed"
+ 
+  arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S gnu-free-fonts --noeditmenu --noconfirm --needed"
+  arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S ttf-hack --noeditmenu --noconfirm --needed"
+  arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S ttf-inconsolata --noeditmenu --noconfirm --needed"
+  arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S ttf-font-awesome --noeditmenu --noconfirm --needed"
+  arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S awesome-terminal-fonts --noeditmenu --noconfirm --needed"
+  arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S noto-fonts --noeditmenu --noconfirm --needed"
+  arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S noto-fonts-emoji --noeditmenu --noconfirm --needed"
+  arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S nerd-fonts-hack --noeditmenu --noconfirm --needed"
+
+  arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S ffmpegthumbs --noeditmenu --noconfirm --needed"
+  arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S ffmpegthumbnailer --noeditmenu --noconfirm --needed"
+  arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S freetype2 --noeditmenu --noconfirm --needed"
+  arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S poppler-glib --noeditmenu --noconfirm --needed"
+  arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S libgsf --noeditmenu --noconfirm --needed"
+  arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S raw-thumbnailer --noeditmenu --noconfirm --needed"
+  arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S libgsf --noeditmenu --noconfirm --needed"
+
+  arch-chroot /mnt /bin/bash -c "systemctl enable lightdm"
+
+  ;;
+
+
+  "Xfce4")
+  echo "" 
+  echo "Se esta instalando el entorno Xfce4:" 
+  echo "" 
+
+  arch-chroot /mnt /bin/bash -c "pacman -S xorg --noconfirm"
+  arch-chroot /mnt /bin/bash -c "pacman -S xorg-apps --noconfirm"
+  arch-chroot /mnt /bin/bash -c "pacman -S xorg-server--noconfirm"
+  arch-chroot /mnt /bin/bash -c "pacman -S xorg-xinit --noconfirm"
+  arch-chroot /mnt /bin/bash -c "pacman -S xorg-twm --noconfirm"
+  arch-chroot /mnt /bin/bash -c "pacman -S xterm --noconfirm"
+
+  arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S xfce4 --noeditmenu --noconfirm --needed"
+  arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S xfce4-goodies --noeditmenu --noconfirm --needed"
+  arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S network-manager-applet --noeditmenu --noconfirm --needed"
+  arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S lightdm --noeditmenu --noconfirm --needed"
+  arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S lightdm-gtk-greeter --noeditmenu --noconfirm --needed"
+  arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S lightdm-gtk-greeter-settings --noeditmenu --noconfirm --needed"
+  arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S light-locker --noeditmenu --noconfirm --needed"
+  arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S accountsservice --noeditmenu --noconfirm --needed"
+  arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S mugshot --noeditmenu --noconfirm --needed"
+ 
+  arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S gnu-free-fonts --noeditmenu --noconfirm --needed"
+  arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S ttf-hack --noeditmenu --noconfirm --needed"
+  arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S ttf-inconsolata --noeditmenu --noconfirm --needed"
+  arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S ttf-font-awesome --noeditmenu --noconfirm --needed"
+  arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S awesome-terminal-fonts --noeditmenu --noconfirm --needed"
+  arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S noto-fonts --noeditmenu --noconfirm --needed"
+  arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S noto-fonts-emoji --noeditmenu --noconfirm --needed"
+  arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S nerd-fonts-hack --noeditmenu --noconfirm --needed"
+
+  arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S ffmpegthumbs --noeditmenu --noconfirm --needed"
+  arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S ffmpegthumbnailer --noeditmenu --noconfirm --needed"
+  arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S freetype2 --noeditmenu --noconfirm --needed"
+  arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S poppler-glib --noeditmenu --noconfirm --needed"
+  arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S libgsf --noeditmenu --noconfirm --needed"
+  arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S raw-thumbnailer --noeditmenu --noconfirm --needed"
+  arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S libgsf --noeditmenu --noconfirm --needed"
+
+  arch-chroot /mnt /bin/bash -c "systemctl enable lightdm"
+
+  ;;
+
+
+
+  "Gnome")
+  echo "" 
+  echo "Se esta instalando el entorno Gnome:" 
+  echo "" 
+
+  arch-chroot /mnt /bin/bash -c "pacman -S xorg --noconfirm"
+  arch-chroot /mnt /bin/bash -c "pacman -S xorg-apps --noconfirm"
+  arch-chroot /mnt /bin/bash -c "pacman -S xorg-server--noconfirm"
+  arch-chroot /mnt /bin/bash -c "pacman -S xorg-xinit --noconfirm"
+  arch-chroot /mnt /bin/bash -c "pacman -S xorg-twm --noconfirm"
+  arch-chroot /mnt /bin/bash -c "pacman -S xterm --noconfirm"
+
+  arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S gnome  --noeditmenu --noconfirm --needed"
+  arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S gnome-extra --noeditmenu --noconfirm --needed"
+  arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S gnome-shell --noeditmenu --noconfirm --needed"
+  arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S gnome-shell-extensions --noeditmenu --noconfirm --needed"
+  arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S gdm --noeditmenu --noconfirm --needed"
+  arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S chrome-gnome-shell --noeditmenu --noconfirm --needed"
+  arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S webp-pixbuf-loader --noeditmenu --noconfirm --needed"
+  arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S gnome-tweaks --noeditmenu --noconfirm --needed"
+
+  arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S gnu-free-fonts --noeditmenu --noconfirm --needed"
+  arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S ttf-hack --noeditmenu --noconfirm --needed"
+  arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S ttf-inconsolata --noeditmenu --noconfirm --needed"
+  arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S ttf-font-awesome --noeditmenu --noconfirm --needed"
+  arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S awesome-terminal-fonts --noeditmenu --noconfirm --needed"
+  arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S noto-fonts --noeditmenu --noconfirm --needed"
+  arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S noto-fonts-emoji --noeditmenu --noconfirm --needed"
+  arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S nerd-fonts-hack --noeditmenu --noconfirm --needed"
+
+  arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S tumbler --noeditmenu --noconfirm --needed"
+  arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S ffmpegthumbs --noeditmenu --noconfirm --needed"
+  arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S ffmpegthumbnailer --noeditmenu --noconfirm --needed"
+  arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S freetype2 --noeditmenu --noconfirm --needed"
+  arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S poppler-glib --noeditmenu --noconfirm --needed"
+  arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S libgsf --noeditmenu --noconfirm --needed"
+  arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S raw-thumbnailer --noeditmenu --noconfirm --needed"
+  arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S libgsf --noeditmenu --noconfirm --needed"
+
+  arch-chroot /mnt /bin/bash -c "systemctl enable gdm"
+
+  ;;
+
+
+  "Gnome Lite")
+  echo "" 
+  echo "Se esta instalando el entorno Gnome:" 
+  echo "" 
+
+  arch-chroot /mnt /bin/bash -c "pacman -S xorg --noconfirm"
+  arch-chroot /mnt /bin/bash -c "pacman -S xorg-apps --noconfirm"
+  arch-chroot /mnt /bin/bash -c "pacman -S xorg-server--noconfirm"
+  arch-chroot /mnt /bin/bash -c "pacman -S xorg-xinit --noconfirm"
+  arch-chroot /mnt /bin/bash -c "pacman -S xorg-twm --noconfirm"
+  arch-chroot /mnt /bin/bash -c "pacman -S xterm --noconfirm"
+
+  arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S gnome-shell --noeditmenu --noconfirm --needed"
+  arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S gdm --noeditmenu --noconfirm --needed"
+  arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S gnome-control-center --noeditmenu --noconfirm --needed"
+  arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S gnome-tweaks --noeditmenu --noconfirm --needed"
+  arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S gnome-terminal --noeditmenu --noconfirm --needed"
+
+  arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S gnu-free-fonts --noeditmenu --noconfirm --needed"
+  arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S ttf-hack --noeditmenu --noconfirm --needed"
+  arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S ttf-inconsolata --noeditmenu --noconfirm --needed"
+  arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S ttf-font-awesome --noeditmenu --noconfirm --needed"
+  arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S awesome-terminal-fonts --noeditmenu --noconfirm --needed"
+  arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S noto-fonts --noeditmenu --noconfirm --needed"
+  arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S noto-fonts-emoji --noeditmenu --noconfirm --needed"
+  arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S nerd-fonts-hack --noeditmenu --noconfirm --needed"
+
+  arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S ffmpegthumbs --noeditmenu --noconfirm --needed"
+  arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S ffmpegthumbnailer --noeditmenu --noconfirm --needed"
+  arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S freetype2 --noeditmenu --noconfirm --needed"
+  arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S poppler-glib --noeditmenu --noconfirm --needed"
+  arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S libgsf --noeditmenu --noconfirm --needed"
+  arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S raw-thumbnailer --noeditmenu --noconfirm --needed"
+  arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S libgsf --noeditmenu --noconfirm --needed"
+
+  arch-chroot /mnt /bin/bash -c "systemctl enable gdm"
+
+  ;;
+
+
+  "KDE Plasma")
+  echo "" 
+  echo "Se esta instalando el entorno KDE Plasma:" 
+  echo "" 
+
+  arch-chroot /mnt /bin/bash -c "pacman -S xorg --noconfirm"
+  arch-chroot /mnt /bin/bash -c "pacman -S xorg-apps --noconfirm"
+  arch-chroot /mnt /bin/bash -c "pacman -S xorg-server--noconfirm"
+  arch-chroot /mnt /bin/bash -c "pacman -S xorg-xinit --noconfirm"
+  arch-chroot /mnt /bin/bash -c "pacman -S xorg-twm --noconfirm"
+  arch-chroot /mnt /bin/bash -c "pacman -S xterm --noconfirm"
+
+  arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S plasma --noeditmenu --noconfirm --needed"
+  arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S kde-applications --noeditmenu --noconfirm --needed"
+  arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S konsole --noeditmenu --noconfirm --needed"
+  arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S konqueror --noeditmenu --noconfirm --needed"
+  arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S dolphin --noeditmenu --noconfirm --needed"
+  arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S discover --noeditmenu --noconfirm --needed"
+  arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S latte-dock --noeditmenu --noconfirm --needed"
+  arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S bluedevil --noeditmenu --noconfirm --needed"
+  arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S kate --noeditmenu --noconfirm --needed"
+  arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S kdialog --noeditmenu --noconfirm --needed"
+  arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S keditbookmarks --noeditmenu --noconfirm --needed"
+  arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S kwrite --noeditmenu --noconfirm --needed"
+  arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S appmenu-gtk-module --noeditmenu --noconfirm --needed"
+  arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S libdbusmenu-glib --noeditmenu --noconfirm --needed"
+  arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S libdbusmenu-gtk3 --noeditmenu --noconfirm --needed"
+  arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S libdbusmenu-gtk2 --noeditmenu --noconfirm --needed"
+  arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S kfind --noeditmenu --noconfirm --needed"
+  arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S khelpcenter --noeditmenu --noconfirm --needed"
+  arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S kscreen --noeditmenu --noconfirm --needed"
+  arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S powerdevil --noeditmenu --noconfirm --needed"
+  arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S kdeconnect --noeditmenu --noconfirm --needed"
+  arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S kdegraphics-thumbnailers --noeditmenu --noconfirm --needed"
+  arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S sddm --noeditmenu --noconfirm --needed"
+  arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S libxcb --noeditmenu --noconfirm --needed"
+  arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S qt5-virtualkeyboard --noeditmenu --noconfirm --needed"
+
+  arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S gnu-free-fonts --noeditmenu --noconfirm --needed"
+  arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S ttf-hack --noeditmenu --noconfirm --needed"
+  arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S ttf-inconsolata --noeditmenu --noconfirm --needed"
+  arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S ttf-font-awesome --noeditmenu --noconfirm --needed"
+  arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S awesome-terminal-fonts --noeditmenu --noconfirm --needed"
+  arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S noto-fonts --noeditmenu --noconfirm --needed"
+  arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S noto-fonts-emoji --noeditmenu --noconfirm --needed"
+  arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S nerd-fonts-hack --noeditmenu --noconfirm --needed"
+
+  arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S ffmpegthumbs --noeditmenu --noconfirm --needed"
+  arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S ffmpegthumbnailer --noeditmenu --noconfirm --needed"
+  arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S freetype2 --noeditmenu --noconfirm --needed"
+  arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S poppler-glib --noeditmenu --noconfirm --needed"
+  arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S libgsf --noeditmenu --noconfirm --needed"
+  arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S raw-thumbnailer --noeditmenu --noconfirm --needed"
+  arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S libgsf --noeditmenu --noconfirm --needed"
+
+  arch-chroot /mnt /bin/bash -c "systemctl enable sddm"
+
+  ;;
+
+
+"KDE Plasma Lite")
+  echo "" 
+  echo "Se esta instalando el entorno KDE Plasma:" 
+  echo "" 
+
+  arch-chroot /mnt /bin/bash -c "pacman -S xorg --noconfirm"
+  arch-chroot /mnt /bin/bash -c "pacman -S xorg-apps --noconfirm"
+  arch-chroot /mnt /bin/bash -c "pacman -S xorg-server--noconfirm"
+  arch-chroot /mnt /bin/bash -c "pacman -S xorg-xinit --noconfirm"
+  arch-chroot /mnt /bin/bash -c "pacman -S xorg-twm --noconfirm"
+  arch-chroot /mnt /bin/bash -c "pacman -S xterm --noconfirm"
+
+  arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S plasma --noeditmenu --noconfirm --needed"
+  arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S dolphin --noeditmenu --noconfirm --needed"
+  arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S konsole --noeditmenu --noconfirm --needed"
+  arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S discover --noeditmenu --noconfirm --needed"
+  arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S sddm --noeditmenu --noconfirm --needed"
+  arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S libxcb --noeditmenu --noconfirm --needed"
+  arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S qt5-virtualkeyboard --noeditmenu --noconfirm --needed"
+
+  arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S gnu-free-fonts --noeditmenu --noconfirm --needed"
+  arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S ttf-hack --noeditmenu --noconfirm --needed"
+  arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S ttf-inconsolata --noeditmenu --noconfirm --needed"
+  arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S ttf-font-awesome --noeditmenu --noconfirm --needed"
+  arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S awesome-terminal-fonts --noeditmenu --noconfirm --needed"
+  arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S noto-fonts --noeditmenu --noconfirm --needed"
+  arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S noto-fonts-emoji --noeditmenu --noconfirm --needed"
+  arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S nerd-fonts-hack --noeditmenu --noconfirm --needed"
+
+  arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S ffmpegthumbs --noeditmenu --noconfirm --needed"
+  arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S ffmpegthumbnailer --noeditmenu --noconfirm --needed"
+  arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S freetype2 --noeditmenu --noconfirm --needed"
+  arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S poppler-glib --noeditmenu --noconfirm --needed"
+  arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S libgsf --noeditmenu --noconfirm --needed"
+  arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S raw-thumbnailer --noeditmenu --noconfirm --needed"
+  arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S libgsf --noeditmenu --noconfirm --needed"
+
+  arch-chroot /mnt /bin/bash -c "systemctl enable sddm"
+
+  ;;
+
+
+
+"Deepin")
+  echo "" 
+  echo "Se esta instalando el entorno Deepin:" 
+  echo "" 
+
+  arch-chroot /mnt /bin/bash -c "pacman -S xorg --noconfirm"
+  arch-chroot /mnt /bin/bash -c "pacman -S xorg-apps --noconfirm"
+  arch-chroot /mnt /bin/bash -c "pacman -S xorg-server--noconfirm"
+  arch-chroot /mnt /bin/bash -c "pacman -S xorg-xinit --noconfirm"
+  arch-chroot /mnt /bin/bash -c "pacman -S xorg-twm --noconfirm"
+  arch-chroot /mnt /bin/bash -c "pacman -S xterm --noconfirm"
+
+  arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S deepin --noeditmenu --noconfirm --needed"
+  arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S deepin-extra --noeditmenu --noconfirm --needed"
+  arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S lightdm  --noeditmenu --noconfirm --needed"
+  arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S lightdm-gtk-greeter  --noeditmenu --noconfirm --needed"
+  arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S lightdm-gtk-greeter-settings  --noeditmenu --noconfirm --needed"
+  arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S light-locker  --noeditmenu --noconfirm --needed"
+  arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S accountsservice --noeditmenu --noconfirm --needed"
+
+  arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S gnu-free-fonts --noeditmenu --noconfirm --needed"
+  arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S ttf-hack --noeditmenu --noconfirm --needed"
+  arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S ttf-inconsolata --noeditmenu --noconfirm --needed"
+  arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S ttf-font-awesome --noeditmenu --noconfirm --needed"
+  arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S awesome-terminal-fonts --noeditmenu --noconfirm --needed"
+  arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S noto-fonts --noeditmenu --noconfirm --needed"
+  arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S noto-fonts-emoji --noeditmenu --noconfirm --needed"
+  arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S nerd-fonts-hack --noeditmenu --noconfirm --needed"
+
+  arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S ffmpegthumbs --noeditmenu --noconfirm --needed"
+  arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S ffmpegthumbnailer --noeditmenu --noconfirm --needed"
+  arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S freetype2 --noeditmenu --noconfirm --needed"
+  arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S poppler-glib --noeditmenu --noconfirm --needed"
+  arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S libgsf --noeditmenu --noconfirm --needed"
+  arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S raw-thumbnailer --noeditmenu --noconfirm --needed"
+  arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S libgsf --noeditmenu --noconfirm --needed"
+
+  arch-chroot /mnt /bin/bash -c "systemctl enable lightdm"
+
+  ;;
+
+
+"MATE")
+  echo "" 
+  echo "Se esta instalando el entorno MATE:" 
+  echo "" 
+
+  arch-chroot /mnt /bin/bash -c "pacman -S xorg --noconfirm"
+  arch-chroot /mnt /bin/bash -c "pacman -S xorg-apps --noconfirm"
+  arch-chroot /mnt /bin/bash -c "pacman -S xorg-server--noconfirm"
+  arch-chroot /mnt /bin/bash -c "pacman -S xorg-xinit --noconfirm"
+  arch-chroot /mnt /bin/bash -c "pacman -S xorg-twm --noconfirm"
+  arch-chroot /mnt /bin/bash -c "pacman -S xterm --noconfirm"
+
+  arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S mate --noeditmenu --noconfirm --needed"
+  arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S mate-extra --noeditmenu --noconfirm --needed"
+  arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S mate-applet-dock --noeditmenu --noconfirm --needed"
+  arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S mate-menu --noeditmenu --noconfirm --needed"
+  arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S brisk-menu --noeditmenu --noconfirm --needed"
+  arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S libcanberra --noeditmenu --noconfirm --needed"
+  arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S mate-power-manager --noeditmenu --noconfirm --needed"
+  arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S mate-media --noeditmenu --noconfirm --needed"
+  arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S network-manager-applet --noeditmenu --noconfirm --needed"
+  arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S system-config-printer --noeditmenu --noconfirm --needed"
+
+  arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S lightdm --noeditmenu --noconfirm --needed"
+  arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S lightdm-gtk-greeter --noeditmenu --noconfirm --needed"
+  arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S lightdm-gtk-greeter-settings --noeditmenu --noconfirm --needed"
+  arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S light-locker --noeditmenu --noconfirm --needed"
+  arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S accountsservice --noeditmenu --noconfirm --needed"
+  
+  arch-chroot /mnt /bin/bash -c "systemctl enable lightdm"
+
+  ;;
+
+
+"LXQt")
+  echo "" 
+  echo "Se esta instalando el entorno LXQt:" 
+  echo "" 
+
+  arch-chroot /mnt /bin/bash -c "pacman -S xorg --noconfirm"
+  arch-chroot /mnt /bin/bash -c "pacman -S xorg-apps --noconfirm"
+  arch-chroot /mnt /bin/bash -c "pacman -S xorg-server--noconfirm"
+  arch-chroot /mnt /bin/bash -c "pacman -S xorg-xinit --noconfirm"
+  arch-chroot /mnt /bin/bash -c "pacman -S xorg-twm --noconfirm"
+  arch-chroot /mnt /bin/bash -c "pacman -S xterm --noconfirm"
+
+  arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S lxqt --noeditmenu --noconfirm --needed"
+  arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S papirus-icon-theme --noeditmenu --noconfirm --needed"
+  arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S arc-gtk-theme --noeditmenu --noconfirm --needed"
+  arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S xscreensaver --noeditmenu --noconfirm --needed"
+  arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S connman --noeditmenu --noconfirm --needed"
+  arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S lxqt-connman-applet --noeditmenu --noconfirm --needed"
+  arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S connman-gtk --noeditmenu --noconfirm --needed"
+  
+  arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S sddm --noeditmenu --noconfirm --needed"
+  arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S light-locker --noeditmenu --noconfirm --needed"
+  arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S accountsservice --noeditmenu --noconfirm --needed"
+  
+  arch-chroot /mnt /bin/bash -c "systemctl enable sddm"
+  arch-chroot /mnt /bin/bash -c "systemctl enable connman"
+  arch-chroot /mnt /bin/bash -c "systemctl disable NetworkManager"
+
+  ;;
+
+
+esac
+
+}
