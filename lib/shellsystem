@@ -60,7 +60,7 @@ installshell () {
 
 
 
-case $shell_select in
+case $shell in
 
   zsh)
 
@@ -108,9 +108,9 @@ esac
 
 echo ""
 
-arch-chroot /mnt /bin/bash -c "chsh -s /bin/$shell_select"
-arch-chroot /mnt /bin/bash -c "chsh -s /usr/bin/$shell_select $username"
-arch-chroot /mnt /bin/bash -c "chsh -s /bin/$shell_select $username"
+arch-chroot /mnt /bin/bash -c "chsh -s /bin/$shell"
+arch-chroot /mnt /bin/bash -c "chsh -s /usr/bin/$shell $username"
+arch-chroot /mnt /bin/bash -c "chsh -s /bin/$shell $username"
 
 
 cp .dialogrc /mnt/root
