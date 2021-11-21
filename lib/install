@@ -362,6 +362,13 @@ sleep 5
 clear
 
 
+## ESCRITORIOS 
+titulo_progreso="| Instalando Entorno Gráfico |"
+barra_progreso
+echo -e ""
+echo -e ""
+source lib/environment
+installenvironment
 
 
 ## KERNEL SELECCIONADO
