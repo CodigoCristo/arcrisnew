@@ -727,12 +727,26 @@ case $environment in
 
   arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S lightdm --noeditmenu --noconfirm --needed"
   arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S numlockx --noeditmenu --noconfirm --needed"
-  arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S lightdm-gtk-greeter --noeditmenu --noconfirm --needed"
-  arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S lightdm-gtk-greeter-settings --noeditmenu --noconfirm --needed"
+  arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S lightdm-slick-greeter --noeditmenu --noconfirm --needed"
   arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S light-locker --noeditmenu --noconfirm --needed"
   arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S accountsservice --noeditmenu --noconfirm --needed"
 
-  arch-chroot /mnt /bin/bash -c "systemctl enable lightdm"
+echo ""
+touch /mnt/etc/lightdm/lightdm-slick-greeter.conf
+tee /mnt/etc/lightdm/lightdm-slick-greeter.conf <<EOF
+[Greeter]
+activate-numlock=true
+background=/usr/share/backgrounds/gnome/adwaita-day.png
+logo=/usr/share/icons/Adwaita/512x512/devices/computer.png
+show-hostname=true
+show-clock=true
+EOF
+
+sed -i 's/#greeter-session=example-gtk-gnome/greeter-session=lightdm-slick-greeter/g' /mnt/etc/lightdm/lightdm.conf
+
+arch-chroot /mnt /bin/bash -c "systemctl enable lightdm"
+
+
 
   ;;
 

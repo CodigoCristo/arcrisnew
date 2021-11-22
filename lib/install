@@ -394,21 +394,29 @@ installgrub
 clear
 
 
+
+####################################################################
 clear
 arch-chroot /mnt /bin/bash -c "ntpd -qg"
+arch-chroot /mnt /bin/bash -c "hwclock -w"
+arch-chroot /mnt /bin/bash -c "hwclock --hctosys"
+arch-chroot /mnt /bin/bash -c "hwclock --systohc"
 clear
-arch-chroot /mnt /bin/bash -c "localectl --no-convert set-x11-keymap ${keymapx}"
+arch-chroot /mnt /bin/bash -c "localectl --no-convert set-x11-keymap $keymapx"
 mkdir -p /mnt/etc/X11/xorg.conf.d
 touch /mnt/etc/X11/xorg.conf.d/00-keyboard.conf
 
-tee -a /mnt/etc/X11/xorg.conf.d/00-keyboard.conf <<EOF
+tee /mnt/etc/X11/xorg.conf.d/00-keyboard.conf <<EOF
 Section "InputClass"
         Identifier "system-keyboard"
         MatchIsKeyboard "on"
         Option "XkbLayout" "$keymapx"
 EndSection 
 EOF
-
+clear
+cat /mnt/etc/X11/xorg.conf.d/00-keyboard.conf
+sleep 5
+####################################################################
 
 ####################################################################
 clear
