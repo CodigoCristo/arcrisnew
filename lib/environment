@@ -742,10 +742,11 @@ case $environment in
   arch-chroot /mnt /bin/bash -c "pacman -S xterm --noconfirm"
 
   arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S gnome-flashback --noeditmenu --noconfirm --needed"
+  arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S gnome-backgrounds --noeditmenu --noconfirm --needed"
+  arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S gnome-control-center --noeditmenu --noconfirm --needed"
+  arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S network-manager-applet --noeditmenu --noconfirm --needed"
   arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S gnome-applets --noeditmenu --noconfirm --needed"
-  arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S pomodoro-applet --noeditmenu --noconfirm --needed"
   arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S sensors-applet --noeditmenu --noconfirm --needed"
-  arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S gnome-shell --noeditmenu --noconfirm --needed"
   arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S metacity --noeditmenu --noconfirm --needed"
   arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S gnome-control-center --noeditmenu --noconfirm --needed"
   arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S gnome-tweaks --noeditmenu --noconfirm --needed"
