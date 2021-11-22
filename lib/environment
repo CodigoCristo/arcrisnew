@@ -717,7 +717,16 @@ case $environment in
   arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S cinnamon-translations --noeditmenu --noconfirm --needed"
   arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S lxterminal --noeditmenu --noconfirm --needed"
 
+  arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S gnu-free-fonts --noeditmenu --noconfirm --needed"
+  arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S ttf-hack --noeditmenu --noconfirm --needed"
+  arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S ttf-inconsolata --noeditmenu --noconfirm --needed"
+  arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S ttf-font-awesome --noeditmenu --noconfirm --needed"
+  arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S awesome-terminal-fonts --noeditmenu --noconfirm --needed"
+  arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S noto-fonts --noeditmenu --noconfirm --needed"
+  arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S noto-fonts-emoji --noeditmenu --noconfirm --needed"
+
   arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S lightdm --noeditmenu --noconfirm --needed"
+  arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S numlockx --noeditmenu --noconfirm --needed"
   arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S lightdm-gtk-greeter --noeditmenu --noconfirm --needed"
   arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S lightdm-gtk-greeter-settings --noeditmenu --noconfirm --needed"
   arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S light-locker --noeditmenu --noconfirm --needed"
