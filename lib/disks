@@ -39,6 +39,7 @@ proximamente
 ;;
 
 4) ################
+source lib/partition/dualbootpartition
 proximamente
 ;;
 
