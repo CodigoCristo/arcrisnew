@@ -1,6 +1,6 @@
 #!/bin/bash
 
-manualpartition () { 
+dualpartition () { 
 
 #Desmontamos todo disco y swapoff
 clear
