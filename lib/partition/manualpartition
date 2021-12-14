@@ -654,6 +654,12 @@ p=""
 part=""
 rootfs=""
 
+bootarch=$( ls /sys/firmware/efi/ | grep -ic efivars )
+if [[ $bootarch == 1 ]]; then
+  tableboot="UEFI"
+else
+  tableboot="BIOS LEGACY"
+fi
 
 cmd=(dialog --no-collapse --no-tags --cr-wrap --backtitle "${title}" --title "-| Discos |-" \
 --ok-label "-Confirmar-" --menu "\nEliga su mejor opción para su Sistema\n " 11 55 11)
