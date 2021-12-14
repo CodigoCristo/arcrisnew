@@ -57,6 +57,15 @@ arch-chroot /mnt /bin/bash -c "pacman -S which --noconfirm --needed"
 arch-chroot /mnt /bin/bash -c "pacman -S mtools --noconfirm --needed"
 arch-chroot /mnt /bin/bash -c "pacman -S exfat-utils --noconfirm --needed"
 
+arch-chroot /mnt /bin/bash -c "pacman -S dosfstools --noconfirm --needed"
+arch-chroot /mnt /bin/bash -c "pacman -S exfatprogs --noconfirm --needed"
+arch-chroot /mnt /bin/bash -c "pacman -S ntfs-3g  --noconfirm --needed"
+arch-chroot /mnt /bin/bash -c "pacman -S reiserfsprogs --noconfirm --needed"
+ 
+ 
+
+
+
 arch-chroot /mnt /bin/bash -c "systemctl enable dhcpcd NetworkManager"
 
   ;;
@@ -111,6 +120,11 @@ arch-chroot /mnt /bin/bash -c "pacman -S which --noconfirm --needed"
 arch-chroot /mnt /bin/bash -c "pacman -S mtools --noconfirm --needed"
 arch-chroot /mnt /bin/bash -c "pacman -S exfat-utils --noconfirm --needed"
 
+arch-chroot /mnt /bin/bash -c "pacman -S dosfstools --noconfirm --needed"
+arch-chroot /mnt /bin/bash -c "pacman -S exfatprogs --noconfirm --needed"
+arch-chroot /mnt /bin/bash -c "pacman -S ntfs-3g  --noconfirm --needed"
+arch-chroot /mnt /bin/bash -c "pacman -S reiserfsprogs --noconfirm --needed"
+
 arch-chroot /mnt /bin/bash -c "systemctl enable dhcpcd NetworkManager"
 
   ;;
@@ -164,6 +178,11 @@ arch-chroot /mnt /bin/bash -c "pacman -S which --noconfirm --needed"
 arch-chroot /mnt /bin/bash -c "pacman -S mtools --noconfirm --needed"
 arch-chroot /mnt /bin/bash -c "pacman -S exfat-utils --noconfirm --needed"
 
+arch-chroot /mnt /bin/bash -c "pacman -S dosfstools --noconfirm --needed"
+arch-chroot /mnt /bin/bash -c "pacman -S exfatprogs --noconfirm --needed"
+arch-chroot /mnt /bin/bash -c "pacman -S ntfs-3g  --noconfirm --needed"
+arch-chroot /mnt /bin/bash -c "pacman -S reiserfsprogs --noconfirm --needed"
+
 arch-chroot /mnt /bin/bash -c "systemctl enable dhcpcd NetworkManager"
 
   ;;
@@ -216,6 +235,11 @@ arch-chroot /mnt /bin/bash -c "pacman -S usbutils --noconfirm --needed"
 arch-chroot /mnt /bin/bash -c "pacman -S which --noconfirm --needed"
 arch-chroot /mnt /bin/bash -c "pacman -S mtools --noconfirm --needed"
 arch-chroot /mnt /bin/bash -c "pacman -S exfat-utils --noconfirm --needed"
+
+arch-chroot /mnt /bin/bash -c "pacman -S dosfstools --noconfirm --needed"
+arch-chroot /mnt /bin/bash -c "pacman -S exfatprogs --noconfirm --needed"
+arch-chroot /mnt /bin/bash -c "pacman -S ntfs-3g  --noconfirm --needed"
+arch-chroot /mnt /bin/bash -c "pacman -S reiserfsprogs --noconfirm --needed"
 
 arch-chroot /mnt /bin/bash -c "systemctl enable dhcpcd NetworkManager"
 
