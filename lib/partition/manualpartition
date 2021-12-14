@@ -90,7 +90,7 @@ do
       part=$(dialog --backtitle "$titulo" --ok-label 'Seleccionar' --no-cancel --clear --title "| Selecciona la partición |" \
         --menu "| Elige la partición que desea usar para: efi |" 0 55 0 ${p} 2>&1 > /dev/tty )
       efifs="$part"
-      dialog --backtitle "$titulo" --title "| Verificando estado de Disco |" --stdout --ok-label "Siguiente" --prgbox "e2fsck -f -y -v -C 0 $part" 20 80
+      #dialog --backtitle "$titulo" --title "| Verificando estado de Disco |" --stdout --ok-label "Siguiente" --prgbox "e2fsck -f -y -v -C 0 $part" 20 80
       partitioning
       efidir="efi"
       mkdir -p /mnt/efi
@@ -104,7 +104,7 @@ do
       part=$(dialog --backtitle "$titulo" --ok-label 'Seleccionar' --no-cancel --clear --title "| Selecciona la partición |" \
         --menu "| Elige la partición que desea usar para: home |" 0 55 0 ${p} 2>&1 > /dev/tty )
       homefs="$part"
-      dialog --backtitle "$titulo" --title "| Verificando estado de Disco |" --stdout --ok-label "Siguiente" --prgbox "e2fsck -f -y -v -C 0 $part" 20 80
+      #dialog --backtitle "$titulo" --title "| Verificando estado de Disco |" --stdout --ok-label "Siguiente" --prgbox "e2fsck -f -y -v -C 0 $part" 20 80
       partitioning
       homedir="home"
       mkdir -p /mnt/home
@@ -117,7 +117,7 @@ do
       part=$(dialog --backtitle "$titulo" --ok-label 'Seleccionar' --no-cancel --clear --title "| Selecciona la partición |" \
         --menu "| Elige la partición que desea usar para: tmp |" 0 55 0 ${p} 2>&1 > /dev/tty )
       tmpfs="$part"
-      dialog --backtitle "$titulo" --title "| Verificando estado de Disco |" --stdout --ok-label "Siguiente" --prgbox "e2fsck -f -y -v -C 0 $part" 20 80
+      #dialog --backtitle "$titulo" --title "| Verificando estado de Disco |" --stdout --ok-label "Siguiente" --prgbox "e2fsck -f -y -v -C 0 $part" 20 80
       partitioning
       tmpdir="tmp"
       mkdir -p /mnt/tmp
@@ -130,7 +130,7 @@ do
       part=$(dialog --backtitle "$titulo" --ok-label 'Seleccionar' --no-cancel --clear --title "| Selecciona la partición |" \
         --menu "| Elige la partición que desea usar para: usr |" 0 55 0 ${p} 2>&1 > /dev/tty )
       usrfs="$part"
-      dialog --backtitle "$titulo" --title "| Verificando estado de Disco |" --stdout --ok-label "Siguiente" --prgbox "e2fsck -f -y -v -C 0 $part" 20 80
+      #dialog --backtitle "$titulo" --title "| Verificando estado de Disco |" --stdout --ok-label "Siguiente" --prgbox "e2fsck -f -y -v -C 0 $part" 20 80
       partitioning
       usrdir="usr"
       mkdir -p /mnt/usr
@@ -143,7 +143,7 @@ do
       part=$(dialog --backtitle "$titulo" --ok-label 'Seleccionar' --no-cancel --clear --title "| Selecciona la partición |" \
         --menu "| Elige la partición que desea usar para: var |" 0 55 0 ${p} 2>&1 > /dev/tty )
       varfs="$part"
-      dialog --backtitle "$titulo" --title "| Verificando estado de Disco |" --stdout --ok-label "Siguiente" --prgbox "e2fsck -f -y -v -C 0 $part" 20 80
+      #dialog --backtitle "$titulo" --title "| Verificando estado de Disco |" --stdout --ok-label "Siguiente" --prgbox "e2fsck -f -y -v -C 0 $part" 20 80
       partitioning
       vardir="var"
       mkdir -p /mnt/var
@@ -156,7 +156,7 @@ do
       part=$(dialog --backtitle "$titulo" --ok-label 'Seleccionar' --no-cancel --clear --title "| Selecciona la partición |" \
         --menu "| Elige la partición que desea usar para: srv |" 0 55 0 ${p} 2>&1 > /dev/tty )
       srvfs="$part"
-      dialog --backtitle "$titulo" --title "| Verificando estado de Disco |" --stdout --ok-label "Siguiente" --prgbox "e2fsck -f -y -v -C 0 $part" 20 80
+      #dialog --backtitle "$titulo" --title "| Verificando estado de Disco |" --stdout --ok-label "Siguiente" --prgbox "e2fsck -f -y -v -C 0 $part" 20 80
       partitioning
       srvdir="srv"
       mkdir -p /mnt/srv
@@ -169,7 +169,7 @@ do
       part=$(dialog --backtitle "$titulo" --ok-label 'Seleccionar' --no-cancel --clear --title "| Selecciona la partición |" \
         --menu "| Elige la partición que desea usar para: opt |" 0 55 0 ${p} 2>&1 > /dev/tty )
       optfs="$part"
-      dialog --backtitle "$titulo" --title "| Verificando estado de Disco |" --stdout --ok-label "Siguiente" --prgbox "e2fsck -f -y -v -C 0 $part" 20 80
+      #dialog --backtitle "$titulo" --title "| Verificando estado de Disco |" --stdout --ok-label "Siguiente" --prgbox "e2fsck -f -y -v -C 0 $part" 20 80
       partitioning
       optdir="opt"
       mkdir -p /mnt/opt
@@ -215,7 +215,7 @@ do
       part=$(dialog --backtitle "$titulo" --ok-label 'Seleccionar' --no-cancel --clear --title "| Selecciona la partición |" \
         --menu "| Elige la partición que desea usar para: boot |" 0 55 0 ${p} 2>&1 > /dev/tty )
       bootfs="$part"
-      dialog --backtitle "$titulo" --title "| Verificando estado de Disco |" --stdout --ok-label "Siguiente" --prgbox "e2fsck -f -y -v -C 0 $part" 20 80
+      #dialog --backtitle "$titulo" --title "| Verificando estado de Disco |" --stdout --ok-label "Siguiente" --prgbox "e2fsck -f -y -v -C 0 $part" 20 80
       partitioning
       bootdir="boot"
       mkdir -p /mnt/boot
@@ -230,7 +230,7 @@ do
       part=$(dialog --backtitle "$titulo" --ok-label 'Seleccionar' --no-cancel --clear --title "| Selecciona la partición |" \
         --menu "| Elige la partición que desea usar para: home |" 0 55 0 ${p} 2>&1 > /dev/tty )
       homefs="$part"
-      dialog --backtitle "$titulo" --title "| Verificando estado de Disco |" --stdout --ok-label "Siguiente" --prgbox "e2fsck -f -y -v -C 0 $part" 20 80
+      #dialog --backtitle "$titulo" --title "| Verificando estado de Disco |" --stdout --ok-label "Siguiente" --prgbox "e2fsck -f -y -v -C 0 $part" 20 80
       partitioning
       homedir="home"
       mkdir -p /mnt/home
@@ -243,7 +243,7 @@ do
       part=$(dialog --backtitle "$titulo" --ok-label 'Seleccionar' --no-cancel --clear --title "| Selecciona la partición |" \
         --menu "| Elige la partición que desea usar para: tmp |" 0 55 0 ${p} 2>&1 > /dev/tty )
       tmpfs="$part"
-      dialog --backtitle "$titulo" --title "| Verificando estado de Disco |" --stdout --ok-label "Siguiente" --prgbox "e2fsck -f -y -v -C 0 $part" 20 80
+      #dialog --backtitle "$titulo" --title "| Verificando estado de Disco |" --stdout --ok-label "Siguiente" --prgbox "e2fsck -f -y -v -C 0 $part" 20 80
       partitioning
       tmpdir="tmp"
       mkdir -p /mnt/tmp
@@ -256,7 +256,7 @@ do
       part=$(dialog --backtitle "$titulo" --ok-label 'Seleccionar' --no-cancel --clear --title "| Selecciona la partición |" \
         --menu "| Elige la partición que desea usar para: usr |" 0 55 0 ${p} 2>&1 > /dev/tty )
       usrfs="$part"
-      dialog --backtitle "$titulo" --title "| Verificando estado de Disco |" --stdout --ok-label "Siguiente" --prgbox "e2fsck -f -y -v -C 0 $part" 20 80
+      #dialog --backtitle "$titulo" --title "| Verificando estado de Disco |" --stdout --ok-label "Siguiente" --prgbox "e2fsck -f -y -v -C 0 $part" 20 80
       partitioning
       usrdir="usr"
       mkdir -p /mnt/usr
@@ -269,7 +269,7 @@ do
       part=$(dialog --backtitle "$titulo" --ok-label 'Seleccionar' --no-cancel --clear --title "| Selecciona la partición |" \
         --menu "| Elige la partición que desea usar para: var |" 0 55 0 ${p} 2>&1 > /dev/tty )
       varfs="$part"
-      dialog --backtitle "$titulo" --title "| Verificando estado de Disco |" --stdout --ok-label "Siguiente" --prgbox "e2fsck -f -y -v -C 0 $part" 20 80
+      #dialog --backtitle "$titulo" --title "| Verificando estado de Disco |" --stdout --ok-label "Siguiente" --prgbox "e2fsck -f -y -v -C 0 $part" 20 80
       partitioning
       vardir="var"
       mkdir -p /mnt/var
@@ -282,7 +282,7 @@ do
       part=$(dialog --backtitle "$titulo" --ok-label 'Seleccionar' --no-cancel --clear --title "| Selecciona la partición |" \
         --menu "| Elige la partición que desea usar para: srv |" 0 55 0 ${p} 2>&1 > /dev/tty )
       srvfs="$part"
-      dialog --backtitle "$titulo" --title "| Verificando estado de Disco |" --stdout --ok-label "Siguiente" --prgbox "e2fsck -f -y -v -C 0 $part" 20 80
+      #dialog --backtitle "$titulo" --title "| Verificando estado de Disco |" --stdout --ok-label "Siguiente" --prgbox "e2fsck -f -y -v -C 0 $part" 20 80
       partitioning
       srvdir="srv"
       mkdir -p /mnt/srv
@@ -295,7 +295,7 @@ do
       part=$(dialog --backtitle "$titulo" --ok-label 'Seleccionar' --no-cancel --clear --title "| Selecciona la partición |" \
         --menu "| Elige la partición que desea usar para: opt |" 0 55 0 ${p} 2>&1 > /dev/tty )
       optfs="$part"
-      dialog --backtitle "$titulo" --title "| Verificando estado de Disco |" --stdout --ok-label "Siguiente" --prgbox "e2fsck -f -y -v -C 0 $part" 20 80
+      #dialog --backtitle "$titulo" --title "| Verificando estado de Disco |" --stdout --ok-label "Siguiente" --prgbox "e2fsck -f -y -v -C 0 $part" 20 80
       partitioning
       optdir="opt"
       mkdir -p /mnt/opt
@@ -384,7 +384,7 @@ do
       part=$(dialog --backtitle "$titulo" --ok-label 'Seleccionar' --no-cancel --clear --title "| Selecciona la partición |" \
         --menu "| Elige la partición que desea usar para: efi |" 0 55 0 ${p} 2>&1 > /dev/tty )
       efifs="$part"
-      dialog --backtitle "$titulo" --title "| Verificando estado de Disco |" --stdout --ok-label "Siguiente" --prgbox "e2fsck -f -y -v -C 0 $part" 20 80
+      #dialog --backtitle "$titulo" --title "| Verificando estado de Disco |" --stdout --ok-label "Siguiente" --prgbox "e2fsck -f -y -v -C 0 $part" 20 80
       partitioning
       efidir="efi"
       mkdir -p /mnt/efi
@@ -399,7 +399,7 @@ do
       part=$(dialog --backtitle "$titulo" --ok-label 'Seleccionar' --no-cancel --clear --title "| Selecciona la partición |" \
         --menu "| Elige la partición que desea usar para: tmp |" 0 55 0 ${p} 2>&1 > /dev/tty )
       tmpfs="$part"
-      dialog --backtitle "$titulo" --title "| Verificando estado de Disco |" --stdout --ok-label "Siguiente" --prgbox "e2fsck -f -y -v -C 0 $part" 20 80
+      #dialog --backtitle "$titulo" --title "| Verificando estado de Disco |" --stdout --ok-label "Siguiente" --prgbox "e2fsck -f -y -v -C 0 $part" 20 80
       partitioning
       tmpdir="tmp"
       mkdir -p /mnt/tmp
@@ -412,7 +412,7 @@ do
       part=$(dialog --backtitle "$titulo" --ok-label 'Seleccionar' --no-cancel --clear --title "| Selecciona la partición |" \
         --menu "| Elige la partición que desea usar para: usr |" 0 55 0 ${p} 2>&1 > /dev/tty )
       usrfs="$part"
-      dialog --backtitle "$titulo" --title "| Verificando estado de Disco |" --stdout --ok-label "Siguiente" --prgbox "e2fsck -f -y -v -C 0 $part" 20 80
+      #dialog --backtitle "$titulo" --title "| Verificando estado de Disco |" --stdout --ok-label "Siguiente" --prgbox "e2fsck -f -y -v -C 0 $part" 20 80
       partitioning
       usrdir="usr"
       mkdir -p /mnt/usr
@@ -425,7 +425,7 @@ do
       part=$(dialog --backtitle "$titulo" --ok-label 'Seleccionar' --no-cancel --clear --title "| Selecciona la partición |" \
         --menu "| Elige la partición que desea usar para: var |" 0 55 0 ${p} 2>&1 > /dev/tty )
       varfs="$part"
-      dialog --backtitle "$titulo" --title "| Verificando estado de Disco |" --stdout --ok-label "Siguiente" --prgbox "e2fsck -f -y -v -C 0 $part" 20 80
+      #dialog --backtitle "$titulo" --title "| Verificando estado de Disco |" --stdout --ok-label "Siguiente" --prgbox "e2fsck -f -y -v -C 0 $part" 20 80
       partitioning
       vardir="var"
       mkdir -p /mnt/var
@@ -438,7 +438,7 @@ do
       part=$(dialog --backtitle "$titulo" --ok-label 'Seleccionar' --no-cancel --clear --title "| Selecciona la partición |" \
         --menu "| Elige la partición que desea usar para: srv |" 0 55 0 ${p} 2>&1 > /dev/tty )
       srvfs="$part"
-      dialog --backtitle "$titulo" --title "| Verificando estado de Disco |" --stdout --ok-label "Siguiente" --prgbox "e2fsck -f -y -v -C 0 $part" 20 80
+      #dialog --backtitle "$titulo" --title "| Verificando estado de Disco |" --stdout --ok-label "Siguiente" --prgbox "e2fsck -f -y -v -C 0 $part" 20 80
       partitioning
       srvdir="srv"
       mkdir -p /mnt/srv
@@ -451,7 +451,7 @@ do
       part=$(dialog --backtitle "$titulo" --ok-label 'Seleccionar' --no-cancel --clear --title "| Selecciona la partición |" \
         --menu "| Elige la partición que desea usar para: opt |" 0 55 0 ${p} 2>&1 > /dev/tty )
       optfs="$part"
-      dialog --backtitle "$titulo" --title "| Verificando estado de Disco |" --stdout --ok-label "Siguiente" --prgbox "e2fsck -f -y -v -C 0 $part" 20 80
+      #dialog --backtitle "$titulo" --title "| Verificando estado de Disco |" --stdout --ok-label "Siguiente" --prgbox "e2fsck -f -y -v -C 0 $part" 20 80
       partitioning
       optdir="opt"
       mkdir -p /mnt/opt
@@ -496,7 +496,7 @@ do
       part=$(dialog --backtitle "$titulo" --ok-label 'Seleccionar' --no-cancel --clear --title "| Selecciona la partición |" \
         --menu "| Elige la partición que desea usar para: boot |" 0 55 0 ${p} 2>&1 > /dev/tty )
       bootfs="$part"
-      dialog --backtitle "$titulo" --title "| Verificando estado de Disco |" --stdout --ok-label "Siguiente" --prgbox "e2fsck -f -y -v -C 0 $part" 20 80
+      #dialog --backtitle "$titulo" --title "| Verificando estado de Disco |" --stdout --ok-label "Siguiente" --prgbox "e2fsck -f -y -v -C 0 $part" 20 80
       partitioning
       bootdir="boot"
       mkdir -p /mnt/boot
@@ -511,7 +511,7 @@ do
       part=$(dialog --backtitle "$titulo" --ok-label 'Seleccionar' --no-cancel --clear --title "| Selecciona la partición |" \
         --menu "| Elige la partición que desea usar para: tmp |" 0 55 0 ${p} 2>&1 > /dev/tty )
       tmpfs="$part"
-      dialog --backtitle "$titulo" --title "| Verificando estado de Disco |" --stdout --ok-label "Siguiente" --prgbox "e2fsck -f -y -v -C 0 $part" 20 80
+      #dialog --backtitle "$titulo" --title "| Verificando estado de Disco |" --stdout --ok-label "Siguiente" --prgbox "e2fsck -f -y -v -C 0 $part" 20 80
       partitioning
       tmpdir="tmp"
       mkdir -p /mnt/tmp
@@ -524,7 +524,7 @@ do
       part=$(dialog --backtitle "$titulo" --ok-label 'Seleccionar' --no-cancel --clear --title "| Selecciona la partición |" \
         --menu "| Elige la partición que desea usar para: usr |" 0 55 0 ${p} 2>&1 > /dev/tty )
       usrfs="$part"
-      dialog --backtitle "$titulo" --title "| Verificando estado de Disco |" --stdout --ok-label "Siguiente" --prgbox "e2fsck -f -y -v -C 0 $part" 20 80
+      #dialog --backtitle "$titulo" --title "| Verificando estado de Disco |" --stdout --ok-label "Siguiente" --prgbox "e2fsck -f -y -v -C 0 $part" 20 80
       partitioning
       usrdir="usr"
       mkdir -p /mnt/usr
@@ -537,7 +537,7 @@ do
       part=$(dialog --backtitle "$titulo" --ok-label 'Seleccionar' --no-cancel --clear --title "| Selecciona la partición |" \
         --menu "| Elige la partición que desea usar para: var |" 0 55 0 ${p} 2>&1 > /dev/tty )
       varfs="$part"
-      dialog --backtitle "$titulo" --title "| Verificando estado de Disco |" --stdout --ok-label "Siguiente" --prgbox "e2fsck -f -y -v -C 0 $part" 20 80
+      #dialog --backtitle "$titulo" --title "| Verificando estado de Disco |" --stdout --ok-label "Siguiente" --prgbox "e2fsck -f -y -v -C 0 $part" 20 80
       partitioning
       vardir="var"
       mkdir -p /mnt/var
@@ -550,7 +550,7 @@ do
       part=$(dialog --backtitle "$titulo" --ok-label 'Seleccionar' --no-cancel --clear --title "| Selecciona la partición |" \
         --menu "| Elige la partición que desea usar para: srv |" 0 55 0 ${p} 2>&1 > /dev/tty )
       srvfs="$part"
-      dialog --backtitle "$titulo" --title "| Verificando estado de Disco |" --stdout --ok-label "Siguiente" --prgbox "e2fsck -f -y -v -C 0 $part" 20 80
+      #dialog --backtitle "$titulo" --title "| Verificando estado de Disco |" --stdout --ok-label "Siguiente" --prgbox "e2fsck -f -y -v -C 0 $part" 20 80
       partitioning
       srvdir="srv"
       mkdir -p /mnt/srv
@@ -563,7 +563,7 @@ do
       part=$(dialog --backtitle "$titulo" --ok-label 'Seleccionar' --no-cancel --clear --title "| Selecciona la partición |" \
         --menu "| Elige la partición que desea usar para: opt |" 0 55 0 ${p} 2>&1 > /dev/tty )
       optfs="$part"
-      dialog --backtitle "$titulo" --title "| Verificando estado de Disco |" --stdout --ok-label "Siguiente" --prgbox "e2fsck -f -y -v -C 0 $part" 20 80
+      #dialog --backtitle "$titulo" --title "| Verificando estado de Disco |" --stdout --ok-label "Siguiente" --prgbox "e2fsck -f -y -v -C 0 $part" 20 80
       partitioning
       optdir="opt"
       mkdir -p /mnt/opt
