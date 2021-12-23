@@ -244,7 +244,7 @@ rootfs=$part
 
 # bootwin=$(fdisk -l ${disk} | grep /dev/ | awk '{if (NR!=1) {print}}' | grep "*" | awk -F ' ' '{print $1}' )
 
-dialog --clear --no-collapse --cr-wrap --backtitle "${title}" --title "| Formateando partición en EXT4 |" --stdout --ok-label "Siguiente" --prgbox "echo "" && mkfs.ext4 -F "$rootfs" " 
+dialog --clear --no-collapse --cr-wrap --backtitle "${title}" --title "| Formateando partición en EXT4 |" --stdout --ok-label "Siguiente" --prgbox "echo "" && mkfs.ext4 -F $part" 20 80 
 mount "$rootfs" /mnt
 
 

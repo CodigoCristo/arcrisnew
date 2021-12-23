@@ -5,6 +5,7 @@ extraprogram () {
 
 extraprograms=true
 
+AP_condicion=false
 
 while [[ $extraprograms == "true" ]]; do
 
@@ -21,7 +22,7 @@ menuextras=$(dialog --keep-tite --backtitle "${title}" --title "-| EXTRAS |-" \
 8 "           Social media                  " \
 9 "           Gamers                        " \
 10 "           AUR helpers                   " \
-11 "  CONFIRMAR                              " \
+11 "  FINALIZAR SELECCIÓN                    " \
 12 "  CANCELAR                               " 3>&1 1>&2 2>&3)
 
 case "$menuextras" in
@@ -84,7 +85,6 @@ do
             AP4="gtop"
             AP_condicion=true
             ;;
-
         5)
             AP5="gotop"
             AP_condicion=true
