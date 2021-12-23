@@ -70,6 +70,8 @@ echo --------------------------------------" 20 50
 
 
 
+funcionesextras () {
+
 bootarch=$( ls /sys/firmware/efi/ | grep -ic efivars )
 
 ### UEFII
@@ -90,3 +92,6 @@ fi
 
 part="$(echo "print devices" | parted | grep /dev/ | awk '{if (NR!=1) {print}}' | sed '/sr/d')" 
 disk=$(dialog --backtitle "$titulo" --clear  --ok-label 'Seleccionar' --no-cancel --menu "Selecciona el disco para Linux" 10 50 0 ${part} 2>&1 >/dev/tty)
+
+
+}
