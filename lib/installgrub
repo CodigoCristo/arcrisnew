@@ -179,7 +179,7 @@ case $GRUBINSTALL in
     ;;
 
   *)
-    echo "STATEMENTS"
+    installgrub1
     ;;
 esac
 

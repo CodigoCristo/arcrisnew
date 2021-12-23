@@ -1,26 +1,17 @@
 #!/bin/bash
 
-GRUBINSTALL=1
-
-
-
-case $GRUBINSTALL in
-
-  1)
-    echo "STATEMENTS 1"
-    ;;
-
-  2)
-    echo "STATEMENTS"
-    ;;
-
-  3)
-    echo "STATEMENTS"
-    ;;
-
-  *)
-    echo "STATEMENTS"
-    ;;
-esac
+cmd=(dialog --backtitle "$titulo" --separate-output --ok-label 'Montar y formatear selección' --cancel-label 'No tengo más particiones' \--checklist "Selecciona otros puntos de montajes:\n\
+\n[SPACE] para marcar * \n\
+[ENTER] para continuar. \n\n\
+Todas las particiones tienen un formato de EXT4 \n " 13 75 0)
+options=("/home" "Archivos de usuario" off
+  "/tmp " "Archivos temporales" off
+  "/usr " "Datos estáticos" off
+  "/var " "Datos de variables" off
+  "/srv " "Datos de los servicios prestados por este sistema" off
+  "/opt " "Aplicaciones de terceros o privativos" off
+  "swap " "Memoria virtual RAM" off
+  )
+choices=$("${cmd[@]}" "${options[@]}" 2>&1 >/dev/tty)
 
 

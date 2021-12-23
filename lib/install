@@ -441,7 +441,7 @@ sed -i '80d' /mnt/etc/sudoers
 sed -i "80i $username ALL=(ALL) ALL" /mnt/etc/sudoers
 clear
 ####################################################################
-
+clear
 ####################################################################
 echo ""
 echo ""
@@ -449,7 +449,7 @@ arch-chroot /mnt /bin/bash -c "sudo -u $username alsi -l"
 echo ""
 echo "  Gracias a toda la comunidad en Telegram : https://t.me/ArchLinuxCristo"
 echo ""
-echo "     Agradecimientos :) - Larga vida a Yno Alberto y Novatovich"
+echo "     Larga vida a Yno Alberto y Novatovich - Agradecimientos :"
 echo ""
 echo "     @dakataca @#!/bin/bash @Svendeer @AlexHMusique @mxhectorvega @D3stry3rK3rn3l @CodeAssault"
 echo "     @GloriousMusketeer @ynoalberto @javashin @JW2128 @Jhoseph_AG @picallogl @i_a_n_6 @MisaelCB"
