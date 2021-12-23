@@ -52,7 +52,8 @@ rootfs=$part
 
 p=$(echo "$p" | grep -v $part)
 
-partitioning
+dialog --clear --no-collapse --cr-wrap --backtitle "${title}" --title "| Formateando partición en EXT4 |" --stdout --ok-label "Siguiente" --prgbox "echo "" && mkfs.ext4 -F $part" 20 80
+
 mount "$rootfs" /mnt
 
 
