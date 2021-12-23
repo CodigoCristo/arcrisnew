@@ -328,7 +328,7 @@ sleep 3
 
 
 ## DIRECTORIOS
-titulo_progreso="| Actualizando lista de Directoros |"
+titulo_progreso="| Actualizando lista de directorios de usuario |"
 barra_progreso
 echo -e ""
 echo -e ""

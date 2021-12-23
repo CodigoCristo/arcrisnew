@@ -124,7 +124,6 @@ clear
 titulo_progreso="|  SISTEMA BIOS LEGACY Y DISCO DOS/MBR  |"
 barra_progreso
 arch-chroot /mnt /bin/bash -c "pacman -S grub os-prober --noconfirm"
-arch-chroot /mnt /bin/bash -c "pacman -S dosfstools exfatprogs ntfs-3g reiserfsprogs --noconfirm"
 clear
 
 bootwin=$(fdisk -l ${disk} | grep /dev/ | awk '{if (NR!=1) {print}}' | grep "*" | awk -F ' ' '{print $1}' )
