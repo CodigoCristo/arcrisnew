@@ -1,60 +1,170 @@
 #!/bin/bash
 
-extraprogram () {
 
+utilidades () {
 
-extraprograms=true
+#UTILIDADES
+cmd=(dialog --no-collapse --cr-wrap --backtitle "${title}"  \
+--no-tags --ok-label '< Siguiente >' --cancel-label '< No deseo esto >' --checklist "Utilidades para tu sistema\n[ ESPACIO ] - Para marcar o desmarcar *" 18 70 20)
+options=(1 "Lectura y formateo de discos incluido Android" on    # any option can be set to default to "on"
+         2 "Compresión y Descompresión de archivos" on
+         3 "Códecs de video, lectura de todos los formatos de vídeo" off
+         4 "gufw - Firewall de red" off
+         5 "hardinfo - Información del sistema y benchmark" off
+         6 "gnome-disk-utility - Administrador de Discos" off
+         7 "gparted - Administrador de Discos" off
+         8 "bluez - Bluetooth" off
+         9 "viewnior - Visor de Imagenes" off
+         10 "gedit - Editor de Textos GTK" off)
 
-AP_condicion=false
-
-while [[ $extraprograms == "true" ]]; do
-
-menuextras=$(dialog --keep-tite --backtitle "${title}" --title "-| EXTRAS |-" \
---nocancel --no-tags \
---menu "\nSeleccione los programas extras que necesita \n " 21 50 10 \
-1 "           Utilidades                    " \
-2 "           Terminales                    " \
-3 "           Audio                         " \
-4 "           Reproductores                 " \
-5 "           Navegador Web                 " \
-6 "           Office                        " \
-7 "           Administrador de tareas       " \
-8 "           Social media                  " \
-9 "           Gamers                        " \
-10 "           AUR helpers                   " \
-11 "  FINALIZAR SELECCIÓN                    " \
-12 "  CANCELAR                               " 3>&1 1>&2 2>&3)
-
-case "$menuextras" in
-
-"1")
-
+choices=$("${cmd[@]}" "${options[@]}" 2>&1 >/dev/tty)
+clear
+for choice in $choices
+do
+    case $choice in
+1)
+UTIL1=true
 ;;
 
-"2") 
-
+2)
+UTIL2=true
 ;;
 
-
-"3")
-
+3)
+UTIL3=true
 ;;
 
-"4") 
-
+4)
+UTIL4=true
 ;;
 
-"5")
-
-
+5)
+UTIL5=true
 ;;
 
-"6")
-
-
+6)
+UTIL6=true
 ;;
 
-"7")
+7)
+UTIL7=true
+;;
+
+8) 
+UTIL8=true
+;;
+
+9)
+UTIL9=true
+;;   
+
+10)
+UTIL10=true
+;;   
+    esac
+done
+#FINAL DE UTILIDADES
+
+}
+
+
+terminales () {
+
+#TERMINALES
+cmd=(dialog --no-collapse --cr-wrap --backtitle "${title}"  \
+--no-tags --ok-label '< Siguiente >' --cancel-label '< No deseo esto >' --checklist "Terminal para tu sistema\n[ ESPACIO ] - Para marcar o desmarcar *" 17 70 20)
+options=(1 "lxterminal" on    # any option can be set to default to "on"
+         2 "tilix" off
+         3 "xfce4-terminal" off
+         4 "deepin-terminal" off
+         5 "mate-terminal" off
+         6 "terminator" off
+         7 "st" off
+         8 "alacritty" off
+         9 "kitty" off)
+
+choices=$("${cmd[@]}" "${options[@]}" 2>&1 >/dev/tty)
+clear
+for choice in $choices
+do
+    case $choice in
+        1)
+            TERMI1=true
+            ;;
+        2)
+            TERMI2=true
+            ;;
+        3)
+            TERMI3=true
+            ;;
+        4)
+            TERMI4=true
+            ;;
+        
+        5)
+            TERMI5=true
+            ;;
+
+        6)
+            TERMI6=true
+            ;;
+               
+        7)
+            TERMI7=true
+            ;;   
+        8)
+            TERMI8=true
+            ;;   
+        9)
+            TERMI9=true
+            ;;   
+    esac
+done
+#FINAL DE TERMINALES
+}
+
+
+audiosistema () {
+
+#AUDIO
+cmd=(dialog --no-collapse --cr-wrap --title "-| Audio del Sistema |-" --backtitle "$titulo"  \
+--no-tags --ok-label '< Siguiente >' --cancel-label '< No deseo esto >' --checklist "\nPulseAudio es para el usuario tradicional \
+\nJack Audio es para Profesionales sin latencia \
+\nAlsa Audio es para terminal sin Interfaz Gráfica\n \
+\n[ ESPACIO ] - Para marcar o desmarcar *" 15 70 20)
+options=(1 "Pulseaudio + Códecs de audio" on    # any option can be set to default to "on"
+         2 "Jack2      + Códecs de audio" off
+         3 "ALSA       + Códecs de audio" off)
+
+choices=$("${cmd[@]}" "${options[@]}" 2>&1 >/dev/tty)
+clear
+for choice in $choices
+do
+    case $choice in
+        1)
+            AUDIO1="pulseaudio pulseaudio-alsa pavucontrol pamixer \
+            pulseaudio-equalizer lib32-alsa-plugins lib32-libpulse pulseaudio-equalizer-ladspa"
+            #https://wiki.archlinux.org/index.php/PulseAudio
+            #pulseeffects libcanberra-pulse libcanberra-gstreamer
+            ;;
+        2)
+            AUDIO2="realtime-privileges jack2 lib32-jack2 a2jmidid libffado python-dbus waf pro-audio lv2-plugins ladspa-plugins dssi-plugins vst-plugins"
+            #https://wiki.archlinux.org/index.php/Professional_audio
+            ;;
+        3)
+            AUDIO3="alsa-utils alsa-plugins alsa-oss alsa-firmware pamixer"
+            #https://wiki.archlinux.org/index.php/Advanced_Linux_Sound_Architecture
+            ;;
+    esac
+done
+AUDIO=" $AUDIO1 $AUDIO2 $AUDIO3 "
+
+#FIN_AUDIO
+
+}
+
+administrador_de_tareas () {
+
 #Administrador de Tareas
 cmd=(dialog --no-collapse --cr-wrap --backtitle "${title}" --title "-| Administrador de Tareas |-" \
 --no-tags  --checklist "\n[ ESPACIO ] - Para marcar o desmarcar *\n " 15 70 20)
@@ -94,10 +204,78 @@ do
     esac
 done
 
+
+
+}
+
+
+
+
+
+
+
+
+
+extraprogram () {
+
+
+extraprograms=true
+
+AP_condicion=false
+TERMINAL_condicion=false
+
+while [[ $extraprograms == "true" ]]; do
+
+menuextras=$(dialog --keep-tite --backtitle "${title}" --title "-| EXTRAS |-" \
+--nocancel --no-tags \
+--menu "\nSeleccione los programas extras que necesita \n " 21 50 10 \
+1 "           Utilidades                    " \
+2 "           Terminales                    " \
+3 "           Audio                         " \
+4 "           Reproductores                 " \
+5 "           Navegador Web                 " \
+6 "           Office                        " \
+7 "           Administrador de tareas       " \
+8 "           Social media                  " \
+9 "           Gamers                        " \
+10 "           AUR helpers                   " \
+11 "  FINALIZAR SELECCIÓN                    " \
+12 "  CANCELAR                               " 3>&1 1>&2 2>&3)
+
+case "$menuextras" in
+
+"1")
+
+;;
+
+"2") 
+terminales
+;;
+
+
+"3")
+
+;;
+
+"4") 
+
+;;
+
+"5")
+
+
+;;
+
+"6")
+
+
+;;
+
+"7")
+administrador_de_tareas
 ;;
 
 "8")
-
 
 ;;
 

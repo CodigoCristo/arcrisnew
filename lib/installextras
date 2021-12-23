@@ -1,0 +1,196 @@
+#!/bin/bash
+
+extrasinstall () {
+
+# INICIO DE UTILIDADES
+
+if [ "$UTIL1" == "true" ]; then
+arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S android-file-transfer --noconfirm"
+arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S android-tools --noconfirm" 
+arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S android-udev --noconfirm"
+arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S msmtp --noconfirm"
+arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S libmtp --noconfirm"
+arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S libcddb --noconfirm"
+arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S gvfs --noconfirm"
+arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S gvfs-afc --noconfirm"
+arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S gvfs-smb --noconfirm"
+arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S gvfs-gphoto2 --noconfirm"
+arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S gvfs-mtp --noconfirm"
+arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S gvfs-goa --noconfirm"
+arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S gvfs-nfs --noconfirm"
+arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S gvfs-google --noconfirm"
+arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S gst-libav --noconfirm"
+arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S dosfstools --noconfirm"
+arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S f2fs-tools --noconfirm"
+arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S ntfs-3g --noconfirm"
+arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S udftools --noconfirm"
+arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S nilfs-utils --noconfirm"
+arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S polkit --noconfirm"
+arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S gpart --noconfirm"
+arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S mtools --noconfirm"
+arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S cifs-utils --noconfirm"
+arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S jfsutils --noconfirm"
+arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S btrfs-progs --noconfirm"
+arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S xfsprogs --noconfirm"
+arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S reiserfsprogs --noconfirm"
+fi
+
+
+if [ "$UTIL2" == "true" ]; then
+arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S xarchiver --noconfirm"
+arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S unarchiver --noconfirm"
+arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S binutils --noconfirm"
+arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S gzip --noconfirm"
+arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S lha --noconfirm"
+arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S lrzip --noconfirm"
+arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S lzip --noconfirm"
+arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S lz4 --noconfirm"
+arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S p7zip --noconfirm"
+arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S tar --noconfirm"
+arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S xz --noconfirm"
+arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S bzip2 --noconfirm"
+arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S p7zip --noconfirm"
+arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S lbzip2 --noconfirm"
+arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S arj --noconfirm"
+arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S lzop --noconfirm"
+arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S cpio --noconfirm"
+arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S unrar --noconfirm"
+arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S unzip --noconfirm"
+arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S zstd --noconfirm"
+arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S zip --noconfirm"
+arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S lzip --noconfirm"
+arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S unarj --noconfirm"
+arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S zstd --noconfirm"
+fi
+
+
+if [ "$UTIL3" == "true" ]; then
+arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S ffmpeg --noconfirm"
+arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S aom --noconfirm"
+arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S libde265 --noconfirm"
+arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S x265 --noconfirm"
+arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S x264 --noconfirm"
+arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S libmpeg2 --noconfirm"
+arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S xvidcore --noconfirm"
+arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S libtheora --noconfirm"
+arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S libvpx --noconfirm"
+arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S schroedinger --noconfirm"
+arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S sdl --noconfirm"
+arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S gstreamer --noconfirm"
+arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S gst-plugins-bad --noconfirm"
+arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S gst-plugins-base --noconfirm"
+arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S gst-plugins-base-libs --noconfirm"
+arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S gst-plugins-good --noconfirm"
+arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S gst-plugins-ugly --noconfirm"
+arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S xine-lib --noconfirm"
+arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S libdvdcss --noconfirm"
+arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S libdvdread --noconfirm"
+arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S dvd+rw-tools --noconfirm"
+arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S lame --noconfirm"
+arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S jasper --noconfirm"
+arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S libmng --noconfirm"
+arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S libraw --noconfirm"
+arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S libkdcraw --noconfirm"
+arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S vcdimager --noconfirm"
+fi
+
+
+if [ "$UTIL4" == "true" ]; then
+arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S gufw --noconfirm"
+fi
+
+
+if [ "$UTIL5" == "true" ]; then
+arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S hardinfo --noconfirm"
+fi
+
+
+if [ "$UTIL6" == "true" ]; then
+arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S gnome-disk-utility --noconfirm"
+fi
+
+
+if [ "$UTIL7" == "true" ]; then
+arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S gparted --noconfirm"
+fi
+
+
+if [ "$UTIL8" == "true" ]; then
+arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S bluez --noconfirm"
+arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S bluez-utils --noconfirm"
+arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S pulseaudio-bluetooth --noconfirm"
+fi
+
+
+if [ "$UTIL9" == "true" ]; then
+arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S viewnior --noconfirm"
+fi
+
+
+if [ "$UTIL10" == "true" ]; then
+arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S gedit --noconfirm"
+fi
+
+# FIN DE UTILIDADES
+
+
+if [ "$TERMI1" == "true" ]; then
+arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S lxterminal --noconfirm"
+fi
+
+
+if [ "$TERMI2" == "true" ]; then
+arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S tilix --noconfirm"
+fi
+
+
+if [ "$TERMI3" == "true" ]; then
+arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S xfce4-terminal --noconfirm"
+fi
+
+
+if [ "$TERMI4" == "true" ]; then
+arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S deepin-terminal --noconfirm"
+fi
+
+
+if [ "$TERMI5" == "true" ]; then
+arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S mate-terminal --noconfirm"
+fi
+
+
+if [ "$TERMI6" == "true" ]; then
+arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S terminator --noconfirm"
+fi
+
+
+if [ "$TERMI7" == "true" ]; then
+arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S st --noconfirm"
+fi
+
+
+if [ "$TERMI8" == "true" ]; then
+arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S alacritty --noconfirm"
+fi
+
+
+if [ "$TERMI9" == "true" ]; then
+arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S kitty --noconfirm"
+fi
+
+
+
+
+
+
+
+if [ "$AP_condicion" == "true" ]; then
+arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S ${AP1} --noconfirm"
+arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S ${AP2} --noconfirm"
+arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S ${AP3} --noconfirm"
+arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S ${AP4} --noconfirm"
+arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S ${AP5} --noconfirm"
+fi
+
+
+}

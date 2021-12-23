@@ -1,17 +1,39 @@
 #!/bin/bash
 
-cmd=(dialog --backtitle "$titulo" --separate-output --ok-label 'Montar y formatear selección' --cancel-label 'No tengo más particiones' \--checklist "Selecciona otros puntos de montajes:\n\
-\n[SPACE] para marcar * \n\
-[ENTER] para continuar. \n\n\
-Todas las particiones tienen un formato de EXT4 \n " 13 75 0)
-options=("/home" "Archivos de usuario" off
-  "/tmp " "Archivos temporales" off
-  "/usr " "Datos estáticos" off
-  "/var " "Datos de variables" off
-  "/srv " "Datos de los servicios prestados por este sistema" off
-  "/opt " "Aplicaciones de terceros o privativos" off
-  "swap " "Memoria virtual RAM" off
-  )
+cmd=(dialog --no-collapse --cr-wrap --backtitle "${title}" --title "-| Administrador de Tareas |-" \
+--no-tags  --checklist "\n[ ESPACIO ] - Para marcar o desmarcar *\n " 15 70 20)
+options=(1 " gnome-system-monitor " on
+         2 " htop                 " on
+         3 " bashtop              " off
+         4 " gtop                 " off
+         5 " gotop - AUR          " off)
+
 choices=$("${cmd[@]}" "${options[@]}" 2>&1 >/dev/tty)
+clear
+for choice in $choices
+do
+    case $choice in
+        1)
+            AP1="true"
+            ;;
+        2)
+            AP2="true"
+            ;;
+        3)
+            AP3="bashtop"
+            AP_condicion=true
+            ;;
+        4)
+            AP4="gtop"
+            AP_condicion=true
+            ;;
+        5)
+            AP5="gotop"
+            AP_condicion=true
+            ;;
+            
+            
+    esac
+done
 
 

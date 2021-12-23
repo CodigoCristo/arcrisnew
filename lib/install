@@ -393,6 +393,9 @@ source lib/installgrub
 installgrub
 clear
 
+source lib/installextras
+extrasinstall
+clear
 
 
 ####################################################################
