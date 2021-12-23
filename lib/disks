@@ -6,6 +6,8 @@ proximamente () {
 
 disksystem () {
 
+GRUBINSTALL=1
+
 cmd=(dialog --no-collapse --cr-wrap --backtitle "${title}" --title "-| Discos |-" \
 --ok-label "Confirmar" --menu "\nEliga su mejor opción para su Sistema\n " 15 60 15)
 options=(1 " Particionado Automático                       "   
@@ -29,6 +31,7 @@ autopartition
 
 2) ################
 source lib/partition/encryptpartition
+# GRUBINSTALL=2
 # encryptpartition
 proximamente
 ;;
@@ -40,6 +43,7 @@ manualpartition
 
 4) ################
 source lib/partition/dualbootpartition
+GRUBINSTALL=3
 dualpartition
 ;;
 

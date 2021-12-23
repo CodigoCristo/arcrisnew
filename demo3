@@ -1,37 +1,26 @@
-selected=0 
-timezonedir=/usr/share/zoneinfo
-while [ "$selected" = "0" ] 
-do
+#!/bin/bash
 
-  clear
-  check=$(ls -l $timezonedir | grep -v .tab | awk '/drwx/' | awk -F " " '{print $9}' | awk '{if (NR!=1) {print}}' | head -1)
-  if [[ $check != America ]]; then 
-    echo "../ UP" >timezones 
-  fi
+GRUBINSTALL=1
 
-  ls -l $timezonedir | grep -v .tab | awk '/drwx/' | awk -F " " '{print $9}' | awk '{print $0"/"}' | awk '$fs=$fs" Time"' | awk '{if (NR!=1) {print}}'>>timezones 
-  
-  ls -l $timezonedir | grep -v .tab | awk '/-rw-/' | awk -F " " '{print $9}' | awk '$fs=$fs" Time"' | awk '{if (NR!=1) {print}}'>>timezones
-  timezones=$(cat timezones) 
-  rm timezones 
-    timezone=$(dialog --backtitle "${title}" --title "${title_timezone}" --clear --title "${title_timezonemanual}: $zoneinfo |-" \
-    --menu "${msg_timezonemanual}" 30 45 20 ${timezones} 2>&1 >/dev/tty)  
-  clear
-  if [ "$?" = "0" ] 
-  then
-    if [[ $timezone == *"/"* ]]; then 
-      timezonedir=$timezonedir/$timezone
-    else 
-      zonemanual=true
-      selected=1
-    fi
-  fi
-done
 
-zonahorariamanual=$(echo $timezonedir$timezone | sed 's/^....................//g')
-echo $zonahorariamanual
-echo "----------"
-read line
 
+case $GRUBINSTALL in
+
+  1)
+    echo "STATEMENTS 1"
+    ;;
+
+  2)
+    echo "STATEMENTS"
+    ;;
+
+  3)
+    echo "STATEMENTS"
+    ;;
+
+  *)
+    echo "STATEMENTS"
+    ;;
+esac
 
 
