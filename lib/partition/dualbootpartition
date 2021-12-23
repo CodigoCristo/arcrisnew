@@ -80,6 +80,7 @@ echo " UEFI"
 ### BIOSSSSSS 
 else  
 
+echo " BIOS"
 
 fi
 
