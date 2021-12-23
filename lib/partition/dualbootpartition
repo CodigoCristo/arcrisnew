@@ -24,6 +24,7 @@ part=""
 rootfs=""
 
 
+tableboot="BIOS LEGACY"
 part="$(lsblk -lno NAME,SIZE,TYPE | grep 'disk' | awk '{print "/dev/" $1 " " $2}' | sort -u | sed '/f/d' | sed '/sr/d' )" 
 disk=$(dialog --backtitle "${title}" --clear  --ok-label "Seleccionar disco" --no-cancel --menu "\nSelecciona el disco para Arch Linux\n " 12 45 0 ${part} 2>&1 >/dev/tty)
 
@@ -55,8 +56,6 @@ partitioning
 mount "$rootfs" /mnt
 
 
-tableboot="BIOS LEGACY"
-
 cmd=(dialog --backtitle "$titulo" --separate-output --ok-label 'Montar y formatear selección' --cancel-label 'No tengo más particiones' \--checklist "Selecciona otros puntos de montajes:\n\
 \n[SPACE] para marcar * \n\
 [ENTER] para continuar. \n\n\
@@ -83,7 +82,7 @@ do
       homefs="$part"
       #dialog --backtitle "$titulo" --title "| Verificando estado de Disco |" --stdout --ok-label "Siguiente" --prgbox "e2fsck -f -y -v -C 0 $part" 20 80
       #partitioning
-      dialog --clear --no-collapse --cr-wrap --backtitle "${title}" --title "| Formateando partición en EXT4 |" --stdout --ok-label "Siguiente" --prgbox "echo "" && mkfs.ext4 -F $part"
+      dialog --clear --no-collapse --cr-wrap --backtitle "${title}" --title "| Formateando partición en EXT4 |" --stdout --ok-label "Siguiente" --prgbox "echo "" && mkfs.ext4 -F $part" 20 80
       homedir="home"
       mkdir -p /mnt/home
       mount "$homefs" /mnt/home
@@ -98,7 +97,7 @@ do
       tmpfs="$part"
       #dialog --backtitle "$titulo" --title "| Verificando estado de Disco |" --stdout --ok-label "Siguiente" --prgbox "e2fsck -f -y -v -C 0 $part" 20 80
       #partitioning
-      dialog --clear --no-collapse --cr-wrap --backtitle "${title}" --title "| Formateando partición en EXT4 |" --stdout --ok-label "Siguiente" --prgbox "echo "" && mkfs.ext4 -F $part"
+      dialog --clear --no-collapse --cr-wrap --backtitle "${title}" --title "| Formateando partición en EXT4 |" --stdout --ok-label "Siguiente" --prgbox "echo "" && mkfs.ext4 -F $part" 20 80
       tmpdir="tmp"
       mkdir -p /mnt/tmp
       mount "$tmpfs" /mnt/tmp
@@ -113,7 +112,7 @@ do
       usrfs="$part"
       #dialog --backtitle "$titulo" --title "| Verificando estado de Disco |" --stdout --ok-label "Siguiente" --prgbox "e2fsck -f -y -v -C 0 $part" 20 80
       #partitioning
-      dialog --clear --no-collapse --cr-wrap --backtitle "${title}" --title "| Formateando partición en EXT4 |" --stdout --ok-label "Siguiente" --prgbox "echo "" && mkfs.ext4 -F $part"
+      dialog --clear --no-collapse --cr-wrap --backtitle "${title}" --title "| Formateando partición en EXT4 |" --stdout --ok-label "Siguiente" --prgbox "echo "" && mkfs.ext4 -F $part" 20 80
       usrdir="usr"
       mkdir -p /mnt/usr
       mount "$usrfs" /mnt/usr
@@ -128,7 +127,7 @@ do
       varfs="$part"
       #dialog --backtitle "$titulo" --title "| Verificando estado de Disco |" --stdout --ok-label "Siguiente" --prgbox "e2fsck -f -y -v -C 0 $part" 20 80
       #partitioning
-      dialog --clear --no-collapse --cr-wrap --backtitle "${title}" --title "| Formateando partición en EXT4 |" --stdout --ok-label "Siguiente" --prgbox "echo "" && mkfs.ext4 -F $part"
+      dialog --clear --no-collapse --cr-wrap --backtitle "${title}" --title "| Formateando partición en EXT4 |" --stdout --ok-label "Siguiente" --prgbox "echo "" && mkfs.ext4 -F $part" 20 80
       vardir="var"
       mkdir -p /mnt/var
       mount "$varfs" /mnt/var
@@ -143,7 +142,7 @@ do
       srvfs="$part"
       #dialog --backtitle "$titulo" --title "| Verificando estado de Disco |" --stdout --ok-label "Siguiente" --prgbox "e2fsck -f -y -v -C 0 $part" 20 80
       #partitioning
-      dialog --clear --no-collapse --cr-wrap --backtitle "${title}" --title "| Formateando partición en EXT4 |" --stdout --ok-label "Siguiente" --prgbox "echo "" && mkfs.ext4 -F $part"
+      dialog --clear --no-collapse --cr-wrap --backtitle "${title}" --title "| Formateando partición en EXT4 |" --stdout --ok-label "Siguiente" --prgbox "echo "" && mkfs.ext4 -F $part" 20 80
       srvdir="srv"
       mkdir -p /mnt/srv
       mount "$srvfs" /mnt/srv
@@ -158,7 +157,7 @@ do
       optfs="$part"
       #dialog --backtitle "$titulo" --title "| Verificando estado de Disco |" --stdout --ok-label "Siguiente" --prgbox "e2fsck -f -y -v -C 0 $part" 20 80
       #partitioning
-      dialog --clear --no-collapse --cr-wrap --backtitle "${title}" --title "| Formateando partición en EXT4 |" --stdout --ok-label "Siguiente" --prgbox "echo "" && mkfs.ext4 -F $part"
+      dialog --clear --no-collapse --cr-wrap --backtitle "${title}" --title "| Formateando partición en EXT4 |" --stdout --ok-label "Siguiente" --prgbox "echo "" && mkfs.ext4 -F $part" 20 80
       optdir="opt"
       mkdir -p /mnt/opt
       mount "$optfs" /mnt/opt
@@ -224,7 +223,7 @@ partitions=$(fdisk -l ${disk} | grep /dev/ | awk '{if (NR!=1) {print}}' | sed 's
 p="$(echo "$partitions")"
 
 part=$(dialog --backtitle "${title}" --title "-| Selección de puntos de Montaje |-" --ok-label 'Seleccionar' --no-cancel --clear \
-  --menu "\nSelecciona la partición para Linux: \n " 10 55 0 ${p} 2>&1 > /dev/tty)
+  --menu "\nSelecciona la partición root para Linux: \n " 10 55 0 ${p} 2>&1 > /dev/tty)
 
 rootfs=$part
 
