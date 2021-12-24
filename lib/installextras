@@ -183,6 +183,48 @@ fi
 
 
 
+if [ "$AUDIO1" == "true" ]; then
+arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S pulseaudio --noconfirm"
+arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S pulseaudio-alsa --noconfirm"
+arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S pavucontrol --noconfirm"
+arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S pamixer --noconfirm"
+arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S pulseaudio-equalizer --noconfirm"
+arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S lib32-alsa-plugins --noconfirm"
+arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S lib32-libpulse --noconfirm"
+arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S pulseaudio-equalizer-ladspa --noconfirm"
+fi
+
+
+
+if [ "$AUDIO2" == "true" ]; then
+arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S realtime-privileges --noconfirm"
+arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S jack2 --noconfirm"
+arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S lib32-jack2 --noconfirm"
+arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S a2jmidid --noconfirm"
+arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S libffado --noconfirm"
+arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S python-dbus --noconfirm"
+arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S waf --noconfirm"
+arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S pro-audio --noconfirm"
+arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S lv2-plugins --noconfirm"
+arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S ladspa-plugins --noconfirm"
+arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S dssi-plugins --noconfirm"
+arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S vst-plugins --noconfirm"
+fi
+
+
+
+if [ "$AUDIO3" == "true" ]; then
+arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S alsa-utils --noconfirm"
+arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S alsa-plugins --noconfirm"
+arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S alsa-oss --noconfirm"
+arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S alsa-firmware --noconfirm"
+arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S pamixer --noconfirm"
+fi
+
+
+
+
+
 
 if [ "$AP_condicion" == "true" ]; then
 arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S ${AP1} --noconfirm"

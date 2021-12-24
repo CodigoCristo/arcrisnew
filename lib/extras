@@ -142,26 +142,30 @@ for choice in $choices
 do
     case $choice in
         1)
-            AUDIO1="pulseaudio pulseaudio-alsa pavucontrol pamixer \
-            pulseaudio-equalizer lib32-alsa-plugins lib32-libpulse pulseaudio-equalizer-ladspa"
+            AUDIO1=true
             #https://wiki.archlinux.org/index.php/PulseAudio
             #pulseeffects libcanberra-pulse libcanberra-gstreamer
             ;;
         2)
-            AUDIO2="realtime-privileges jack2 lib32-jack2 a2jmidid libffado python-dbus waf pro-audio lv2-plugins ladspa-plugins dssi-plugins vst-plugins"
+            AUDIO2=true
             #https://wiki.archlinux.org/index.php/Professional_audio
             ;;
         3)
-            AUDIO3="alsa-utils alsa-plugins alsa-oss alsa-firmware pamixer"
+            AUDIO3=true
             #https://wiki.archlinux.org/index.php/Advanced_Linux_Sound_Architecture
             ;;
     esac
 done
-AUDIO=" $AUDIO1 $AUDIO2 $AUDIO3 "
-
 #FIN_AUDIO
 
 }
+
+
+
+
+
+
+
 
 administrador_de_tareas () {
 
@@ -239,8 +243,8 @@ menuextras=$(dialog --keep-tite --backtitle "${title}" --title "-| EXTRAS |-" \
 8 "           Social media                  " \
 9 "           Gamers                        " \
 10 "           AUR helpers                   " \
-11 "  FINALIZAR SELECCIÓN                    " \
-12 "  CANCELAR                               " 3>&1 1>&2 2>&3)
+11 "  > FINALIZAR                            " \
+12 "  > CANCELAR                             " 3>&1 1>&2 2>&3)
 
 case "$menuextras" in
 
