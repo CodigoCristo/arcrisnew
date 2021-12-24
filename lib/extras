@@ -231,7 +231,7 @@ TERMINAL_condicion=false
 while [[ $extraprograms == "true" ]]; do
 
 menuextras=$(dialog --keep-tite --backtitle "${title}" --title "-| EXTRAS |-" \
---nocancel --no-tags \
+--nocancel --ok-label "Seleccionar" --no-tags \
 --menu "\nSeleccione los programas extras que necesita \n " 20 50 10 \
 1 "           Utilidades                    " \
 2 "           Terminales                    " \
