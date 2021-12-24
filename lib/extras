@@ -1,7 +1,7 @@
 #!/bin/bash
 
 
-utilidades () {
+fuc_utilidades () {
 
 #UTILIDADES
 cmd=(dialog --no-collapse --cr-wrap --backtitle "${title}"  \
@@ -68,7 +68,7 @@ done
 }
 
 
-terminales () {
+fuc_terminales () {
 
 #TERMINALES
 cmd=(dialog --no-collapse --cr-wrap --backtitle "${title}"  \
@@ -124,7 +124,7 @@ done
 }
 
 
-audiosistema () {
+fuc_audiosistema () {
 
 #AUDIO
 cmd=(dialog --no-collapse --cr-wrap --title "-| Audio del Sistema |-" --backtitle "$titulo"  \
@@ -167,7 +167,7 @@ done
 
 
 
-administrador_de_tareas () {
+fuc_administrador_de_tareas () {
 
 #Administrador de Tareas
 cmd=(dialog --no-collapse --cr-wrap --backtitle "${title}" --title "-| Administrador de Tareas |-" \
@@ -249,16 +249,15 @@ menuextras=$(dialog --keep-tite --backtitle "${title}" --title "-| EXTRAS |-" \
 case "$menuextras" in
 
 "1")
-utilidades
+fuc_utilidades
 ;;
 
 "2") 
-terminales
+fuc_terminales
 ;;
 
-
 "3")
-audiosistema
+fuc_audiosistema
 ;;
 
 "4") 
