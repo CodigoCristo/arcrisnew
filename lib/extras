@@ -249,7 +249,7 @@ menuextras=$(dialog --keep-tite --backtitle "${title}" --title "-| EXTRAS |-" \
 case "$menuextras" in
 
 "1")
-
+utilidades
 ;;
 
 "2") 
@@ -258,7 +258,7 @@ terminales
 
 
 "3")
-
+audiosistema
 ;;
 
 "4") 
