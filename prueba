@@ -1,0 +1,11 @@
+#!/bin/bash
+
+
+
+rootsize=$(dialog --no-cancel --backtitle "${title}" --title "-| Discos y Particiones |-" \
+--form "\nIngresa la cantidad para ROOT.\nEl 100% restante es para HOME.\n\nGigabytes (G) - Megabytes (M) - Kibibyte (K)\n\n> No dejar espacios al inicio\n> No olvidar su etiqueta al final del número\n\
+> [Tabulador] o [FLECHA ARRIBA] / [FLECHA ABAJO]\n\nGigabytes disponibles ${sizedisk}\n " 0 0 0 \
+" Tamaño en GB para ROOT:" 1 1 "25G" 1 27 25 30 2>&1 > /dev/tty)
+
+clear
+echo $rootsize
