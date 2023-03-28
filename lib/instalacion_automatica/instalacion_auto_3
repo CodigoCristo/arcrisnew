@@ -1,9 +1,5 @@
 #!/bin/bash
 
-
-title="| Arcris Instalación fácil de ArchLinux - Donaciones en: www.patreon.com/codigocristo |"
-
-
 instalacion_automatica_3 () {
 
 
@@ -100,7 +96,9 @@ mkdir -p /mnt/boot && \
 mount $(cat boot-boot) /mnt/boot && \
 mkdir -p /mnt/home && \
 mkfs.ext4 $(cat home-boot) && \
-mount $(cat home-boot) /mnt/home " 20 150
+mount $(cat home-boot) /mnt/home && \
+echo -------------------------------------------- && \
+lsblk ${disk} --all" 20 150
 
 rm boot-boot home-boot root-boot
 
