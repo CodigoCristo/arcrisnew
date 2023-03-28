@@ -30,7 +30,7 @@ tar  -xvf  arcrisnew-main.tar.gz
 mv arcrisnew-main arcrisnew
 cd arcrisnew
 
-cp .dialogrc /root
+cp recursos/.dialogrc /root
 chmod +x *
 clear
 echo "Loading..."

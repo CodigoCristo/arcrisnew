@@ -1,5 +1,7 @@
 #!/bin/bash
 
+title="| Arcris Instalación fácil de ArchLinux - Donaciones en: www.patreon.com/codigocristo |"
+
 msg_coming="\nPróximamente...\n"
 
 title_disk="-| Discos |-"
@@ -19,7 +21,7 @@ options=(1 " Particionado Automático                       "
          3 " Particionado Manual                           "
          4 " Particionado con otro Sistema Operativo       "
          5 " Cambia o Crea tu Tabla de partición del Disco "
-         6 " Formatea todo tu Disco con DD                 ")
+         6 " Formatea todo tu Disco con la herramienta DD  ")
 
 choices=$("${cmd[@]}" "${options[@]}" 2>&1 >/dev/tty)
 clear
