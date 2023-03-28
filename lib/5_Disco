@@ -111,20 +111,20 @@ source lib/instalacion_automatica/instalacion_auto_2
 instalacion_automatica_2
 ;;
 3) ################
-source lib/partition/auto/auto3
-auto3
+source lib/instalacion_automatica/instalacion_auto_3
+instalacion_automatica_3
 ;;
 
 4) ################
-source lib/partition/auto/auto4
-auto4
+source lib/instalacion_automatica/instalacion_auto_4
+instalacion_automatica_4
 ;;
 
 
 5) ################
-source lib/partition/auto/auto5
-auto5
-GRUBINSTALL=4
+source lib/instalacion_automatica/instalacion_auto_5
+instalacion_automatica_5
+GRUB_BTRF=4
 ;;
 
                                                 
