@@ -1,5 +1,8 @@
 #!/bin/bash
 
+
+title="| Arcris Instalación fácil de ArchLinux - Donaciones en: www.patreon.com/codigocristo |"
+
 instalacion_automatica_2 () {
 
 
