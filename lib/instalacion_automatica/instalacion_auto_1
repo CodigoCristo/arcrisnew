@@ -1,7 +1,5 @@
 #!/bin/bash
 
-title="| Arcris Instalación fácil de ArchLinux - Donaciones en: www.patreon.com/codigocristo |"
-
 instalacion_automatica_1 () {
 
 
@@ -63,7 +61,7 @@ rm boot-efi root-efi
 ;;
 
   0)
-dialog --no-collapse --cr-wrap --backtitle "$titulo" --title "-| Preparando Disco - BIOS LEGACY |-" --stdout --ok-label "Siguiente" \
+dialog --no-collapse --cr-wrap --backtitle "${title}" --title "-| Preparando Disco - BIOS LEGACY |-" --stdout --ok-label "Siguiente" \
 --prgbox "sgdisk --zap-all ${disk} && \
 (echo o; echo n; echo p; echo 1; echo ""; echo +250M; echo n; echo p; echo 2; echo ""; echo ""; echo a; echo 1; echo w; echo q) | fdisk ${disk} && \
 fdisk -l ${disk} > /tmp/partitions && \
@@ -75,7 +73,7 @@ partitions="$(cat /tmp/partitions | grep /dev/ | awk '{if (NR!=1) {print}}' | se
 echo $partitions | awk -F ' ' '{print $1}' >  boot-boot
 echo $partitions | awk -F ' ' '{print $2}' >  root-boot
 
-dialog --no-collapse --cr-wrap --backtitle "$titulo" --title "-| Formateo y Montar Particiones |-" --stdout --ok-label "Siguiente" \
+dialog --no-collapse --cr-wrap --backtitle "${title}" --title "-| Formateo y Montar Particiones |-" --stdout --ok-label "Siguiente" \
 --prgbox "mkfs.ext4 $(cat root-boot) && \
 mount $(cat root-boot) /mnt && \
 mkfs.ext4 $(cat boot-boot) && \
