@@ -19,7 +19,7 @@ mem_total=$(free --giga | awk '/^Mem:/{print $2}')
 sizedisk="$(lsblk ${disk} -lno NAME,SIZE,TYPE | grep 'disk' | awk '{print $2}' | sort -u)"
 
 
-rootswapsize=$(dialog --no-cancel --backtitle "$titulo" --title "-| Discos y Particiones |-" \
+rootswapsize=$(dialog --no-cancel --backtitle "${title}" --title "-| Discos y Particiones |-" \
 --form "\nIngresa la cantidad para ROOT y SWAP.\nEl 100% restante es para HOME.\n\nGigabytes (G) - Megabytes (M) - Kibibyte (K)\n\n> No deje espacios al inicio\n> No olvidar su etiqueta al final del número\n\
 > [Tabulador] o [FLECHA ARRIBA] / [FLECHA ABAJO]\n\nGigabytes disponibles ${sizedisk}\n " 0 0 0 \
 " Tamaño en GB para ROOT:" 1 1 "25G" 1 26 25 20 2>&1 > /dev/tty \
@@ -50,8 +50,8 @@ dialog --no-collapse --cr-wrap --backtitle "${title}" --title "-| Preparando Dis
 --prgbox "sgdisk --zap-all ${disk} && \
 parted ${disk} mklabel gpt && \
 sgdisk ${disk} -n=1:0:+250M -t=1:ef00 && \
-sgdisk ${disk} -n=2:0:+${rootsize}G -t=2:8300 && \
-sgdisk ${disk} -n=3:0:+${swapsize}G -t=3:8200 && \
+sgdisk ${disk} -n=2:0:+${rootsize} -t=2:8300 && \
+sgdisk ${disk} -n=3:0:+${swapsize} -t=3:8200 && \
 sgdisk ${disk} -n=4:0:0 && \
 fdisk -l ${disk} > /tmp/partitions && \
 echo -------------------------------------------- && \
@@ -88,9 +88,13 @@ rm boot-efi root-efi swap-efi home-efi
 ;;
 
   0)
-dialog --no-collapse --cr-wrap --backtitle "$titulo" --title "-| Preparando Disco - BIOS LEGACY |-" --stdout --ok-label "Siguiente" \
+dialog --no-collapse --cr-wrap --backtitle "${title}" --title "-| Preparando Disco - BIOS LEGACY |-" --stdout --ok-label "Siguiente" \
 --prgbox "sgdisk --zap-all ${disk} && \
-(echo o; echo n; echo p; echo 1; echo ""; echo +250M; echo n; echo p; echo 2; echo ""; echo +${swapsize}; echo n; echo p; echo 3; echo ""; echo ""; echo t; echo 2; echo 82; echo a; echo 1; echo w; echo q) | fdisk ${disk} && \
+(echo o; echo n; echo p; echo 1; echo ""; echo +250M; echo n; \
+echo n; echo p; echo 2; echo ""; echo +${rootsize}; echo n; \
+echo n; echo p; echo 3; echo ""; echo +${swapsize}; echo n; echo t; echo 3; echo 82; \
+echo n; echo p; echo ""; echo ""; \
+echo a; echo 1; echo w; echo q) | fdisk ${disk} && \
 fdisk -l ${disk} > /tmp/partitions && \
 cat /tmp/partitions" 13 100
 
@@ -102,7 +106,7 @@ echo $partitions | awk -F ' ' '{print $2}' >  root-efi
 echo $partitions | awk -F ' ' '{print $3}' >  swap-efi
 echo $partitions | awk -F ' ' '{print $4}' >  home-efi
 
-dialog --no-collapse --cr-wrap --backtitle "$titulo" --title "-| Formateo y Montar Particiones |-" --stdout --ok-label "Siguiente" \
+dialog --no-collapse --cr-wrap --backtitle "${title}" --title "-| Formateo y Montar Particiones |-" --stdout --ok-label "Siguiente" \
 --prgbox "mkfs.ext4 $(cat root-boot) && \
 mount $(cat root-boot) /mnt && \
 mkfs.ext4 $(cat boot-boot) && \
