@@ -1,6 +1,6 @@
 #!/bin/bash
 
-instalacion_automatica_1 () {
+instalacion_automatica_2 () {
 
 
 # dialog --backtitle "${title}" --title "-| Mensaje |-" --msgbox "\n> UEFI trabaja con discos en GPT \n\n> UEFI su partición boot es formateada en FAT32 \n\n> BIOS LEGACY trabaja con discos en DOS/MBR\n\n> BIOS LEGACY su partición boot es formateada en EXT4\n( La partición boot en linux es opcional )" 13 60

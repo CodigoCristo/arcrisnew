@@ -107,8 +107,8 @@ instalacion_automatica_1
 ;;
 
 2) ################
-source lib/partition/auto/auto2
-auto2
+source lib/instalacion_automatica/instalacion_auto_2
+instalacion_automatica_2
 ;;
 3) ################
 source lib/partition/auto/auto3
