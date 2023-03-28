@@ -26,7 +26,7 @@ username=$(dialog --backtitle "${title}" --title "-| Crea una cuenta de usuario 
        && [ "${#username}" -lt 20 ]; then
         
         # El archivo de nombre de usuario reservado contiene nombres de usuario que deben evitarse
-        if grep -Fxq $username reserved_usernames ; then
+        if grep -Fxq $username recursos/reserved_usernames ; then
           
           dialog --backtitle "${title}" --title "-| ERROR: Nombre de usuario reservado |-" --msgbox "\nEl nombre de usuario que ingresaste está reservado para uso del sistema.\n\n- Escriba uno diferente." 10 50
         
