@@ -1,0 +1,147 @@
+#!/bin/bash
+
+msg_coming="\nPróximamente...\n"
+
+title_disk="-| Discos |-"
+
+msg_menu_disk="\nElija su mejor opción para su Sistema\n "
+
+
+
+disco () {
+
+GRUBINSTALL=1
+
+cmd=(dialog --no-collapse --cr-wrap --backtitle "${title}" --title "${title_disk}" \
+--ok-label "${btn_confirm}" --menu "${msg_menu_disk}" 15 60 15)
+options=(1 " Particionado Automático                       "   
+         2 " Particionado Automático con Cifrado de Disco  "
+         3 " Particionado Manual                           "
+         4 " Particionado con otro Sistema Operativo       "
+         5 " Cambia o Crea tu Tabla de partición del Disco "
+         6 " Formatea todo tu Disco con DD                 ")
+
+choices=$("${cmd[@]}" "${options[@]}" 2>&1 >/dev/tty)
+clear
+for choice in $choices
+do
+    case $choice in
+    ################
+
+1) ################ 
+instalacion_automatica
+;;
+
+2) ################
+# source lib/partition/encryptpartition
+# GRUBINSTALL=2
+# encryptpartition
+proximamente
+;;
+3) ################
+source lib/partition/manualpartition
+# manualpartition
+manualpartition
+;;
+
+4) ################
+source lib/partition/dualbootpartition
+GRUBINSTALL=3
+dualpartition
+;;
+
+
+5) ################
+source lib/partition/tabledisk
+tabledisk
+;;
+
+
+6) ################
+source lib/partition/deletediskdd
+deletediskdd
+;;
+
+    esac
+done
+
+sectiondisk=1
+
+}
+
+
+
+
+######################################
+##
+##    INSTALACIÓN AUTOMATICA
+##
+######################################
+
+
+
+instalacion_automatica () {
+
+
+cmd=(dialog --no-collapse --cr-wrap --backtitle "${title}" --title "-| Particionado Automático del Disco |-" \
+--no-tags --ok-label "Confirmar" --nocancel --menu "\nEliga su mejor opción para su Sistema\n\nLa unidad SSD tienen una vida útil limitada por los\nciclos de escritura.
+\nActivar SWAP conducirá a una mejora dramática del\nrendimiento a costa de una vida útil del SSD algo más corta.\n " 20 64 20)
+options=(1 " Root ( ext4 ) Recomendado     "   
+         2 " Root - Swap ( ext4 )          "
+         3 " Root - Home ( ext4 )          "
+         4 " Root - Home - Swap ( ext4 )   " )
+         #5 " Root ( Btrfs )   ")
+
+choices=$("${cmd[@]}" "${options[@]}" 2>&1 >/dev/tty)
+clear
+for choice in $choices
+do
+    case $choice in
+    ################
+
+1) ################ 
+source lib/instalacion_automatica/instalacion_auto_1
+instalacion_automatica_1
+;;
+
+2) ################
+source lib/partition/auto/auto2
+auto2
+;;
+3) ################
+source lib/partition/auto/auto3
+auto3
+;;
+
+4) ################
+source lib/partition/auto/auto4
+auto4
+;;
+
+
+5) ################
+source lib/partition/auto/auto5
+auto5
+GRUBINSTALL=4
+;;
+
+                                                
+    esac
+done
+
+
+}
+
+
+#################################################
+##
+##    FINALIZACIÓN DE INSTALACIÓN AUTOMATICA
+##
+#################################################
+
+
+
+
+proximamente () {
+    dialog --backtitle "${title}" --title "-| Código Cristo |-" --stdout --ok-label "${btn_accept}" --msgbox "${msg_coming}" 7 55
+}

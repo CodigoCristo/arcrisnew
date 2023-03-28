@@ -1,6 +1,6 @@
 #!/bin/bash
 
-shellsystem () {
+sistemshell () {
 
 shell=""
 
@@ -56,7 +56,7 @@ done
 
 
 
-installshell () {
+instalar_shell () {
 
 
 

@@ -1,116 +1,41 @@
 #!/usr/bin/env bash
 
-# git add .  
-# git commit -m 'testing'
-# git push -f
-# curl -L is.gd/arcrisnew > arcris ; sh arcris 
-
-echo ""
-echo "en_US.UTF-8 UTF-8" > /etc/locale.gen
-locale=$(locale-gen)
-dialog --stdout --infobox "$locale" 10 50
-echo "LANG=en_US.UTF-8" > /etc/locale.conf
-export LANG=en_US.UTF-8
-clear
-
-welcome_title=" -| Language Select |- "
-
-
-cmd=(dialog --nocancel --backtitle "Welcome : $(date "+%A, %B %d, %Y - %I:%M %p")" --title "${welcome_title}" \
-    --menu "\nDonations in: www.patreon.com/codigocristo\n\nSelect the language of the installer:\n\n---------------------------------------------\n\nDonaciones en: www.patreon.com/codigocristo\n\nSeleccione el idioma del instalador:\n " 20 60 10)
-
-options=(1 "Español"
-         2 "English"
-         3 "Russian")
-
-choices=$("${cmd[@]}" "${options[@]}" 2>&1 >/dev/tty)
-
-for choice in $choices
-do
-    case $choice in
-
-
-        1)
-        source languages/español.conf
-        echo "$LANGUAGE UTF-8" > /etc/locale.gen
-        locale=$(locale-gen)
-        dialog --backtitle "$title" \
-        --title "${idiom}" --stdout --ok-label "${oklabel}" \
-        --infobox "$locale" 10 50
-        echo "LANG=$LANGUAGE" > /etc/locale.conf
-        export LANG=$LANGUAGE
-        setfont lat5-16
-        ;;
-
-
-        2)
-        source languages/english.conf
-        echo "$LANGUAGE UTF-8" > /etc/locale.gen
-        locale=$(locale-gen)
-        dialog --backtitle "$title" \
-        --title "${idiom}" --stdout --ok-label "${oklabel}" \
-        --infobox "$locale" 10 50
-        echo "LANG=$LANGUAGE" > /etc/locale.conf
-        export LANG=$LANGUAGE
-        setfont default8x16
-        ;;
-
-
-        3)
-        # vconsole.conf 
-        # FONT="cyr-sun16"
-        # ls /usr/share/consolefonts
-        # ls /usr/share/kbd/consolefonts | grep 8x16
-        # setfont cyr-sun16
-        # showconsolefont
-        source languages/russian.conf
-        echo "$LANGUAGE UTF-8" > /etc/locale.gen
-        locale=$(locale-gen)
-        dialog --backtitle "$title" \
-        --title "${idiom}" --stdout --ok-label "${oklabel}" \
-        --infobox "$locale" 20 50
-        echo "LANG=$LANGUAGE" > /etc/locale.conf
-        export LANG=$LANGUAGE
-        setfont cyr-sun16
-        ;;
-
-    esac
-done
+# curl -L is.gd/arcristest > arcris ; sh arcris
 
 
 
+title="| Arcris Instalación fácil de ArchLinux - Donaciones en: www.patreon.com/codigocristo |"
+oklabel="_Siguiente "
+select_ok_label="_Seleccionar "
+title_error="-| ERROR |-"
+btn_confirm="_Confirmar_"
+btn_accept="Aceptar"
 
+highmenu="21"
+widthmenu="68"
 
-sectionuser=0
-sectionubi=0
-sectionlang=0
-sectionshell=0
-sectiondisk=0
-sectionkernel=0
-sectionvideo=0
-sectionenv=0
+msg_end="\t\t\t| Visita Nuestra Comunidad - https://t.me/ArchLinuxEs - by: Arcris |"
+
 
 main () {
 
 while true; do
+menuprincipal=(dialog --keep-tite --default-item "${current_item}" --backtitle "${title}" --title "-| Arcris 4.0 |-" \
+--ok-label "${select_ok_label}" --column-separator "|" --nocancel --no-tags \
+--menu "\nSeleccione una opción a continuación utilizando las teclas\n[FLECHA ARRIBA] / [FLECHA ABAJO] y [ESPACIO] o [ENTER]\nLas teclas alternativas también se pueden usar: [+], [-] y [TAB]\n" \
+${highmenu} ${widthmenu} 10)
 
-
-
-menuprincipal=(dialog --keep-tite --default-item "${current_item}" --backtitle "${title}" --title "${title_menu}" \
---ok-label "${select_ok_label}" --nocancel --no-tags \
---menu "${text_menu}" ${highmenu} ${widthmenu} 10)
-
-options=(   1 "${menu1} ${submenu1}" 
-            2 "${menu2} ${submenu2}" 
-            3 "${menu3} ${submenu3}" 
-            4 "${menu4} ${submenu4}" 
-            5 "${menu5} ${submenu5}" 
-            6 "${menu6} ${submenu6}" 
-            7 "${menu7} ${submenu7}" 
-            8 "${menu8} ${submenu8}" 
-            9 "${menu9} ${submenu9}" 
-            10 "${menu10}" 
-            11 "${menu11}"  )
+options=(   1 " |1 USUARIO" 
+            2 " |2 UBICACION" 
+            3 " |3 IDIOMA " 
+            4 " |4 SHELL " 
+            5 " |5 DISCO " 
+            6 " |6 KERNEL " 
+            7 " |7 DRIVER DE VIDEO  " 
+            8 " |8 DRIVER DE AUDIO " 
+            9 " |9 (DE) o (WM) " 
+            10 "|>       INSTALAR       <  " 
+            11 "|-        SALIR         -  " )
 
 choices=$("${menuprincipal[@]}" "${options[@]}" 2>&1 >/dev/tty)
 
@@ -120,27 +45,15 @@ do
     case $choice in
 
 1)
-source lib/user
-users
+source lib/1_Usuario
+usuarios
 clear
-dialog --no-collapse --cr-wrap --backtitle "${title}" --title "${ent_title_user}" --stdout --ok-label "${btn_confirm}" \
---prgbox "echo '' 
-echo '#################################################' 
-echo ''
-echo '${end_user} ${username}'
-echo '${end_keyuser} ${userpasswd}'
-echo ''
-echo '${end_keyroot} ${rootpasswd}'
-echo '${end_hotstname} ${hostname}' 
-echo ''
-echo '#################################################' " 15 55
 current_item="2"
 ;;
 
-2) 
-source lib/zoneinfo
-locality
-
+2)
+source lib/2_Ubicacion
+ubicacion
 clear
 echo $zonahorariauto 
 echo "----------"
@@ -154,11 +67,9 @@ read line
 current_item="3"
 ;;
 
-
 3)
-source lib/lang
-lang
-
+source lib/3_Idioma
+idioma
 clear 
 echo $keymap
 echo $keymapx
@@ -167,74 +78,61 @@ current_item="4"
 ;;
 
 4) 
-source lib/shellsystem
-shellsystem
+source lib/4_Shell
+sistemshell
 echo $shell
 read line 
 current_item="5"
 ;;
 
 5)
-source lib/disks
-disksystem
+source lib/5_Disco
+disco
 current_item="6"
 ;;
 
 6)
-source lib/kernel
-kerneles
 current_item="7"
 ;;
 
 7)
-source lib/video
-drivervideo
+current_item="8"
 ;;
 
 8)
-source lib/environment
-environment
 current_item="9"
 ;;
 
 9)
-source lib/extras
-extraprogram
 current_item="10"
 ;;
 
 10)
-source lib/install
-install
+
 
 ;;
 
 11)
-cd 
-rm -r arcris arcrisnew arcrisnew-main.tar.gz
 clear && echo "" 
 echo -e ""
 echo -e "${msg_end}"
 printf '%*s\n' "${COLUMNS:-$(tput cols)}" '' | tr ' ' _
 echo -e ""
-echo "" && sleep 3 && clear && setfont default8x16 && exit
+exit
 ;;
 
     esac
 done
 
 
-    
 done
 
 }
 
 main
-# Codigo cristo pal mundo
 
 
-
-
+# Escrito por Código Cristo 
 
 
 

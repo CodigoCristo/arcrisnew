@@ -1,6 +1,17 @@
 #!/bin/bash
 
-lang () {
+title_langtty="-| Teclado para la Terminal Virtual (TTY) |-"
+
+msg_langtty="\nComando ejecutado:\nlocalectl list-keymaps \n "
+
+msg_langerror="Ingrese una distribución del teclado para continuar"
+
+title_langXorg="-| Listado de idiomas para su teclado |-"
+
+msg_langXorg="\nComando ejecutado:\nlocalectl list-x11-keymap-layouts\nModo Prueba en Wayland"
+
+
+idioma () {
 
 cmd=(dialog --backtitle "${title}" --title "${title_langtty}" --no-cancel --keep-tite --menu "${msg_langtty}" 15 50 11)
 
@@ -47,7 +58,7 @@ do
             selected=0 
       while [ $selected == "0" ];do 
         localeskeymap="$(localectl list-keymaps | awk '$localeskeymap=$localeskeymap" Keymap"')" && localeskeymap=$(echo "$localeskeymap") 
-        keyboard=$(dialog --backtitle "${title}" --clear --no-cancel --title "${title_langtty}" --menu " \n " 15 50 15   ${localeskeymap} 2>&1 > /dev/tty) 
+        keyboard=$(dialog --backtitle "${title}" --clear --no-cancel --title "${title_langtty}" --menu " \n " 25 50 25   ${localeskeymap} 2>&1 > /dev/tty) 
         if [ $? == 0 ];then 
           loadkeys $keyboard 
           keymap=$keyboard 
@@ -102,8 +113,8 @@ do
         otros)
             selected=0 
       while [ $selected == "0" ];do 
-        localeskeymapx="$(cat lib/list_X11keymap | awk '$localeskeymapx=$localeskeymapx" x11-keymap-layout"')" && localeskeymapx=$(echo "$localeskeymapx") 
-        keyboardx=$(dialog --backtitle "${title}" --clear --no-cancel --title "${title_langXorg}" --menu " \n " 15 50 15   ${localeskeymapx} 2>&1 > /dev/tty) 
+        localeskeymapx="$(cat recursos/list_X11keymap | awk '$localeskeymapx=$localeskeymapx" x11-keymap-layout"')" && localeskeymapx=$(echo "$localeskeymapx") 
+        keyboardx=$(dialog --backtitle "${title}" --clear --no-cancel --title "${title_langXorg}" --menu " \n " 25 50 25   ${localeskeymapx} 2>&1 > /dev/tty) 
         if [ $? == 0 ];then 
           keymapx=$keyboardx 
           selected=1 

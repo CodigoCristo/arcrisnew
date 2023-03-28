@@ -1,0 +1,129 @@
+#!/bin/bash
+
+
+usuarios () {
+
+
+
+hostname=""
+username=""
+userpasswd=""
+rootpasswd=""
+
+# dialog --backtitle "${title}" --title "-| Usuarios |-" --stdout  --msgbox "\nEscriba su usuario y contraseña. \n " 7 37
+
+##########################
+# USER
+##########################
+while true; do
+username=$(dialog --backtitle "${title}" --title "-| Crea una cuenta de usuario |-" \
+--nocancel --inputbox "\nIntroduzca un nombre de usuario para el nuevo Usuario \n\nEl nombre de usuario debe comenzar con una letra minúscula,\nque puede ir seguida de cualquier combinación de números,\nletras minúsculas o el símbolo de guión. [ - ] \n\nNombre de usuario de su cuenta:" 15 65 3>&1 1>&2 2>&3)
+
+    if [ $? -eq 0 ]; then
+    #El nombre de usuario debe comenzar con una letra minúscula. 
+    #Puede contener minúsculas alfanuméricas y guiones.
+      if printf "%s" "${username}" | grep -Eoq "^[a-z][a-z0-9-]*$" \
+       && [ "${#username}" -lt 20 ]; then
+        
+        # El archivo de nombre de usuario reservado contiene nombres de usuario que deben evitarse
+        if grep -Fxq $username reserved_usernames ; then
+          
+          dialog --backtitle "${title}" --title "-| ERROR: Nombre de usuario reservado |-" --msgbox "\nEl nombre de usuario que ingresaste está reservado para uso del sistema.\n\n- Escriba uno diferente." 10 50
+        
+        else 
+          
+          inputs_match=false
+          
+          while ! $inputs_match; do
+
+            input=$(dialog --backtitle "${title}" --title "-| Establecer la contraseña |-" --clear \
+              --stdout --nocancel --insecure --passwordbox "\nElija una contraseña para $username:\n " 10 55)
+            confirm_input=$(dialog --backtitle "${title}" --title "-| Establecer la contraseña para $username |-" \
+              --clear --stdout --insecure --no-cancel --passwordbox "\nVuelva a ingresar la contraseña para verificar:\n " 10 55)
+
+            if [ -z "$input" ]; then
+
+              dialog --backtitle "${title}" --title "-| ERROR: contraseña vacía |-" --msgbox "\nNo se le permite tener una contraseña vacía.\n " 7 60
+            
+            elif [ "$input" != "$confirm_input" ]; then
+
+              dialog --backtitle "${title}" --title "${title_error}" --msgbox "\nLas dos contraseñas que ha introducido no coinciden.\n " 7 60
+            else
+              userpasswd="$input"
+              inputs_match=true
+            fi
+          done
+          break
+        fi
+      else
+        dialog --backtitle "${title}" --title "-| ERROR: Formato de nombre de usuario no válido |-" --msgbox "\nIngresaste un nombre de usuario no válido.\n\nEl nombre de usuario debe comenzar con una letra minúscula, que puede ir seguida de cualquier combinación de números, letras minúsculas o el símbolo de guión, prohibidos los espacios y no debe tener más de 20 caracteres.\n " 11 80
+      fi
+    fi
+  done
+
+
+
+##########################
+# HOSTNAME
+##########################
+while true; do
+hostname=$(dialog --backtitle "${title}" --title "-| Hostname |-" --nocancel \
+--inputbox "\nUna sola palabra que identifica su sistema en la red.\n\nPor favor ingrese el nombre de su equipo:\n " 12 65 "Arcris" 3>&1 1>&2 2>&3)
+
+
+# Hostname must be alpha-numeric and may contain a dash only in between
+if printf "%s" "$hostname" | grep -Eoq "^[a-zA-Z0-9-]{1,63}$" \
+  && [ "${hostname:0:1}" != "-" ] \
+  && [ "${hostname: -1}" != "-" ]; then
+  break
+else
+  dialog --backtitle "${title}"  --title "-| ERROR: Formato de nombre no válido |-" --msgbox "\nIngresó un nombre de host no válido. \n\nUn nombre de host válido puede contienen solo los números 0-9,\nletras mayúsculas y minúsculas (A-Z y a-z), y el signo menos.\n\nDebe tener como máximo 63 caracteres, prohibidos los espacios y no puede comenzar o terminar con un signo menos" 12 70
+fi
+
+done
+
+
+dialog --backtitle "${title}" --title "-| Root |-" --stdout --ok-label "${btn_confirm}"  --msgbox "\nEscriba su contraseña de administrador. \n " 7 43
+
+##########################
+# PASSWD ROOT
+##########################
+inputs_match=false
+  while ! $inputs_match; do
+    input=$(dialog --backtitle "${title}" --title "-| Establecer la contraseña de root |-" --clear --stdout --nocancel \
+      --insecure --passwordbox "\nIntroduzca una contraseña para 'root',\nla cuenta de administrador del sistema. \n\nContraseña de root:\n " 13 50)
+    confirm_input=$(dialog --backtitle "${title}" --title "-| Confirma la contraseña de root |-" --clear --stdout --no-cancel \
+      --insecure --passwordbox "\nVuelva a ingresar la contraseña root para verificar: \n " 10 60)
+        
+
+    if [ -z "$input" ]; then
+      dialog --backtitle "${title}" --title "-| ERROR: contraseña vacía |-" --msgbox "\nNo se le permite tener una contraseña vacía.\n" 7 55
+    elif [ "$input" != "$confirm_input" ]; then
+      dialog --backtitle "${title}" --title "-| ERROR: las contraseñas no coinciden |-" --msgbox "\nLas dos contraseñas que ha introducido no coinciden.\n " 7 58
+    else
+      rootpasswd="$input"
+      inputs_match=true
+    fi
+  done
+
+
+clave1=$(start=1 ; end=$(echo -n "$userpasswd" | wc -c) ; for ((i=$start; i<=$end; i++)); do echo -n '*'; done)
+clave2=$(start=1 ; end=$(echo -n "$rootpasswd" | wc -c) ; for ((i=$start; i<=$end; i++)); do echo -n '*'; done)
+
+
+dialog --no-collapse --cr-wrap --backtitle "${title}" --title "${ent_title_user}" --stdout --ok-label "${btn_confirm}" \
+--prgbox "echo '' 
+echo '#################################################' 
+echo ''
+echo 'Usuario    : ${username}'
+echo 'Clave      : ${clave1}'
+echo 'Clave Root : ${clave2}'
+echo 'Hostname   : ${hostname}' 
+echo ''
+echo '#################################################' " 15 55
+
+
+
+  seccion_1=1
+
+}

@@ -2,13 +2,13 @@
 
 #https://www.gsp.com/cgi-bin/man.cgi?section=1&topic=dialog
 
-locality () {
+ubicacion () {
 
 ##########################
 # ZONE
 ##########################
 
-
+title_timezone="-| Ubicación |-"
 
 zoneinfo="N/N"
 timezonedir=""
@@ -26,12 +26,12 @@ zonahorariauto=$(cat zoneinfo)
 echo ""
 locales=""
 localefrom=""
-curl https://ipapi.co/languages | awk -F "," '{print $1}' | sed 's/-/_/g' | sed "s|$|.UTF8|" > language
+curl https://ipapi.co/languages | awk -F "," '{print $1}' | sed 's/-/_/g' | sed "s|$|.UTF-8|" > language
 country=$(cat language)
 clear
 
 
-dialog --backtitle "${title}" --title "${title_timezone}" --defaultno --yesno "${msg_timezone1}$zonahorariauto | $country${msg_timezone2}" 12 40
+dialog --backtitle "${title}" --title "${title_timezone}" --defaultno --yesno "\nTu información es: \n\n\n     $zonahorariauto | $country\n\n\n       ¿Deseas modificarlo?" 12 40
 
 if [ "$?" = "0" ]; then
 #### PRESS NO
@@ -51,8 +51,8 @@ do
   ls -l $timezonedir | grep -v .tab | awk '/-rw-/' | awk -F " " '{print $9}' | awk '$fs=$fs" Time"' | awk '{if (NR!=1) {print}}'>>timezones
   timezones=$(cat timezones) 
   rm timezones 
-    timezone=$(dialog --backtitle "${title}" --title "${title_timezone}" --clear --title "${title_timezonemanual}: $zoneinfo |-" \
-    --menu "${msg_timezonemanual}" 30 45 20 ${timezones} 2>&1 >/dev/tty)  
+    timezone=$(dialog --backtitle "${title}" --title "${title_timezone}" --clear --title "-| Tu Zona Horaria es : $zonahorariauto |-" \
+    --menu "\nIngresa tu zona horaria correctamente.\n " 30 45 20 ${timezones} 2>&1 >/dev/tty)  
   clear
   if [ "$?" = "0" ] 
   then
@@ -69,9 +69,9 @@ done
 zonahorariamanual=$(echo $timezonedir$timezone | sed 's/^....................//g')
 
 
-locales="$(cat lib/locale.gen | grep -v "#  " | sed 's/#//g' | grep '.UTF-8 UTF-8' )"
-localefrom=$(dialog --backtitle "${title}" --no-cancel --ok-label "${btn_confirm}" --clear --title "${title_country}" \
---menu "${msg_country} ${country}\n " 25 35 20 ${locales} 2>&1 > /dev/tty)
+locales="$(cat recursos/locale.gen | grep -v "#  " | sed 's/#//g' | grep '.UTF-8 UTF-8' )"
+localefrom=$(dialog --backtitle "${title}" --no-cancel --ok-label "${btn_confirm}" --clear --title "-| Selecciona tu país |-" \
+--menu "\nTu país es : ${country}\n " 25 35 20 ${locales} 2>&1 > /dev/tty)
 
 rm language 
 rm zoneinfo
@@ -113,11 +113,6 @@ clear
 ##########################
 
 
-
-
-
-
-
-sectionubi=1
+  seccion_2=1
 
 }
