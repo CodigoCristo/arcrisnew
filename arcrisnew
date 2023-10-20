@@ -35,4 +35,5 @@ chmod +x *
 clear
 echo "Loading..."
 sleep 1
+cd arcris
 sh arcris-install
