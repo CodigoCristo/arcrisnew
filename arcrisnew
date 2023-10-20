@@ -25,14 +25,12 @@ fi
 
 clear
 curl -LJO github.com/CodigoCristo/arcrisnew/archive/refs/heads/main.tar.gz
-clear
 tar  -xvf  arcrisnew-main.tar.gz
 mv arcrisnew-main arcrisnew
 cd arcrisnew
 
 cp recursos/.dialogrc /root
 chmod +x *
-clear
 echo "Loading..."
 sleep 1
 cd arcris
